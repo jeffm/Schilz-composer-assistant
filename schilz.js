@@ -558,6 +558,32 @@ function concatenatePeriodicity(trackToBuild) {
 	rhythms.tracks[trackToBuild].run = false;
 }
 
+function computePolyLCM(trackToBuild) {
+	var pairs = [];
+	var pairLCM = [];
+	var LCMs = []
+	//we need to compute the LCM of each pair within a list of sources.
+	//first--figure out the pairs.
+	for (var increment=1;increment<rhythms.tracks[trackToBuild].sources.length;increment++) {
+		for (var source=0;source<rhythms.tracks[trackToBuild].sources.length;source++) {
+			if ((source + increment) < rhythms.tracks[trackToBuild].sources.length) {
+				var temp = [];
+				if (rhythms.tracks[source].type == 'beat') {
+					temp.push(rhythms.tracks[source].period);
+				} else {
+					//get the index of the last event and add its duration
+					temp.push(rhythms.tracks[source].events[rhythms.tracks[source].events.length].index + rhythms.tracks[source].events[rhythms.tracks[source].events.length].duration);
+				}
+				pairs.push(temp);
+			}
+		}
+	}
+	//now compute the LCM for each pair.
+	for (var pairCount=0;pairCount < pair.length;pairCount++) {
+		pairLCM.push(computeLCM(pair[pairCount][0],pair[pairCount][1]));
+	}
+}
+
 function computeLCM(n1, n2) {
 	var hcf = 1;
 	for (var i = 1; i <= n1 && i <= n2; i++) {

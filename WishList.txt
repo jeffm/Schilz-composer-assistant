@@ -1,12 +1,8 @@
 //TODO - autocompute how much of a track needs to be generated in order to be used in another track.
 
-//TODO - chord symbols. Need to convert to chord voicings for midi output. We could have a variety of voicings, and permutate through them just like we do with individual pitches. So basically two arrays--1 of chord names, and 1 of voicings. This is getting pretty particular, though, but maybe not such a bad thing. We have a separate file with this (chords.json), so it's not repeated in every file. MIDI output should already be set up. A chord symbol gets translated into an array of pitches with octave, e.g., A4,C#5,E5.
+//TODO - chord symbols. Need to convert to chord voicings for midi output. We could have a variety of voicings, and permutate through them just like we do with individual pitches. So basically two arrays--1 of chord names, and 1 of voicings. This is getting pretty particular, though, but maybe not such a bad thing. We have a separate file with this (chords.json), so it's not repeated in every file. MIDI output should already be set up. A chord symbol gets translated into an array of pitches with octave, e.g., A4,C#5,E5. When you add them up, there are a lot of chords and voicings!
 
-When you add them up, there are a lot of chords and voicings!
-
-//TODO Pitch permutations while applying pitches! If we have 2-8 pitches, then we can permutate them as we apply them to a periodicity.
-
-//TODO - sections. Songs of certain genres have specific forms. e.g., pop songs have A B A' B C B'. Each section lasts a certain number of bars, and has a chord progression. That's nice, but what do we do?  
+//TODO - sections. Songs of certain genres have specific forms. e.g., pop songs have sections A B A' B C B'. Each section lasts a certain number of bars, and has a chord progression. That's nice, but what could Schilz do to help? We can make a track fit in a certain number of bars with a certain time signature, by computing the beatUnit.
 
 //TODO Musical Forms...
 if (rhythms.tracks[j].type == 'form') {
