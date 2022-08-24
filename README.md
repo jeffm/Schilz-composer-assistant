@@ -1,5 +1,6 @@
 # Schilz-composer-assistant
 Music composition assistant loosely based on the writings of Joseph Schillinger
+Documentation at: https://jeffdm63.gitbook.io/schilz-composer-assistant/
 
 ## Prerequisites
 Documentation and a number of examples are included, so if you're just looking to learn about Schillinger's methods, you don't need to install or run anything.
