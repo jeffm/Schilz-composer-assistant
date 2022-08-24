@@ -7,7 +7,7 @@
             "name": "Beat of 3",
             "type": "beat",
             "period": 3,
-            "endAt": 12,
+            "endAt": 84,
             "events": [
                 {
                     "index": 0,
@@ -28,6 +28,126 @@
                     "index": 9,
                     "duration": 3,
                     "count": 1
+                },
+                {
+                    "index": 12,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 15,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 18,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 21,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 24,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 27,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 30,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 33,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 36,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 39,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 42,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 45,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 48,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 51,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 54,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 57,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 60,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 63,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 66,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 69,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 72,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 75,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 78,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 81,
+                    "duration": 3,
+                    "count": 1
                 }
             ],
             "run": false,
@@ -38,7 +158,7 @@
             "name": "beat of 4",
             "type": "beat",
             "period": 4,
-            "endAt": 12,
+            "endAt": 84,
             "events": [
                 {
                     "index": 0,
@@ -54,6 +174,96 @@
                     "index": 8,
                     "duration": 4,
                     "count": 1
+                },
+                {
+                    "index": 12,
+                    "duration": 4,
+                    "count": 1
+                },
+                {
+                    "index": 16,
+                    "duration": 4,
+                    "count": 1
+                },
+                {
+                    "index": 20,
+                    "duration": 4,
+                    "count": 1
+                },
+                {
+                    "index": 24,
+                    "duration": 4,
+                    "count": 1
+                },
+                {
+                    "index": 28,
+                    "duration": 4,
+                    "count": 1
+                },
+                {
+                    "index": 32,
+                    "duration": 4,
+                    "count": 1
+                },
+                {
+                    "index": 36,
+                    "duration": 4,
+                    "count": 1
+                },
+                {
+                    "index": 40,
+                    "duration": 4,
+                    "count": 1
+                },
+                {
+                    "index": 44,
+                    "duration": 4,
+                    "count": 1
+                },
+                {
+                    "index": 48,
+                    "duration": 4,
+                    "count": 1
+                },
+                {
+                    "index": 52,
+                    "duration": 4,
+                    "count": 1
+                },
+                {
+                    "index": 56,
+                    "duration": 4,
+                    "count": 1
+                },
+                {
+                    "index": 60,
+                    "duration": 4,
+                    "count": 1
+                },
+                {
+                    "index": 64,
+                    "duration": 4,
+                    "count": 1
+                },
+                {
+                    "index": 68,
+                    "duration": 4,
+                    "count": 1
+                },
+                {
+                    "index": 72,
+                    "duration": 4,
+                    "count": 1
+                },
+                {
+                    "index": 76,
+                    "duration": 4,
+                    "count": 1
+                },
+                {
+                    "index": 80,
+                    "duration": 4,
+                    "count": 1
                 }
             ],
             "run": false
@@ -63,7 +273,7 @@
             "name": "beat of 7",
             "type": "beat",
             "period": 7,
-            "endAt": 21,
+            "endAt": 84,
             "tempo": 40,
             "events": [
                 {
@@ -78,6 +288,51 @@
                 },
                 {
                     "index": 14,
+                    "duration": 7,
+                    "count": 1
+                },
+                {
+                    "index": 21,
+                    "duration": 7,
+                    "count": 1
+                },
+                {
+                    "index": 28,
+                    "duration": 7,
+                    "count": 1
+                },
+                {
+                    "index": 35,
+                    "duration": 7,
+                    "count": 1
+                },
+                {
+                    "index": 42,
+                    "duration": 7,
+                    "count": 1
+                },
+                {
+                    "index": 49,
+                    "duration": 7,
+                    "count": 1
+                },
+                {
+                    "index": 56,
+                    "duration": 7,
+                    "count": 1
+                },
+                {
+                    "index": 63,
+                    "duration": 7,
+                    "count": 1
+                },
+                {
+                    "index": 70,
+                    "duration": 7,
+                    "count": 1
+                },
+                {
+                    "index": 77,
                     "duration": 7,
                     "count": 1
                 }
@@ -137,17 +392,217 @@
                 },
                 {
                     "index": 9,
-                    "duration": 5,
+                    "duration": 3,
                     "count": 1
                 },
                 {
+                    "index": 12,
+                    "duration": 2,
+                    "count": 2
+                },
+                {
                     "index": 14,
-                    "duration": 7,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 15,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 16,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 18,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 20,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 21,
+                    "duration": 3,
+                    "count": 2
+                },
+                {
+                    "index": 24,
+                    "duration": 3,
+                    "count": 2
+                },
+                {
+                    "index": 27,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 28,
+                    "duration": 2,
+                    "count": 2
+                },
+                {
+                    "index": 30,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 32,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 33,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 35,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 36,
+                    "duration": 3,
+                    "count": 2
+                },
+                {
+                    "index": 39,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 40,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 42,
+                    "duration": 2,
+                    "count": 2
+                },
+                {
+                    "index": 44,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 45,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 48,
+                    "duration": 1,
+                    "count": 2
+                },
+                {
+                    "index": 49,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 51,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 52,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 54,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 56,
+                    "duration": 1,
+                    "count": 2
+                },
+                {
+                    "index": 57,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 60,
+                    "duration": 3,
+                    "count": 2
+                },
+                {
+                    "index": 63,
+                    "duration": 1,
+                    "count": 2
+                },
+                {
+                    "index": 64,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 66,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 68,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 69,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 70,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 72,
+                    "duration": 3,
+                    "count": 2
+                },
+                {
+                    "index": 75,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 76,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 77,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 78,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 80,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 81,
+                    "duration": 3,
                     "count": 1
                 }
             ],
             "run": false,
-            "endAt": 14,
+            "endAt": 81,
             "LCM": 84
         }
     ],

@@ -7,21 +7,21 @@
             "name": "Beat of 4",
             "type": "beat",
             "period": 4,
-            "endAt": 28
+            "endAt": 308
         },
         {
             "id": 1,
             "name": "beat of 7",
             "type": "beat",
             "period": 7,
-            "endAt": 28
+            "endAt": 308
         },
         {
             "id": 2,
             "name": "beat of 11",
             "type": "beat",
             "period": 11,
-            "endAt": 44,
+            "endAt": 308,
             "tempo": 120
         },
         {

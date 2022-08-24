@@ -7,7 +7,7 @@
             "name": "Beat of 2",
             "type": "beat",
             "period": 2,
-            "endAt": 6,
+            "endAt": 30,
             "events": [
                 {
                     "index": 0,
@@ -23,6 +23,66 @@
                     "index": 4,
                     "duration": 2,
                     "count": 1
+                },
+                {
+                    "index": 6,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 8,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 10,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 12,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 14,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 16,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 18,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 20,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 22,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 24,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 26,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 28,
+                    "duration": 2,
+                    "count": 1
                 }
             ],
             "run": false,
@@ -33,7 +93,7 @@
             "name": "beat of 3",
             "type": "beat",
             "period": 3,
-            "endAt": 6,
+            "endAt": 30,
             "events": [
                 {
                     "index": 0,
@@ -42,6 +102,46 @@
                 },
                 {
                     "index": 3,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 6,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 9,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 12,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 15,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 18,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 21,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 24,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 27,
                     "duration": 3,
                     "count": 1
                 }
@@ -53,7 +153,7 @@
             "name": "beat of 5",
             "type": "beat",
             "period": 5,
-            "endAt": 10,
+            "endAt": 30,
             "tempo": 80,
             "events": [
                 {
@@ -63,6 +163,26 @@
                 },
                 {
                     "index": 5,
+                    "duration": 5,
+                    "count": 1
+                },
+                {
+                    "index": 10,
+                    "duration": 5,
+                    "count": 1
+                },
+                {
+                    "index": 15,
+                    "duration": 5,
+                    "count": 1
+                },
+                {
+                    "index": 20,
+                    "duration": 5,
+                    "count": 1
+                },
+                {
+                    "index": 25,
                     "duration": 5,
                     "count": 1
                 }
@@ -112,12 +232,97 @@
                 },
                 {
                     "index": 5,
-                    "duration": 5,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 6,
+                    "duration": 2,
+                    "count": 2
+                },
+                {
+                    "index": 8,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 9,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 10,
+                    "duration": 2,
+                    "count": 2
+                },
+                {
+                    "index": 12,
+                    "duration": 2,
+                    "count": 2
+                },
+                {
+                    "index": 14,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 15,
+                    "duration": 1,
+                    "count": 2
+                },
+                {
+                    "index": 16,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 18,
+                    "duration": 2,
+                    "count": 2
+                },
+                {
+                    "index": 20,
+                    "duration": 1,
+                    "count": 2
+                },
+                {
+                    "index": 21,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 22,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 24,
+                    "duration": 1,
+                    "count": 2
+                },
+                {
+                    "index": 25,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 26,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 27,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 28,
+                    "duration": 2,
                     "count": 1
                 }
             ],
             "run": false,
-            "endAt": 5,
+            "endAt": 28,
             "LCM": 30
         }
     ],

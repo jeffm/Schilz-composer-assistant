@@ -68,6 +68,11 @@ function buildControlFile(control) {
 	projectPathWindows = 'C:\\\\Schilz-composer-assistant\\\\Projects\\\\Book 1 Theory of Rhythm\\\\Chapter_6\\\\';
 	console.log(project);
 	var dir = ensureExists(projectPath + project, 0o744);
+	var periods = [];
+	periods.push(control.period1);
+	periods.push(control.period2);
+	periods.push(control.period3);
+	var LCM = computePolyLCM(periods);
 	/*
 	var fractjsonout = {
 	"name": project,
@@ -160,19 +165,19 @@ function buildControlFile(control) {
 			"name": "Beat of " + control.period1.toString(),
 			"type": "beat",
 			"period": control.period1,
-			"endAt": control.period1 * control.period2
+			"endAt": LCM
 		},{
 			"id":1,
 			"name": "beat of " + control.period2.toString(),
 			"type": "beat",
 			"period": control.period2,
-			"endAt": control.period1 * control.period2
+			"endAt": LCM
 		},{
 			"id":2,
 			"name": "beat of " + control.period3.toString(),
 			"type": "beat",
 			"period": control.period3,
-			"endAt": control.period1 * control.period3
+			"endAt": LCM
 		},{
 			"id":3,
 			"name": "Interference rhythm combining " + control.period1.toString() + ', ' + control.period2.toString() + ' and ' + control.period3.toString(),
@@ -276,4 +281,100 @@ function writeMuse(museOutPath, museText) {
 		   console.error(err);
 		}
 	}
+}
+
+function computePolyLCM(periods) {
+	console.log('computePolyLCM(trackToBuild)');
+	//if (typeof rhythms.tracks[trackToBuild].sources == 'undefined') return;
+	var pairs = [];
+	var pairLCM = [];
+	var LCMs = [];
+	//console.log('sources length:' + rhythms.tracks[trackToBuild].sources.length,'debug');
+	//we need to compute the LCM of each pair within a list of sources.
+	//first--figure out the pairs.
+	for (var increment=1;increment<periods.length;increment++) {
+		for (var source=0;source<periods.length;source++) {
+			if ((source + increment) < periods.length) {
+				var temp = [];
+					//console.log('period:' + rhythms.tracks[source].period);
+				temp.push(periods[source]);
+				temp.push(periods[source+increment]);
+				//console.log('pairs push:' + JSON .stringify(temp));
+				pairs.push(temp);
+			}
+		}
+	}
+	var resolveFlag = false;
+	//console.log('pairs start:' + JSON .stringify(pairs) + pairs[0][0] + ' ' + pairs[0][1]);
+	
+	while (!resolveFlag) {
+		pairLCM = [];
+		//now compute the LCM for each pair, and keep doing it until you get a single number
+		for (var pairCount=0;pairCount < pairs.length;pairCount++) {
+			//console.log('pairLCM push:' + 'pairCount:' + pairCount + ' ' + pairs[pairCount][0] + ' ' + pairs[pairCount][1]);
+			pairLCM.push(computeLCM(pairs[pairCount][0],pairs[pairCount][1]));
+		}
+		//console.log('pairLCM:' + JSON.stringify(pairLCM));
+		pairs = [];
+		pairLCM = removeDupeArrayElements(pairLCM);
+	
+		//console.log('pared pairs:' + JSON.stringify(pairLCM));
+		if (pairLCM.length == 1) {
+			resolveFlag = true;
+		}
+		//resolveFlag = true;
+		if (!resolveFlag) {
+			for (var increment=1;increment<pairLCM.length;increment++) {
+				for (var source=0;source<pairLCM.length;source++) {
+					if ((source + increment) < pairLCM.length) {
+						temp = [];
+						//console.log('source:' + source + ' increment:' + increment);
+						
+						temp.push(pairLCM[source]);
+						temp.push(pairLCM[source + increment]);
+						pairs.push(temp);
+					}
+				}
+			}
+			//console.log('pairs:' + JSON.stringify(pairs));
+			
+			if (pairs.length == 0) {
+				resolveFlag = true;
+			}
+		}
+		//resolveFlag = true;
+	}
+	//console.log('final LCM:' + pairLCM[0]);
+	return pairLCM[0];
+}
+
+function removeDupeArrayElements(inputArray) {
+	if (inputArray.length == 1) {
+		return inputArray;
+	}
+	var dedupe = [];
+	dedupe.push(inputArray[0]);
+	for (var input=1;input<inputArray.length;input++) {
+		notFound = true;
+		for (var dedupeIndex=0;dedupeIndex<dedupe.length;dedupeIndex++) {
+			if (JSON.stringify(inputArray[input]) == JSON.stringify(dedupe[dedupeIndex])) {
+				notFound = false;
+				break;
+			}
+		}
+		if (notFound) {
+			dedupe.push(inputArray[input]);
+		}
+	}
+	return dedupe;
+}
+
+function computeLCM(n1, n2) {
+	var hcf = 1;
+	for (var i = 1; i <= n1 && i <= n2; i++) {
+			if( n1 % i == 0 && n2 % i == 0) {
+			hcf = i;
+			}
+		}
+		return (n1 * n2) / hcf
 }
