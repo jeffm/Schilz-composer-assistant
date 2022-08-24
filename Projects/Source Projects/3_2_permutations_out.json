@@ -1,0 +1,437 @@
+{
+    "name": "Monomial periodicities 3:2 and their resultant - split",
+    "timeSignature": "4/4",
+    "averageVelocity": 50,
+    "periodicities": [
+        {
+            "type": "monomial",
+            "period": 3,
+            "toIndex": 30,
+            "result": [
+                {
+                    "index": 0,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 3,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 6,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 9,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 12,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 15,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 18,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 21,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 24,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 27,
+                    "duration": 3,
+                    "count": 1
+                }
+            ],
+            "info": [],
+            "run": false,
+            "name": "Beat of 3",
+            "id": 0
+        },
+        {
+            "type": "monomial",
+            "period": 2,
+            "toIndex": 30,
+            "result": [
+                {
+                    "index": 0,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 2,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 4,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 6,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 8,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 10,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 12,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 14,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 16,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 18,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 20,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 22,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 24,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 26,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 28,
+                    "duration": 2,
+                    "count": 1
+                }
+            ],
+            "info": [],
+            "run": false,
+            "name": "Beat of 2",
+            "id": 1
+        },
+        {
+            "type": "polynomial",
+            "sources": [
+                {
+                    "source": 0
+                },
+                {
+                    "source": 1
+                }
+            ],
+            "result": [
+                {
+                    "index": 0,
+                    "duration": 2,
+                    "count": 2
+                },
+                {
+                    "index": 2,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 3,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 4,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 6,
+                    "duration": 2,
+                    "count": 2
+                },
+                {
+                    "index": 8,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 9,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 10,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 12,
+                    "duration": 2,
+                    "count": 2
+                },
+                {
+                    "index": 14,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 15,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 16,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 18,
+                    "duration": 2,
+                    "count": 2
+                },
+                {
+                    "index": 20,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 21,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 22,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 24,
+                    "duration": 2,
+                    "count": 2
+                },
+                {
+                    "index": 26,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 27,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 28,
+                    "duration": 2,
+                    "count": 1
+                }
+            ],
+            "info": [],
+            "run": false,
+            "name": "Rhythm combining 0, 1",
+            "id": 2,
+            "toIndex": 28
+        },
+        {
+            "type": "append",
+            "sources": [
+                {
+                    "source": 2,
+                    "permutation": "none",
+                    "startAt": 2,
+                    "endAt": 5
+                }
+            ],
+            "reIndexTo": 0,
+            "includeInScore": false,
+            "result": [
+                {
+                    "index": 0,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 1,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 3,
+                    "duration": 2,
+                    "count": 2
+                }
+            ],
+            "info": [
+                {
+                    "step": "appendPeriodicity",
+                    "message": "shift none source:2startAt:2 endAt:5 increment1"
+                }
+            ],
+            "run": false,
+            "name": "Rhythm combining 2",
+            "id": 3
+        },
+        {
+            "type": "append",
+            "sources": [
+                {
+                    "source": 3
+                },
+                {
+                    "source": 3,
+                    "permutation": "left"
+                },
+                {
+                    "source": 3,
+                    "permutation": "left",
+                    "startAt": 2
+                }
+            ],
+            "reIndexTo": 0,
+            "includeInScore": false,
+            "result": [
+                {
+                    "index": 0,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 1,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 3,
+                    "duration": 2,
+                    "count": 2
+                },
+                {
+                    "index": 5,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 7,
+                    "duration": 2,
+                    "count": 2
+                },
+                {
+                    "index": 9,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 10,
+                    "duration": 2,
+                    "count": 2
+                },
+                {
+                    "index": 12,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 13,
+                    "duration": 2,
+                    "count": 1
+                }
+            ],
+            "info": [
+                {
+                    "step": "appendPeriodicity",
+                    "message": "shift none source:3startAt:0 endAt:3 increment1"
+                },
+                {
+                    "step": "appendPeriodicity",
+                    "message": "shift left source:3startAt:1 endAt:3 increment1"
+                },
+                {
+                    "step": "appendPeriodicity",
+                    "message": "shift left source:3startAt:2 endAt:3 increment1"
+                }
+            ],
+            "run": false,
+            "name": "Rhythm combining 3, 3, 3",
+            "id": 4
+        },
+        {
+            "type": "append",
+            "sources": [
+                {
+                    "source": 3,
+                    "permutation": "custom",
+                    "permOrder": [
+                        3,
+                        1,
+                        2
+                    ],
+                    "reIndexTo": 0
+                }
+            ],
+            "includeInScore": false,
+            "result": [
+                {
+                    "index": 3,
+                    "duration": 2,
+                    "count": 2
+                },
+                {
+                    "index": 5,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 6,
+                    "duration": 2,
+                    "count": 1
+                }
+            ],
+            "info": [
+                {
+                    "step": "appendPeriodicity",
+                    "message": "shift custom source:3startAt:0 endAt:3 increment1"
+                }
+            ],
+            "run": false,
+            "name": "Rhythm combining 3",
+            "id": 5
+        }
+    ],
+    "defaultPitch": "C4"
+}

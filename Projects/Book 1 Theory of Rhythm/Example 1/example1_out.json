@@ -1,0 +1,103 @@
+{
+    "tracks": [
+        {
+            "type": "beat",
+            "period": 3,
+            "endAt": 9,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 3,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 6,
+                    "duration": 3,
+                    "count": 1
+                }
+            ],
+            "info": [],
+            "run": false,
+            "name": "Beat of 3",
+            "id": 0
+        },
+        {
+            "type": "beat",
+            "period": 2,
+            "endAt": 6,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 2,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 4,
+                    "duration": 2,
+                    "count": 1
+                }
+            ],
+            "info": [],
+            "run": false,
+            "name": "Beat of 2",
+            "id": 1
+        },
+        {
+            "type": "rhythm",
+            "sources": [
+                {
+                    "source": 0
+                },
+                {
+                    "source": 1
+                }
+            ],
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 2,
+                    "count": 2
+                },
+                {
+                    "index": 2,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 3,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 4,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 6,
+                    "duration": 3,
+                    "count": 1
+                }
+            ],
+            "info": [],
+            "run": false,
+            "name": "Rhythm combining 0, 1",
+            "id": 2,
+            "endAt": 6
+        }
+    ],
+    "defaultPitch": "C4",
+    "averageVelocity": 50,
+    "tempo": 90,
+    "timeSignature": "4/4"
+}

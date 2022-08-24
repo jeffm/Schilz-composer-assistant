@@ -1,0 +1,23 @@
+{
+	"tracks": [
+		{
+			"type": "beat",
+			"period": 3,
+			"endAt": 9
+		},{
+			"type": "beat",
+			"period": 2,
+			"endAt": 6
+		},{
+			"type": "rhythm",
+			"sources": [
+                {
+                    "source": 0
+                },
+                {
+                    "source": 1
+                }
+            ]
+		}
+	]
+}

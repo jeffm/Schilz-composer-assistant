@@ -1,0 +1,22 @@
+//TODO - autocompute how much of a track needs to be generated in order to be used in another track.
+
+//TODO - chord symbols. Need to convert to chord voicings for midi output. We could have a variety of voicings, and permutate through them just like we do with individual pitches. So basically two arrays--1 of chord names, and 1 of voicings. This is getting pretty particular, though, but maybe not such a bad thing. We have a separate file with this (chords.json), so it's not repeated in every file. MIDI output should already be set up. A chord symbol gets translated into an array of pitches with octave, e.g., A4,C#5,E5.
+
+When you add them up, there are a lot of chords and voicings!
+
+//TODO Pitch permutations while applying pitches! If we have 2-8 pitches, then we can permutate them as we apply them to a periodicity.
+
+//TODO - sections. Songs of certain genres have specific forms. e.g., pop songs have A B A' B C B'. Each section lasts a certain number of bars, and has a chord progression. That's nice, but what do we do?  
+
+//TODO Musical Forms...
+if (rhythms.tracks[j].type == 'form') {
+			//with forms, we might be moving past the original intent of Schilz into the realm of 'automated composition'. But maybe not...
+			//a form consists of nested sections.
+			//each section has a key, tempo, time signature, chord progression
+			//if a form is specified, I think it has to be executed first, so that the basic structure can be laid out and the subsequent rhythms fit into it.
+			//but what does it mean to lay out the basic structure?
+			//Well, for one, if we're creating a chord progression, then there has to be a rhythm track with the chords and associated scale laid out. We can then specify that a track is to be auto-transposed, in line with the chords and/or scales that have been laid out in this base track.
+			//We can have tracks that are motifs or phrases--they can be hand-made, or an entire other track or snippet thereof.
+		} else 
+		
+		//TODO - before (or instead of) getting into the whole forms, etc. thing, maybe it would be better if we started out by doing more computations to help the composer understand how their choices come together? For example, can we have vertical separators in the chart to show sections? Can we compute statistics to show how many repetitions are needed for things to complete within the current section (LCM)?

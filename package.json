@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "midi-writer-js": "^2.1.0",
+    "yargs": "^17.5.1"
+  }
+}

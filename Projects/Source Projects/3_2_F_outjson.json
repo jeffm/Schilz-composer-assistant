@@ -1,0 +1,332 @@
+{
+    "name": "Monomial periodicities 3:2 and their resultant",
+    "timeSignature": "4/4",
+    "averageVelocity": 50,
+    "periodicities": [
+        {
+            "id": 0,
+            "name": "monomial periodicity of 3",
+            "type": "monomial",
+            "period": 3,
+            "toIndex": 9,
+            "result": [
+                {
+                    "index": 0,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 3,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 6,
+                    "duration": 3,
+                    "count": 1
+                }
+            ],
+            "info": []
+        },
+        {
+            "id": 1,
+            "name": "monomial periodicity of 2",
+            "type": "monomial",
+            "period": 2,
+            "toIndex": 6,
+            "result": [
+                {
+                    "index": 0,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 2,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 4,
+                    "duration": 2,
+                    "count": 1
+                }
+            ],
+            "info": []
+        },
+        {
+            "id": 2,
+            "name": "monomial periodicity of 2",
+            "type": "monomial",
+            "period": 2,
+            "toIndex": 6,
+            "offsetFrom": 0,
+            "offsetAmount": 1,
+            "result": [
+                {
+                    "index": 3,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 5,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 7,
+                    "duration": 2,
+                    "count": 1
+                }
+            ],
+            "info": []
+        },
+        {
+            "id": 3,
+            "name": "pp of 0 & 1",
+            "type": "polynomial",
+            "sources": [
+                {
+                    "source": 0
+                },
+                {
+                    "source": 1
+                },
+                {
+                    "source": 2
+                }
+            ],
+            "includeInScore": false,
+            "computeLCM": true,
+            "defaultPitch": "F4",
+            "beatUnit": 4,
+            "tempo": 90,
+            "result": [
+                {
+                    "index": 0,
+                    "duration": 2,
+                    "count": 2
+                },
+                {
+                    "index": 2,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 3,
+                    "duration": 1,
+                    "count": 2
+                },
+                {
+                    "index": 4,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 5,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 6,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 7,
+                    "duration": 2,
+                    "count": 1
+                }
+            ],
+            "info": [],
+            "toIndex": 7,
+            "LCM": 36
+        },
+        {
+            "id": 4,
+            "name": "pp of 0 & 1",
+            "type": "append",
+            "sources": [
+                {
+                    "source": 3,
+                    "permutation": "none"
+                },
+                {
+                    "source": 3,
+                    "permutation": "none"
+                },
+                {
+                    "source": 3,
+                    "permutation": "none"
+                },
+                {
+                    "source": 3,
+                    "permutation": "none"
+                }
+            ],
+            "includeInScore": true,
+            "defaultPitch": "F4",
+            "beatUnit": 4,
+            "tempo": 90,
+            "result": [
+                {
+                    "index": 0,
+                    "duration": 2,
+                    "count": 6
+                },
+                {
+                    "index": 2,
+                    "duration": 1,
+                    "count": 5
+                },
+                {
+                    "index": 3,
+                    "duration": 1,
+                    "count": 6
+                },
+                {
+                    "index": 4,
+                    "duration": 1,
+                    "count": 5
+                },
+                {
+                    "index": 5,
+                    "duration": 1,
+                    "count": 5
+                },
+                {
+                    "index": 6,
+                    "duration": 1,
+                    "count": 5
+                },
+                {
+                    "index": 7,
+                    "duration": 2,
+                    "count": 5
+                },
+                {
+                    "index": 9,
+                    "duration": 2,
+                    "count": 2
+                },
+                {
+                    "index": 11,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 12,
+                    "duration": 1,
+                    "count": 2
+                },
+                {
+                    "index": 13,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 14,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 15,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 16,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 18,
+                    "duration": 2,
+                    "count": 2
+                },
+                {
+                    "index": 20,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 21,
+                    "duration": 1,
+                    "count": 2
+                },
+                {
+                    "index": 22,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 23,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 24,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 25,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 27,
+                    "duration": 2,
+                    "count": 2
+                },
+                {
+                    "index": 29,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 30,
+                    "duration": 1,
+                    "count": 2
+                },
+                {
+                    "index": 31,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 32,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 33,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 34,
+                    "duration": 2,
+                    "count": 1
+                }
+            ],
+            "info": [
+                {
+                    "step": "appendPeriodicity",
+                    "message": "shift none source:3startAt:0 endAt:7 increment"
+                },
+                {
+                    "step": "appendPeriodicity",
+                    "message": "shift none source:3startAt:0 endAt:7 increment"
+                },
+                {
+                    "step": "appendPeriodicity",
+                    "message": "shift none source:3startAt:0 endAt:7 increment"
+                },
+                {
+                    "step": "appendPeriodicity",
+                    "message": "shift none source:3startAt:0 endAt:7 increment"
+                }
+            ]
+        }
+    ]
+}

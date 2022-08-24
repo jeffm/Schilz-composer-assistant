@@ -1,0 +1,35 @@
+{
+	"name": "Beats of 3 & 2, offset, and their resulting rhythm",
+	"timeSignature": "3/4",
+	"tracks": [
+		{
+			"type": "beat",
+			"period": 3,
+			"endAt": 9
+		},{
+			"type": "beat",
+			"period": 2,
+			"endAt": 6
+		},{
+			"type": "beat",
+			"period": 2,
+			"endAt": 6,
+			"offsetFrom": 0,
+			"offsetAmount": 1
+		},{
+			"type": "rhythm",
+			"sources": [
+                {
+                    "source": 0
+                },
+                {
+                    "source": 1
+                },
+                {
+                    "source": 2
+                }
+            ],
+			"includeInScore": true
+		}
+	]
+}
