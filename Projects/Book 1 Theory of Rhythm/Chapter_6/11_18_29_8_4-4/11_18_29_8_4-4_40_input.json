@@ -1,0 +1,49 @@
+{
+    "name": "11_18_29_8_4-4",
+    "timeSignature": "4/4",
+    "averageVelocity": 50,
+    "tracks": [
+        {
+            "name": "Beat of 11",
+            "type": "beat",
+            "period": 11,
+            "endAt": 198
+        },
+        {
+            "id": 1,
+            "name": "beat of 18",
+            "type": "beat",
+            "period": 18,
+            "endAt": 198
+        },
+        {
+            "id": 2,
+            "name": "beat of 29",
+            "type": "beat",
+            "period": 29,
+            "endAt": 319,
+            "tempo": 40
+        },
+        {
+            "id": 3,
+            "name": "Interference rhythm combining 11, 18 and 29",
+            "type": "rhythm",
+            "sources": [
+                {
+                    "source": 0
+                },
+                {
+                    "source": 1
+                },
+                {
+                    "source": 2
+                }
+            ],
+            "includeInScore": true,
+            "computeLCM": true,
+            "beatUnit": 8,
+            "defaultPitch": "C4",
+            "tempo": 90
+        }
+    ]
+}

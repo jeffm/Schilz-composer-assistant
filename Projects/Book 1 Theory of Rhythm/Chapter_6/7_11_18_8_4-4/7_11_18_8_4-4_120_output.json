@@ -1,0 +1,306 @@
+{
+    "name": "7_11_18_8_4-4",
+    "timeSignature": "4/4",
+    "averageVelocity": 50,
+    "tracks": [
+        {
+            "name": "Beat of 7",
+            "type": "beat",
+            "period": 7,
+            "endAt": 77,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 7,
+                    "count": 1
+                },
+                {
+                    "index": 7,
+                    "duration": 7,
+                    "count": 1
+                },
+                {
+                    "index": 14,
+                    "duration": 7,
+                    "count": 1
+                },
+                {
+                    "index": 21,
+                    "duration": 7,
+                    "count": 1
+                },
+                {
+                    "index": 28,
+                    "duration": 7,
+                    "count": 1
+                },
+                {
+                    "index": 35,
+                    "duration": 7,
+                    "count": 1
+                },
+                {
+                    "index": 42,
+                    "duration": 7,
+                    "count": 1
+                },
+                {
+                    "index": 49,
+                    "duration": 7,
+                    "count": 1
+                },
+                {
+                    "index": 56,
+                    "duration": 7,
+                    "count": 1
+                },
+                {
+                    "index": 63,
+                    "duration": 7,
+                    "count": 1
+                },
+                {
+                    "index": 70,
+                    "duration": 7,
+                    "count": 1
+                }
+            ],
+            "run": false,
+            "id": 0
+        },
+        {
+            "id": 1,
+            "name": "beat of 11",
+            "type": "beat",
+            "period": 11,
+            "endAt": 77,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 11,
+                    "count": 1
+                },
+                {
+                    "index": 11,
+                    "duration": 11,
+                    "count": 1
+                },
+                {
+                    "index": 22,
+                    "duration": 11,
+                    "count": 1
+                },
+                {
+                    "index": 33,
+                    "duration": 11,
+                    "count": 1
+                },
+                {
+                    "index": 44,
+                    "duration": 11,
+                    "count": 1
+                },
+                {
+                    "index": 55,
+                    "duration": 11,
+                    "count": 1
+                },
+                {
+                    "index": 66,
+                    "duration": 11,
+                    "count": 1
+                }
+            ],
+            "run": false
+        },
+        {
+            "id": 2,
+            "name": "beat of 18",
+            "type": "beat",
+            "period": 18,
+            "endAt": 126,
+            "tempo": 120,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 18,
+                    "count": 1
+                },
+                {
+                    "index": 18,
+                    "duration": 18,
+                    "count": 1
+                },
+                {
+                    "index": 36,
+                    "duration": 18,
+                    "count": 1
+                },
+                {
+                    "index": 54,
+                    "duration": 18,
+                    "count": 1
+                },
+                {
+                    "index": 72,
+                    "duration": 18,
+                    "count": 1
+                },
+                {
+                    "index": 90,
+                    "duration": 18,
+                    "count": 1
+                },
+                {
+                    "index": 108,
+                    "duration": 18,
+                    "count": 1
+                }
+            ],
+            "run": false
+        },
+        {
+            "id": 3,
+            "name": "Interference rhythm combining 7, 11 and 18",
+            "type": "rhythm",
+            "sources": [
+                {
+                    "source": 0
+                },
+                {
+                    "source": 1
+                },
+                {
+                    "source": 2
+                }
+            ],
+            "includeInScore": true,
+            "computeLCM": true,
+            "beatUnit": 8,
+            "defaultPitch": "C4",
+            "tempo": 90,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 7,
+                    "count": 3
+                },
+                {
+                    "index": 7,
+                    "duration": 4,
+                    "count": 1
+                },
+                {
+                    "index": 11,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 14,
+                    "duration": 4,
+                    "count": 1
+                },
+                {
+                    "index": 18,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 21,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 22,
+                    "duration": 6,
+                    "count": 1
+                },
+                {
+                    "index": 28,
+                    "duration": 5,
+                    "count": 1
+                },
+                {
+                    "index": 33,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 35,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 36,
+                    "duration": 6,
+                    "count": 1
+                },
+                {
+                    "index": 42,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 44,
+                    "duration": 5,
+                    "count": 1
+                },
+                {
+                    "index": 49,
+                    "duration": 5,
+                    "count": 1
+                },
+                {
+                    "index": 54,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 55,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 56,
+                    "duration": 7,
+                    "count": 1
+                },
+                {
+                    "index": 63,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 66,
+                    "duration": 4,
+                    "count": 1
+                },
+                {
+                    "index": 70,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 72,
+                    "duration": 18,
+                    "count": 1
+                },
+                {
+                    "index": 90,
+                    "duration": 18,
+                    "count": 1
+                },
+                {
+                    "index": 108,
+                    "duration": 18,
+                    "count": 1
+                }
+            ],
+            "run": false,
+            "endAt": 108,
+            "LCM": 1386
+        }
+    ],
+    "defaultPitch": "C4",
+    "tempo": 90
+}

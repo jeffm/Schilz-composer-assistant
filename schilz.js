@@ -186,11 +186,13 @@ function generateRhythms(arguments) {
 			generateRhythm(j);
 			setDuration(j);
 			setCounts(j);
+			computePolyLCM(j);
 			addPitches(j);
 			addChordSymbols(j);
 		} else if (rhythms.tracks[j].type == 'concatenate') {
 			concatenatePeriodicity(j);
 			setDuration(j);
+			computePolyLCM(j);
 			addPitches(j);
 			addChordSymbols(j);
 		} else if (rhythms.tracks[j].type == 'clone') {
@@ -329,23 +331,6 @@ function generateRhythm(trackToBuild) {
 			}
 		}	
 	}
-	//Compute LCM Statistic
-	var timeSignature = '';
-	var hcf = 1;
-	var newIndex = HighIndex + rhythms.tracks[trackToBuild].events[rhythms.tracks[trackToBuild].events.length-1].duration;
-	if (typeof rhythms.tracks[trackToBuild].timeSignature != 'undefined') {
-		timeSignature = rhythms.tracks[trackToBuild].timeSignature;
-	} else if (typeof rhythms.timeSignature != 'undefined') {
-		timeSignature = rhythms.timeSignature;
-	} else {
-		timeSignature = "4/4";
-		rhythms.timeSignature = timeSignature;
-	}
-	var timeSigArray = timeSignature.split('/');
-	if (typeof rhythms.tracks[trackToBuild].computeLCM != 'undefined' && rhythms.tracks[trackToBuild].computeLCM == true) {
-		rhythms.tracks[trackToBuild].LCM = computeLCM(timeSigArray[0],newIndex);
-		log('totalLength:' + newIndex + ' LCM:' + rhythms.tracks[trackToBuild].LCM, 'debug');
-	}
 	rhythms.tracks[trackToBuild].run = false;
 }
 
@@ -373,7 +358,7 @@ function concatenatePeriodicity(trackToBuild) {
 	if (!shouldRun(trackToBuild)) {
 		return;
 	}
-	console.log('concatenatePeriodicity(' + trackToBuild + ')');
+	log('concatenatePeriodicity(' + trackToBuild + ')','info');
 	var lastIndex = 0;
 	var lastDuration = 0;
 	var lastCount = 0;
@@ -540,28 +525,17 @@ function concatenatePeriodicity(trackToBuild) {
 		}
 		newIndex = lastIndex;
 	}
-	//Compute LCM Statistic - only works for 2 items and we should do more!
-	var timeSignature = '';
-
-	if (typeof rhythms.tracks[trackToBuild].timeSignature != 'undefined') {
-		timeSignature = rhythms.tracks[trackToBuild].timeSignature;
-	} else {
-		timeSignature = rhythms.timeSignature;
-	}
-	var timeSigArray = timeSignature.split('/');
-	if (typeof rhythms.tracks[trackToBuild].computeLCM != 'undefined' && rhythms.tracks[trackToBuild].computeLCM == true) {
-		var newIndex = newIndex + rhythms.tracks[trackToBuild].events[rhythms.tracks[trackToBuild].events.length-1].duration;
-		rhythms.tracks[trackToBuild].LCM = computeLCM(timeSigArray[0],newIndex);
-		log('    totalLength:' + newIndex + ' timeSigArray[0]:' + timeSigArray[0] + ' LCM:' + rhythms.tracks[trackToBuild].LCM, 'debug');
-	}
 	fixIndexValues(trackToBuild);
 	rhythms.tracks[trackToBuild].run = false;
 }
 
 function computePolyLCM(trackToBuild) {
+	log('computePolyLCM(trackToBuild)','info');
+	if (typeof rhythms.tracks[trackToBuild].sources == 'undefined') return;
 	var pairs = [];
 	var pairLCM = [];
-	var LCMs = []
+	var LCMs = [];
+	//console.log('sources length:' + rhythms.tracks[trackToBuild].sources.length,'debug');
 	//we need to compute the LCM of each pair within a list of sources.
 	//first--figure out the pairs.
 	for (var increment=1;increment<rhythms.tracks[trackToBuild].sources.length;increment++) {
@@ -569,19 +543,91 @@ function computePolyLCM(trackToBuild) {
 			if ((source + increment) < rhythms.tracks[trackToBuild].sources.length) {
 				var temp = [];
 				if (rhythms.tracks[source].type == 'beat') {
+					//console.log('period:' + rhythms.tracks[source].period);
 					temp.push(rhythms.tracks[source].period);
 				} else {
 					//get the index of the last event and add its duration
+					//console.log('rhythm length:' + rhythms.tracks[source].events[rhythms.tracks[source].events.length].index + rhythms.tracks[source].events[rhythms.tracks[source].events.length].duration);
+					
 					temp.push(rhythms.tracks[source].events[rhythms.tracks[source].events.length].index + rhythms.tracks[source].events[rhythms.tracks[source].events.length].duration);
 				}
+				if (rhythms.tracks[source+increment].type == 'beat') {
+					//console.log('period:' + rhythms.tracks[source+increment].period);
+					temp.push(rhythms.tracks[source+increment].period);
+				} else {
+					//get the index of the last event and add its duration
+					//console.log('rhythm length:' + rhythms.tracks[source+increment].events[rhythms.tracks[source+increment].events.length].index + rhythms.tracks[source+increment].events[rhythms.tracks[source+increment].events.length].duration);
+					
+					temp.push(rhythms.tracks[source+increment].events[rhythms.tracks[source+increment].events.length].index + rhythms.tracks[source+increment].events[rhythms.tracks[source+increment].events.length].duration);
+				}
+				//console.log('pairs push:' + JSON .stringify(temp));
 				pairs.push(temp);
 			}
 		}
 	}
-	//now compute the LCM for each pair.
-	for (var pairCount=0;pairCount < pair.length;pairCount++) {
-		pairLCM.push(computeLCM(pair[pairCount][0],pair[pairCount][1]));
+	var resolveFlag = false;
+	//console.log('pairs start:' + JSON .stringify(pairs) + pairs[0][0] + ' ' + pairs[0][1]);
+	
+	while (!resolveFlag) {
+		pairLCM = [];
+		//now compute the LCM for each pair, and keep doing it until you get a single number
+		for (var pairCount=0;pairCount < pairs.length;pairCount++) {
+			//console.log('pairLCM push:' + 'pairCount:' + pairCount + ' ' + pairs[pairCount][0] + ' ' + pairs[pairCount][1]);
+			pairLCM.push(computeLCM(pairs[pairCount][0],pairs[pairCount][1]));
+		}
+		//console.log('pairLCM:' + JSON.stringify(pairLCM));
+		pairs = [];
+		pairLCM = removeDupeArrayElements(pairLCM);
+	
+		//console.log('pared pairs:' + JSON.stringify(pairLCM));
+		if (pairLCM.length == 1) {
+			resolveFlag = true;
+		}
+		//resolveFlag = true;
+		if (!resolveFlag) {
+			for (var increment=1;increment<pairLCM.length;increment++) {
+				for (var source=0;source<pairLCM.length;source++) {
+					if ((source + increment) < pairLCM.length) {
+						temp = [];
+						//console.log('source:' + source + ' increment:' + increment);
+						
+						temp.push(pairLCM[source]);
+						temp.push(pairLCM[source + increment]);
+						pairs.push(temp);
+					}
+				}
+			}
+			//console.log('pairs:' + JSON.stringify(pairs));
+			
+			if (pairs.length == 0) {
+				resolveFlag = true;
+			}
+		}
+		//resolveFlag = true;
 	}
+	//console.log('final LCM:' + pairLCM[0]);
+	rhythms.tracks[trackToBuild].LCM = pairLCM[0];
+}
+
+function removeDupeArrayElements(inputArray) {
+	if (inputArray.length == 1) {
+		return inputArray;
+	}
+	var dedupe = [];
+	dedupe.push(inputArray[0]);
+	for (var input=1;input<inputArray.length;input++) {
+		notFound = true;
+		for (var dedupeIndex=0;dedupeIndex<dedupe.length;dedupeIndex++) {
+			if (JSON.stringify(inputArray[input]) == JSON.stringify(dedupe[dedupeIndex])) {
+				notFound = false;
+				break;
+			}
+		}
+		if (notFound) {
+			dedupe.push(inputArray[input]);
+		}
+	}
+	return dedupe;
 }
 
 function computeLCM(n1, n2) {

@@ -1,0 +1,49 @@
+{
+    "name": "2_3_5_8_3-4",
+    "timeSignature": "3/4",
+    "averageVelocity": 50,
+    "tracks": [
+        {
+            "name": "Beat of 2",
+            "type": "beat",
+            "period": 2,
+            "endAt": 6
+        },
+        {
+            "id": 1,
+            "name": "beat of 3",
+            "type": "beat",
+            "period": 3,
+            "endAt": 6
+        },
+        {
+            "id": 2,
+            "name": "beat of 5",
+            "type": "beat",
+            "period": 5,
+            "endAt": 10,
+            "tempo": 40
+        },
+        {
+            "id": 3,
+            "name": "Interference rhythm combining 2, 3 and 5",
+            "type": "rhythm",
+            "sources": [
+                {
+                    "source": 0
+                },
+                {
+                    "source": 1
+                },
+                {
+                    "source": 2
+                }
+            ],
+            "includeInScore": true,
+            "computeLCM": true,
+            "beatUnit": 8,
+            "defaultPitch": "C4",
+            "tempo": 90
+        }
+    ]
+}

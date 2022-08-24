@@ -1,0 +1,376 @@
+{
+    "name": "9_14_23_8_4-4",
+    "timeSignature": "4/4",
+    "averageVelocity": 50,
+    "tracks": [
+        {
+            "name": "Beat of 9",
+            "type": "beat",
+            "period": 9,
+            "endAt": 126,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 9,
+                    "count": 1
+                },
+                {
+                    "index": 9,
+                    "duration": 9,
+                    "count": 1
+                },
+                {
+                    "index": 18,
+                    "duration": 9,
+                    "count": 1
+                },
+                {
+                    "index": 27,
+                    "duration": 9,
+                    "count": 1
+                },
+                {
+                    "index": 36,
+                    "duration": 9,
+                    "count": 1
+                },
+                {
+                    "index": 45,
+                    "duration": 9,
+                    "count": 1
+                },
+                {
+                    "index": 54,
+                    "duration": 9,
+                    "count": 1
+                },
+                {
+                    "index": 63,
+                    "duration": 9,
+                    "count": 1
+                },
+                {
+                    "index": 72,
+                    "duration": 9,
+                    "count": 1
+                },
+                {
+                    "index": 81,
+                    "duration": 9,
+                    "count": 1
+                },
+                {
+                    "index": 90,
+                    "duration": 9,
+                    "count": 1
+                },
+                {
+                    "index": 99,
+                    "duration": 9,
+                    "count": 1
+                },
+                {
+                    "index": 108,
+                    "duration": 9,
+                    "count": 1
+                },
+                {
+                    "index": 117,
+                    "duration": 9,
+                    "count": 1
+                }
+            ],
+            "run": false,
+            "id": 0
+        },
+        {
+            "id": 1,
+            "name": "beat of 14",
+            "type": "beat",
+            "period": 14,
+            "endAt": 126,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 14,
+                    "count": 1
+                },
+                {
+                    "index": 14,
+                    "duration": 14,
+                    "count": 1
+                },
+                {
+                    "index": 28,
+                    "duration": 14,
+                    "count": 1
+                },
+                {
+                    "index": 42,
+                    "duration": 14,
+                    "count": 1
+                },
+                {
+                    "index": 56,
+                    "duration": 14,
+                    "count": 1
+                },
+                {
+                    "index": 70,
+                    "duration": 14,
+                    "count": 1
+                },
+                {
+                    "index": 84,
+                    "duration": 14,
+                    "count": 1
+                },
+                {
+                    "index": 98,
+                    "duration": 14,
+                    "count": 1
+                },
+                {
+                    "index": 112,
+                    "duration": 14,
+                    "count": 1
+                }
+            ],
+            "run": false
+        },
+        {
+            "id": 2,
+            "name": "beat of 23",
+            "type": "beat",
+            "period": 23,
+            "endAt": 207,
+            "tempo": 80,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 23,
+                    "count": 1
+                },
+                {
+                    "index": 23,
+                    "duration": 23,
+                    "count": 1
+                },
+                {
+                    "index": 46,
+                    "duration": 23,
+                    "count": 1
+                },
+                {
+                    "index": 69,
+                    "duration": 23,
+                    "count": 1
+                },
+                {
+                    "index": 92,
+                    "duration": 23,
+                    "count": 1
+                },
+                {
+                    "index": 115,
+                    "duration": 23,
+                    "count": 1
+                },
+                {
+                    "index": 138,
+                    "duration": 23,
+                    "count": 1
+                },
+                {
+                    "index": 161,
+                    "duration": 23,
+                    "count": 1
+                },
+                {
+                    "index": 184,
+                    "duration": 23,
+                    "count": 1
+                }
+            ],
+            "run": false
+        },
+        {
+            "id": 3,
+            "name": "Interference rhythm combining 9, 14 and 23",
+            "type": "rhythm",
+            "sources": [
+                {
+                    "source": 0
+                },
+                {
+                    "source": 1
+                },
+                {
+                    "source": 2
+                }
+            ],
+            "includeInScore": true,
+            "computeLCM": true,
+            "beatUnit": 8,
+            "defaultPitch": "C4",
+            "tempo": 90,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 9,
+                    "count": 3
+                },
+                {
+                    "index": 9,
+                    "duration": 5,
+                    "count": 1
+                },
+                {
+                    "index": 14,
+                    "duration": 4,
+                    "count": 1
+                },
+                {
+                    "index": 18,
+                    "duration": 5,
+                    "count": 1
+                },
+                {
+                    "index": 23,
+                    "duration": 4,
+                    "count": 1
+                },
+                {
+                    "index": 27,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 28,
+                    "duration": 8,
+                    "count": 1
+                },
+                {
+                    "index": 36,
+                    "duration": 6,
+                    "count": 1
+                },
+                {
+                    "index": 42,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 45,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 46,
+                    "duration": 8,
+                    "count": 1
+                },
+                {
+                    "index": 54,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 56,
+                    "duration": 7,
+                    "count": 1
+                },
+                {
+                    "index": 63,
+                    "duration": 6,
+                    "count": 1
+                },
+                {
+                    "index": 69,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 70,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 72,
+                    "duration": 9,
+                    "count": 1
+                },
+                {
+                    "index": 81,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 84,
+                    "duration": 6,
+                    "count": 1
+                },
+                {
+                    "index": 90,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 92,
+                    "duration": 6,
+                    "count": 1
+                },
+                {
+                    "index": 98,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 99,
+                    "duration": 9,
+                    "count": 1
+                },
+                {
+                    "index": 108,
+                    "duration": 4,
+                    "count": 1
+                },
+                {
+                    "index": 112,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 115,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 117,
+                    "duration": 21,
+                    "count": 1
+                },
+                {
+                    "index": 138,
+                    "duration": 23,
+                    "count": 1
+                },
+                {
+                    "index": 161,
+                    "duration": 23,
+                    "count": 1
+                },
+                {
+                    "index": 184,
+                    "duration": 23,
+                    "count": 1
+                }
+            ],
+            "run": false,
+            "endAt": 184,
+            "LCM": 2898
+        }
+    ],
+    "defaultPitch": "C4",
+    "tempo": 90
+}

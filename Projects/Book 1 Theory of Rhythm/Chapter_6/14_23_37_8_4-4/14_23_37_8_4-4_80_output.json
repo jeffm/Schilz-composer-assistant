@@ -1,0 +1,566 @@
+{
+    "name": "14_23_37_8_4-4",
+    "timeSignature": "4/4",
+    "averageVelocity": 50,
+    "tracks": [
+        {
+            "name": "Beat of 14",
+            "type": "beat",
+            "period": 14,
+            "endAt": 322,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 14,
+                    "count": 1
+                },
+                {
+                    "index": 14,
+                    "duration": 14,
+                    "count": 1
+                },
+                {
+                    "index": 28,
+                    "duration": 14,
+                    "count": 1
+                },
+                {
+                    "index": 42,
+                    "duration": 14,
+                    "count": 1
+                },
+                {
+                    "index": 56,
+                    "duration": 14,
+                    "count": 1
+                },
+                {
+                    "index": 70,
+                    "duration": 14,
+                    "count": 1
+                },
+                {
+                    "index": 84,
+                    "duration": 14,
+                    "count": 1
+                },
+                {
+                    "index": 98,
+                    "duration": 14,
+                    "count": 1
+                },
+                {
+                    "index": 112,
+                    "duration": 14,
+                    "count": 1
+                },
+                {
+                    "index": 126,
+                    "duration": 14,
+                    "count": 1
+                },
+                {
+                    "index": 140,
+                    "duration": 14,
+                    "count": 1
+                },
+                {
+                    "index": 154,
+                    "duration": 14,
+                    "count": 1
+                },
+                {
+                    "index": 168,
+                    "duration": 14,
+                    "count": 1
+                },
+                {
+                    "index": 182,
+                    "duration": 14,
+                    "count": 1
+                },
+                {
+                    "index": 196,
+                    "duration": 14,
+                    "count": 1
+                },
+                {
+                    "index": 210,
+                    "duration": 14,
+                    "count": 1
+                },
+                {
+                    "index": 224,
+                    "duration": 14,
+                    "count": 1
+                },
+                {
+                    "index": 238,
+                    "duration": 14,
+                    "count": 1
+                },
+                {
+                    "index": 252,
+                    "duration": 14,
+                    "count": 1
+                },
+                {
+                    "index": 266,
+                    "duration": 14,
+                    "count": 1
+                },
+                {
+                    "index": 280,
+                    "duration": 14,
+                    "count": 1
+                },
+                {
+                    "index": 294,
+                    "duration": 14,
+                    "count": 1
+                },
+                {
+                    "index": 308,
+                    "duration": 14,
+                    "count": 1
+                }
+            ],
+            "run": false,
+            "id": 0
+        },
+        {
+            "id": 1,
+            "name": "beat of 23",
+            "type": "beat",
+            "period": 23,
+            "endAt": 322,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 23,
+                    "count": 1
+                },
+                {
+                    "index": 23,
+                    "duration": 23,
+                    "count": 1
+                },
+                {
+                    "index": 46,
+                    "duration": 23,
+                    "count": 1
+                },
+                {
+                    "index": 69,
+                    "duration": 23,
+                    "count": 1
+                },
+                {
+                    "index": 92,
+                    "duration": 23,
+                    "count": 1
+                },
+                {
+                    "index": 115,
+                    "duration": 23,
+                    "count": 1
+                },
+                {
+                    "index": 138,
+                    "duration": 23,
+                    "count": 1
+                },
+                {
+                    "index": 161,
+                    "duration": 23,
+                    "count": 1
+                },
+                {
+                    "index": 184,
+                    "duration": 23,
+                    "count": 1
+                },
+                {
+                    "index": 207,
+                    "duration": 23,
+                    "count": 1
+                },
+                {
+                    "index": 230,
+                    "duration": 23,
+                    "count": 1
+                },
+                {
+                    "index": 253,
+                    "duration": 23,
+                    "count": 1
+                },
+                {
+                    "index": 276,
+                    "duration": 23,
+                    "count": 1
+                },
+                {
+                    "index": 299,
+                    "duration": 23,
+                    "count": 1
+                }
+            ],
+            "run": false
+        },
+        {
+            "id": 2,
+            "name": "beat of 37",
+            "type": "beat",
+            "period": 37,
+            "endAt": 518,
+            "tempo": 80,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 37,
+                    "count": 1
+                },
+                {
+                    "index": 37,
+                    "duration": 37,
+                    "count": 1
+                },
+                {
+                    "index": 74,
+                    "duration": 37,
+                    "count": 1
+                },
+                {
+                    "index": 111,
+                    "duration": 37,
+                    "count": 1
+                },
+                {
+                    "index": 148,
+                    "duration": 37,
+                    "count": 1
+                },
+                {
+                    "index": 185,
+                    "duration": 37,
+                    "count": 1
+                },
+                {
+                    "index": 222,
+                    "duration": 37,
+                    "count": 1
+                },
+                {
+                    "index": 259,
+                    "duration": 37,
+                    "count": 1
+                },
+                {
+                    "index": 296,
+                    "duration": 37,
+                    "count": 1
+                },
+                {
+                    "index": 333,
+                    "duration": 37,
+                    "count": 1
+                },
+                {
+                    "index": 370,
+                    "duration": 37,
+                    "count": 1
+                },
+                {
+                    "index": 407,
+                    "duration": 37,
+                    "count": 1
+                },
+                {
+                    "index": 444,
+                    "duration": 37,
+                    "count": 1
+                },
+                {
+                    "index": 481,
+                    "duration": 37,
+                    "count": 1
+                }
+            ],
+            "run": false
+        },
+        {
+            "id": 3,
+            "name": "Interference rhythm combining 14, 23 and 37",
+            "type": "rhythm",
+            "sources": [
+                {
+                    "source": 0
+                },
+                {
+                    "source": 1
+                },
+                {
+                    "source": 2
+                }
+            ],
+            "includeInScore": true,
+            "computeLCM": true,
+            "beatUnit": 8,
+            "defaultPitch": "C4",
+            "tempo": 90,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 14,
+                    "count": 3
+                },
+                {
+                    "index": 14,
+                    "duration": 9,
+                    "count": 1
+                },
+                {
+                    "index": 23,
+                    "duration": 5,
+                    "count": 1
+                },
+                {
+                    "index": 28,
+                    "duration": 9,
+                    "count": 1
+                },
+                {
+                    "index": 37,
+                    "duration": 5,
+                    "count": 1
+                },
+                {
+                    "index": 42,
+                    "duration": 4,
+                    "count": 1
+                },
+                {
+                    "index": 46,
+                    "duration": 10,
+                    "count": 1
+                },
+                {
+                    "index": 56,
+                    "duration": 13,
+                    "count": 1
+                },
+                {
+                    "index": 69,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 70,
+                    "duration": 4,
+                    "count": 1
+                },
+                {
+                    "index": 74,
+                    "duration": 10,
+                    "count": 1
+                },
+                {
+                    "index": 84,
+                    "duration": 8,
+                    "count": 1
+                },
+                {
+                    "index": 92,
+                    "duration": 6,
+                    "count": 1
+                },
+                {
+                    "index": 98,
+                    "duration": 13,
+                    "count": 1
+                },
+                {
+                    "index": 111,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 112,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 115,
+                    "duration": 11,
+                    "count": 1
+                },
+                {
+                    "index": 126,
+                    "duration": 12,
+                    "count": 1
+                },
+                {
+                    "index": 138,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 140,
+                    "duration": 8,
+                    "count": 1
+                },
+                {
+                    "index": 148,
+                    "duration": 6,
+                    "count": 1
+                },
+                {
+                    "index": 154,
+                    "duration": 7,
+                    "count": 1
+                },
+                {
+                    "index": 161,
+                    "duration": 7,
+                    "count": 1
+                },
+                {
+                    "index": 168,
+                    "duration": 14,
+                    "count": 1
+                },
+                {
+                    "index": 182,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 184,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 185,
+                    "duration": 11,
+                    "count": 1
+                },
+                {
+                    "index": 196,
+                    "duration": 11,
+                    "count": 1
+                },
+                {
+                    "index": 207,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 210,
+                    "duration": 12,
+                    "count": 1
+                },
+                {
+                    "index": 222,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 224,
+                    "duration": 6,
+                    "count": 1
+                },
+                {
+                    "index": 230,
+                    "duration": 8,
+                    "count": 1
+                },
+                {
+                    "index": 238,
+                    "duration": 14,
+                    "count": 1
+                },
+                {
+                    "index": 252,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 253,
+                    "duration": 6,
+                    "count": 1
+                },
+                {
+                    "index": 259,
+                    "duration": 7,
+                    "count": 1
+                },
+                {
+                    "index": 266,
+                    "duration": 10,
+                    "count": 1
+                },
+                {
+                    "index": 276,
+                    "duration": 4,
+                    "count": 1
+                },
+                {
+                    "index": 280,
+                    "duration": 14,
+                    "count": 1
+                },
+                {
+                    "index": 294,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 296,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 299,
+                    "duration": 9,
+                    "count": 1
+                },
+                {
+                    "index": 308,
+                    "duration": 25,
+                    "count": 1
+                },
+                {
+                    "index": 333,
+                    "duration": 37,
+                    "count": 1
+                },
+                {
+                    "index": 370,
+                    "duration": 37,
+                    "count": 1
+                },
+                {
+                    "index": 407,
+                    "duration": 37,
+                    "count": 1
+                },
+                {
+                    "index": 444,
+                    "duration": 37,
+                    "count": 1
+                },
+                {
+                    "index": 481,
+                    "duration": 37,
+                    "count": 1
+                }
+            ],
+            "run": false,
+            "endAt": 481,
+            "LCM": 11914
+        }
+    ],
+    "defaultPitch": "C4",
+    "tempo": 90
+}

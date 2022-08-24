@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<body>
+<div>
+<canvas id="myChart""></canvas>
+</div>
+<script>
+var xValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,""];
+new Chart("myChart", {
+  type: "line",
+  data: {
+    labels: xValues,
+	datasets: [
+	{
+     label: "Interference rhythm combining 3, 5 and 8",
+     data: [5,5,5,4,4,5,4,4,5,4,5,5,4,4,4,4,5,5,5,5,5,5,5,5,5],
+	  borderColor: "black",
+	  stepped: true,
+	  spanGaps: false,
+	  pointRadius: 0,
+	  fill: false
+	}
+	,{
+     label: "beat of 8",
+     data: [8,8,8,8,8,8,8,8,7,7,7,7,7,7,7,7,8,8,8,8,8,8,8,8,8],
+	   borderColor: "gray",
+	  stepped: true,
+	  spanGaps: false,
+	  pointRadius: 0,
+	  fill: false
+	}
+	,{
+     label: "beat of 5",
+     data: [11,11,11,11,11,10,10,10,10,10,11,11,11,11,11,11],
+	   borderColor: "gray",
+	  stepped: true,
+	  spanGaps: false,
+	  pointRadius: 0,
+	  fill: false
+	}
+	,{
+     label: "Beat of 3",
+     data: [14,14,14,13,13,13,14,14,14,13,13,13,14,14,14,14],
+	   borderColor: "gray",
+	  stepped: true,
+	  spanGaps: false,
+	  pointRadius: 0,
+	  fill: false
+	}
+	,{
+     label: "3/4 time",
+     data: [2,2,2,1,1,1,2,2,2,1,1,1,2,2,2,1,1,1,2,2,2,1,1,1,1],
+	  borderColor: "blue",
+	  stepped: true,
+	  spanGaps: false,
+	  pointRadius: 0,
+	  fill: false
+	}
+	]
+  },
+  options: {
+	    scales: {
+      y: {
+                ticks: {
+                    callback: function(value, index, ticks) {
+                        return "";
+                     },
+                },
+                min: 0,
+                max: 15
+            }
+    },
+    layout: {padding: 5},
+	plugins:{
+    	legend: {display: true, reverse: true, position: "bottom"},
+		line:{stepped:true},
+    	title: {
+         	display: true,
+         	text: "3_5_8_8_3-4"
+     	}
+     }
+  }
+});
+</script>
+</html>

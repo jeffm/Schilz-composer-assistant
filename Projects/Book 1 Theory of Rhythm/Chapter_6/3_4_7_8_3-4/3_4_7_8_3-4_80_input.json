@@ -1,0 +1,49 @@
+{
+    "name": "3_4_7_8_3-4",
+    "timeSignature": "3/4",
+    "averageVelocity": 50,
+    "tracks": [
+        {
+            "name": "Beat of 3",
+            "type": "beat",
+            "period": 3,
+            "endAt": 12
+        },
+        {
+            "id": 1,
+            "name": "beat of 4",
+            "type": "beat",
+            "period": 4,
+            "endAt": 12
+        },
+        {
+            "id": 2,
+            "name": "beat of 7",
+            "type": "beat",
+            "period": 7,
+            "endAt": 21,
+            "tempo": 80
+        },
+        {
+            "id": 3,
+            "name": "Interference rhythm combining 3, 4 and 7",
+            "type": "rhythm",
+            "sources": [
+                {
+                    "source": 0
+                },
+                {
+                    "source": 1
+                },
+                {
+                    "source": 2
+                }
+            ],
+            "includeInScore": true,
+            "computeLCM": true,
+            "beatUnit": 8,
+            "defaultPitch": "C4",
+            "tempo": 90
+        }
+    ]
+}

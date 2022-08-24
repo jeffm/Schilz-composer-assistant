@@ -1,0 +1,126 @@
+{
+    "name": "2_3_5_8_4-4",
+    "timeSignature": "4/4",
+    "averageVelocity": 50,
+    "tracks": [
+        {
+            "name": "Beat of 2",
+            "type": "beat",
+            "period": 2,
+            "endAt": 6,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 2,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 4,
+                    "duration": 2,
+                    "count": 1
+                }
+            ],
+            "run": false,
+            "id": 0
+        },
+        {
+            "id": 1,
+            "name": "beat of 3",
+            "type": "beat",
+            "period": 3,
+            "endAt": 6,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 3,
+                    "duration": 3,
+                    "count": 1
+                }
+            ],
+            "run": false
+        },
+        {
+            "id": 2,
+            "name": "beat of 5",
+            "type": "beat",
+            "period": 5,
+            "endAt": 10,
+            "tempo": 80,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 5,
+                    "count": 1
+                },
+                {
+                    "index": 5,
+                    "duration": 5,
+                    "count": 1
+                }
+            ],
+            "run": false
+        },
+        {
+            "id": 3,
+            "name": "Interference rhythm combining 2, 3 and 5",
+            "type": "rhythm",
+            "sources": [
+                {
+                    "source": 0
+                },
+                {
+                    "source": 1
+                },
+                {
+                    "source": 2
+                }
+            ],
+            "includeInScore": true,
+            "computeLCM": true,
+            "beatUnit": 8,
+            "defaultPitch": "C4",
+            "tempo": 90,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 2,
+                    "count": 3
+                },
+                {
+                    "index": 2,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 3,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 4,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 5,
+                    "duration": 5,
+                    "count": 1
+                }
+            ],
+            "run": false,
+            "endAt": 5,
+            "LCM": 30
+        }
+    ],
+    "defaultPitch": "C4",
+    "tempo": 90
+}
