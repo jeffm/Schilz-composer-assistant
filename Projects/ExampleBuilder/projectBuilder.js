@@ -1,6 +1,6 @@
 var fs = require('fs');
 
-var rhythms = openInputFile('c:/rhythmGenerator/projectList.json');
+var rhythms = openInputFile('c:/Schilz-composer-assistant/Projects/ExampleBuilder/projectList.json');
 
 var batText = '';
 var museOutText = '';
@@ -9,10 +9,8 @@ for (var m=0;m<rhythms.length;m++) {
 	museOutText += buildMuseFile(rhythms[m]);
 }
 
-//writeBAT('c:/rhythmGenerator/Projects/buildProjectList.bat', batText);
-writeMuse('c:/rhythmGenerator/Projects/museTasks.bat',museOutText);
-
-//buildControlFile(rhythms[0]);
+//writeBAT('c:/Schilz-composer-assistant/Projects/ExampleBuilder/buildProjectList.bat', batText);
+writeMuse('c:/Schilz-composer-assistant/Projects/ExampleBuilder/museTasks.bat',museOutText);
 
 function ensureExists(path, mask) {
     return fs.mkdir(path, mask, function(err) {
@@ -25,30 +23,48 @@ function ensureExists(path, mask) {
 
 function buildMuseFile(control) {
 	var museBin = "\"c:\\Program Files\\MuseScore 3\\bin\\MuseScore3.exe\" -o ";
-	
+	var projectPath = 'C:/Schilz-composer-assistant/Projects/Book 1 Theory of Rhythm/Figure_19/';
+	projectPathWindows = 'C:\\\\Schilz-composer-assistant\\\\Projects\\\\Book 1 Theory of Rhythm\\\\Figure_19\\\\';
 	var project = control.period1.toString() + '_' + control.period2.toString() + '_' + control.beatUnit + '_' + control.timeSignature.replace('/','-');
-	var root = 'z:/Projects/' + project + '/';
-	museString = museBin + root + project +  '_40.mscz' + ' ' + root + project +  '_40.mid\n';
-	museString += museBin +  root + project +  '_40.mxl' + ' ' + root + project +  '_40.mscz\n';
-	museString += museBin +  root + project +  '_40.mp3' + ' ' + root + project +  '_40.mscz\n';
-	museString += museBin +  root + project +  '_40.pdf' + ' ' + root + project +  '_40.mscz\n';
+	var root = '\"' + projectPath + project + '/';
+	museString = museBin + root + project +  '_40.mscz' + '\" ' + root + project +  '_40.mid\"\n';
+	museString += museBin +  root + project +  '_40.mxl' + '\" ' + root + project +  '_40.mscz\"\n';
+	museString += museBin +  root + project +  '_40.mp3' + '\" ' + root + project +  '_40.mscz\"\n';
+	museString += museBin +  root + project +  '_40.pdf' + '\" ' + root + project +  '_40.mscz\"\n';
 
-	museString += museBin + root + project +  '_80.mscz' + ' ' + root + project +  '_80.mid\n';
-	museString += museBin +  root + project +  '_80.mxl' + ' ' + root + project +  '_80.mscz\n';
-	museString += museBin +  root + project +  '_80.mp3' + ' ' + root + project +  '_80.mscz\n';
-	museString += museBin +  root + project +  '_80.pdf' + ' ' + root + project +  '_80.mscz\n';
+	museString += museBin + root + project +  '_40_Fract.mscz' + '\" ' + root + project +  '_40_Fract.mid\"\n';
+	museString += museBin +  root + project +  '_40_Fract.mxl' + '\" ' + root + project +  '_40_Fract.mscz\"\n';
+	museString += museBin +  root + project +  '_40_Fract.mp3' + '\" ' + root + project +  '_40_Fract.mscz\"\n';
+	museString += museBin +  root + project +  '_40_Fract.pdf' + '\" ' + root + project +  '_40_Fract.mscz\"\n';
 	
-	museString += museBin + root + project +  '_120.mscz' + ' ' + root + project +  '_120.mid\n';
-	museString += museBin +  root + project +  '_120.mxl' + ' ' + root + project +  '_120.mscz\n';
-	museString += museBin +  root + project +  '_120.mp3' + ' ' + root + project +  '_120.mscz\n';
-	museString += museBin +  root + project +  '_120.pdf' + ' ' + root + project +  '_120.mscz\n';
+	museString += museBin + root + project +  '_80.mscz' + '\" ' + root + project +  '_80.mid\"\n';
+	museString += museBin +  root + project +  '_80.mxl' + '\" ' + root + project +  '_80.mscz\"\n';
+	museString += museBin +  root + project +  '_80.mp3' + '\" ' + root + project +  '_80.mscz\"\n';
+	museString += museBin +  root + project +  '_80.pdf' + '\" ' + root + project +  '_80.mscz\"\n';
+	
+	museString += museBin + root + project +  '_80_Fract.mscz' + '\" ' + root + project +  '_80_Fract.mid\"\n';
+	museString += museBin +  root + project +  '_80_Fract.mxl' + '\" ' + root + project +  '_80_Fract.mscz\"\n';
+	museString += museBin +  root + project +  '_80_Fract.mp3' + '\" ' + root + project +  '_80_Fract.mscz\"\n';
+	museString += museBin +  root + project +  '_80_Fract.pdf' + '\" ' + root + project +  '_80_Fract.mscz\"\n';
+	
+	museString += museBin + root + project +  '_120.mscz' + '\" ' + root + project +  '_120.mid\"\n';
+	museString += museBin +  root + project +  '_120.mxl' + '\" ' + root + project +  '_120.mscz\"\n';
+	museString += museBin +  root + project +  '_120.mp3' + '\" ' + root + project +  '_120.mscz\"\n';
+	museString += museBin +  root + project +  '_120.pdf' + '\" ' + root + project +  '_120.mscz\"\n';
+	
+	museString += museBin + root + project +  '_120_Fract.mscz' + '\" ' + root + project +  '_120_Fract.mid\"\n';
+	museString += museBin +  root + project +  '_120_Fract.mxl' + '\" ' + root + project +  '_120_Fract.mscz\"\n';
+	museString += museBin +  root + project +  '_120_Fract.mp3' + '\" ' + root + project +  '_120_Fract.mscz\"\n';
+	museString += museBin +  root + project +  '_120_Fract.pdf' + '\" ' + root + project +  '_120_Fract.mscz\"\n';
 	return museString;
 }
 
 function buildControlFile(control) {
 	var project = control.period1.toString() + '_' + control.period2.toString() + '_' + control.beatUnit + '_' + control.timeSignature.replace('/','-');
+	var projectPath = 'C:/Schilz-composer-assistant/Projects/Book 1 Theory of Rhythm/Figure_19/';
+	projectPathWindows = 'C:\\\\Schilz-composer-assistant\\\\Projects\\\\Book 1 Theory of Rhythm\\\\Figure_19\\\\';
 	console.log(project);
-	var dir = ensureExists('c:/rhythmGenerator/Projects/' + project, 0o744);
+	var dir = ensureExists(projectPath + project, 0o744);
 	
 	var fractjsonout = {
 	"name": project,
@@ -56,33 +72,23 @@ function buildControlFile(control) {
 	"averageVelocity":50,
 	"tracks": [
 		{
-			"id":0,
 			"name": "beat of " + control.period1.toString(),
 			"type": "beat",
 			"period": control.period1,
-			"toIndex": (control.period1 * control.period2) + control.period1,
-			"result": [],
-			"info": []
+			"endAt": (control.period1 * control.period2) + control.period1
 		},{
-			"id":1,
 			"name": "Fractional beat of " + control.period2.toString(),
 			"type": "beat",
 			"period": control.period2,
-			"toIndex": control.period1 * control.period2,
-			"result": [],
-			"info": []
+			"endAt": control.period1 * control.period2
 		},{
-			"id":2,
 			"name": "Fractional beat of " + control.period2.toString(),
 			"type": "beat",
 			"period": control.period2,
-			"toIndex": control.period1 * control.period2,
+			"endAt": control.period1 * control.period2,
 			"offsetFrom":0,
-			"offsetAmount": 1,
-			"result": [],
-			"info": []
+			"offsetAmount": 1
 		},{
-			"id":3,
 			"name": "Interference rhythm combining " + control.period1.toString() + ' and ' + control.period2.toString(),
 			"type": "rhythm",
 			"sources": [
@@ -100,9 +106,7 @@ function buildControlFile(control) {
 			"computeLCM": true,
 			"beatUnit":control.beatUnit,
 			"defaultPitch": "C4",
-			"tempo":90,
-			"result": [],
-			"info":[]
+			"tempo":90
 		}
 		]
 	};
@@ -113,21 +117,16 @@ function buildControlFile(control) {
 	"averageVelocity":50,
 	"tracks": [
 		{
-			"id":0,
 			"name": "Beat of " + control.period1.toString(),
 			"type": "beat",
 			"period": control.period1,
-			"toIndex": control.period1 * control.period2,
-			"result": [],
-			"info": []
+			"endAt": control.period1 * control.period2
 		},{
 			"id":1,
 			"name": "beat of " + control.period2.toString(),
 			"type": "beat",
 			"period": control.period2,
-			"toIndex": control.period1 * control.period2,
-			"result": [],
-			"info": []
+			"endAt": control.period1 * control.period2
 		},{
 			"id":2,
 			"name": "Interference rhythm combining " + control.period1.toString() + ' and ' + control.period2.toString(),
@@ -144,26 +143,36 @@ function buildControlFile(control) {
 			"computeLCM": true,
 			"beatUnit":control.beatUnit,
 			"defaultPitch": "C4",
-			"tempo":90,
-			"result": [],
-			"info":[]
+			"tempo":90
 		}
 		]
 	};
 	var returnString = '';
 	//console.log(JSON.stringify(jsonoutput,null,4));
-	jsonoutput.periodicities[2].tempo = 40;
-	returnString += 'node ' + '\"c:\\rhythmGenerator\\generateSchillingerRhythm.js\" -g -p \'' +  'C:\\rhythmGenerator\\Projects\\' + project + '\\\' -i \'' + project  + '_' + jsonoutput.periodicities[2].tempo + '_input.json\' -j \'' + project + '_' + jsonoutput.periodicities[2].tempo + '_output.json\' -m \'' + project  + '_' + jsonoutput.periodicities[2].tempo + '.mid\' -c \'' + project  + '_' + jsonoutput.periodicities[2].tempo + '_chart.html\'' + '\n';
-	//console.log(jsonoutput.periodicities[2].tempo + ' ' + jsonoutput.periodicities[2].beatUnit);
-	writeJSON('c:/rhythmGenerator/Projects/' + project + '/' + project  + '_' + jsonoutput.periodicities[2].tempo + '_input.json', jsonoutput);
-	jsonoutput.periodicities[2].tempo = 80;
-	returnString += 'node ' + '\"c:\\rhythmGenerator\\generateSchillingerRhythm.js\" -g -p \'' +  'C:\\rhythmGenerator\\Projects\\' + project + '\\\' -i \'' + project  + '_' + jsonoutput.periodicities[2].tempo + '_input.json\' -j \'' + project + '_' + jsonoutput.periodicities[2].tempo + '_output.json\' -m \'' + project  + '_' + jsonoutput.periodicities[2].tempo + '.mid\' -c \'' + project  + '_' + jsonoutput.periodicities[2].tempo + '_chart.html\'' + '\n';
-	//console.log(jsonoutput.periodicities.tempo + ' ' + jsonoutput.periodicities.beatUnit);
-	writeJSON('c:/rhythmGenerator/Projects/' + project + '/' + project  + '_' + jsonoutput.periodicities[2].tempo + '_input.json', jsonoutput);
-	jsonoutput.periodicities[2].tempo = 120;
-	returnString += 'node ' + '\"c:\\rhythmGenerator\\generateSchillingerRhythm.js\" -g -p \'' +  'C:\\rhythmGenerator\\Projects\\' + project + '\\\' -i \'' + project  + '_' + jsonoutput.periodicities[2].tempo + '_input.json\' -j \'' + project + '_' + jsonoutput.periodicities[2].tempo + '_output.json\' -m \'' + project  + '_' + jsonoutput.periodicities[2].tempo + '.mid\' -c \'' + project  + '_' + jsonoutput.periodicities[2].tempo + '_chart.html\'' + '\n';
-	//console.log(jsonoutput.periodicities.tempo + ' ' + jsonoutput.periodicities.beatUnit);
-	writeJSON('c:/rhythmGenerator/Projects/' + project + '/' + project  + '_' + jsonoutput.periodicities[2].tempo + '_input.json', jsonoutput);
+	jsonoutput.tracks[2].tempo = 40;
+	returnString += 'node ' + '\"c:\\Schilz-composer-assistant\\schilz.js\" -g -p \"' +  projectPathWindows + project + '\\\\\" -i \'' + project  + '_' + jsonoutput.tracks[2].tempo + '_input.json\' -j \'' + project + '_' + jsonoutput.tracks[2].tempo + '_output.json\' -m \'' + project  + '_' + jsonoutput.tracks[2].tempo + '.mid\' -c \'' + project  + '_' + jsonoutput.tracks[2].tempo + '_chart.html\'' + '\n';
+	writeJSON(projectPath + project + '/' + project  + '_' + jsonoutput.tracks[2].tempo + '_input.json', jsonoutput);
+	//fract version
+	fractjsonout.tracks[2].tempo = 40;
+	returnString += 'node ' + '\"c:\\Schilz-composer-assistant\\schilz.js\" -g -p \"' +  projectPathWindows + project + '\\\\\" -i \'' + project  + '_' + fractjsonout.tracks[2].tempo + '_Fract_input.json\' -j \'' + project + '_' + fractjsonout.tracks[2].tempo + '_Fract_output.json\' -m \'' + project  + '_' + fractjsonout.tracks[2].tempo + '_Fract.mid\' -c \'' + project  + '_' + fractjsonout.tracks[2].tempo + '_Fract_chart.html\'' + '\n';
+	writeJSON(projectPath + project + '/' + project  + '_' + fractjsonout.tracks[2].tempo + '_Fract_input.json', fractjsonout);
+	//console.log(jsonoutput.tracks[2].tempo + ' ' + jsonoutput.tracks[2].beatUnit);
+
+	jsonoutput.tracks[2].tempo = 80;
+	returnString += 'node ' + '\"c:\\Schilz-composer-assistant\\schilz.js\" -g -p \"' +  projectPathWindows + project + '\\\\\" -i \'' + project  + '_' + jsonoutput.tracks[2].tempo + '_input.json\' -j \'' + project + '_' + jsonoutput.tracks[2].tempo + '_output.json\' -m \'' + project  + '_' + jsonoutput.tracks[2].tempo + '.mid\' -c \'' + project  + '_' + jsonoutput.tracks[2].tempo + '_chart.html\'' + '\n';
+	writeJSON(projectPath + project + '/' + project  + '_' + jsonoutput.tracks[2].tempo + '_input.json', jsonoutput);
+	//fract version
+	fractjsonout.tracks[2].tempo = 80;
+	returnString += 'node ' + '\"c:\\Schilz-composer-assistant\\schilz.js\" -g -p \"' +  projectPathWindows + project + '\\\\\" -i \'' + project  + '_' + fractjsonout.tracks[2].tempo + '_Fract_input.json\' -j \'' + project + '_' + fractjsonout.tracks[2].tempo + '_Fract_output.json\' -m \'' + project  + '_' + fractjsonout.tracks[2].tempo + '_Fract.mid\' -c \'' + project  + '_' + fractjsonout.tracks[2].tempo + '_Fract_chart.html\'' + '\n';
+	writeJSON(projectPath + project + '/' + project  + '_' + fractjsonout.tracks[2].tempo + '_Fract_input.json', fractjsonout);
+	
+	jsonoutput.tracks[2].tempo = 120;
+	returnString += 'node ' + '\"c:\\Schilz-composer-assistant\\schilz.js\" -g -p \"' +  projectPathWindows + project + '\\\\\" -i \'' + project  + '_' + jsonoutput.tracks[2].tempo + '_input.json\' -j \'' + project + '_' + jsonoutput.tracks[2].tempo + '_output.json\' -m \'' + project  + '_' + jsonoutput.tracks[2].tempo + '.mid\' -c \'' + project  + '_' + jsonoutput.tracks[2].tempo + '_chart.html\'' + '\n';
+	writeJSON(projectPath + project + '/' + project  + '_' + jsonoutput.tracks[2].tempo + '_input.json', jsonoutput);
+	//fract version
+	fractjsonout.tracks[2].tempo = 120;
+	returnString += 'node ' + '\"c:\\Schilz-composer-assistant\\schilz.js\" -g -p \"' +  projectPathWindows + project + '\\\\\" -i \'' + project  + '_' + fractjsonout.tracks[2].tempo + '_Fract_input.json\' -j \'' + project + '_' + fractjsonout.tracks[2].tempo + '_Fract_output.json\' -m \'' + project  + '_' + fractjsonout.tracks[2].tempo + '_Fract.mid\' -c \'' + project  + '_' + fractjsonout.tracks[2].tempo + '_Fract_chart.html\'' + '\n';
+	writeJSON(projectPath + project + '/' + project  + '_' + fractjsonout.tracks[2].tempo + '_Fract_input.json', fractjsonout);
 	return returnString;
 }
 

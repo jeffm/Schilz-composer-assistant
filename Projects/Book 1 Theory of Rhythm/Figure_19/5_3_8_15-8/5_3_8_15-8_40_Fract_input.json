@@ -1,0 +1,48 @@
+{
+    "name": "5_3_8_15-8",
+    "timeSignature": "15/8",
+    "averageVelocity": 50,
+    "tracks": [
+        {
+            "name": "beat of 5",
+            "type": "beat",
+            "period": 5,
+            "endAt": 20
+        },
+        {
+            "name": "Fractional beat of 3",
+            "type": "beat",
+            "period": 3,
+            "endAt": 15
+        },
+        {
+            "name": "Fractional beat of 3",
+            "type": "beat",
+            "period": 3,
+            "endAt": 15,
+            "offsetFrom": 0,
+            "offsetAmount": 1,
+            "tempo": 40
+        },
+        {
+            "name": "Interference rhythm combining 5 and 3",
+            "type": "rhythm",
+            "sources": [
+                {
+                    "source": 0
+                },
+                {
+                    "source": 1
+                },
+                {
+                    "source": 2
+                }
+            ],
+            "includeInScore": true,
+            "computeLCM": true,
+            "beatUnit": 8,
+            "defaultPitch": "C4",
+            "tempo": 90
+        }
+    ]
+}

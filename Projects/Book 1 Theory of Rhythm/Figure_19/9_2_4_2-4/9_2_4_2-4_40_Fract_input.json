@@ -1,0 +1,48 @@
+{
+    "name": "9_2_4_2-4",
+    "timeSignature": "2/4",
+    "averageVelocity": 50,
+    "tracks": [
+        {
+            "name": "beat of 9",
+            "type": "beat",
+            "period": 9,
+            "endAt": 27
+        },
+        {
+            "name": "Fractional beat of 2",
+            "type": "beat",
+            "period": 2,
+            "endAt": 18
+        },
+        {
+            "name": "Fractional beat of 2",
+            "type": "beat",
+            "period": 2,
+            "endAt": 18,
+            "offsetFrom": 0,
+            "offsetAmount": 1,
+            "tempo": 40
+        },
+        {
+            "name": "Interference rhythm combining 9 and 2",
+            "type": "rhythm",
+            "sources": [
+                {
+                    "source": 0
+                },
+                {
+                    "source": 1
+                },
+                {
+                    "source": 2
+                }
+            ],
+            "includeInScore": true,
+            "computeLCM": true,
+            "beatUnit": 4,
+            "defaultPitch": "C4",
+            "tempo": 90
+        }
+    ]
+}

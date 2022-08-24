@@ -1,0 +1,38 @@
+{
+    "name": "9_2_8_18-8",
+    "timeSignature": "18/8",
+    "averageVelocity": 50,
+    "tracks": [
+        {
+            "name": "Beat of 9",
+            "type": "beat",
+            "period": 9,
+            "endAt": 18
+        },
+        {
+            "id": 1,
+            "name": "beat of 2",
+            "type": "beat",
+            "period": 2,
+            "endAt": 18
+        },
+        {
+            "id": 2,
+            "name": "Interference rhythm combining 9 and 2",
+            "type": "rhythm",
+            "sources": [
+                {
+                    "source": 0
+                },
+                {
+                    "source": 1
+                }
+            ],
+            "includeInScore": true,
+            "computeLCM": true,
+            "beatUnit": 8,
+            "defaultPitch": "C4",
+            "tempo": 80
+        }
+    ]
+}

@@ -245,7 +245,7 @@ function populateID(trackToBuild) {
 }
 
 function generateBeat(trackToBuild) {
-	if (!shouldRun(trackToBuild) {
+	if (!shouldRun(trackToBuild)) {
 		return;
 	}
 	log('generateBeat(' + trackToBuild + ')', 'info');
@@ -292,7 +292,7 @@ function generateBeat(trackToBuild) {
 }
 
 function generateRhythm(trackToBuild) {
-	if (!shouldRun(trackToBuild) {
+	if (!shouldRun(trackToBuild)) {
 		return;
 	}
 	log('generateRhythm(' + trackToBuild + ')', 'info');
@@ -370,7 +370,7 @@ return true;
 }
 
 function concatenatePeriodicity(trackToBuild) {
-	if (!shouldRun(trackToBuild) {
+	if (!shouldRun(trackToBuild)) {
 		return;
 	}
 	console.log('concatenatePeriodicity(' + trackToBuild + ')');
@@ -569,7 +569,7 @@ function computeLCM(n1, n2) {
 }
 
 function splitPeriodicity(trackToBuild) {
-	if (!shouldRun(trackToBuild) {
+	if (!shouldRun(trackToBuild)) {
 		return;
 	}
 	for (var i=0;i<rhythms.tracks[trackToBuild].targets.length;i++) {

@@ -1,0 +1,38 @@
+{
+    "name": "8_3_8_8-8",
+    "timeSignature": "8/8",
+    "averageVelocity": 50,
+    "tracks": [
+        {
+            "name": "Beat of 8",
+            "type": "beat",
+            "period": 8,
+            "endAt": 24
+        },
+        {
+            "id": 1,
+            "name": "beat of 3",
+            "type": "beat",
+            "period": 3,
+            "endAt": 24
+        },
+        {
+            "id": 2,
+            "name": "Interference rhythm combining 8 and 3",
+            "type": "rhythm",
+            "sources": [
+                {
+                    "source": 0
+                },
+                {
+                    "source": 1
+                }
+            ],
+            "includeInScore": true,
+            "computeLCM": true,
+            "beatUnit": 8,
+            "defaultPitch": "C4",
+            "tempo": 80
+        }
+    ]
+}

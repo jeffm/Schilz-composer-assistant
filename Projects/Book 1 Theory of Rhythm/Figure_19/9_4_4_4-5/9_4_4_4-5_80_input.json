@@ -1,0 +1,38 @@
+{
+    "name": "9_4_4_4-5",
+    "timeSignature": "4/5",
+    "averageVelocity": 50,
+    "tracks": [
+        {
+            "name": "Beat of 9",
+            "type": "beat",
+            "period": 9,
+            "endAt": 36
+        },
+        {
+            "id": 1,
+            "name": "beat of 4",
+            "type": "beat",
+            "period": 4,
+            "endAt": 36
+        },
+        {
+            "id": 2,
+            "name": "Interference rhythm combining 9 and 4",
+            "type": "rhythm",
+            "sources": [
+                {
+                    "source": 0
+                },
+                {
+                    "source": 1
+                }
+            ],
+            "includeInScore": true,
+            "computeLCM": true,
+            "beatUnit": 4,
+            "defaultPitch": "C4",
+            "tempo": 80
+        }
+    ]
+}

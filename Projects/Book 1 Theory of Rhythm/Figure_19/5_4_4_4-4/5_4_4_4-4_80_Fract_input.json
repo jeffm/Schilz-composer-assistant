@@ -1,0 +1,48 @@
+{
+    "name": "5_4_4_4-4",
+    "timeSignature": "4/4",
+    "averageVelocity": 50,
+    "tracks": [
+        {
+            "name": "beat of 5",
+            "type": "beat",
+            "period": 5,
+            "endAt": 25
+        },
+        {
+            "name": "Fractional beat of 4",
+            "type": "beat",
+            "period": 4,
+            "endAt": 20
+        },
+        {
+            "name": "Fractional beat of 4",
+            "type": "beat",
+            "period": 4,
+            "endAt": 20,
+            "offsetFrom": 0,
+            "offsetAmount": 1,
+            "tempo": 80
+        },
+        {
+            "name": "Interference rhythm combining 5 and 4",
+            "type": "rhythm",
+            "sources": [
+                {
+                    "source": 0
+                },
+                {
+                    "source": 1
+                },
+                {
+                    "source": 2
+                }
+            ],
+            "includeInScore": true,
+            "computeLCM": true,
+            "beatUnit": 4,
+            "defaultPitch": "C4",
+            "tempo": 90
+        }
+    ]
+}

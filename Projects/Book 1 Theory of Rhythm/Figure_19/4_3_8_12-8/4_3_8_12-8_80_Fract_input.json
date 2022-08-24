@@ -1,0 +1,48 @@
+{
+    "name": "4_3_8_12-8",
+    "timeSignature": "12/8",
+    "averageVelocity": 50,
+    "tracks": [
+        {
+            "name": "beat of 4",
+            "type": "beat",
+            "period": 4,
+            "endAt": 16
+        },
+        {
+            "name": "Fractional beat of 3",
+            "type": "beat",
+            "period": 3,
+            "endAt": 12
+        },
+        {
+            "name": "Fractional beat of 3",
+            "type": "beat",
+            "period": 3,
+            "endAt": 12,
+            "offsetFrom": 0,
+            "offsetAmount": 1,
+            "tempo": 80
+        },
+        {
+            "name": "Interference rhythm combining 4 and 3",
+            "type": "rhythm",
+            "sources": [
+                {
+                    "source": 0
+                },
+                {
+                    "source": 1
+                },
+                {
+                    "source": 2
+                }
+            ],
+            "includeInScore": true,
+            "computeLCM": true,
+            "beatUnit": 8,
+            "defaultPitch": "C4",
+            "tempo": 90
+        }
+    ]
+}

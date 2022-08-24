@@ -1,0 +1,117 @@
+{
+    "name": "4_3_4_4-4",
+    "timeSignature": "4/4",
+    "averageVelocity": 50,
+    "tracks": [
+        {
+            "name": "Beat of 4",
+            "type": "beat",
+            "period": 4,
+            "endAt": 12,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 4,
+                    "count": 1
+                },
+                {
+                    "index": 4,
+                    "duration": 4,
+                    "count": 1
+                },
+                {
+                    "index": 8,
+                    "duration": 4,
+                    "count": 1
+                }
+            ],
+            "run": false,
+            "id": 0
+        },
+        {
+            "id": 1,
+            "name": "beat of 3",
+            "type": "beat",
+            "period": 3,
+            "endAt": 12,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 3,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 6,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 9,
+                    "duration": 3,
+                    "count": 1
+                }
+            ],
+            "run": false
+        },
+        {
+            "id": 2,
+            "name": "Interference rhythm combining 4 and 3",
+            "type": "rhythm",
+            "sources": [
+                {
+                    "source": 0
+                },
+                {
+                    "source": 1
+                }
+            ],
+            "includeInScore": true,
+            "computeLCM": true,
+            "beatUnit": 4,
+            "defaultPitch": "C4",
+            "tempo": 120,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 3,
+                    "count": 2
+                },
+                {
+                    "index": 3,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 4,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 6,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 8,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 9,
+                    "duration": 3,
+                    "count": 1
+                }
+            ],
+            "run": false,
+            "endAt": 9,
+            "LCM": 12
+        }
+    ],
+    "defaultPitch": "C4",
+    "tempo": 90
+}

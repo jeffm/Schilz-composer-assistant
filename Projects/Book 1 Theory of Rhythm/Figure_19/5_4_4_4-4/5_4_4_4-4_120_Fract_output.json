@@ -1,0 +1,208 @@
+{
+    "name": "5_4_4_4-4",
+    "timeSignature": "4/4",
+    "averageVelocity": 50,
+    "tracks": [
+        {
+            "name": "beat of 5",
+            "type": "beat",
+            "period": 5,
+            "endAt": 25,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 5,
+                    "count": 1
+                },
+                {
+                    "index": 5,
+                    "duration": 5,
+                    "count": 1
+                },
+                {
+                    "index": 10,
+                    "duration": 5,
+                    "count": 1
+                },
+                {
+                    "index": 15,
+                    "duration": 5,
+                    "count": 1
+                },
+                {
+                    "index": 20,
+                    "duration": 5,
+                    "count": 1
+                }
+            ],
+            "run": false,
+            "id": 0
+        },
+        {
+            "name": "Fractional beat of 4",
+            "type": "beat",
+            "period": 4,
+            "endAt": 20,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 4,
+                    "count": 1
+                },
+                {
+                    "index": 4,
+                    "duration": 4,
+                    "count": 1
+                },
+                {
+                    "index": 8,
+                    "duration": 4,
+                    "count": 1
+                },
+                {
+                    "index": 12,
+                    "duration": 4,
+                    "count": 1
+                },
+                {
+                    "index": 16,
+                    "duration": 4,
+                    "count": 1
+                }
+            ],
+            "run": false,
+            "id": 1
+        },
+        {
+            "name": "Fractional beat of 4",
+            "type": "beat",
+            "period": 4,
+            "endAt": 20,
+            "offsetFrom": 0,
+            "offsetAmount": 1,
+            "tempo": 120,
+            "events": [
+                {
+                    "index": 5,
+                    "duration": 4,
+                    "count": 1
+                },
+                {
+                    "index": 9,
+                    "duration": 4,
+                    "count": 1
+                },
+                {
+                    "index": 13,
+                    "duration": 4,
+                    "count": 1
+                },
+                {
+                    "index": 17,
+                    "duration": 4,
+                    "count": 1
+                },
+                {
+                    "index": 21,
+                    "duration": 4,
+                    "count": 1
+                }
+            ],
+            "run": false,
+            "id": 2
+        },
+        {
+            "name": "Interference rhythm combining 5 and 4",
+            "type": "rhythm",
+            "sources": [
+                {
+                    "source": 0
+                },
+                {
+                    "source": 1
+                },
+                {
+                    "source": 2
+                }
+            ],
+            "includeInScore": true,
+            "computeLCM": true,
+            "beatUnit": 4,
+            "defaultPitch": "C4",
+            "tempo": 90,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 4,
+                    "count": 2
+                },
+                {
+                    "index": 4,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 5,
+                    "duration": 3,
+                    "count": 2
+                },
+                {
+                    "index": 8,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 9,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 10,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 12,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 13,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 15,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 16,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 17,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 20,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 21,
+                    "duration": 4,
+                    "count": 1
+                }
+            ],
+            "run": false,
+            "id": 3,
+            "endAt": 21,
+            "LCM": 100
+        }
+    ],
+    "defaultPitch": "C4",
+    "tempo": 90
+}

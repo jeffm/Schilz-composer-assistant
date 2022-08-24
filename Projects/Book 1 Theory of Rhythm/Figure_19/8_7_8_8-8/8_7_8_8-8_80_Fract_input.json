@@ -1,0 +1,48 @@
+{
+    "name": "8_7_8_8-8",
+    "timeSignature": "8/8",
+    "averageVelocity": 50,
+    "tracks": [
+        {
+            "name": "beat of 8",
+            "type": "beat",
+            "period": 8,
+            "endAt": 64
+        },
+        {
+            "name": "Fractional beat of 7",
+            "type": "beat",
+            "period": 7,
+            "endAt": 56
+        },
+        {
+            "name": "Fractional beat of 7",
+            "type": "beat",
+            "period": 7,
+            "endAt": 56,
+            "offsetFrom": 0,
+            "offsetAmount": 1,
+            "tempo": 80
+        },
+        {
+            "name": "Interference rhythm combining 8 and 7",
+            "type": "rhythm",
+            "sources": [
+                {
+                    "source": 0
+                },
+                {
+                    "source": 1
+                },
+                {
+                    "source": 2
+                }
+            ],
+            "includeInScore": true,
+            "computeLCM": true,
+            "beatUnit": 8,
+            "defaultPitch": "C4",
+            "tempo": 90
+        }
+    ]
+}
