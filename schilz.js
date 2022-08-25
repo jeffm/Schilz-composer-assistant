@@ -214,8 +214,8 @@ function generateRhythms(arguments) {
 			addPitches(j);
 			addChordSymbols(j);
 		} else if (rhythms.tracks[j].type == 'split') {
-			//splitSetUp(j);
-			spitTrack(j);
+			splitSetUp(j);
+			splitTrack(j);
 		} else if (rhythms.tracks[j].type == 'none') {
 			addPitches(j);
 			addChordSymbols(j);
@@ -241,6 +241,7 @@ function populateGlobalDefaults(arguments) {
 }
 
 function createEmptyTrackEventArrays(trackToBuild) {
+	log('createEmptyTrackEventArrays(' + trackToBuild + ')','info');
 	if (typeof rhythms.tracks[trackToBuild].events == 'undefined') {
 		rhythms.tracks[trackToBuild].events = [];
 	}
@@ -546,7 +547,7 @@ function concatenatePeriodicity(trackToBuild) {
 }
 
 function computePolyLCM(trackToBuild) {
-	log('computePolyLCM(trackToBuild)','info');
+	log('computePolyLCM(' + trackToBuild + ')','info');
 	if (typeof rhythms.tracks[trackToBuild].sources == 'undefined') return;
 	var pairs = [];
 	var pairLCM = [];
@@ -659,53 +660,101 @@ function computeLCM(n1, n2) {
 function splitSetUp(trackToBuild) {
 	if (typeof rhythms.tracks[trackToBuild].targets == 'undefined' && typeof rhythms.tracks[trackToBuild].createTargets != 'undefined') {
 		var targets = [];
-		for (var i=0;i<createTargets;i++) {
+		for (var i=0;i<rhythms.tracks[trackToBuild].createTargets;i++) {
 			targets.push(rhythms.tracks.length);
 			var newTrack = {
+				"id":rhythms.tracks.length,
+				"type":"none",
+				"events": []
 			};
+			console.log('creating new track for split:' + rhythms.tracks.length);
 			rhythms.tracks.push(newTrack);
 		}
 		rhythms.tracks[trackToBuild].targets = targets;
+	} else {
+		for (var i=0;i<rhythms.tracks[trackToBuild].targets.length;i++) {
+			createEmptyTrackEventArrays(rhythms.tracks[trackToBuild].targets[i]);
+		}
 	}
 }
 
-function spitTrack(trackToBuild) {
-	if (typeof rhythms.tracks[trackToBuild].targetCounts != 'undefined') {
-		spitTrackByList(trackToBuild);
-	}
-}
-function spitTrackByList(trackToBuild) {
+function splitTrack(trackToBuild) {
 	if (!shouldRun(trackToBuild)) {
 		return;
 	}
+	if (typeof rhythms.tracks[trackToBuild].targetCounts != 'undefined') {
+		splitTrackByList(trackToBuild, rhythms.tracks[trackToBuild].targetCounts);
+	} else if (typeof rhythms.tracks[trackToBuild].useNoteCount != 'undefined' && rhythms.tracks[trackToBuild].useNoteCount == true) {
+		splitTrackByNoteCount(trackToBuild);
+	} else if (typeof rhythms.tracks[trackToBuild].useNoteDurationFrom != 'undefined') {
+		var countArray = buildArrayOfDurations(rhythms.tracks[trackToBuild].useNoteDurationFrom);
+		rhythms.tracks[trackToBuild].targetCounts = countArray;
+		splitTrackByList(trackToBuild, countArray);
+	}
+	rhythms.tracks[trackToBuild].run = false;
+}
+
+function buildArrayOfDurations(trackToBuild) {
+	var result = [];
+	for (var eventIndex=0;eventIndex<rhythms.tracks[trackToBuild].events.length;eventIndex++) {
+		//console.log('eventIndex:' + eventIndex + ' duration:' + rhythms.tracks[trackToBuild].events[eventIndex].duration);
+		result.push(rhythms.tracks[trackToBuild].events[eventIndex].duration);
+	}
+	//console.log('durations:' + JSON.stringify(result));
+	return result;
+}
+
+function splitTrackByNoteCount(trackToBuild) {
 	for (var i=0;i<rhythms.tracks[trackToBuild].targets.length;i++) {
 		populateName(rhythms.tracks[trackToBuild].targets[i], 'Split of track ' + trackToBuild);
 		populateID(rhythms.tracks[trackToBuild].targets[i]);
 	}
-	log('spitTrack(' + trackToBuild + ')', 'info');
+	var source = rhythms.tracks[trackToBuild].source;
+	log('splitTrackByNoteCount(' + trackToBuild + ')', 'info');
+	for (var eventIndex=0;eventIndex<rhythms.tracks[source].events.length;eventIndex++) {
+		var currentTargetIndex = rhythms.tracks[trackToBuild].targets[rhythms.tracks[source].events[eventIndex].count-1];
+		var currentEvent = rhythms.tracks[source].events[eventIndex];
+		log('   split event:' + eventIndex + 'target:' + currentTargetIndex + ' events:' + JSON.stringify(rhythms.tracks[currentTargetIndex]),'debug');
+		rhythms.tracks[currentTargetIndex].events.push(currentEvent);
+	}
+}
+
+
+function splitTrackByList(trackToBuild, countArray) {
+
+	for (var i=0;i<rhythms.tracks[trackToBuild].targets.length;i++) {
+		populateName(rhythms.tracks[trackToBuild].targets[i], 'Split of track ' + trackToBuild);
+		populateID(rhythms.tracks[trackToBuild].targets[i]);
+	}
+	log('splitTrackByList(' + trackToBuild + ')', 'info');
 	var lastIndex = 0;
 	var source = rhythms.tracks[trackToBuild].source;
-	var numTargets = rhythms.tracks[trackToBuild].targets.length - 1;
-	var currentTargetIndex = 0
-	var currentCountIndex = 0
-	var targetLength = rhythms.tracks[trackToBuild].targets.length;
-	var countLength = rhythms.tracks[trackToBuild].targetCounts.length;
-	log('source:' + source + ' numTargets:' + numTargets + ' currentTarget:' + currentTarget + ' currentTargetCount:' +  currentTargetCount, 'debug');
-	for (var sourceIndex=0;sourceIndex<rhythms.tracks[source].events.length;sourceIndex++) { //for each *already created* target periodicity
+	var currentTargetIndex = 0; // index to the current target
+	var currentCountIndex = 0; // index to the current count
+	var currentTargetCount = 1; //count counter
+	var targetLength = rhythms.tracks[trackToBuild].targets.length - 1;
+	var countLength = countArray.length;
+	log('source:' + source + ' currentTarget:' + currentTarget, 'debug');
+	for (var sourceIndex=0;sourceIndex<rhythms.tracks[source].events.length;sourceIndex++) {
 		var currentTarget = rhythms.tracks[trackToBuild].targets[currentTargetIndex];
-		log('   source:' + source + ' sourceIndex:' + sourceIndex + ' currentTargetIndex:' + currentTargetIndex + ' currentCountIndex:' +  currentCountIndex + ' currentTarget:' + currentTarget + ' events:' + JSON.stringify(rhythms.tracks[source].events[sourceIndex]), 'debug');
+		
+		log('   source:' + source + '  sourceIndex:' + sourceIndex + '  currentTargetIndex:' + currentTargetIndex + '  currentCountIndex:' +  currentCountIndex + '  currentTarget:' + currentTarget + '  currentTargetCount:' + currentTargetCount + '  countArray[currentCountIndex]:' + countArray[currentCountIndex] + '  events:' + JSON.stringify(rhythms.tracks[source].events[sourceIndex]), 'debug');
+		
 		rhythms.tracks[currentTarget].events.push(rhythms.tracks[source].events[sourceIndex]);
-		currentTargetCount = rhythms.tracks[trackToBuild].targetCounts[currentCountIndex];
-		currentCountIndex++;
-		if (currentCountIndex >= countLength) {
-			currentCountIndex = 0;
+		currentTargetCount++;
+		if (currentTargetCount > countArray[currentCountIndex]) {
+			currentTargetCount = 1;
+			currentCountIndex++;
 			currentTargetIndex++;
-		}
-		if (currentTargetIndex >= targetLength) {
-			currentTargetIndex = 0;
+			if (currentCountIndex >= countLength) {
+				currentCountIndex = 0;
+				currentTargetIndex++;
+			}
+			if (currentTargetIndex > targetLength) {
+				currentTargetIndex = 0;
+			}
 		}
 	}
-	rhythms.tracks[trackToBuild].run = false;
 }
 
 function fixIndexValues(trackToBuild, reIndexTo) {

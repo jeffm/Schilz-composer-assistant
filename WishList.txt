@@ -1,11 +1,3 @@
-//For split, allow user to optionally specify # of tracks to split into, and Schilz will create those tracks. Schilz will populate the track info so that next time, it won't create those tracks again, but will instead use the tracks if already created (or that the user specified).
-
-//Split tracks by a note's count.
-
-//split tracks by a beat's period.
-
-//split tracks by durations in a rhythm.
-
 //TODO - autocompute how much of a track needs to be generated in order to be used in another track.
 
 //TODO - chord symbols. Need to convert to chord voicings for midi output. We could have a variety of voicings, and permutate through them just like we do with individual pitches. So basically two arrays--1 of chord names, and 1 of voicings. This is getting pretty particular, though, but maybe not such a bad thing. We have a separate file with this (chords.json), so it's not repeated in every file. MIDI output should already be set up. A chord symbol gets translated into an array of pitches with octave, e.g., A4,C#5,E5. When you add them up, there are a lot of chords and voicings!

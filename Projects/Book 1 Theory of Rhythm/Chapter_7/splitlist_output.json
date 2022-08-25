@@ -1,0 +1,216 @@
+{
+    "tracks": [
+        {
+            "type": "beat",
+            "period": 3,
+            "endAt": 12,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 3,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 6,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 9,
+                    "duration": 3,
+                    "count": 1
+                }
+            ],
+            "run": false,
+            "name": "Beat of 3",
+            "id": 0
+        },
+        {
+            "type": "beat",
+            "period": 2,
+            "endAt": 12,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 2,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 4,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 6,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 8,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 10,
+                    "duration": 2,
+                    "count": 1
+                }
+            ],
+            "run": false,
+            "name": "Beat of 2",
+            "id": 1
+        },
+        {
+            "type": "rhythm",
+            "sources": [
+                {
+                    "source": 0
+                },
+                {
+                    "source": 1
+                }
+            ],
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 2,
+                    "count": 2
+                },
+                {
+                    "index": 2,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 3,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 4,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 6,
+                    "duration": 2,
+                    "count": 2
+                },
+                {
+                    "index": 8,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 9,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 10,
+                    "duration": 2,
+                    "count": 1
+                }
+            ],
+            "run": false,
+            "name": "Rhythm combining 0, 1",
+            "id": 2,
+            "endAt": 10,
+            "LCM": 6
+        },
+        {
+            "type": "split",
+            "source": 2,
+            "createTargets": 3,
+            "targetCounts": [
+                2,
+                3,
+                1
+            ],
+            "events": [],
+            "run": false,
+            "targets": [
+                4,
+                5,
+                6
+            ]
+        },
+        {
+            "id": 4,
+            "type": "none",
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 2,
+                    "count": 2
+                },
+                {
+                    "index": 2,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 9,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 10,
+                    "duration": 2,
+                    "count": 1
+                }
+            ],
+            "name": "Split of track 3",
+            "run": true
+        },
+        {
+            "id": 5,
+            "type": "none",
+            "events": [
+                {
+                    "index": 3,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 4,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 6,
+                    "duration": 2,
+                    "count": 2
+                }
+            ],
+            "name": "Split of track 3",
+            "run": true
+        },
+        {
+            "id": 6,
+            "type": "none",
+            "events": [
+                {
+                    "index": 8,
+                    "duration": 1,
+                    "count": 1
+                }
+            ],
+            "name": "Split of track 3",
+            "run": true
+        }
+    ],
+    "defaultPitch": "C4",
+    "averageVelocity": 50,
+    "tempo": 90
+}

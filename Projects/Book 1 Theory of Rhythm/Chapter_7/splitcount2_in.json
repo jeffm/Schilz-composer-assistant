@@ -21,7 +21,13 @@
 		},{
 			"type": "split",
 			"source": 2,
-			"createTargets":2
-		}
+			"targets":[4,5],
+			"useNoteCount":true
+		},
+        {
+            "type": "none"
+        },{
+            "type": "none"
+        }
 	]
 }
