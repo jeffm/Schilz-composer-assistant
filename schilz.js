@@ -44,6 +44,10 @@ function parseArguments(args) {
 		.argv;
 	//console.log('Your arguments are:' + JSON.stringify(argv));
 	argStructure.projectPath = argv.project.replace(/'/g,'');
+	var dir = ensureExists(argStructure.projectPath, 0o744);
+	if (dir == false) {
+		console.log('\n\n\n\nFAILED TO FIND PROJECT DIRECTORY!\n\n\n\n');
+	}
 	argStructure.ControlFilePath = argStructure.projectPath + argv.infile.replace(/'/g,'');
 	argStructure.logLevel = 0;
 	argStructure.JSONoutpath = '';
@@ -81,6 +85,15 @@ function parseArguments(args) {
 	}
 	//log('argStructure.logLevel:' + argStructure.logLevel + ' level:' + level + ' argv.verbose:' + argv.verbose, 'debug');
 	return argStructure;
+}
+
+function ensureExists(path, mask) {
+    return fs.mkdir(path, mask, function(err) {
+        if (err) {
+            if (err.code == 'EEXIST') return true; // Ignore the error if the folder already exists
+            else return false; // Something else went wrong
+        } else return true
+    });
 }
 
 function log(message,warnLevel) {
@@ -201,11 +214,14 @@ function generateRhythms(arguments) {
 			addPitches(j);
 			addChordSymbols(j);
 		} else if (rhythms.tracks[j].type == 'split') {
-			splitPeriodicity(j);
+			//splitSetUp(j);
+			spitTrack(j);
 		} else if (rhythms.tracks[j].type == 'none') {
 			addPitches(j);
 			addChordSymbols(j);
 			//used for periodicities that are only the result of another task (e.g., split).
+		} else {
+			log('ERROR! Unknown track type:' + rhythms.tracks[j].type, 'error');
 		}
 	}
 }
@@ -640,7 +656,25 @@ function computeLCM(n1, n2) {
 		return (n1 * n2) / hcf
 }
 
-function splitPeriodicity(trackToBuild) {
+function splitSetUp(trackToBuild) {
+	if (typeof rhythms.tracks[trackToBuild].targets == 'undefined' && typeof rhythms.tracks[trackToBuild].createTargets != 'undefined') {
+		var targets = [];
+		for (var i=0;i<createTargets;i++) {
+			targets.push(rhythms.tracks.length);
+			var newTrack = {
+			};
+			rhythms.tracks.push(newTrack);
+		}
+		rhythms.tracks[trackToBuild].targets = targets;
+	}
+}
+
+function spitTrack(trackToBuild) {
+	if (typeof rhythms.tracks[trackToBuild].targetCounts != 'undefined') {
+		spitTrackByList(trackToBuild);
+	}
+}
+function spitTrackByList(trackToBuild) {
 	if (!shouldRun(trackToBuild)) {
 		return;
 	}
@@ -648,7 +682,7 @@ function splitPeriodicity(trackToBuild) {
 		populateName(rhythms.tracks[trackToBuild].targets[i], 'Split of track ' + trackToBuild);
 		populateID(rhythms.tracks[trackToBuild].targets[i]);
 	}
-	log('splitPeriodicity(' + trackToBuild + ')', 'info');
+	log('spitTrack(' + trackToBuild + ')', 'info');
 	var lastIndex = 0;
 	var source = rhythms.tracks[trackToBuild].source;
 	var numTargets = rhythms.tracks[trackToBuild].targets.length - 1;

@@ -1,0 +1,90 @@
+{
+    "name": "7_5_4_5-4",
+    "timeSignature": "5/4",
+    "averageVelocity": 50,
+    "tracks": [
+        {
+            "name": "beat of 7",
+            "type": "beat",
+            "period": 7,
+            "endAt": 42
+        },
+        {
+            "name": "Fractional beat of 5",
+            "type": "beat",
+            "period": 5,
+            "endAt": 35
+        },
+        {
+            "name": "Fractional beat of 5",
+            "type": "beat",
+            "period": 5,
+            "endAt": 35,
+            "offsetFrom": 0,
+            "offsetAmount": 1
+        },
+        {
+            "name": "beat of 7",
+            "type": "beat",
+            "period": 7,
+            "endAt": 35
+        },
+        {
+            "name": "beat of 5",
+            "type": "beat",
+            "period": 5,
+            "endAt": 35
+        },
+        {
+            "name": "Fractional interference rhythm combining 7 and 5",
+            "type": "rhythm",
+            "sources": [
+                {
+                    "source": 0
+                },
+                {
+                    "source": 1
+                },
+                {
+                    "source": 2
+                }
+            ],
+            "includeInScore": false,
+            "tempo": 120
+        },
+        {
+            "name": "Interference rhythm combining 7 and 5",
+            "type": "rhythm",
+            "sources": [
+                {
+                    "source": 3
+                },
+                {
+                    "source": 4
+                }
+            ],
+            "includeInScore": false,
+            "computeLCM": true,
+            "beatUnit": 4,
+            "defaultPitch": "C4",
+            "tempo": 90
+        },
+        {
+            "name": "Interference rhythm appending tracks 5 and 6",
+            "type": "concatenate",
+            "sources": [
+                {
+                    "source": 5
+                },
+                {
+                    "source": 6
+                }
+            ],
+            "includeInScore": true,
+            "computeLCM": true,
+            "beatUnit": 4,
+            "defaultPitch": "C4",
+            "tempo": 90
+        }
+    ]
+}
