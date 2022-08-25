@@ -634,7 +634,6 @@
             "type": "beat",
             "period": 11,
             "endAt": 308,
-            "tempo": 40,
             "events": [
                 {
                     "index": 0,
@@ -798,7 +797,7 @@
             "computeLCM": true,
             "beatUnit": 8,
             "defaultPitch": "C4",
-            "tempo": 90,
+            "tempo": 40,
             "events": [
                 {
                     "index": 0,

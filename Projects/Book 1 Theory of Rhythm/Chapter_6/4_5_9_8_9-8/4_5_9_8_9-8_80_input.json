@@ -21,8 +21,7 @@
             "name": "beat of 9",
             "type": "beat",
             "period": 9,
-            "endAt": 180,
-            "tempo": 80
+            "endAt": 180
         },
         {
             "id": 3,
@@ -43,7 +42,7 @@
             "computeLCM": true,
             "beatUnit": 8,
             "defaultPitch": "C4",
-            "tempo": 90
+            "tempo": 80
         }
     ]
 }

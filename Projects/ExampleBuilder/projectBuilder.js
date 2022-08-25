@@ -203,9 +203,9 @@ function buildControlFile(control) {
 	};
 	var returnString = '';
 	//console.log(JSON.stringify(jsonoutput,null,4));
-	jsonoutput.tracks[2].tempo = 40;
-	returnString += 'node ' + '\"c:\\Schilz-composer-assistant\\schilz.js\" -g -p \"' +  projectPathWindows + project + '\\\\\" -i \'' + project  + '_' + jsonoutput.tracks[2].tempo + '_input.json\' -j \'' + project + '_' + jsonoutput.tracks[2].tempo + '_output.json\' -m \'' + project  + '_' + jsonoutput.tracks[2].tempo + '.mid\' -c \'' + project  + '_' + jsonoutput.tracks[2].tempo + '_chart.html\'' + '\n';
-	writeJSON(projectPath + project + '/' + project  + '_' + jsonoutput.tracks[2].tempo + '_input.json', jsonoutput);
+	jsonoutput.tracks[3].tempo = 40;
+	returnString += 'node ' + '\"c:\\Schilz-composer-assistant\\schilz.js\" -g -p \"' +  projectPathWindows + project + '\\\\\" -i \'' + project  + '_' + jsonoutput.tracks[3].tempo + '_input.json\' -j \'' + project + '_' + jsonoutput.tracks[3].tempo + '_output.json\' -m \'' + project  + '_' + jsonoutput.tracks[3].tempo + '.mid\' -c \'' + project  + '_' + jsonoutput.tracks[3].tempo + '_chart.html\'' + '\n';
+	writeJSON(projectPath + project + '/' + project  + '_' + jsonoutput.tracks[3].tempo + '_input.json', jsonoutput);
 	//fract version
 	/*
 	fractjsonout.tracks[2].tempo = 40;
@@ -213,18 +213,18 @@ function buildControlFile(control) {
 	writeJSON(projectPath + project + '/' + project  + '_' + fractjsonout.tracks[2].tempo + '_Fract_input.json', fractjsonout);
 	//console.log(jsonoutput.tracks[2].tempo + ' ' + jsonoutput.tracks[2].beatUnit);
 	*/
-	jsonoutput.tracks[2].tempo = 80;
-	returnString += 'node ' + '\"c:\\Schilz-composer-assistant\\schilz.js\" -g -p \"' +  projectPathWindows + project + '\\\\\" -i \'' + project  + '_' + jsonoutput.tracks[2].tempo + '_input.json\' -j \'' + project + '_' + jsonoutput.tracks[2].tempo + '_output.json\' -m \'' + project  + '_' + jsonoutput.tracks[2].tempo + '.mid\' -c \'' + project  + '_' + jsonoutput.tracks[2].tempo + '_chart.html\'' + '\n';
-	writeJSON(projectPath + project + '/' + project  + '_' + jsonoutput.tracks[2].tempo + '_input.json', jsonoutput);
+	jsonoutput.tracks[3].tempo = 80;
+	returnString += 'node ' + '\"c:\\Schilz-composer-assistant\\schilz.js\" -g -p \"' +  projectPathWindows + project + '\\\\\" -i \'' + project  + '_' + jsonoutput.tracks[3].tempo + '_input.json\' -j \'' + project + '_' + jsonoutput.tracks[3].tempo + '_output.json\' -m \'' + project  + '_' + jsonoutput.tracks[3].tempo + '.mid\' -c \'' + project  + '_' + jsonoutput.tracks[3].tempo + '_chart.html\'' + '\n';
+	writeJSON(projectPath + project + '/' + project  + '_' + jsonoutput.tracks[3].tempo + '_input.json', jsonoutput);
 	/*
 	//fract version
 	fractjsonout.tracks[2].tempo = 80;
 	returnString += 'node ' + '\"c:\\Schilz-composer-assistant\\schilz.js\" -g -p \"' +  projectPathWindows + project + '\\\\\" -i \'' + project  + '_' + fractjsonout.tracks[2].tempo + '_Fract_input.json\' -j \'' + project + '_' + fractjsonout.tracks[2].tempo + '_Fract_output.json\' -m \'' + project  + '_' + fractjsonout.tracks[2].tempo + '_Fract.mid\' -c \'' + project  + '_' + fractjsonout.tracks[2].tempo + '_Fract_chart.html\'' + '\n';
 	writeJSON(projectPath + project + '/' + project  + '_' + fractjsonout.tracks[2].tempo + '_Fract_input.json', fractjsonout);
 	*/
-	jsonoutput.tracks[2].tempo = 120;
-	returnString += 'node ' + '\"c:\\Schilz-composer-assistant\\schilz.js\" -g -p \"' +  projectPathWindows + project + '\\\\\" -i \'' + project  + '_' + jsonoutput.tracks[2].tempo + '_input.json\' -j \'' + project + '_' + jsonoutput.tracks[2].tempo + '_output.json\' -m \'' + project  + '_' + jsonoutput.tracks[2].tempo + '.mid\' -c \'' + project  + '_' + jsonoutput.tracks[2].tempo + '_chart.html\'' + '\n';
-	writeJSON(projectPath + project + '/' + project  + '_' + jsonoutput.tracks[2].tempo + '_input.json', jsonoutput);
+	jsonoutput.tracks[3].tempo = 120;
+	returnString += 'node ' + '\"c:\\Schilz-composer-assistant\\schilz.js\" -g -p \"' +  projectPathWindows + project + '\\\\\" -i \'' + project  + '_' + jsonoutput.tracks[3].tempo + '_input.json\' -j \'' + project + '_' + jsonoutput.tracks[3].tempo + '_output.json\' -m \'' + project  + '_' + jsonoutput.tracks[3].tempo + '.mid\' -c \'' + project  + '_' + jsonoutput.tracks[3].tempo + '_chart.html\'' + '\n';
+	writeJSON(projectPath + project + '/' + project  + '_' + jsonoutput.tracks[3].tempo + '_input.json', jsonoutput);
 	/*
 	//fract version
 	fractjsonout.tracks[2].tempo = 120;

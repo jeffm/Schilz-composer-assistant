@@ -21,8 +21,7 @@
             "name": "beat of 23",
             "type": "beat",
             "period": 23,
-            "endAt": 2898,
-            "tempo": 120
+            "endAt": 2898
         },
         {
             "id": 3,
@@ -43,7 +42,7 @@
             "computeLCM": true,
             "beatUnit": 8,
             "defaultPitch": "C4",
-            "tempo": 90
+            "tempo": 120
         }
     ]
 }
