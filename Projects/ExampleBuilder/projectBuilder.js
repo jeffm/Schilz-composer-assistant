@@ -30,32 +30,32 @@ function buildMuseFile(control) {
 	var root = '\"' + projectPath + project + '/';
 	museString = museBin + root + project +  '_40.mscz' + '\" ' + root + project +  '_40.mid\"\n';
 	museString += museBin +  root + project +  '_40.mxl' + '\" ' + root + project +  '_40.mscz\"\n';
-	museString += museBin +  root + project +  '_40.mp3' + '\" ' + root + project +  '_40.mscz\"\n';
+	museString += museBin +  root + project +  '_40.mp3' + '\" ' + root + project +  '_40.mscz\" -b \"64\" \n';
 	museString += museBin +  root + project +  '_40.pdf' + '\" ' + root + project +  '_40.mscz\"\n';
 /*
 	museString += museBin + root + project +  '_40_Fract.mscz' + '\" ' + root + project +  '_40_Fract.mid\"\n';
 	museString += museBin +  root + project +  '_40_Fract.mxl' + '\" ' + root + project +  '_40_Fract.mscz\"\n';
-	museString += museBin +  root + project +  '_40_Fract.mp3' + '\" ' + root + project +  '_40_Fract.mscz\"\n';
+	museString += museBin +  root + project +  '_40_Fract.mp3' + '\" ' + root + project +  '_40_Fract.mscz\" -b \"64\" \n';
 	museString += museBin +  root + project +  '_40_Fract.pdf' + '\" ' + root + project +  '_40_Fract.mscz\"\n';
 	*/
 	museString += museBin + root + project +  '_80.mscz' + '\" ' + root + project +  '_80.mid\"\n';
 	museString += museBin +  root + project +  '_80.mxl' + '\" ' + root + project +  '_80.mscz\"\n';
-	museString += museBin +  root + project +  '_80.mp3' + '\" ' + root + project +  '_80.mscz\"\n';
+	museString += museBin +  root + project +  '_80.mp3' + '\" ' + root + project +  '_80.mscz\" -b \"64\" \n';
 	museString += museBin +  root + project +  '_80.pdf' + '\" ' + root + project +  '_80.mscz\"\n';
 	/*
 	museString += museBin + root + project +  '_80_Fract.mscz' + '\" ' + root + project +  '_80_Fract.mid\"\n';
 	museString += museBin +  root + project +  '_80_Fract.mxl' + '\" ' + root + project +  '_80_Fract.mscz\"\n';
-	museString += museBin +  root + project +  '_80_Fract.mp3' + '\" ' + root + project +  '_80_Fract.mscz\"\n';
+	museString += museBin +  root + project +  '_80_Fract.mp3' + '\" ' + root + project +  '_80_Fract.mscz\" -b \"64\" \n';
 	museString += museBin +  root + project +  '_80_Fract.pdf' + '\" ' + root + project +  '_80_Fract.mscz\"\n';
 	*/
 	museString += museBin + root + project +  '_120.mscz' + '\" ' + root + project +  '_120.mid\"\n';
 	museString += museBin +  root + project +  '_120.mxl' + '\" ' + root + project +  '_120.mscz\"\n';
-	museString += museBin +  root + project +  '_120.mp3' + '\" ' + root + project +  '_120.mscz\"\n';
+	museString += museBin +  root + project +  '_120.mp3' + '\" ' + root + project +  '_120.mscz\" -b \"64\" \n';
 	museString += museBin +  root + project +  '_120.pdf' + '\" ' + root + project +  '_120.mscz\"\n';
 	/*
 	museString += museBin + root + project +  '_120_Fract.mscz' + '\" ' + root + project +  '_120_Fract.mid\"\n';
 	museString += museBin +  root + project +  '_120_Fract.mxl' + '\" ' + root + project +  '_120_Fract.mscz\"\n';
-	museString += museBin +  root + project +  '_120_Fract.mp3' + '\" ' + root + project +  '_120_Fract.mscz\"\n';
+	museString += museBin +  root + project +  '_120_Fract.mp3' + '\" ' + root + project +  '_120_Fract.mscz\" -b \"64\" \n';
 	museString += museBin +  root + project +  '_120_Fract.pdf' + '\" ' + root + project +  '_120_Fract.mscz\"\n';
 	*/
 	return museString;
