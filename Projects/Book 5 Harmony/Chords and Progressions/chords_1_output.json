@@ -1,0 +1,418 @@
+{
+    "name": "chords",
+    "timeSignature": "4/4",
+    "averageVelocity": 50,
+    "tracks": [
+        {
+            "name": "Beat of 4",
+            "type": "beat",
+            "period": 4,
+            "endAt": 72,
+            "keyOf": "C",
+            "chords": [
+                [
+                    "iii"
+                ],
+                [
+                    "C7n1"
+                ],
+                [
+                    "V7r4"
+                ],
+                [
+                    "ii-7r5n1"
+                ]
+            ],
+            "includeInScore": true,
+            "beatUnit": 4,
+            "tempo": 120,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 4,
+                    "count": 1,
+                    "chord": [
+                        "iii"
+                    ],
+                    "pitch": [
+                        [
+                            "E3"
+                        ],
+                        [
+                            "G3"
+                        ],
+                        [
+                            "B3"
+                        ]
+                    ]
+                },
+                {
+                    "index": 4,
+                    "duration": 4,
+                    "count": 1,
+                    "chord": [
+                        "C7n1"
+                    ],
+                    "pitch": [
+                        [
+                            "E2"
+                        ],
+                        [
+                            "C3"
+                        ],
+                        [
+                            "G3"
+                        ],
+                        [
+                            "A#3"
+                        ]
+                    ]
+                },
+                {
+                    "index": 8,
+                    "duration": 4,
+                    "count": 1,
+                    "chord": [
+                        "V7r4"
+                    ],
+                    "pitch": [
+                        [
+                            "G4"
+                        ],
+                        [
+                            "B4"
+                        ],
+                        [
+                            "D5"
+                        ],
+                        [
+                            "F5"
+                        ]
+                    ]
+                },
+                {
+                    "index": 12,
+                    "duration": 4,
+                    "count": 1,
+                    "chord": [
+                        "ii-7r5n1"
+                    ],
+                    "pitch": [
+                        [
+                            "F4"
+                        ],
+                        [
+                            "D5"
+                        ],
+                        [
+                            "F5"
+                        ],
+                        [
+                            "C6"
+                        ]
+                    ]
+                },
+                {
+                    "index": 16,
+                    "duration": 4,
+                    "count": 1,
+                    "chord": [
+                        "iii"
+                    ],
+                    "pitch": [
+                        [
+                            "E3"
+                        ],
+                        [
+                            "G3"
+                        ],
+                        [
+                            "B3"
+                        ]
+                    ]
+                },
+                {
+                    "index": 20,
+                    "duration": 4,
+                    "count": 1,
+                    "chord": [
+                        "C7n1"
+                    ],
+                    "pitch": [
+                        [
+                            "E2"
+                        ],
+                        [
+                            "C3"
+                        ],
+                        [
+                            "G3"
+                        ],
+                        [
+                            "A#3"
+                        ]
+                    ]
+                },
+                {
+                    "index": 24,
+                    "duration": 4,
+                    "count": 1,
+                    "chord": [
+                        "V7r4"
+                    ],
+                    "pitch": [
+                        [
+                            "G4"
+                        ],
+                        [
+                            "B4"
+                        ],
+                        [
+                            "D5"
+                        ],
+                        [
+                            "F5"
+                        ]
+                    ]
+                },
+                {
+                    "index": 28,
+                    "duration": 4,
+                    "count": 1,
+                    "chord": [
+                        "ii-7r5n1"
+                    ],
+                    "pitch": [
+                        [
+                            "F4"
+                        ],
+                        [
+                            "D5"
+                        ],
+                        [
+                            "F5"
+                        ],
+                        [
+                            "C6"
+                        ]
+                    ]
+                },
+                {
+                    "index": 32,
+                    "duration": 4,
+                    "count": 1,
+                    "chord": [
+                        "iii"
+                    ],
+                    "pitch": [
+                        [
+                            "E3"
+                        ],
+                        [
+                            "G3"
+                        ],
+                        [
+                            "B3"
+                        ]
+                    ]
+                },
+                {
+                    "index": 36,
+                    "duration": 4,
+                    "count": 1,
+                    "chord": [
+                        "C7n1"
+                    ],
+                    "pitch": [
+                        [
+                            "E2"
+                        ],
+                        [
+                            "C3"
+                        ],
+                        [
+                            "G3"
+                        ],
+                        [
+                            "A#3"
+                        ]
+                    ]
+                },
+                {
+                    "index": 40,
+                    "duration": 4,
+                    "count": 1,
+                    "chord": [
+                        "V7r4"
+                    ],
+                    "pitch": [
+                        [
+                            "G4"
+                        ],
+                        [
+                            "B4"
+                        ],
+                        [
+                            "D5"
+                        ],
+                        [
+                            "F5"
+                        ]
+                    ]
+                },
+                {
+                    "index": 44,
+                    "duration": 4,
+                    "count": 1,
+                    "chord": [
+                        "ii-7r5n1"
+                    ],
+                    "pitch": [
+                        [
+                            "F4"
+                        ],
+                        [
+                            "D5"
+                        ],
+                        [
+                            "F5"
+                        ],
+                        [
+                            "C6"
+                        ]
+                    ]
+                },
+                {
+                    "index": 48,
+                    "duration": 4,
+                    "count": 1,
+                    "chord": [
+                        "iii"
+                    ],
+                    "pitch": [
+                        [
+                            "E3"
+                        ],
+                        [
+                            "G3"
+                        ],
+                        [
+                            "B3"
+                        ]
+                    ]
+                },
+                {
+                    "index": 52,
+                    "duration": 4,
+                    "count": 1,
+                    "chord": [
+                        "C7n1"
+                    ],
+                    "pitch": [
+                        [
+                            "E2"
+                        ],
+                        [
+                            "C3"
+                        ],
+                        [
+                            "G3"
+                        ],
+                        [
+                            "A#3"
+                        ]
+                    ]
+                },
+                {
+                    "index": 56,
+                    "duration": 4,
+                    "count": 1,
+                    "chord": [
+                        "V7r4"
+                    ],
+                    "pitch": [
+                        [
+                            "G4"
+                        ],
+                        [
+                            "B4"
+                        ],
+                        [
+                            "D5"
+                        ],
+                        [
+                            "F5"
+                        ]
+                    ]
+                },
+                {
+                    "index": 60,
+                    "duration": 4,
+                    "count": 1,
+                    "chord": [
+                        "ii-7r5n1"
+                    ],
+                    "pitch": [
+                        [
+                            "F4"
+                        ],
+                        [
+                            "D5"
+                        ],
+                        [
+                            "F5"
+                        ],
+                        [
+                            "C6"
+                        ]
+                    ]
+                },
+                {
+                    "index": 64,
+                    "duration": 4,
+                    "count": 1,
+                    "chord": [
+                        "iii"
+                    ],
+                    "pitch": [
+                        [
+                            "E3"
+                        ],
+                        [
+                            "G3"
+                        ],
+                        [
+                            "B3"
+                        ]
+                    ]
+                },
+                {
+                    "index": 68,
+                    "duration": 4,
+                    "count": 1,
+                    "chord": [
+                        "C7n1"
+                    ],
+                    "pitch": [
+                        [
+                            "E2"
+                        ],
+                        [
+                            "C3"
+                        ],
+                        [
+                            "G3"
+                        ],
+                        [
+                            "A#3"
+                        ]
+                    ]
+                }
+            ],
+            "run": false,
+            "id": 0
+        }
+    ],
+    "defaultPitch": "C4",
+    "tempo": 90
+}

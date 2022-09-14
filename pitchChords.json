@@ -1,0 +1,708 @@
+{
+	"keys": [
+	{
+		"key":"A",
+		"sharpFlat":"#"
+	},
+	{
+		"key":"A#",
+		"sharpFlat":"#"
+	},
+	{
+		"key":"Bb",
+		"sharpFlat":"b"
+	},
+	{
+		"key":"B",
+		"sharpFlat":"#"
+	},
+	{
+		"key":"C",
+		"sharpFlat":"#"
+	},
+	{
+		"key":"C#",
+		"sharpFlat":"#"
+	},
+	{
+		"key":"Db",
+		"sharpFlat":"b"
+	},
+	{
+		"key":"D",
+		"sharpFlat":"#"
+	},
+	{
+		"key":"D#",
+		"sharpFlat":"#"
+	},
+	{
+		"key":"Eb",
+		"sharpFlat":"b"
+	},
+	{
+		"key":"E",
+		"sharpFlat":"#"
+	},
+	{
+		"key":"F",
+		"sharpFlat":"b"
+	},
+	{
+		"key":"F#",
+		"sharpFlat":"#"
+	},
+	{
+		"key":"G",
+		"sharpFlat":"#"
+	},
+	{
+		"key":"G#",
+		"sharpFlat":"#"
+	},
+	{
+		"key":"Ab",
+		"sharpFlat":"b"
+	}
+	],
+	"pitches": [
+	["Cz"],["C#z","Dbz"],["Dz"],["D#z","Ebz"],["Ez"],["Fz"],["F#z","Gbz"],["Gz"],["G#z","Abz"],["Az"],["A#z","Bbz"],["Bz"],
+	["Cy"],["C#y","Dby"],["Dy"],["D#y","Eby"],["Ey"],["Fy"],["F#y","Gby"],["Gy"],["G#y","Aby"],["Ay"],["A#y","Bby"],["By"],
+	["Cx"],["C#x","Dbx"],["Dx"],["D#x","Ebx"],["Ex"],["Fx"],["F#x","Gbx"],["Gx"],["G#x","Abx"],["Ax"],["A#x","Bbx"],["Bx"],
+	["Cw"],["C#w","Dbw"],["Dw"],["D#w","Ebw"],["Ew"],["Fw"],["F#w","Gbw"],["Gw"],["G#w","Abw"],["Aw"],["A#w","Bbw"],["Bw"],
+	["Cv"],["C#v","Dbv"],["Dv"],["D#v","Ebv"],["Ev"],["Fv"],["F#v","Gbv"],["Gv"],["G#v","Abv"],["Av"],["A#v","Bbv"],["Bv"],
+	["Cu"],["C#u","Dbu"],["Du"],["D#u","Ebu"],["Eu"],["Fu"],["F#u","Gbu"],["Gu"],["G#u","Abu"],["Au"],["A#u","Bbu"],["Bu"],
+	["Ct"],["C#t","Dbt"],["Dt"],["D#t","Ebt"],["Et"],["Ft"],["F#t","Gbt"],["Gt"],["G#t","Abt"],["At"],["A#t","Bbt"],["Bt"],
+	["Cs"],["C#s","Dbs"],["Ds"],["D#s","Ebs"],["Es"],["Fs"],["F#s","Gbs"],["Gs"],["G#s","Abs"],["As"],["A#s","Bbs"],["Bs"],
+	["Cr"],["C#r","Dbr"],["Dr"],["D#r","Ebr"],["Er"],["Fr"],["F#r","Gbr"],["Gr"],["G#r","Abr"],["Ar"],["A#r","Bbr"],["Br"],
+	["Cq"],["C#q","Dbq"],["Dq"],["D#q","Ebq"],["Eq"],["Fq"],["F#q","Gbq"],["Gq"],["G#q","Abq"],["Aq"],["A#q","Bbq"],["Bq"],
+	["Cp"],["C#p","Dbp"],["Dp"],["D#p","Ebp"],["Ep"],["Fp"],["F#p","Gbp"],["Gp"],["G#p","Abp"],["Ap"],["A#p","Bbp"],["Bp"],
+	["Co"],["C#o","Dbo"],["Do"],["D#o","Ebo"],["Eo"],["Fo"],["F#o","Gbo"],["Go"],["G#o","Abo"],["Ao"],["A#o","Bbo"],["Bo"],
+	["Cn"],["C#n","Dbn"],["Dn"],["D#n","Ebn"],["En"],["Fn"],["F#n","Gbn"],["Gn"],["G#n","Abn"],["An"],["A#n","Bbn"],["Bn"],
+	["Cm"],["C#m","Dbm"],["Dm"],["D#m","Ebm"],["Em"],["Fm"],["F#m","Gbm"],["Gm"],["G#m","Abm"],["Am"],["A#m","Bbm"],["Bm"],
+	["C0"],["C#0","Db0"],["D0"],["D#0","Eb0"],["E0"],["F0"],["F#0","Gb0"],["G0"],["G#0","Ab0"],["A0"],["A#0","Bb0"],["B0"],
+	["C1"],["C#1","Db1"],["D1"],["D#1","Eb1"],["E1"],["F1"],["F#1","Gb1"],["G1"],["G#1","Ab1"],["A1"],["A#1","Bb1"],["B1"],
+	["C2"],["C#2","Db2"],["D2"],["D#2","Eb2"],["E2"],["F2"],["F#2","Gb2"],["G2"],["G#2","Ab2"],["A2"],["A#2","Bb2"],["B2"],
+	["C3"],["C#3","Db3"],["D3"],["D#3","Eb3"],["E3"],["F3"],["F#3","Gb3"],["G3"],["G#3","Ab3"],["A3"],["A#3","Bb3"],["B3"],
+	["C4"],["C#4","Db4"],["D4"],["D#4","Eb4"],["E4"],["F4"],["F#4","Gb4"],["G4"],["G#4","Ab4"],["A4"],["A#4","Bb4"],["B4"],
+	["C5"],["C#5","Db5"],["D5"],["D#5","Eb5"],["E5"],["F5"],["F#5","Gb5"],["G5"],["G#5","Ab5"],["A5"],["A#5","Bb5"],["B5"],
+	["C6"],["C#6","Db6"],["D6"],["D#6","Eb6"],["E6"],["F6"],["F#6","Gb6"],["G6"],["G#6","Ab6"],["A6"],["A#6","Bb6"],["B6"],
+	["C7"],["C#7","Db7"],["D7"],["D#7","Eb7"],["E7"],["F7"],["F#7","Gb7"],["G7"],["G#7","Ab7"],["A7"],["A#7","Bb7"],["B7"],
+	["C8"],["C#8","Db8"],["D8"],["D#8","Eb8"],["E8"],["F8"],["F#8","Gb8"],["G8"],["G#8","Ab8"],["A8"],["A#8","Bb8"],["B8"],
+	["C9"],["C#9","Db9"],["D9"],["D#9","Eb9"],["E9"],["F9"],["F#9","Gb9"],["G9"],["G#9","Ab9"],["A9"],["A#9","Bb9"],["B9"],
+	["C10"],["C#10","Db10"],["D10"],["D#10","Eb10"],["E10"],["F10"],["F#10","Gb10"],["G10"],["G#10","Ab10"],["A10"],["A#10","Bb10"],["B10"],
+	["C11"],["C#11","Db11"],["D11"],["D#11","Eb11"],["E11"],["F11"],["F#11","Gb11"],["G11"],["G#11","Ab11"],["A11"],["A#11","Bb11"],["B11"],
+	["C12"],["C#12","Db12"],["D12"],["D#12","Eb12"],["E12"],["F12"],["F#12","Gb12"],["G12"],["G#12","Ab12"],["A12"],["A#12","Bb12"],["B12"],
+	["C13"],["C#13","Db13"],["D13"],["D#13","Eb13"],["E13"],["F13"],["F#13","Gb13"],["G13"],["G#13","Ab13"],["A13"],["A#13","Bb13"],["B13"],
+	["C14"],["C#14","Db14"],["D14"],["D#14","Eb14"],["E14"],["F14"],["F#14","Gb14"],["G14"],["G#14","Ab14"],["A14"],["A#14","Bb14"],["B14"],
+	["C15"],["C#15","Db15"],["D15"],["D#15","Eb15"],["E15"],["F15"],["F#15","Gb15"],["G15"],["G#15","Ab15"],["A15"],["A#15","Bb15"],["B15"],
+	["C16"],["C#16","Db16"],["D16"],["D#16","Eb16"],["E16"],["F16"],["F#16","Gb16"],["G16"],["G#16","Ab16"],["A16"],["A#16","Bb16"],["B16"],
+	["C17"],["C#17","Db17"],["D17"],["D#17","Eb17"],["E17"],["F17"],["F#17","Gb17"],["G17"],["G#17","Ab17"],["A17"],["A#17","Bb17"],["B17"],
+	["C18"],["C#18","Db18"],["D18"],["D#18","Eb18"],["E18"],["F18"],["F#18","Gb18"],["G18"],["G#18","Ab18"],["A18"],["A#18","Bb18"],["B18"],
+	["C19"],["C#19","Db19"],["D19"],["D#19","Eb19"],["E19"],["F19"],["F#19","Gb19"],["G19"],["G#19","Ab19"],["A19"],["A#19","Bb19"],["B19"],
+	["C20"],["C#20","Db20"],["D20"],["D#20","Eb20"],["E20"],["F20"],["F#20","Gb20"],["G20"],["G#20","Ab20"],["A20"],["A#20","Bb20"],["B20"],
+	["C21"],["C#21","Db21"],["D21"],["D#21","Eb21"],["E21"],["F21"],["F#21","Gb21"],["G21"],["G#21","Ab21"],["A21"],["A#21","Bb21"],["B21"],
+	["C22"],["C#22","Db22"],["D22"],["D#22","Eb22"],["E22"],["F22"],["F#22","Gb22"],["G22"],["G#22","Ab22"],["A22"],["A#22","Bb22"],["B22"],
+	["C23"],["C#23","Db23"],["D23"],["D#23","Eb23"],["E23"],["F23"],["F#23","Gb23"],["G23"],["G#23","Ab23"],["A23"],["A#23","Bb23"],["B23"],
+	["C24"],["C#24","Db24"],["D24"],["D#24","Eb24"],["E24"],["F24"],["F#24","Gb24"],["G24"],["G#24","Ab24"],["A24"],["A#24","Bb24"],["B24"]
+	],
+	"scalesExpanded": [{"keys":"A","scales":[{"names":["Major","Ionian"],"pitches":[["A","B","C#","D","E","F#","G#"]]},{"names":["Natural Minor","Aeolian"],"pitches":[["A","B","C","D","E","F","G"]]},{"names":["Harmonic Minor"],"pitches":[["A","B","C","D","E","F","G#"]]},{"names":["Melodic Minor"],"pitches":[["A","B","C","D","E","F#","G#"],["A","B","C","D","E","F","G"]]},{"names":["Chromatic"],"pitches":[["A","A#","B","C","C#","D","D#","E","F","F#","G","G#"]]},{"names":["Whole Tone"],"pitches":[["A","B","C#","D#","F","G"]]},{"names":["Pentatonic"],"pitches":[["A","B","C#","E","F#"]]},{"names":["Dorian"],"pitches":[["A","B","C","D","E","F#","G"]]},{"names":["Phrygian"],"pitches":[["A","A#","C","D","E","F","G"]]},{"names":["Lydian"],"pitches":[["A","B","C#","D#","E","F#","G#"]]},{"names":["Mixolydian"],"pitches":[["A","B","C#","D","E","F#","G"]]},{"names":["Locrian"],"pitches":[["A","A#","C","D","D#","F","G"]]}]},{"keys":"A#","scales":[{"names":["Major","Ionian"],"pitches":[["A#","C","D","D#","F","G","A"]]},{"names":["Natural Minor","Aeolian"],"pitches":[["A#","C","C#","D#","F","F#","G#"]]},{"names":["Harmonic Minor"],"pitches":[["A#","C","C#","D#","F","F#","A"]]},{"names":["Melodic Minor"],"pitches":[["A#","C","C#","D#","F","G","A"],["A#","C","C#","D#","F","F#","G#"]]},{"names":["Chromatic"],"pitches":[["A#","B","C","C#","D","D#","E","F","F#","G","G#","A"]]},{"names":["Whole Tone"],"pitches":[["A#","C","D","E","F#","G#"]]},{"names":["Pentatonic"],"pitches":[["A#","C","D","F","G"]]},{"names":["Dorian"],"pitches":[["A#","C","C#","D#","F","G","G#"]]},{"names":["Phrygian"],"pitches":[["A#","B","C#","D#","F","F#","G#"]]},{"names":["Lydian"],"pitches":[["A#","C","D","E","F","G","A"]]},{"names":["Mixolydian"],"pitches":[["A#","C","D","D#","F","G","G#"]]},{"names":["Locrian"],"pitches":[["A#","B","C#","D#","E","F#","G#"]]}]},{"keys":"B","scales":[{"names":["Major","Ionian"],"pitches":[["B","C#","D#","E","F#","G#","A#"]]},{"names":["Natural Minor","Aeolian"],"pitches":[["B","C#","D","E","F#","G","A"]]},{"names":["Harmonic Minor"],"pitches":[["B","C#","D","E","F#","G","A#"]]},{"names":["Melodic Minor"],"pitches":[["B","C#","D","E","F#","G#","A#"],["B","C#","D","E","F#","G","A"]]},{"names":["Chromatic"],"pitches":[["B","C","C#","D","D#","E","F","F#","G","G#","A","A#"]]},{"names":["Whole Tone"],"pitches":[["B","C#","D#","F","G","A"]]},{"names":["Pentatonic"],"pitches":[["B","C#","D#","F#","G#"]]},{"names":["Dorian"],"pitches":[["B","C#","D","E","F#","G#","A"]]},{"names":["Phrygian"],"pitches":[["B","C","D","E","F#","G","A"]]},{"names":["Lydian"],"pitches":[["B","C#","D#","F","F#","G#","A#"]]},{"names":["Mixolydian"],"pitches":[["B","C#","D#","E","F#","G#","A"]]},{"names":["Locrian"],"pitches":[["B","C","D","E","F","G","A"]]}]},{"keys":"C","scales":[{"names":["Major","Ionian"],"pitches":[["C","D","E","F","G","A","B"]]},{"names":["Natural Minor","Aeolian"],"pitches":[["C","D","D#","F","G","G#","A#"]]},{"names":["Harmonic Minor"],"pitches":[["C","D","D#","F","G","G#","B"]]},{"names":["Melodic Minor"],"pitches":[["C","D","D#","F","G","A","B"],["C","D","D#","F","G","G#","A#"]]},{"names":["Chromatic"],"pitches":[["C","C#","D","D#","E","F","F#","G","G#","A","A#","B"]]},{"names":["Whole Tone"],"pitches":[["C","D","E","F#","G#","A#"]]},{"names":["Pentatonic"],"pitches":[["C","D","E","G","A"]]},{"names":["Dorian"],"pitches":[["C","D","D#","F","G","A","A#"]]},{"names":["Phrygian"],"pitches":[["C","C#","D#","F","G","G#","A#"]]},{"names":["Lydian"],"pitches":[["C","D","E","F#","G","A","B"]]},{"names":["Mixolydian"],"pitches":[["C","D","E","F","G","A","A#"]]},{"names":["Locrian"],"pitches":[["C","C#","D#","F","F#","G#","A#"]]}]},{"keys":"C#","scales":[{"names":["Major","Ionian"],"pitches":[["C#","D#","F","F#","G#","A#","C"]]},{"names":["Natural Minor","Aeolian"],"pitches":[["C#","D#","E","F#","G#","A","B"]]},{"names":["Harmonic Minor"],"pitches":[["C#","D#","E","F#","G#","A","C"]]},{"names":["Melodic Minor"],"pitches":[["C#","D#","E","F#","G#","A#","C"],["C#","D#","E","F#","G#","A","B"]]},{"names":["Chromatic"],"pitches":[["C#","D","D#","E","F","F#","G","G#","A","A#","B","C"]]},{"names":["Whole Tone"],"pitches":[["C#","D#","F","G","A","B"]]},{"names":["Pentatonic"],"pitches":[["C#","D#","F","G#","A#"]]},{"names":["Dorian"],"pitches":[["C#","D#","E","F#","G#","A#","B"]]},{"names":["Phrygian"],"pitches":[["C#","D","E","F#","G#","A","B"]]},{"names":["Lydian"],"pitches":[["C#","D#","F","G","G#","A#","C"]]},{"names":["Mixolydian"],"pitches":[["C#","D#","F","F#","G#","A#","B"]]},{"names":["Locrian"],"pitches":[["C#","D","E","F#","G","A","B"]]}]},{"keys":"D","scales":[{"names":["Major","Ionian"],"pitches":[["D","E","F#","G","A","B","C#"]]},{"names":["Natural Minor","Aeolian"],"pitches":[["D","E","F","G","A","A#","C"]]},{"names":["Harmonic Minor"],"pitches":[["D","E","F","G","A","A#","C#"]]},{"names":["Melodic Minor"],"pitches":[["D","E","F","G","A","B","C#"],["D","E","F","G","A","A#","C"]]},{"names":["Chromatic"],"pitches":[["D","D#","E","F","F#","G","G#","A","A#","B","C","C#"]]},{"names":["Whole Tone"],"pitches":[["D","E","F#","G#","A#","C"]]},{"names":["Pentatonic"],"pitches":[["D","E","F#","A","B"]]},{"names":["Dorian"],"pitches":[["D","E","F","G","A","B","C"]]},{"names":["Phrygian"],"pitches":[["D","D#","F","G","A","A#","C"]]},{"names":["Lydian"],"pitches":[["D","E","F#","G#","A","B","C#"]]},{"names":["Mixolydian"],"pitches":[["D","E","F#","G","A","B","C"]]},{"names":["Locrian"],"pitches":[["D","D#","F","G","G#","A#","C"]]}]},{"keys":"D#","scales":[{"names":["Major","Ionian"],"pitches":[["D#","F","G","G#","A#","C","D"]]},{"names":["Natural Minor","Aeolian"],"pitches":[["D#","F","F#","G#","A#","B","C#"]]},{"names":["Harmonic Minor"],"pitches":[["D#","F","F#","G#","A#","B","D"]]},{"names":["Melodic Minor"],"pitches":[["D#","F","F#","G#","A#","C","D"],["D#","F","F#","G#","A#","B","C#"]]},{"names":["Chromatic"],"pitches":[["D#","E","F","F#","G","G#","A","A#","B","C","C#","D"]]},{"names":["Whole Tone"],"pitches":[["D#","F","G","A","B","C#"]]},{"names":["Pentatonic"],"pitches":[["D#","F","G","A#","C"]]},{"names":["Dorian"],"pitches":[["D#","F","F#","G#","A#","C","C#"]]},{"names":["Phrygian"],"pitches":[["D#","E","F#","G#","A#","B","C#"]]},{"names":["Lydian"],"pitches":[["D#","F","G","A","A#","C","D"]]},{"names":["Mixolydian"],"pitches":[["D#","F","G","G#","A#","C","C#"]]},{"names":["Locrian"],"pitches":[["D#","E","F#","G#","A","B","C#"]]}]},{"keys":"E","scales":[{"names":["Major","Ionian"],"pitches":[["E","F#","G#","A","B","C#","D#"]]},{"names":["Natural Minor","Aeolian"],"pitches":[["E","F#","G","A","B","C","D"]]},{"names":["Harmonic Minor"],"pitches":[["E","F#","G","A","B","C","D#"]]},{"names":["Melodic Minor"],"pitches":[["E","F#","G","A","B","C#","D#"],["E","F#","G","A","B","C","D"]]},{"names":["Chromatic"],"pitches":[["E","F","F#","G","G#","A","A#","B","C","C#","D","D#"]]},{"names":["Whole Tone"],"pitches":[["E","F#","G#","A#","C","D"]]},{"names":["Pentatonic"],"pitches":[["E","F#","G#","B","C#"]]},{"names":["Dorian"],"pitches":[["E","F#","G","A","B","C#","D"]]},{"names":["Phrygian"],"pitches":[["E","F","G","A","B","C","D"]]},{"names":["Lydian"],"pitches":[["E","F#","G#","A#","B","C#","D#"]]},{"names":["Mixolydian"],"pitches":[["E","F#","G#","A","B","C#","D"]]},{"names":["Locrian"],"pitches":[["E","F","G","A","A#","C","D"]]}]},{"keys":"F","scales":[{"names":["Major","Ionian"],"pitches":[["F","G","A","A#","C","D","E"]]},{"names":["Natural Minor","Aeolian"],"pitches":[["F","G","G#","A#","C","C#","D#"]]},{"names":["Harmonic Minor"],"pitches":[["F","G","G#","A#","C","C#","E"]]},{"names":["Melodic Minor"],"pitches":[["F","G","G#","A#","C","D","E"],["F","G","G#","A#","C","C#","D#"]]},{"names":["Chromatic"],"pitches":[["F","F#","G","G#","A","A#","B","C","C#","D","D#","E"]]},{"names":["Whole Tone"],"pitches":[["F","G","A","B","C#","D#"]]},{"names":["Pentatonic"],"pitches":[["F","G","A","C","D"]]},{"names":["Dorian"],"pitches":[["F","G","G#","A#","C","D","D#"]]},{"names":["Phrygian"],"pitches":[["F","F#","G#","A#","C","C#","D#"]]},{"names":["Lydian"],"pitches":[["F","G","A","B","C","D","E"]]},{"names":["Mixolydian"],"pitches":[["F","G","A","A#","C","D","D#"]]},{"names":["Locrian"],"pitches":[["F","F#","G#","A#","B","C#","D#"]]}]},{"keys":"F#","scales":[{"names":["Major","Ionian"],"pitches":[["F#","G#","A#","B","C#","D#","F"]]},{"names":["Natural Minor","Aeolian"],"pitches":[["F#","G#","A","B","C#","D","E"]]},{"names":["Harmonic Minor"],"pitches":[["F#","G#","A","B","C#","D","F"]]},{"names":["Melodic Minor"],"pitches":[["F#","G#","A","B","C#","D#","F"],["F#","G#","A","B","C#","D","E"]]},{"names":["Chromatic"],"pitches":[["F#","G","G#","A","A#","B","C","C#","D","D#","E","F"]]},{"names":["Whole Tone"],"pitches":[["F#","G#","A#","C","D","E"]]},{"names":["Pentatonic"],"pitches":[["F#","G#","A#","C#","D#"]]},{"names":["Dorian"],"pitches":[["F#","G#","A","B","C#","D#","E"]]},{"names":["Phrygian"],"pitches":[["F#","G","A","B","C#","D","E"]]},{"names":["Lydian"],"pitches":[["F#","G#","A#","C","C#","D#","F"]]},{"names":["Mixolydian"],"pitches":[["F#","G#","A#","B","C#","D#","E"]]},{"names":["Locrian"],"pitches":[["F#","G","A","B","C","D","E"]]}]},{"keys":"G","scales":[{"names":["Major","Ionian"],"pitches":[["G","A","B","C","D","E","F#"]]},{"names":["Natural Minor","Aeolian"],"pitches":[["G","A","A#","C","D","D#","F"]]},{"names":["Harmonic Minor"],"pitches":[["G","A","A#","C","D","D#","F#"]]},{"names":["Melodic Minor"],"pitches":[["G","A","A#","C","D","E","F#"],["G","A","A#","C","D","D#","F"]]},{"names":["Chromatic"],"pitches":[["G","G#","A","A#","B","C","C#","D","D#","E","F","F#"]]},{"names":["Whole Tone"],"pitches":[["G","A","B","C#","D#","F"]]},{"names":["Pentatonic"],"pitches":[["G","A","B","D","E"]]},{"names":["Dorian"],"pitches":[["G","A","A#","C","D","E","F"]]},{"names":["Phrygian"],"pitches":[["G","G#","A#","C","D","D#","F"]]},{"names":["Lydian"],"pitches":[["G","A","B","C#","D","E","F#"]]},{"names":["Mixolydian"],"pitches":[["G","A","B","C","D","E","F"]]},{"names":["Locrian"],"pitches":[["G","G#","A#","C","C#","D#","F"]]}]},{"keys":"G#","scales":[{"names":["Major","Ionian"],"pitches":[["G#","A#","C","C#","D#","F","G"]]},{"names":["Natural Minor","Aeolian"],"pitches":[["G#","A#","B","C#","D#","E","F#"]]},{"names":["Harmonic Minor"],"pitches":[["G#","A#","B","C#","D#","E","G"]]},{"names":["Melodic Minor"],"pitches":[["G#","A#","B","C#","D#","F","G"],["G#","A#","B","C#","D#","E","F#"]]},{"names":["Chromatic"],"pitches":[["G#","A","A#","B","C","C#","D","D#","E","F","F#","G"]]},{"names":["Whole Tone"],"pitches":[["G#","A#","C","D","E","F#"]]},{"names":["Pentatonic"],"pitches":[["G#","A#","C","D#","F"]]},{"names":["Dorian"],"pitches":[["G#","A#","B","C#","D#","F","F#"]]},{"names":["Phrygian"],"pitches":[["G#","A","B","C#","D#","E","F#"]]},{"names":["Lydian"],"pitches":[["G#","A#","C","D","D#","F","G"]]},{"names":["Mixolydian"],"pitches":[["G#","A#","C","C#","D#","F","F#"]]},{"names":["Locrian"],"pitches":[["G#","A","B","C#","D","E","F#"]]}]}],
+	"scales": [
+		{
+			"scaleNames": ["Major","Ionian"],
+			"intervals": [[2,2,1,2,2,2,1]],
+			"distances": [[2,4,5,7,9,11,12]]
+		},{
+			"scaleNames": ["Natural Minor","Aeolian"],
+			"intervals": [[2,1,2,2,1,2,2]],
+			"distances": [[2,3,5,7,8,10,12]]
+		},{
+			"scaleNames": ["Harmonic Minor"],
+			"intervals": [[2,1,2,2,1,3,1]],
+			"distances": [[2,3,5,7,8,11,12]]
+		},{
+			"scaleNames": ["Melodic Minor"],
+			"intervals": [[2,1,2,2,2,2,1],[2,1,2,2,1,2,2]],
+			"distances": [[2,3,5,7,9,11,12],[2,3,5,7,8,10,12]]
+		},{
+			"scaleNames": ["Chromatic"],
+			"intervals": [[1,1,1,1,1,1,1,1,1,1,1]],
+			"distances": [[1,2,3,4,5,6,7,8,9,10,11,12]]
+		},{
+			"scaleNames": ["Whole Tone"],
+			"intervals": [[2,2,2,2,2]],
+			"distances": [[2,4,6,8,10,12]]
+		},{
+			"scaleNames": ["Pentatonic"],
+			"intervals": [[2,2,3,2]],
+			"distances": [[2,4,7,9,12]]
+		},{
+			"scaleNames": ["Dorian"],
+			"intervals": [[2,1,2,2,2,1,2]],
+			"distances": [[2,3,5,7,9,10,12]]
+		},{
+			"scaleNames": ["Phrygian"],
+			"intervals": [[1,2,2,2,1,2,2]],
+			"distances": [[1,3,5,7,8,10,12]]
+		},{
+			"scaleNames": ["Lydian"],
+			"intervals": [[2,2,2,1,2,2,1]],
+			"distances": [[2,4,6,7,9,11,12]]
+		},{
+			"scaleNames": ["Mixolydian"],
+			"intervals": [[2,2,1,2,2,1,2]],
+			"distances": [[2,4,5,7,9,10,12]]
+		},{
+			"scaleNames": ["Locrian"],
+			"intervals": [[1,2,2,1,2,2,2]],
+			"distances": [[1,3,5,6,8,10,12]]
+		}
+	],
+	"chords": [
+		{
+			"chordType": "Major",
+			"symbols": [
+				"Maj","M","maj"
+			],
+			"toneOffsets": [
+				{
+					"inversion": "0",
+					"voicings": [
+						{"voicing": "0","offsets": [0,4,7]}
+					]
+				},{
+					"inversion": "1",
+					"voicings": [
+						{"voicing": "0","offsets": [-8,0,7]},
+						{"voicing": "1","offsets": [-8,-5,0]}
+					]
+				},{
+					"inversion": "2",
+					"voicings": [
+						{"voicing": "0","offsets": [-5,0,4]}
+					]
+				}
+			]
+		},{
+			"chordType": "b5",
+			"symbols": [
+				"b5"
+			],
+			"toneOffsets": [
+				{
+					"inversion": "0",
+					"voicings": [
+						{"voicing": "0","offsets": [0,4,6]}
+					]
+				},{
+					"inversion": "1",
+					"voicings": [
+						{"voicing": "0","offsets": [-8,0,6]},
+						{"voicing": "1","offsets": [-8,-6,0]}
+					]
+				},{
+					"inversion": "2",
+					"voicings": [
+						{"voicing": "0","offsets": [-6,0,4]}
+					]
+				}
+			]
+		},{
+			"chordType": "Augmented",
+			"symbols": [
+				"+"
+			],
+			"toneOffsets": [
+				{
+					"inversion": "0",
+					"voicings": [
+						{"voicing": "0","offsets": [0,4,8]}
+					]
+				},{
+					"inversion": "1",
+					"voicings": [
+						{"voicing": "0","offsets": [-8,0,8]},
+						{"voicing": "1","offsets": [-8,-6,0]}
+					]
+				},{
+					"inversion": "2",
+					"voicings": [
+						{"voicing": "0","offsets": [-6,0,4]}
+					]
+				}
+			]
+		},{
+			"chordType": "Minor",
+			"symbols": [
+				"-","m","min","Min"
+			],
+			"toneOffsets": [
+				{
+					"inversion": "0",
+					"voicings": [
+						{"voicing": "0","offsets": [0,3,7]}
+					]
+				},{
+					"inversion": "1",
+					"voicings": [
+						{"voicing": "0","offsets": [-9,0,7]}
+					]
+				},{
+					"inversion": "2",
+					"voicings": [
+						{"voicing": "0","offsets": [-5,0,3]}
+					]
+				}
+			]
+		},{
+			"chordType": "Diminished",
+			"symbols": [
+				"o","°","dim","Dim"
+			],
+			"toneOffsets": [
+				{
+					"inversion": "0",
+					"voicings": [
+						{"voicing": "0","offsets": [0,3,6]}
+					]
+				},{
+					"inversion": "1",
+					"voicings": [
+						{"voicing": "0","offsets": [-9,0,6]}
+					]
+				},{
+					"inversion": "2",
+					"voicings": [
+						{"voicing": "0","offsets": [-6,0,3]}
+					]
+				}
+			]
+		},{
+			"chordType": "Major7",
+			"symbols": [
+				"Maj7", "maj7","M7"
+			],
+			"toneOffsets": [
+				{
+					"inversion": "0",
+					"voicings": [
+						{"voicing": "0","offsets": [0,4,7,11]}
+					]
+				},{
+					"inversion": "1",
+					"voicings": [
+						{"voicing": "0","offsets": [-8,0,7,11]}
+					]
+				},{
+					"inversion": "2",
+					"voicings": [
+						{"voicing": "0","offsets": [5,-1,0,4]}
+					]
+				}
+			]
+		},{
+			"chordType": "Dominant7",
+			"symbols": [
+				"7"
+			],
+			"toneOffsets": [
+				{
+					"inversion": "0",
+					"voicings": [
+						{"voicing": "0","offsets": [0,4,7,10]}
+					]
+				},{
+					"inversion": "1",
+					"voicings": [
+						{"voicing": "0","offsets": [-8,0,7,10]}
+					]
+				},{
+					"inversion": "2",
+					"voicings": [
+						{"voicing": "0","offsets": [-5,-2,0,4]}
+					]
+				}
+			]
+		},{
+			"chordType": "Dominant7Flat5",
+			"symbols": [
+				"7b5"
+			],
+			"toneOffsets": [
+				{
+					"inversion": "0",
+					"voicings": [
+						{"voicing": "0","offsets": [0,4,6,10]}
+					]
+				},{
+					"inversion": "1",
+					"voicings": [
+						{"voicing": "0","offsets": [-8,0,6,10]}
+					]
+				},{
+					"inversion": "2",
+					"voicings": [
+						{"voicing": "0","offsets": [-6,-2,0,4]}
+					]
+				},{
+					"inversion": "3",
+					"voicings": [
+						{"voicing": "0","offsets": [-8,-6,-2,0]}
+					]
+				}
+			]
+		},{
+			"chordType": "Dominant7Flat9",
+			"symbols": [
+				"7b9"
+			],
+			"toneOffsets": [
+				{
+					"inversion": "0",
+					"voicings": [
+						{
+							"voicing": "0",
+							"offsets": [
+								0,4,7,10,13
+							]
+						}
+					]
+				},{
+					"inversion": "1",
+					"voicings": [
+						{
+							"voicing": "0",
+							"offsets": [
+								-8,0,7,10,13
+							]
+						}
+					]
+				},{
+					"inversion": "2",
+					"voicings": [
+						{
+							"voicing": "0",
+							"offsets": [
+								-5,-2,0,4,13
+							]
+						}
+					]
+				},{
+					"inversion": "3",
+					"voicings": [
+						{
+							"voicing": "0",
+							"offsets": [
+								-10,-5,-2,0,4
+							]
+						}
+					]
+				}
+			]
+		},{
+			"chordType": "9",
+			"symbols": [
+				"9"
+			],
+			"toneOffsets": [
+				{
+					"inversion": "0",
+					"voicings": [
+						{
+							"voicing": "0",
+							"offsets": [
+								0,4,7,10,14
+							]
+						}
+					]
+				},{
+					"inversion": "1",
+					"voicings": [
+						{
+							"voicing": "0",
+							"offsets": [
+								-8,0,7,10,14
+							]
+						}
+					]
+				},{
+					"inversion": "2",
+					"voicings": [
+						{
+							"voicing": "0",
+							"offsets": [
+								-2,0,4,7,14
+							]
+						}
+					]
+				},{
+					"inversion": "3",
+					"voicings": [
+						{
+							"voicing": "0",
+							"offsets": [
+								-5,0,4,7,10
+							]
+						}
+					]
+				},{
+					"inversion": "4",
+					"voicings": [
+						{
+							"voicing": "0",
+							"offsets": [
+								-9,0,4,7,10
+							]
+						}
+					]
+				},{
+					"inversion": "5",
+					"voicings": [
+						{
+							"voicing": "0",
+							"offsets": [
+								-9,-8,-5,0
+							]
+						}
+					]
+				}
+			]
+		},{
+			"chordType": "Flat9",
+			"symbols": [
+				"b9"
+			],
+			"toneOffsets": [
+				{
+					"inversion": "0",
+					"voicings": [
+						{
+							"voicing": "0",
+							"offsets": [
+								0,4,7,13
+							]
+						}
+					]
+				},{
+					"inversion": "1",
+					"voicings": [
+						{
+							"voicing": "0",
+							"offsets": [
+								-8,0,7,13
+							]
+						}
+					]
+				},{
+					"inversion": "2",
+					"voicings": [
+						{
+							"voicing": "0",
+							"offsets": [
+								-5,0,4,13
+							]
+						}
+					]
+				},{
+					"inversion": "3",
+					"voicings": [
+						{
+							"voicing": "0",
+							"offsets": [
+								-10,-5,0,4
+							]
+						}
+					]
+				},{
+					"inversion": "4",
+					"voicings": [
+						{
+							"voicing": "0",
+							"offsets": [
+								-10,-8,-5,0
+							]
+						}
+					]
+				}
+			]
+		},{
+			"chordType": "Dominant7Sharp9",
+			"symbols": [
+				"7#9"
+			],
+			"toneOffsets": [
+				{
+					"inversion": "0",
+					"voicings": [
+						{
+							"voicing": "0",
+							"offsets": [
+								0,4,7,10,14
+							]
+						}
+					]
+				},{
+					"inversion": "1",
+					"voicings": [
+						{
+							"voicing": "0",
+							"offsets": [
+								-8,0,7,10,14
+							]
+						}
+					]
+				},{
+					"inversion": "2",
+					"voicings": [
+						{
+							"voicing": "0",
+							"offsets": [
+								-5,-2,0,4,14
+							]
+						}
+					]
+				},{
+					"inversion": "3",
+					"voicings": [
+						{
+							"voicing": "0",
+							"offsets": [
+								-9,-5,-2,0,4
+							]
+						}
+					]
+				}
+			]
+		},{
+			"chordType": "Dominant7Sharp9Flat5",
+			"symbols": [
+				"7#9b5"
+			],
+			"toneOffsets": [
+				{
+					"inversion": "0",
+					"voicings": [
+						{
+							"voicing": "0",
+							"offsets": [
+								0,4,6,10,14
+							]
+						}
+					]
+				},{
+					"inversion": "1",
+					"voicings": [
+						{
+							"voicing": "0",
+							"offsets": [
+								-8,0,6,10,14
+							]
+						}
+					]
+				},{
+					"inversion": "2",
+					"voicings": [
+						{
+							"voicing": "0",
+							"offsets": [
+								-6,-2,0,4,14
+							]
+						}
+					]
+				},{
+					"inversion": "3",
+					"voicings": [
+						{
+							"voicing": "0",
+							"offsets": [
+								-9,-6,-2,0,4
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"chordType": "Minor7",
+			"symbols": [
+				"-7"
+			],
+			"toneOffsets": [
+				{
+					"inversion": "0",
+					"voicings": [
+						{
+							"voicing": "0",
+							"offsets": [
+								0,3,7,10
+							]
+						}
+					]
+				},
+				{
+					"inversion": "1",
+					"voicings": [
+						{
+							"voicing": "0",
+							"offsets": [
+								-9,0,3,10
+							]
+						}
+					]
+				},
+				{
+					"inversion": "2",
+					"voicings": [
+						{
+							"voicing": "0",
+							"offsets": [
+								-5,-2,0,3
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"chordType": "MinorMajor7",
+			"symbols": [
+				"-maj7"
+			],
+			"toneOffsets": [
+				{
+					"inversion": "0",
+					"voicings": [
+						{
+							"voicing": "0",
+							"offsets": [
+								0,3,7,11
+							]
+						}
+					]
+				},
+				{
+					"inversion": "1",
+					"voicings": [
+						{
+							"voicing": "0",
+							"offsets": [
+								-9,0,3,11
+							]
+						}
+					]
+				},
+				{
+					"inversion": "2",
+					"voicings": [
+						{
+							"voicing": "0",
+							"offsets": [
+								-5,-1,0,3
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

@@ -1,11 +1,15 @@
 var fs = require('fs');
+//var path = require(path);
 var yargs = require('yargs');
 //var log = require('npmlog');
 var MidiWriter = require('midi-writer-js');
 
 var globalArguments = parseArguments(process.argv.slice(2))
 log('Parsed globalArguments:' + JSON.stringify(globalArguments), 'debug');
+//this is not correct. Need to find the directory where the script is running, but ./ will use whatever directory you're running the script from!
+globalArguments.pitchChordFilePath = (__dirname + '\\pitchChords.json');
 var rhythms = openInputFile(globalArguments.ControlFilePath);
+var pitchChords = openInputFile(globalArguments.pitchChordFilePath);
 if (rhythms != null) {
 	populateGlobalDefaults(globalArguments);
 	generateRhythms(globalArguments);
@@ -83,7 +87,7 @@ function parseArguments(args) {
 	} else {
 		argStructure.logLevel = 0;
 	}
-	//log('argStructure.logLevel:' + argStructure.logLevel + ' level:' + level + ' argv.verbose:' + argv.verbose, 'debug');
+	console.log('argStructure.logLevel:' + argStructure.logLevel + ' level:' + level + ' argv.verbose:' + argv.verbose);
 	return argStructure;
 }
 
@@ -111,7 +115,7 @@ function log(message,warnLevel) {
 		logLevel = 3;
 	}
 	//console.log("arguments.logLevel:" + globalArguments.logLevel + " logLevel " + logLevel + ' level:' + level);
-	if (typeof globalArguments.logLevel == 'undefined' || logLevel <= globalArguments.logLevel) {
+	if (logLevel <= globalArguments.logLevel) {
 		if (logLevel == 0) {
 			console.error(message);
 		} else if (logLevel == 1) {
@@ -149,15 +153,18 @@ function writeJSON(JSONoutpath) {
 }
 
 function writeMIDI(MIDIoutpath) {
-	log('writeMIDI ' + MIDIoutpath, 'info');
-	var midiFile = genMIDIFile();
-	if (MIDIoutpath != '' && midiFile != null) {
-		try {
-			var outFile = fs.openSync(MIDIoutpath,'w');
-			
-			fs.writeSync(outFile,midiFile);
-		} catch (err) {
-		   log(err,'error');
+	log('writeMIDI ' + MIDIoutpath, 'debug');
+	
+	if (MIDIoutpath != '') {
+		var midiFile = genMIDIFile();
+		if (midiFile != null) {
+			try {
+				var outFile = fs.openSync(MIDIoutpath,'w');
+				
+				fs.writeSync(outFile,midiFile);
+			} catch (err) {
+			   log(err,'error');
+			}
 		}
 	}
 }
@@ -191,35 +198,54 @@ function generateRhythms(arguments) {
 	log('generateRhythms()','info');
 	for (var j=0;j<rhythms.tracks.length;j++) {
 		createEmptyTrackEventArrays(j)
+		if (!shouldRun(j)) break;
 		if (rhythms.tracks[j].type == 'beat') {
 			generateBeat(j);
 			addPitches(j);
+			geometricTrackChromatic(j);
 			addChordSymbols(j);
+			convertChordsToPitches(j);
 		} else if (rhythms.tracks[j].type == 'rhythm') {
 			generateRhythm(j);
 			setDuration(j);
 			setCounts(j);
 			computePolyLCM(j);
 			addPitches(j);
+			geometricTrackChromatic(j);
 			addChordSymbols(j);
+			convertChordsToPitches(j);
 		} else if (rhythms.tracks[j].type == 'concatenate') {
-			concatenatePeriodicity(j);
+			concatenateTracks(j);
 			setDuration(j);
 			computePolyLCM(j);
 			addPitches(j);
+			geometricTrackChromatic(j);
 			addChordSymbols(j);
+			convertChordsToPitches(j);
 		} else if (rhythms.tracks[j].type == 'clone') {
 			clonePeriodicity(j);
 			setDuration(j);
 			addPitches(j);
+			geometricTrackChromatic(j);
 			addChordSymbols(j);
+			convertChordsToPitches(j);
+		} else if (rhythms.tracks[j].type == 'merge') {
+			mergeTracks(j);
+			geometricTrackChromatic(j);
 		} else if (rhythms.tracks[j].type == 'split') {
 			splitSetUp(j);
 			splitTrack(j);
+			addPitches(j);
+			geometricTrackChromatic(j);
+			addChordSymbols(j);
+			convertChordsToPitches(j);
+		} else if (rhythms.tracks[j].type == 'progression') {
+			generateProgression(j);
 		} else if (rhythms.tracks[j].type == 'none') {
 			addPitches(j);
+			geometricTrackChromatic(j);
 			addChordSymbols(j);
-			//used for periodicities that are only the result of another task (e.g., split).
+			convertChordsToPitches(j);
 		} else {
 			log('ERROR! Unknown track type:' + rhythms.tracks[j].type, 'error');
 		}
@@ -240,115 +266,107 @@ function populateGlobalDefaults(arguments) {
 	}
 }
 
-function createEmptyTrackEventArrays(trackToBuild) {
-	log('createEmptyTrackEventArrays(' + trackToBuild + ')','info');
-	if (typeof rhythms.tracks[trackToBuild].events == 'undefined') {
-		rhythms.tracks[trackToBuild].events = [];
+function createEmptyTrackEventArrays(TrackToBuild) {
+	log('createEmptyTrackEventArrays(' + TrackToBuild + ')','info');
+	if (typeof rhythms.tracks[TrackToBuild].events == 'undefined') {
+		rhythms.tracks[TrackToBuild].events = [];
 	}
-	if (typeof rhythms.tracks[trackToBuild].run == 'undefined') {
-		rhythms.tracks[trackToBuild].run = true
+	if (typeof rhythms.tracks[TrackToBuild].run == 'undefined') {
+		rhythms.tracks[TrackToBuild].run = true
 	}
 }
 
-function populateName(trackToBuild, name) {
+function populateName(TrackToBuild, name) {
 	//Autopopulate name
-	if (typeof rhythms.tracks[trackToBuild].name == 'undefined' || rhythms.tracks[trackToBuild].name.length == 0) {
-		rhythms.tracks[trackToBuild].name = name;
+	if (typeof rhythms.tracks[TrackToBuild].name == 'undefined' || rhythms.tracks[TrackToBuild].name.length == 0) {
+		rhythms.tracks[TrackToBuild].name = name;
 	}
 }
 
-function populateID(trackToBuild) {
-	if (typeof rhythms.tracks[trackToBuild].id == 'undefined' || rhythms.tracks[trackToBuild].id.length == 0) {
-		rhythms.tracks[trackToBuild].id = trackToBuild;
+function populateID(TrackToBuild) {
+	if (typeof rhythms.tracks[TrackToBuild].id == 'undefined' || rhythms.tracks[TrackToBuild].id.length == 0) {
+		rhythms.tracks[TrackToBuild].id = TrackToBuild;
 	}
 }
 
-function generateBeat(trackToBuild) {
-	if (!shouldRun(trackToBuild)) {
-		return;
-	}
-	log('generateBeat(' + trackToBuild + ')', 'info');
-	populateName(trackToBuild, "Beat of " + rhythms.tracks[trackToBuild].period);
-	populateID(trackToBuild);
+function generateBeat(TrackToBuild) {
+	log('generateBeat(' + TrackToBuild + ')', 'info');
+	populateName(TrackToBuild, "Beat of " + rhythms.tracks[TrackToBuild].period);
+	populateID(TrackToBuild);
 	
 	var offset = 1;
-	if (typeof rhythms.tracks[trackToBuild].offsetFrom == 'undefined' && typeof rhythms.tracks[trackToBuild].offsetAmount !== 'undefined') {
+	if (typeof rhythms.tracks[TrackToBuild].offsetFrom == 'undefined' && typeof rhythms.tracks[TrackToBuild].offsetAmount !== 'undefined') {
 		
-		log('offsetAmount:' + rhythms.tracks[trackToBuild].offsetAmount, 'debug');
-		offset = ((rhythms.tracks[trackToBuild].offsetAmount * rhythms.tracks[trackToBuild].period));
+		log('offsetAmount:' + rhythms.tracks[TrackToBuild].offsetAmount, 'debug');
+		offset = ((rhythms.tracks[TrackToBuild].offsetAmount * rhythms.tracks[TrackToBuild].period));
 		var entry = {
 			index: offset,
-			duration: rhythms.tracks[trackToBuild].period
+			duration: rhythms.tracks[TrackToBuild].period
 		};
-		rhythms.tracks[trackToBuild].events.push(entry);
+		rhythms.tracks[TrackToBuild].events.push(entry);
 		log('local offset:' + offset, 'debug');
-	} else if (typeof rhythms.tracks[trackToBuild].offsetFrom !== 'undefined' && typeof rhythms.tracks[trackToBuild].offsetAmount !== 'undefined') {
-		log('offsetFrom:' + rhythms.tracks[trackToBuild].offsetAmount + '=' + rhythms.tracks[rhythms.tracks[trackToBuild].offsetFrom].period + ' offset:' + rhythms.tracks[trackToBuild].offsetAmount, 'debug');
+	} else if (typeof rhythms.tracks[TrackToBuild].offsetFrom !== 'undefined' && typeof rhythms.tracks[TrackToBuild].offsetAmount !== 'undefined') {
+		log('offsetFrom:' + rhythms.tracks[TrackToBuild].offsetAmount + '=' + rhythms.tracks[rhythms.tracks[TrackToBuild].offsetFrom].period + ' offset:' + rhythms.tracks[TrackToBuild].offsetAmount, 'debug');
 		
-		offset = ((rhythms.tracks[trackToBuild].offsetAmount * rhythms.tracks[rhythms.tracks[trackToBuild].offsetFrom].period));
+		offset = ((rhythms.tracks[TrackToBuild].offsetAmount * rhythms.tracks[rhythms.tracks[TrackToBuild].offsetFrom].period));
 		log('Offset is From Another:' + offset, 'debug');
 	} else {
 		offset = 0;
 		log('defaultOffset:' + offset, 'debug');
 	}
-	var limit = rhythms.tracks[trackToBuild].endAt + offset;
+	var limit = rhythms.tracks[TrackToBuild].endAt + offset;
 	log('limit:' + limit, 'debug');
 	for (var k=offset;k<=limit;k++) {
-		log('k:' + (k + offset) + ' period:' + rhythms.tracks[trackToBuild].period, 'debug');
-		if ((k - offset) % rhythms.tracks[trackToBuild].period == 0) {
+		log('k:' + (k + offset) + ' period:' + rhythms.tracks[TrackToBuild].period, 'debug');
+		if ((k - offset) % rhythms.tracks[TrackToBuild].period == 0) {
 		//add an entry to the result
 			if (k < limit) {
 				var entry = {
 					index: k,
-					duration: rhythms.tracks[trackToBuild].period,
+					duration: rhythms.tracks[TrackToBuild].period,
 					count: 1
 				};
-				rhythms.tracks[trackToBuild].events.push(entry);
+				rhythms.tracks[TrackToBuild].events.push(entry);
 			}
 		}
 	}
-	rhythms.tracks[trackToBuild].run = false;
+	rhythms.tracks[TrackToBuild].run = false;
 }
 
-function generateRhythm(trackToBuild) {
-	if (!shouldRun(trackToBuild)) {
-		return;
-	}
-	log('generateRhythm(' + trackToBuild + ')', 'info');
-	populateName(trackToBuild, "Rhythm combining " + stringifySourceArray(rhythms.tracks[trackToBuild].sources));
-	populateID(trackToBuild);
+function generateRhythm(TrackToBuild) {
+	log('generateRhythm(' + TrackToBuild + ')', 'info');
+	populateName(TrackToBuild, "Rhythm combining " + stringifySourceArray(rhythms.tracks[TrackToBuild].sources));
+	populateID(TrackToBuild);
 	var HighIndex = 0;
 	var sourceTrack;
-	for (var source=0;source<rhythms.tracks[trackToBuild].sources.length;source++) {
-		var sourceTrack = rhythms.tracks[trackToBuild].sources[source].source;
+	for (var source=0;source<rhythms.tracks[TrackToBuild].sources.length;source++) {
+		var sourceTrack = rhythms.tracks[TrackToBuild].sources[source].source;
 		if (rhythms.tracks[sourceTrack].events[rhythms.tracks[sourceTrack].events.length-1].index > HighIndex) {
 			HighIndex = rhythms.tracks[sourceTrack].events[rhythms.tracks[sourceTrack].events.length-1].index;
 		}
 	}
-	rhythms.tracks[trackToBuild].endAt = HighIndex;
+	rhythms.tracks[TrackToBuild].endAt = HighIndex;
 	var lastIndex = -1;
-	log('sources:' + JSON.stringify(rhythms.tracks[trackToBuild].sources), 'debug');
-	for (var k=0;k<=rhythms.tracks[trackToBuild].endAt;k++) {
-		for (var source=0;source<rhythms.tracks[trackToBuild].sources.length;source++) {
-			sourceTrack = rhythms.tracks[trackToBuild].sources[source].source
+	log('sources:' + JSON.stringify(rhythms.tracks[TrackToBuild].sources), 'debug');
+	for (var k=0;k<=rhythms.tracks[TrackToBuild].endAt;k++) {
+		for (var source=0;source<rhythms.tracks[TrackToBuild].sources.length;source++) {
+			sourceTrack = rhythms.tracks[TrackToBuild].sources[source].source
 			sourceLoop:
 			for (var m=0;m<rhythms.tracks[sourceTrack].events.length;m++) {
 				log(rhythms.tracks[sourceTrack].events[m].index + ' ' + k + ' li:' + lastIndex, 'debug');
 				if (typeof rhythms.tracks[sourceTrack].events[m].index != 'undefined' && rhythms.tracks[sourceTrack].events[m].index == k && rhythms.tracks[sourceTrack].events[m].index > lastIndex) {
-					var entry = {
-						index: k,
-						duration: rhythms.tracks[sourceTrack].events[m].duration,
-						count: 0
-					};
+					var entry = rhythms.tracks[sourceTrack].events[m];
+					entry.index = k;
+					entry.count = 0
 					lastIndex = k;
-					rhythms.tracks[trackToBuild].events.push(entry);
-					log(JSON.stringify(rhythms.tracks[trackToBuild].events), 'debug');
+					rhythms.tracks[TrackToBuild].events.push(entry);
+					log(JSON.stringify(rhythms.tracks[TrackToBuild].events), 'debug');
 					break sourceLoop;
 				}	
 			}
 		}	
 	}
-	rhythms.tracks[trackToBuild].run = false;
+	rhythms.tracks[TrackToBuild].run = false;
 }
 
 function stringifySourceArray(jsonArray) {
@@ -362,41 +380,38 @@ function stringifySourceArray(jsonArray) {
 	return temp;
 }
 
-function shouldRun(trackToBuild) {
-	if (typeof rhythms.tracks[trackToBuild].run != 'undefined' && rhythms.tracks[trackToBuild].run == false) {
+function shouldRun(TrackToBuild) {
+	if (typeof rhythms.tracks[TrackToBuild].run != 'undefined' && rhythms.tracks[TrackToBuild].run == false) {
 		return false;
 	} else {
-		rhythms.tracks[trackToBuild].run = true;
+		rhythms.tracks[TrackToBuild].run = true;
 	}
-return true;	
+	return true;	
 }
 
-function concatenatePeriodicity(trackToBuild) {
-	if (!shouldRun(trackToBuild)) {
-		return;
-	}
-	log('concatenatePeriodicity(' + trackToBuild + ')','info');
+function concatenateTracks(TrackToBuild) {
+	log('concatenateTracks(' + TrackToBuild + ')','info');
 	var lastIndex = 0;
 	var lastDuration = 0;
 	var lastCount = 0;
 	var newIndex = 0;
-	populateName(trackToBuild, "Rhythm combining " + stringifySourceArray(rhythms.tracks[trackToBuild].sources));
-	populateID(trackToBuild);
-	for (var source=0;source<rhythms.tracks[trackToBuild].sources.length;source++) { //for each already created source periodicity
+	populateName(TrackToBuild, "Rhythm combining " + stringifySourceArray(rhythms.tracks[TrackToBuild].sources));
+	populateID(TrackToBuild);
+	for (var source=0;source<rhythms.tracks[TrackToBuild].sources.length;source++) { //for each already created source periodicity
 		var reIndexTo = null;
-		if (typeof rhythms.tracks[trackToBuild].reIndexTo != 'undefined') {
-			reIndexTo = rhythms.tracks[trackToBuild].reIndexTo;
+		if (typeof rhythms.tracks[TrackToBuild].reIndexTo != 'undefined') {
+			reIndexTo = rhythms.tracks[TrackToBuild].reIndexTo;
 		}
 		var offset = 1;
-		if (typeof rhythms.tracks[trackToBuild].sources[source].offsetFrom == 'undefined' && typeof rhythms.tracks[trackToBuild].sources[source].offsetAmount !== 'undefined') {
+		if (typeof rhythms.tracks[TrackToBuild].sources[source].offsetFrom == 'undefined' && typeof rhythms.tracks[TrackToBuild].sources[source].offsetAmount !== 'undefined') {
 			log('source:' + source, 'debug');
 			log('source duration:' + rhythms.tracks[source].events[0].duration, 'debug');
-			var sourceTrack = rhythms.tracks[trackToBuild].sources[source].source;
-			offset = (rhythms.tracks[trackToBuild].sources[source].offsetAmount * (rhythms.tracks[sourceTrack].events[0].duration + rhythms.tracks[sourceTrack].events[0].index));
-			log('   source:' + source + ' offsetAmount:' + rhythms.tracks[trackToBuild].sources[source].offsetAmount + ' source index:' + rhythms.tracks[sourceTrack].events[0].index + ' source duration:' + rhythms.tracks[sourceTrack].events[0].duration + ' offset:' + offset, 'debug');
-		} else if (typeof rhythms.tracks[trackToBuild].sources[source].offsetFrom !== 'undefined' && typeof rhythms.tracks[trackToBuild].sources[source].offsetAmount !== 'undefined') {
-			offset = ((rhythms.tracks[trackToBuild].sources[source].offsetAmount * rhythms.tracks[rhythms.tracks[trackToBuild].sources[source].offsetFrom].events[0].duration));
-			log('   source:' + rhythms.tracks[trackToBuild].sources[source].offsetFrom + ' offsetAmount:' + rhythms.tracks[trackToBuild].sources[source].offsetAmount + ' source index:' + rhythms.tracks[sourceTrack].events[0].index + ' source duration:' + rhythms.tracks[sourceTrack].events[0].duration + ' offset:' + offset, 'debug');
+			var sourceTrack = rhythms.tracks[TrackToBuild].sources[source].source;
+			offset = (rhythms.tracks[TrackToBuild].sources[source].offsetAmount * (rhythms.tracks[sourceTrack].events[0].duration + rhythms.tracks[sourceTrack].events[0].index));
+			log('   source:' + source + ' offsetAmount:' + rhythms.tracks[TrackToBuild].sources[source].offsetAmount + ' source index:' + rhythms.tracks[sourceTrack].events[0].index + ' source duration:' + rhythms.tracks[sourceTrack].events[0].duration + ' offset:' + offset, 'debug');
+		} else if (typeof rhythms.tracks[TrackToBuild].sources[source].offsetFrom !== 'undefined' && typeof rhythms.tracks[TrackToBuild].sources[source].offsetAmount !== 'undefined') {
+			offset = ((rhythms.tracks[TrackToBuild].sources[source].offsetAmount * rhythms.tracks[rhythms.tracks[TrackToBuild].sources[source].offsetFrom].events[0].duration));
+			log('   source:' + rhythms.tracks[TrackToBuild].sources[source].offsetFrom + ' offsetAmount:' + rhythms.tracks[TrackToBuild].sources[source].offsetAmount + ' source index:' + rhythms.tracks[sourceTrack].events[0].index + ' source duration:' + rhythms.tracks[sourceTrack].events[0].duration + ' offset:' + offset, 'debug');
 			log('Offset is From Another:' + offset, 'debug');
 		} else {
 			offset = 0;
@@ -404,50 +419,50 @@ function concatenatePeriodicity(trackToBuild) {
 			log('defaultOffset:' + offset, 'debug');
 		}
 		log('offset:' + offset, 'debug');
-		var sourceTrack = rhythms.tracks[trackToBuild].sources[source].source;
+		var sourceTrack = rhythms.tracks[TrackToBuild].sources[source].source;
 		var muteInitial;
-		if (typeof rhythms.tracks[trackToBuild].sources[source].muteInitial == 'undefined' || rhythms.tracks[trackToBuild].sources[source].muteInitial == false) {
+		if (typeof rhythms.tracks[TrackToBuild].sources[source].muteInitial == 'undefined' || rhythms.tracks[TrackToBuild].sources[source].muteInitial == false) {
 			muteInitial = false;
-		} else if (rhythms.tracks[trackToBuild].sources[source].muteInitial == true) {
+		} else if (rhythms.tracks[TrackToBuild].sources[source].muteInitial == true) {
 			muteInitial = true;
 		}
 		log('   muteInitial: ' + muteInitial, 'debug');
 		var concatenateType;
-		if (typeof rhythms.tracks[trackToBuild].sources[source].permutation == 'undefined' || rhythms.tracks[trackToBuild].sources[source].permutation == 'none') {
+		if (typeof rhythms.tracks[TrackToBuild].sources[source].permutation == 'undefined' || rhythms.tracks[TrackToBuild].sources[source].permutation == 'none') {
 			concatenateType = 'none';
-		} else if (rhythms.tracks[trackToBuild].sources[source].permutation == 'left') {
+		} else if (rhythms.tracks[TrackToBuild].sources[source].permutation == 'left') {
 			concatenateType = 'left';
-		} else if (rhythms.tracks[trackToBuild].sources[source].permutation == 'right') {
+		} else if (rhythms.tracks[TrackToBuild].sources[source].permutation == 'right') {
 			concatenateType = 'right';
-		} else if (rhythms.tracks[trackToBuild].sources[source].permutation == 'retrograde') {
+		} else if (rhythms.tracks[TrackToBuild].sources[source].permutation == 'retrograde') {
 			concatenateType = 'retrograde';
-		} else if (rhythms.tracks[trackToBuild].sources[source].permutation == 'custom') {
+		} else if (rhythms.tracks[TrackToBuild].sources[source].permutation == 'custom') {
 			concatenateType = 'custom';
 		}
 		log('   concatenate type:' + concatenateType, 'debug');
 		var increment;
-		if (typeof rhythms.tracks[trackToBuild].sources[source].increment != 'undefined') {
+		if (typeof rhythms.tracks[TrackToBuild].sources[source].increment != 'undefined') {
 			
-			if (typeof rhythms.tracks[trackToBuild].sources[source].increment == 'string' && rhythms.tracks[trackToBuild].sources[source].increment.indexOf('%') == rhythms.tracks[trackToBuild].sources[source].increment.length-1) {
+			if (typeof rhythms.tracks[TrackToBuild].sources[source].increment == 'string' && rhythms.tracks[TrackToBuild].sources[source].increment.indexOf('%') == rhythms.tracks[TrackToBuild].sources[source].increment.length-1) {
 				//increment is a percentage
-				increment = Math.round(rhythms.tracks[sourceTrack].events.length-1 / parseInt(substring(rhythms.tracks[trackToBuild].sources[source].increment,0,rhythms.tracks[trackToBuild].sources[source].increment.length-2)));
+				increment = Math.round(rhythms.tracks[sourceTrack].events.length-1 / parseInt(substring(rhythms.tracks[TrackToBuild].sources[source].increment,0,rhythms.tracks[TrackToBuild].sources[source].increment.length-2)));
 			} else {
 				//increment is an integer
-				increment = rhythms.tracks[trackToBuild].sources[source].increment;
+				increment = rhythms.tracks[TrackToBuild].sources[source].increment;
 			}
 		} else {
 			increment = 1;
 		}
 		
 		log('   increment:' + increment, 'debug');
-		var startAt = rhythms.tracks[trackToBuild].sources[source].startAt;
-		if (typeof rhythms.tracks[trackToBuild].sources[source].startAt != 'undefined') {
-			if (typeof rhythms.tracks[trackToBuild].sources[source].startAt == 'string'  && rhythms.tracks[trackToBuild].sources[source].startAt.indexOf('%') > -1) {
+		var startAt = rhythms.tracks[TrackToBuild].sources[source].startAt;
+		if (typeof rhythms.tracks[TrackToBuild].sources[source].startAt != 'undefined') {
+			if (typeof rhythms.tracks[TrackToBuild].sources[source].startAt == 'string'  && rhythms.tracks[TrackToBuild].sources[source].startAt.indexOf('%') > -1) {
 				//startAt is a percentage
-				startAt = Math.round(rhythms.tracks[sourceTrack].events.length-1 / parseInt(substring(rhythms.tracks[trackToBuild].sources[source].startAt,0,rhythms.tracks[trackToBuild].sources[source].startAt.length-2)));
+				startAt = Math.round(rhythms.tracks[sourceTrack].events.length-1 / parseInt(substring(rhythms.tracks[TrackToBuild].sources[source].startAt,0,rhythms.tracks[TrackToBuild].sources[source].startAt.length-2)));
 			} else {
 				//startAt is an integer
-				startAt = rhythms.tracks[trackToBuild].sources[source].startAt;
+				startAt = rhythms.tracks[TrackToBuild].sources[source].startAt;
 			}
 		} else {
 			if (concatenateType == 'none' || concatenateType == 'custom') {
@@ -459,8 +474,8 @@ function concatenatePeriodicity(trackToBuild) {
 			}
 		}
 		var endAt;
-		if (typeof rhythms.tracks[trackToBuild].sources[source].endAt != 'undefined') {
-			endAt = rhythms.tracks[trackToBuild].sources[source].endAt
+		if (typeof rhythms.tracks[TrackToBuild].sources[source].endAt != 'undefined') {
+			endAt = rhythms.tracks[TrackToBuild].sources[source].endAt
 		} else if (concatenateType == 'retrograde') {
 			endAt = 0;
 		} else {
@@ -477,11 +492,11 @@ function concatenatePeriodicity(trackToBuild) {
 				lastIndex = rhythms.tracks[sourceTrack].events[loopCount].index;
 				lastDuration = rhythms.tracks[sourceTrack].events[loopCount].duration;
 				lastCount = rhythms.tracks[sourceTrack].events[loopCount].count;
-				var entry = JSON.parse(JSON.stringify(rhythms.tracks[sourceTrack].events[loopCount]));
+				var entry = rhythms.tracks[sourceTrack].events[loopCount];
 				entry.index = lastIndex + newIndex + offset;
 				entry.duration = lastDuration;
 				entry.count = lastCount;
-				rhythms.tracks[trackToBuild].events.push(entry);
+				rhythms.tracks[TrackToBuild].events.push(entry);
 				log('loopCount:' + loopCount + ' ' + JSON.stringify(entry), 'debug');
 			}
 			if (concatenateType == 'left' || concatenateType == 'right') {
@@ -491,11 +506,11 @@ function concatenatePeriodicity(trackToBuild) {
 				var loopCount2;
 				log('left--2nd loop. ' + 'loopCount:' + loopCount + ' startAt:' + startAt + ' increment:' + increment, 'debug');
 				for (loopCount2=loopCount;loopCount2<startAt;loopCount2+=increment) {
-					var entry = JSON.parse(JSON.stringify(rhythms.tracks[sourceTrack].events[loopCount2]));
+					var entry = rhythms.tracks[sourceTrack].events[loopCount2];
 					entry.index = lastIndex + newIndex + lastDuration;
 					entry.duration = rhythms.tracks[sourceTrack].events[loopCount2].duration;
 					entry.count = rhythms.tracks[sourceTrack].events[loopCount2].count;
-					rhythms.tracks[trackToBuild].events.push(entry);
+					rhythms.tracks[TrackToBuild].events.push(entry);
 					log(JSON.stringify(entry), 'debug');
 				}
 			}
@@ -506,16 +521,16 @@ function concatenatePeriodicity(trackToBuild) {
 					swapStart = startAt;
 					swapEnd = endAt;
 				} else if (startAt > endAt) {
-					swapStat = endAt;
+					swapStart = endAt;
 					swapEnd = startAt;
 				} else {
 					//start and end are equal so there is nothing to do.
 				}
 				while (swapStart < swapEnd) {
 					var swapTemp = {};
-					swapTemp = rhythms.tracks[trackToBuild].events[swapStart];
-					rhythms.tracks[trackToBuild].events[swapStart] = rhythms.tracks[trackToBuild].events[swapEnd];
-					rhythms.tracks[trackToBuild].events[swapEnd] = swapTemp;
+					swapTemp = rhythms.tracks[TrackToBuild].events[swapStart];
+					rhythms.tracks[TrackToBuild].events[swapStart] = rhythms.tracks[TrackToBuild].events[swapEnd];
+					rhythms.tracks[TrackToBuild].events[swapEnd] = swapTemp;
 					swapStart += 1;
 					swapEnd -= 1;
 				}
@@ -524,40 +539,40 @@ function concatenatePeriodicity(trackToBuild) {
 				tempArray = [];
 				var loopCount = 0;
 				for (loopCount=startAt;loopCount<endAt;loopCount++) {
-					tempArray.push(rhythms.tracks[trackToBuild].events[loopCount]);
+					tempArray.push(rhythms.tracks[TrackToBuild].events[loopCount]);
 				}
 				log('customconcatenate:' + JSON.stringify(tempArray), 'debug');
 				rhythmCount = startAt;
 				var currentIndex = 0
-				for (loopCount=0;loopCount<rhythms.tracks[trackToBuild].sources[source].permOrder.length;loopCount++) {
-					currentIndex = rhythms.tracks[trackToBuild].sources[source].permOrder[loopCount] - 1;
-					rhythms.tracks[trackToBuild].events[rhythmCount] = tempArray[currentIndex];
+				for (loopCount=0;loopCount<rhythms.tracks[TrackToBuild].sources[source].permOrder.length;loopCount++) {
+					currentIndex = rhythms.tracks[TrackToBuild].sources[source].permOrder[loopCount] - 1;
+					rhythms.tracks[TrackToBuild].events[rhythmCount] = tempArray[currentIndex];
 					log('loopCount:' + loopCount + ' currentIndex:' + currentIndex + ' entry:' + JSON.stringify(tempArray[currentIndex]), 'debug');
 					rhythmCount++
 				}
 			}
 		}
 		if (reIndexTo != null && source == 0) {
-			fixIndexValues(trackToBuild, reIndexTo);
+			fixIndexValues(TrackToBuild, reIndexTo);
 		}
 		newIndex = lastIndex;
 	}
-	fixIndexValues(trackToBuild);
-	rhythms.tracks[trackToBuild].run = false;
+	fixIndexValues(TrackToBuild);
+	rhythms.tracks[TrackToBuild].run = false;
 }
 
-function computePolyLCM(trackToBuild) {
-	log('computePolyLCM(' + trackToBuild + ')','info');
-	if (typeof rhythms.tracks[trackToBuild].sources == 'undefined') return;
+function computePolyLCM(TrackToBuild) {
+	log('computePolyLCM(' + TrackToBuild + ')','info');
+	if (typeof rhythms.tracks[TrackToBuild].sources == 'undefined') return;
 	var pairs = [];
 	var pairLCM = [];
 	var LCMs = [];
-	//console.log('sources length:' + rhythms.tracks[trackToBuild].sources.length,'debug');
+	//console.log('sources length:' + rhythms.tracks[TrackToBuild].sources.length,'debug');
 	//we need to compute the LCM of each pair within a list of sources.
 	//first--figure out the pairs.
-	for (var increment=1;increment<rhythms.tracks[trackToBuild].sources.length;increment++) {
-		for (var source=0;source<rhythms.tracks[trackToBuild].sources.length;source++) {
-			if ((source + increment) < rhythms.tracks[trackToBuild].sources.length) {
+	for (var increment=1;increment<rhythms.tracks[TrackToBuild].sources.length;increment++) {
+		for (var source=0;source<rhythms.tracks[TrackToBuild].sources.length;source++) {
+			if ((source + increment) < rhythms.tracks[TrackToBuild].sources.length) {
 				var temp = [];
 				if (rhythms.tracks[source].type == 'beat') {
 					//console.log('period:' + rhythms.tracks[source].period);
@@ -623,7 +638,7 @@ function computePolyLCM(trackToBuild) {
 		//resolveFlag = true;
 	}
 	//console.log('final LCM:' + pairLCM[0]);
-	rhythms.tracks[trackToBuild].LCM = pairLCM[0];
+	rhythms.tracks[TrackToBuild].LCM = pairLCM[0];
 }
 
 function removeDupeArrayElements(inputArray) {
@@ -657,6 +672,31 @@ function computeLCM(n1, n2) {
 		return (n1 * n2) / hcf
 }
 
+function mergeTracks(trackToBuild) {
+	log('mergeTracks(' + trackToBuild + ')','info');
+	populateName(trackToBuild, "Track combining rhythm track: " + rhythms.tracks[trackToBuild].rhythmSource + ' and ' + rhythms.tracks[trackToBuild].pitchSource);
+	populateID(trackToBuild);
+	var rhythmSourceTrack = rhythms.tracks[trackToBuild].rhythmSource;
+	var pitchSourceTrack = rhythms.tracks[trackToBuild].pitchSource;
+	var currentRhythmNote = 0;
+	var currentPitchNote = 0;
+	for (currentRhythmNote=0;currentRhythmNote<rhythms.tracks[rhythmSourceTrack].events.length;currentRhythmNote++) {
+		var mergedNote = [];
+		mergedNote.index = rhythms.tracks[rhythmSourceTrack].events[currentRhythmNote].index;
+		mergedNote.duration = rhythms.tracks[rhythmSourceTrack].events[currentRhythmNote].duration;
+		if (typeof rhythms.tracks[pitchSourceTrack].events[currentPitchNote].pitch != 'undefined') {
+			mergedNote.pitch = rhythms.tracks[pitchSourceTrack].events[currentPitchNote].pitch;
+		}
+		if (typeof rhythms.tracks[pitchSourceTrack].events[currentPitchNote].chord != 'undefined') {
+			mergedNote.chord = rhythms.tracks[pitchSourceTrack].events[currentPitchNote].chord;
+		}
+		currentPitchNote++;
+		if (currentPitchNote >= rhythms.tracks[pitchSourceTrack].events.length) {
+			currentPitchNote = 0;
+		}
+	}
+}
+
 function splitSetUp(trackToBuild) {
 	if (typeof rhythms.tracks[trackToBuild].targets == 'undefined' && typeof rhythms.tracks[trackToBuild].createTargets != 'undefined') {
 		var targets = [];
@@ -679,9 +719,6 @@ function splitSetUp(trackToBuild) {
 }
 
 function splitTrack(trackToBuild) {
-	if (!shouldRun(trackToBuild)) {
-		return;
-	}
 	if (typeof rhythms.tracks[trackToBuild].targetCounts != 'undefined') {
 		splitTrackByList(trackToBuild, rhythms.tracks[trackToBuild].targetCounts);
 	} else if (typeof rhythms.tracks[trackToBuild].useNoteCount != 'undefined' && rhythms.tracks[trackToBuild].useNoteCount == true) {
@@ -719,9 +756,7 @@ function splitTrackByNoteCount(trackToBuild) {
 	}
 }
 
-
 function splitTrackByList(trackToBuild, countArray) {
-
 	for (var i=0;i<rhythms.tracks[trackToBuild].targets.length;i++) {
 		populateName(rhythms.tracks[trackToBuild].targets[i], 'Split of track ' + trackToBuild);
 		populateID(rhythms.tracks[trackToBuild].targets[i]);
@@ -816,6 +851,227 @@ function addPitches(trackToBuild) {
 	}
 }
 
+function getSubstitutePitch(interval, key, multiplier, intervalDirection, rootCode, invertPitchCode, bias) {
+	var curPitchCode;
+	if (intervalDirection < 0) {
+		if (multiplier != 1) {
+			curPitchCode = rootCode - (interval*Math.abs(multiplier));
+		} else {
+			curPitchCode = invertPitchCode;
+		}
+	} else {
+		if (multiplier != 1) {
+			curPitchCode = rootCode + (interval*Math.abs(multiplier));
+		} else {
+			curPitchCode = invertPitchCode;
+		}
+	}
+	if (typeof key.scale == 'undefined' || key.scale == "Chromatic") {
+		return curPitchCode;		
+	}
+	
+	var curPitchName = getPitchCode(curPitchCode,"pitch");
+	//console.log('curPitchCode:' + curPitchCode + ' curPitchName:' + JSON.stringify(curPitchName));
+	var intCurPitchCode = Math.round(curPitchCode);
+	var tempPitch = curPitchName.match(/([A|B|C|D|E|F|G][#|b]?)(-?\d\d?)/);
+	var octave = tempPitch[2];
+	scale = getScale(key);
+	var scalePitches = flattenArray(pitchChords.scalesExpanded[scale.keyIndex].scales[scale.scaleIndex].pitches);
+	//console.log(JSON.stringify(scalePitches));
+	var closestPitchCode;
+	var closestDistance = 999;
+	//var closestScalePitch;
+	if (bias == '+') {
+		for (var i=0;i<scalePitches.length;i++) {
+			var compPitchName = scalePitches[i] + octave.toString()
+			var compPitchCode = getPitchCode(compPitchName,"code");
+
+			if (Math.abs((intCurPitchCode - compPitchCode)) <= closestDistance) {
+				closestPitchCode = compPitchCode;
+				closestDistance = Math.abs(intCurPitchCode - compPitchCode)
+			}
+			//console.log('curPitchName:' + curPitchName + '   curPitchCode:' + intCurPitchCode + '   compPitchName:' + compPitchName + '   compPitchCode:' + compPitchCode + '   closestPitchCode:' + closestPitchCode + ' closestDistance:' + closestDistance + '   currentDistance:' + Math.abs(intCurPitchCode - compPitchCode));
+		}
+	} else {
+		for (var i=scalePitches.length-1;i>0;i--) {
+			var compPitchName = scalePitches[i] + octave.toString()
+			var compPitchCode = getPitchCode(compPitchName,"code");
+
+			if (Math.abs((intCurPitchCode - compPitchCode)) <= closestDistance) {
+				closestPitchCode = compPitchCode;
+				closestDistance = Math.abs(intCurPitchCode - compPitchCode)
+			}
+			//console.log('curPitchName:' + curPitchName + '   curPitchCode:' + intCurPitchCode + '   compPitchName:' + compPitchName + '   compPitchCode:' + compPitchCode + '   closestPitchCode:' + closestPitchCode + ' closestDistance:' + closestDistance + '   currentDistance:' + Math.abs(intCurPitchCode - compPitchCode));
+		}
+	}
+	//console.log('closestPitchCode:' + closestPitchCode);
+	return closestPitchCode;
+}
+
+
+function geometricTrackChromatic(TrackToBuild) {
+	log('geometricTrackChromatic(' + TrackToBuild + ')','info');
+	var rootPitch
+	if (typeof rhythms.tracks[TrackToBuild].pitchRoot != 'undefined') {
+		rootPitch = rhythms.tracks[TrackToBuild].pitchRoot;
+	} else {
+		return;
+	}
+	var multiplier = 1;
+	if (typeof rhythms.tracks[TrackToBuild].pitchMultiplier != 'undefined') {
+		multiplier = rhythms.tracks[TrackToBuild].pitchMultiplier;
+	}
+	if (multiplier==0) multiplier=1;
+	
+	var sharpFlatFlag;
+	if (typeof rhythms.tracks[TrackToBuild].sharpFlatFlag != 'undefined') {
+		sharpFlatFlag = rhythms.tracks[TrackToBuild].sharpFlatFlag;
+	} else {
+		sharpFlatFlag = '#';
+	}
+	var minPitch;
+	if (typeof rhythms.tracks[TrackToBuild].refitToMinPitch != 'undefined') {
+		minPitch = rhythms.tracks[TrackToBuild].refitToMinPitch;
+	} else {
+		minPitch = "A0";
+	}
+	var minPitchCode = getPitchCode(minPitch,"code");
+	var maxPitch;
+	if (typeof rhythms.tracks[TrackToBuild].refitToMaxPitch != 'undefined') {
+		maxPitch = rhythms.tracks[TrackToBuild].refitToMaxPitch;
+	} else {
+		maxPitch = "Ab9";
+	}
+	var maxPitchCode = getPitchCode(maxPitch,"code");
+	
+	var invertPitchCode = 0;
+	var rootCode = getPitchCode(rootPitch,"code");
+	
+	//log('   rootPitch:' + rootPitch + ' rootCode:' + rootCode + ' multiplier:' + multiplier + ' sharpFlatFlag:' + sharpFlatFlag + ' minPitch:' + minPitch + ' minPitchCode:' + minPitchCode + ' maxPitch:' + maxPitch + ' maxPitchCode:' + maxPitchCode,'info');
+	
+	for (noteIndex=0;noteIndex<rhythms.tracks[TrackToBuild].events.length;noteIndex++) {
+		var newPitches = [];
+		for (var i=0;i<rhythms.tracks[TrackToBuild].events[noteIndex].pitch.length;i++) {
+			var tempPitch = rhythms.tracks[TrackToBuild].events[noteIndex].pitch[i];
+			var curPitch;
+			if(tempPitch instanceof Array) {
+				curPitch = tempPitch;
+			} else {
+				curPitch = [];
+				curPitch.push(tempPitch);
+			}
+			for (var pitchCodeIndex=0;pitchCodeIndex<curPitch.length;pitchCodeIndex++) {
+				invertPitchCode = getPitchCode(curPitch[pitchCodeIndex],"code");
+				var interval = (invertPitchCode - rootCode);
+				var intervalDirection = interval * multiplier;
+				var key = {};
+				if (typeof rhythms.tracks[TrackToBuild].keyOf != 'undefined') {
+					key = parsekeyOf(rhythms.tracks[TrackToBuild].keyOf);
+				} else {
+					key.scale = "Chromatic";
+				}
+				curPitchCode = getSubstitutePitch(interval, key, multiplier, intervalDirection, rootCode, invertPitchCode, '+');
+				var newPitchCode = getPitchInRange(minPitchCode,maxPitchCode,curPitchCode);
+				newPitches.push(setSharpFlat(getPitchCode(newPitchCode,"pitch"),sharpFlatFlag));
+			}
+		}
+		rhythms.tracks[TrackToBuild].events[noteIndex].pitch = newPitches;
+	}
+}
+
+function setSharpFlat(pitchCode, sharpOrFlat) {
+	if (typeof pitchCode == 'undefined') return;
+	var fS = sharpOrFlat;
+	var tempPitch;
+	var returnPitch = [];
+	for (var i=0;i<pitchCode.length;i++) {
+		if (sharpOrFlat == '#') {
+			tempPitch = pitchCode[i].match(/[A|B|C|D|E|F|G]#\d/);
+			if (tempPitch != null) {
+				returnPitch.push(tempPitch);
+			}
+		} else {
+			tempPitch = pitchCode[i].match(/[A|B|C|D|E|F|G]b\d/);
+			if (tempPitch != null) {
+				returnPitch.push(tempPitch);
+			}
+		}
+	}
+	if (returnPitch.length == 0) {
+		returnPitch.push(pitchCode);
+	}
+	log('pitchCode:' + pitchCode + ' sharpOrFlat:' + sharpOrFlat + ' tempPitch:' + tempPitch + ' returnPitch:' + returnPitch + ' returnPitchLength:' + returnPitch.length, 'debug')
+	return returnPitch;
+}
+
+function getPitchCode(pitch, getCodeOrPitch) {
+	var pitches = pitchChords.pitches
+	if (typeof pitch == 'undefined' || pitch.length < 2) return;
+	if (typeof getCodeOrPitch == 'undefined' || getCodeOrPitch == "code") {
+		//console.log('getPitchCode(pitch:' + pitch + ', getCodeOrPitch:' + getCodeOrPitch + ' pitches.length:' + pitches.length,'debug');
+		for (var pitchFinderCount=0;pitchFinderCount<pitches.length;pitchFinderCount++) {
+			for (i=0;i<pitches[pitchFinderCount].length;i++) {
+				if (pitch == pitches[pitchFinderCount][i]) {
+					//log('   found Pitch Code:' + pitchFinderCount + ' for pitch:' + pitch,'debug');
+					return pitchFinderCount;
+				}
+				for (j=0;j<pitch.length;j++) {
+					if (pitch[j] == pitches[pitchFinderCount][i]) {
+						//log('  found Pitch Code:' + pitchFinderCount + ' for pitch:' + pitch,'debug');
+						return pitchFinderCount;
+					}
+				}
+			}
+		}
+		log('***ERROR Pitch Code NOT FOUND:' + pitch,'error');
+		return 0;
+	} else {
+		pitch = Math.round(pitch);
+		if (pitch < pitches.length) {
+			//console.log('   found Pitch:' + JSON.stringify(pitches[pitch]) + ' for Code:' + pitch,'debug');
+			return pitches[pitch][0];
+		} else {
+			log('***ERROR Pitch NOT FOUND for Code:' + pitch,'error');
+			return 0;
+		}
+	}
+}
+
+function getPitchInRange(minPitch,maxPitch,currentPitch) {
+	var curPitch = Math.round(currentPitch);
+	var range = 12;
+	if ((maxPitch - minPitch + 1) < 12) {
+		range = (maxPitch - minPitch + 1);
+	}
+	var index = pitchChords.pitches.length / range;
+	//TODO if diff between min & max is < 12, use it
+	//console.log('getPitchInRange(minPitch:' + minPitch + ' maxPitch:' + maxPitch + ' curPitch:' + curPitch + ')','error');
+	if (curPitch < minPitch) {
+		//console.log('curPitch < minPitch');
+		for (var i=1;i<=index;i++) {
+			var tempcurrentPitch = curPitch + (range*i);
+			//console.log('TEST < curPitch:' + curPitch + ' new:' + tempcurrentPitch + ' min:' + minPitch + ' max:' + maxPitch + ' i:' + i);
+			if (tempcurrentPitch >= minPitch && tempcurrentPitch <= maxPitch) {
+				//console.log('FOUND curPitch < minPitch - curPitch:' + currentPitch + ' new:' + tempcurrentPitch);
+				return tempcurrentPitch;
+			}
+		}
+	} else if (curPitch > maxPitch) {
+		for (var i=-1;i>=-index;i--) {
+			var tempcurrentPitch = curPitch + (range*i);
+			//console.log('TEST > curPitch:' + curPitch + ' new:' + tempcurrentPitch + ' min:' + minPitch + ' max:' + maxPitch + ' i:' + i);
+			if (tempcurrentPitch >= minPitch && tempcurrentPitch <= maxPitch) {
+				//console.log('FOUND curPitch > maxPitch - curPitch:' + curPitch + ' new:' + tempcurrentPitch);
+				return tempcurrentPitch;
+			}
+		}
+	} else {
+		return curPitch;
+	}
+	log('*****ERROR - Cannot get pitch in range' + ' curPitch:' + curPitch + ' maxPitch:' + maxPitch + ' minPitch:' + minPitch + ' range:' + range, 'error');
+	return 0;
+}
+
 function addChordSymbols(trackToBuild) {
 	if (typeof rhythms.tracks[trackToBuild].chords == 'undefined') return;
 	log('addChordSymbols(' + trackToBuild + ')', 'info');
@@ -823,7 +1079,6 @@ function addChordSymbols(trackToBuild) {
 	var symbolIndex = 0;
 	
 	for (var result=1;result<=rhythms.tracks[trackToBuild].events.length;result++) {
-		//this needs to support multiple pitches. All pitches need to be arrays. Pitches is an array of arrays
 		for (var i=0;i<rhythms.tracks[trackToBuild].chords[symbolIndex].length;i++) {
 			if (typeof rhythms.tracks[trackToBuild].events[result-1].chord == 'undefined') {
 				rhythms.tracks[trackToBuild].events[result-1].chord = [];
@@ -835,123 +1090,306 @@ function addChordSymbols(trackToBuild) {
 			symbolIndex = 0;
 		}
 	}
-	convertChordsToPitches(trackToBuild);
 }
 
-//TODO!
-function convertChordsToPitches(trackToBuild) {
-	log('convertChordsToPitches(' + trackToBuild + ')', 'info');
-	for (var result=1;result<rhythms.tracks[trackToBuild].events.length;result++) {
-		if (typeof rhythms.tracks[trackToBuild].events[result].chord != 'undefined') {
-			var symbol = rhythms.tracks[trackToBuild].events[result].chord[0];
-			var chordRoot;
-			var chordInversion;
-			/*Chord types
-			Maj (Major),
-			- (Minor),
-			° or o (Diminished),
-			7 (Dominant 7th),
-			Maj7 (Major 7th),
-			-7 (Minor 7th),
-			-maj7 (minor chord with major 7th),
-			7b9,
-			7#9,
-			7#9b5,
-			7b5,
-			7sus4,
-			sus4,
-			+,
-			9,
-			b9,
-			b9#11,
-			#9,
-			11,
-			#11,
-			b5,
-			-6,
-			-b6
-			*/
-			var chordType;
-			var chordVoicing;
-			//
-			var chordOctave;
-/*
-Fully defining a chord is a bit verbose, but it does allow for flexible expression.
-CMaj7v0i0r2
-chordRoot=C
-chordRootOctave=r2
-chordInversion=i0
-chordVoicing=v0
-chordType=Maj7
-*/
-			var temp = symbol.match(/[A|B|C|D|E|F|G][#|b]?/);
-			if (temp != null && temp.length > 0) {
-				chordRoot = temp;
-				symbol= symbol.replace(chordRoot,'');
-			}
-			var temp = symbol.match(/o[0-9]/);
-			if (temp != null && temp.length > 0) {
-				chordOctave = temp;
-				chordOctave = chordOctave.replace('o','');
-				symbol= symbol.replace(chordVoicing,'');
-			}
-			var temp = symbol.match(/v[0-9]{1,2}/);
-			if (temp != null && temp.length > 0) {
-				chordVoicing = temp;
-				chordVoicing = chordVoicing.replace('v','');
-				symbol= symbol.replace(chordVoicing,'');
-			}
+function generateProgression(TrackToBuild) {
 
-			var temp = symbol.match(/i[0-9]{1,2}/);
-			if (temp != null && temp.length > 0) {
-				chordInversion = temp;
-				chordInversion = chordInversion.replace('i','');
-				symbol= symbol.replace(chordInversion,'');
-			} else {
-				chordInversion = '0';
-			}
-			chordType = symbol;
-			console.log('chordRoot:' + chordRoot + ' chordType:' + chordType + ' chordInversion:' + chordInversion);
-			//we now know the chord's root, type (7, 9, etc.) and inversion, so the next step is to insert pitches.
-			//Look up the type and inversion to get the pitches
-			var type = -1;
-			var inversion = 0;
-			var voicing = 0;
-			var octave = 2;
-			var pitches = [];
-			//find the type
-			for (i=0;i<chords.length;i++) {
-				for (j=0;chords[i].symbols.length;j++) {
-					if (chords[i].symbols[j] = chordType) {
-						type = i;
-					}
-				}
-			}
-			if (type == -1) {
-				//if we didn't succeed, then fail? or default?
-				log("chord not found",'error');
-			}
-			//find the inversion
-			for (i=0;i<chords[type].toneOffsets.length;i++) {
-				if (chords[type].toneOffsets[i].inversion == chordInversion) {
-					inversion = i;
-				}
-			}
-			//find the voicing
-			for (i=0;i<chords[type].toneOffsets[inversion].voicings.length;i++) {
-				if (chords[type].toneOffsets[inversion].voicings[i] == chordVoicing) {
-					voicing = i;
-				}
-			}
-			if (typeof chords[type].toneOffsets[inversion].voicings[voicing].octave != 'undefined') {
-				octave = chords[type].toneOffsets[inversion].voicings[voicing].octave;
-			}
-			
-			//if we got this far, now we convert the numbers to pitches & octaves, and insert them
-			//for (i=0;i<) {
-			//}
+	var key;
+	if (typeof rhythms.tracks[TrackToBuild].keyOf != 'undefined') {
+		key = parsekeyOf(rhythms.tracks[TrackToBuild].keyOf);
+	}
+	var scale = getScale(key);
+
+	var motion = {};
+	motion.cycles = rhythms.tracks[TrackToBuild].progressionCycles;
+	motion.progressionSource = rhythms.tracks[TrackToBuild].progressionSource;
+	motion.progressionDirection = rhythms.tracks[TrackToBuild].progressionDirection;
+	motion.transformationSource = rhythms.tracks[TrackToBuild].transformationSource;
+	motion.transformationDirection = rhythms.tracks[TrackToBuild].transformationDirection;
+	var chord = {}
+	chord.currentRoot;
+	var currentCycle = 0;
+	for (progressionIndex=0;progressionIndex<rhythms.tracks[motion.progressionSource].events.length;progressionIndex++) {
+		//cycleIndex = how many times we use a specific cycle.
+		for (cycleIndex=0;cycleIndex<rhythms.tracks[motion.progressionSource].events[progressionIndex].duration;cycleIndex++) {
+			var newEvent = {};
+			newEvent.index = progressionIndex;
+			newEvent.duration = 1;
+			chord = getNextScaleChord(key,scale,chord,motion);
+			newEvent.chord = chord.currentRoot;
+			rhythms.tracks[TrackToBuild].events.push(newEvent);
+		}
+		currentCycle++;
+		if (currentCycle > motion.cycles.length-1) currentCycle = 0;
+	}
+	eventIndex = 0;
+	chord = {};
+	chord.inversion = 1;
+	for (transformationIndex=0;transformationIndex<rhythms.tracks[motion.transformationSource].events.length;transformationIndex++) {
+		for (cycleIndex=0;cycleIndex<rhythms.tracks[motion.transformationSource].events[transformationIndex].duration;cycleIndex++) {
+			//get the chord name for the current event, augment it with the inversion, and then replace it.
+			chord.name = rhythms.tracks[TrackToBuild].events[eventIndex].chord;
+			chord = getChordInversion(motion,chord);
+			rhythms.tracks[TrackToBuild].events[eventIndex].chord = chord.name;
+		}
+		currentCycle++;
+		if (currentCycle > motion.cycles.length-1) currentCycle = 0;
+	}
+}
+
+function getNextScaleChord(key,scale,chord,motion) {
+	
+}
+
+function getChordInversion(motion,chord) {
+	
+}
+
+function parsekeyOf(keyOf) {
+	var keyString = keyOf.toString();
+	key = {}
+	//console.log('keyString:' + keyString);
+
+	var temp = keyString.match(/(Major|Ionian|Minor|Natural Minor|Aeolian|Harmonic Minor|Melodic Minor|Whole Tone|Pentatonic|Dorian|Phrygian|Lydian|Mixolydian|Locrian|Chromatic)/)
+	
+	if (temp != null && temp.length > 0) {
+		//console.log('scale match:' + JSON.stringify(temp) + ':');
+		key.scale = temp[1].toString();
+		keyString = keyString.replace(key.scale,'');
+	} else {
+		key.scale = "Major";
+	}
+	var temp = keyString.match(/^[A|B|C|D|E|F|G][#|b]?/);
+	if (temp != null && temp.length > 0) {
+		//console.log('key match!' + temp);
+		key.signature = temp.toString();
+		keyString = keyString.replace(key.signature,'');
+	} else {
+		key.signature = "C";
+	}
+	//console.log('----temp:' + temp);
+	key.sharpFlatFlag = '#';
+	for (var i=0;i<pitchChords.keys.length;i++) {
+		if (pitchChords.keys[i].key == key.signature) {
+			key.sharpFlatFlag = pitchChords.keys[i].sharpFlat;
+			break;
 		}
 	}
+	return key;	
+}
+
+function getScale(key) {
+	var scale = {};
+	if (typeof key.index == 'undefined') {
+		scale.keyIndex = -1;
+		for (var i=0;i<pitchChords.scalesExpanded.length;i++) {
+			//console.log('-----keys:' + pitchChords.scalesExpanded[i].keys);
+			if (pitchChords.scalesExpanded[i].keys == key.signature) {
+				scale.keyIndex = i;
+				break;
+			}
+		}
+	}
+	
+	//console.log('keyIndex:' + key.index);
+	for (var i=0;i<pitchChords.scalesExpanded[scale.keyIndex].scales.length;i++) {
+		for (var j=0;j<pitchChords.scalesExpanded[scale.keyIndex].scales[i].names.length;j++) {
+			//console.log('--names:' + pitchChords.scalesExpanded[scale.keyIndex].scales[i].names[j].toString() + ' scale:' + key.scale);
+			if (pitchChords.scalesExpanded[scale.keyIndex].scales[i].names[j].toString() == key.scale) {
+				//console.log('found:' + scale.keyIndex + ' scale:' + i + ' offset:' + chord.offset + ' root:' + pitchChords.scalesExpanded[scale.keyIndex].scales[i].pitches[0][chord.offset]);
+				scale.scaleIndex = i;
+				scale.nameIndex = j;
+				return scale;
+			}
+		}
+	}
+	return scale;
+}
+
+function parseChordSymbol(chord,key) {
+	chord.root = '';
+	var temp
+	temp = chord.symbol.match(/^[A|B|C|D|E|F|G][#|b]?/);
+	if (temp != null && temp.length > 0) {
+		chord.root = temp.toString();
+		chord.symbol = chord.symbol.replace(chord.root,'');
+		chord.assumedType = "Maj";
+	}
+	if (chord.root == '') {
+		var temp = chord.symbol.match(/^[a|b|c|d|e|f|g][#|b]?/);
+		if (temp != null && temp.length > 0) {
+			chord.root = temp.toString();
+			chord.symbol = chord.symbol.replace(chord.root,'');
+			chord.root = chord.root.toUpperCase();
+			chord.assumedType = "min";
+		}
+	}
+	if (chord.root == '') {
+		temp = chord.symbol.match(/^iv|IV|vii|VII|vi|VI|v|V[#|b]?/);
+		if (temp == null || temp.length == 0) {
+			temp = chord.symbol.match(/^III|iii[#|b]?/);
+		}
+		if (temp == null || temp.length == 0) {
+			temp = chord.symbol.match(/^II|ii[#|b]?/);
+		}
+		if (temp == null || temp.length == 0) {
+			temp = chord.symbol.match(/^I|i[#|b]?/);
+		}
+		if (temp != null && temp.length > 0) {
+			temp = temp[0].toString();
+			var offset;
+			if (temp == "I") {
+				chord.offset = 0;
+				chord.assumedType = "Maj";
+			} else if (temp == "i") {
+				chord.offset = 0;
+				chord.assumedType = "min";
+			} else if (temp == "II") {
+				chord.offset = 1;
+				chord.assumedType = "Maj";
+			} else if (temp == "ii") {
+				chord.offset = 1;
+				chord.assumedType = "min";
+			} else if (temp == "III") {
+				chord.offset = 2;
+				chord.assumedType = "Maj";
+			} else if (temp == "iii") {
+				chord.offset = 2;
+				chord.assumedType = "min";
+			} else if (temp == "IV") {
+				chord.offset = 3;
+				chord.assumedType = "Maj";
+			} else if (temp == "iv") {
+				chord.offset = 3;
+				chord.assumedType = "min";
+			} else if (temp == "V") {
+				chord.offset = 4;
+				chord.assumedType = "Maj";
+			} else if (temp == "v") {
+				offset = 4;
+				chord.assumedType = "min";
+			} else if (temp == "VI") {
+				chord.offset = 5;
+				chord.assumedType = "Maj";
+			} else if (temp == "vi") {
+				chord.offset = 5;
+				chord.assumedType = "min";
+			} else if (temp == "VII") {
+				chord.offset = 6;
+				chord.assumedType = "Maj";
+			} else if (temp == "vii") {
+				chord.offset = 6;
+				chord.assumedType = "min";
+			}
+			scale = getScale(key);
+			chord.root = pitchChords.scalesExpanded[scale.keyIndex].scales[scale.scaleIndex].pitches[0][chord.offset];
+			chord.symbol = chord.symbol.replace(temp,'');
+		}
+	}
+	return chord;
+}
+
+function parseChordOctaveInversionVoicing(chord) {
+	var temp = chord.symbol.match(/r[0-9]/);
+	if (temp != null && temp.length > 0) {
+		chord.octave = temp.toString();
+		chord.symbol = chord.symbol.replace(chord.octave,'');
+		chord.octave = chord.octave.replace('r','');
+	} else {
+		chord.octave = 3;
+	}
+	//voicing
+	var temp = chord.symbol.match(/w[0-9]{1,2}/);
+	if (temp != null && temp.length > 0) {
+		chord.voicing = temp.toString();
+		chord.symbol = chord.symbol.replace(chord.voicing,'');
+		chord.voicing = chord.voicing.replace('w','');
+	} else {
+		chord.voicing = 0;
+	}
+	//inversion
+	var temp = chord.symbol.match(/n[0-9]{1,2}/);
+	if (temp != null && temp.length > 0) {
+		chord.inversion = temp.toString();
+		//console.log(' FOUND - chord.inversion:' + (typeof chord.inversion) + ' ' + chord.inversion);
+		chord.symbol = chord.symbol.replace(chord.inversion,'');
+		chord.inversion = chord.inversion.replace('n','');
+	} else {
+		chord.inversion = '0';
+	}
+	if (chord.symbol != '') {
+		chord.type = chord.symbol; //symbol is now assumed to hold the remainder of the chord symbol as entered.
+	} else if (chord.assumedType != '') {
+		chord.type = chord.assumedType;
+	}
+	return chord;
+}
+
+function getOctaveInversionVoicingIndex(chord) {
+	chord.typeIndex = -1;
+	chord.inversionIndex = 0;
+	chord.voicingIndex = 0;
+	//find the type
+	for (i=0;i<pitchChords.chords.length;i++) {
+		//console.log('     pcsL:' + pitchChords.chords[i].symbols.length);
+		for (j=0;j<pitchChords.chords[i].symbols.length;j++) {
+			if (pitchChords.chords[i].symbols[j] == chord.type) {
+				chord.typeIndex = i;
+			}
+		}
+	}
+	//console.log('   type:' + chord.typeIndex + 'inversion:' + inversion + 'voicing:' + voicing );
+	if (chord.typeIndex == -1) {
+		//if we didn't succeed, then fail? or default?
+		log('chord not found  ' + 'chordRoot:' + chordRoot + ' chordType:' + chord.type + ' chordInversion:' + chord.inversion + ' chordOctave:' + chord.octave + ' chordVoicing:' + chord.voicing,'error');
+		return;
+	}
+	//find the inversion
+	for (i=0;i<pitchChords.chords[chord.typeIndex].toneOffsets.length;i++) {
+		if (pitchChords.chords[chord.typeIndex].toneOffsets[i].inversion == chord.inversion) {
+			chord.inversionIndex = i;
+		}
+	}
+	//find the voicing
+	for (i=0;i<pitchChords.chords[chord.typeIndex].toneOffsets[chord.inversionIndex].voicings.length;i++) {
+		if (pitchChords.chords[chord.typeIndex].toneOffsets[chord.inversionIndex].voicings[i] == chord.voicing) {
+			chord.voicingIndex = i;
+		}
+	}
+	return chord;
+}
+
+function getChordPitches(chord) {
+	chord.rootCode = getPitchCode(chord.root+chord.octave,"code")
+	var newPitchArray = [];
+	for (i=0;i<pitchChords.chords[chord.typeIndex].toneOffsets[chord.inversionIndex].voicings[chord.voicingIndex].offsets.length;i++) {
+		//var singlePitchArray = []
+		newPitchArray.push(setSharpFlat(getPitchCode(chord.rootCode + pitchChords.chords[chord.typeIndex].toneOffsets[chord.inversionIndex].voicings[chord.voicingIndex].offsets[i],"pitch"),key.sharpFlatFlag))
+		//newPitchArray.push(singlePitchArray);
+	}
+	return newPitchArray;
+}
+
+function convertChordsToPitches(trackToBuild) {
+	log('convertChordsToPitches(' + trackToBuild + ')', 'info');
+	var key;
+	if (typeof rhythms.tracks[trackToBuild].keyOf != 'undefined') {
+		key = parsekeyOf(rhythms.tracks[trackToBuild].keyOf);
+	}
+	for (var result=0;result<rhythms.tracks[trackToBuild].events.length;result++) {
+		if (typeof rhythms.tracks[trackToBuild].events[result].chord != 'undefined') {
+			var chord = {};
+			chord.symbol = rhythms.tracks[trackToBuild].events[result].chord[0];
+			chord = parseChordSymbol(chord,key)
+			chord = parseChordOctaveInversionVoicing(chord);
+			chord = getOctaveInversionVoicingIndex(chord);
+			rhythms.tracks[trackToBuild].events[result].pitch = getChordPitches(chord);
+		}
+	}
+}
+
+function flattenArray(inputArray) {
+	return inputArray.flat(3);
 }
 
 function genMIDIFile() {
@@ -1013,7 +1451,7 @@ function genMIDIFile() {
 			} else {
 				timeSignature = rhythms.timeSignature;
 			}
-			log('   writing midi for track:' + trackIndex + ' notes:' + rhythms.tracks[trackIndex].events.length + ' timeSignature:' + timeSignature, 'debug');
+			log('   writing midi for track:' + trackIndex + ' notes:' + rhythms.tracks[trackIndex].events.length + ' timeSignature:' + timeSignature + ' tempo:' + tempo + ' instrumentName:' + instrumentName, 'debug');
 			var timeSigArray = timeSignature.split('/');
 			midiTracks[midiTracks.length-1].setTimeSignature(timeSigArray[0],timeSigArray[1]);
 			midiTracks[midiTracks.length-1].addInstrumentName(instrumentName);
@@ -1032,13 +1470,13 @@ function genMIDIFile() {
 				var buildNote;
 				if (typeof rhythms.tracks[trackIndex].events[noteIndex].pitch != 'undefined') {
 					//midi writer will support chords if we pass in an array of pitches.
-					buildNote = rhythms.tracks[trackIndex].events[noteIndex].pitch;
+					buildNote = flattenArray(rhythms.tracks[trackIndex].events[noteIndex].pitch);
 				} else if (typeof rhythms.tracks[trackIndex].defaultPitch != 'undefined') {
 					buildNote = rhythms.tracks[trackIndex].defaultPitch;
 				} else if (typeof rhythms.defaultPitch != 'undefined') {
 					buildNote = rhythms.defaultPitch;
 				}
-				log('*****buildNote:' + buildNote, 'debug');
+				log('*****buildNote:' + JSON.stringify(buildNote), 'debug');
 				var beatUnit;
 				if (typeof rhythms.tracks[trackIndex].beatUnit != 'undefined') {
 					beatUnit = rhythms.tracks[trackIndex].beatUnit;

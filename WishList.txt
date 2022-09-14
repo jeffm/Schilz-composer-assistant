@@ -1,14 +1,68 @@
+BOOK TWO
+//TODO?? Chapter 2 - support for root tone+interval C3 2,2,1 for representing pitch, in addition to the current pitch method -- C4, Db5, etc.
+//TODO?? - Pitch scale expansion.
+
+BOOK FOUR - Theory of Melody
+
+/*Chord types
+			//https://www.musicnotes.com/now/tips/a-complete-guide-to-chord-symbols-in-music/
+			//Maj (Major),
+			//- (Minor),
+			//° or o (Diminished),
+			//7 (Dominant 7th),
+			//Maj7 (Major 7th),
+			//-7 (Minor 7th),
+			//-maj7 (minor chord with major 7th),
+			//7b9,
+			//7#9,
+			//7#9b5,
+			//7b5,
+			//+,
+			//9,
+			//b9,
+			//b5,
+			2
+			4
+			6
+			7+5
+			min7b9, -7b9
+			7sus4,
+			sus4,
+			sus, (implies sus4)
+			sus2,
+			M9
+			9
+			m9, -9
+			+M9 (augmented major 9)
+			b9#11,
+			#9b13
+			#9,
+			11,
+			#11,
+			13
+			-6,
+			-b6
+			/ chords indicate the bass note. We probably need to indicate those by their offset or something like that /7 (7 semitones above the root)
+			I - 1st inversion
+			I 6/5 2nd inversion
+			I 4/3 3rd inversion
+			I4/2 4th inversion
+			*/
+
+Other
+
 //TODO - autocompute how much of a track needs to be generated in order to be used in another track.
 
-//TODO - chord symbols. Need to convert to chord voicings for midi output. We could have a variety of voicings, and permutate through them just like we do with individual pitches. So basically two arrays--1 of chord names, and 1 of voicings. This is getting pretty particular, though, but maybe not such a bad thing. We have a separate file with this (chords.json), so it's not repeated in every file. MIDI output should already be set up. A chord symbol gets translated into an array of pitches with octave, e.g., A4,C#5,E5. When you add them up, there are a lot of chords and voicings!
-
-//TODO - sections. Songs of certain genres have specific forms. e.g., pop songs have sections A B A' B C B'. Each section lasts a certain number of bars, and has a chord progression. That's nice, but what could Schilz do to help? We can make a track fit in a certain number of bars with a certain time signature, by computing the beatUnit.
+//TODO - sections. Songs of certain genres have specific forms. e.g., pop songs have sections A B A' B C B'. Each section lasts a certain number of bars, and has a chord progression. That's nice, but what could Schilz do to help? 
+	We can help make a track fit in a certain number of bars with a certain time signature, by computing the beatUnit.
+	
 
 //TODO Musical Forms...
 if (rhythms.tracks[j].type == 'form') {
+//a form track is a set of timeSignature, tempo, key and/or chord changes.
+//
 			//with forms, we might be moving past the original intent of Schilz into the realm of 'automated composition'. But maybe not...
 			//a form consists of nested sections.
-			//each section has a key, tempo, time signature, chord progression
 			//if a form is specified, I think it has to be executed first, so that the basic structure can be laid out and the subsequent rhythms fit into it.
 			//but what does it mean to lay out the basic structure?
 			//Well, for one, if we're creating a chord progression, then there has to be a rhythm track with the chords and associated scale laid out. We can then specify that a track is to be auto-transposed, in line with the chords and/or scales that have been laid out in this base track.

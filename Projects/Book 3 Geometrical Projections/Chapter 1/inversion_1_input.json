@@ -1,0 +1,43 @@
+{
+    "name": "3_2_4_3-4",
+    "timeSignature": "3/4",
+    "averageVelocity": 50,
+    "tracks": [
+        {
+            "name": "Beat of 3",
+            "type": "beat",
+            "period": 4,
+            "endAt": 36
+        },
+        {
+            "id": 1,
+            "name": "beat of 2",
+            "type": "beat",
+            "period": 3,
+            "endAt": 36
+        },
+        {
+            "id": 2,
+            "name": "Interference rhythm combining 3 and 2",
+            "type": "rhythm",
+            "sources": [
+                {
+                    "source": 0
+                },
+                {
+                    "source": 1
+                }
+            ],
+            "includeInScore": true,
+            "computeLCM": true,
+            "beatUnit": 4,
+            "pitches": [[["A#3"],["B3"]],["B3"],["C#4"],["D4"],["E4"],["F#4"],["G4"]],
+			"pitchMultiplier": 1,
+			"keyOf": "F Pentatonic",
+			"refitToMinPitch": "A3",
+			"refitToMaxPitch": "G6",
+			"pitchRoot": "A3",
+            "tempo": 40
+        }
+    ]
+}
