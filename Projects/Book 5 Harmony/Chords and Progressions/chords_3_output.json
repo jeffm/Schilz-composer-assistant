@@ -1,0 +1,1511 @@
+{
+    "name": "chords",
+    "timeSignature": "4/4",
+    "averageVelocity": 50,
+    "copyright": "Copyright 2022 Jeffrey D. Mershon",
+    "tracks": [
+        {
+            "name": "Beat of 8",
+            "type": "beat",
+            "period": 8,
+            "endAt": 72,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 3,
+                    "count": 2,
+                    "pitch": [
+                        "Ab4",
+                        "Eb4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 0,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 8,
+                    "duration": 1,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 10,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 16,
+                    "duration": 2,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 30,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 24,
+                    "duration": 3,
+                    "count": 2,
+                    "pitch": [
+                        "Ab4",
+                        "Eb4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 50,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "value": 3,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 32,
+                    "duration": 1,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 60,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "value": 2,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 40,
+                    "duration": 2,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 0,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "value": 0,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 48,
+                    "duration": 3,
+                    "count": 2,
+                    "pitch": [
+                        "Ab4",
+                        "Eb4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 20,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "value": 3,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 56,
+                    "duration": 1,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 30,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "value": 2,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 64,
+                    "duration": 2,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 50,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "value": 0,
+                            "interpolation": "linear"
+                        }
+                    ]
+                }
+            ],
+            "run": false,
+            "id": 0
+        },
+        {
+            "name": "Beat of 3",
+            "type": "beat",
+            "period": 3,
+            "endAt": 72,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 3,
+                    "duration": 3,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 0,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 6,
+                    "duration": 2,
+                    "count": 1,
+                    "pitch": [
+                        "Ab4",
+                        "Eb4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 10,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 9,
+                    "duration": 3,
+                    "count": 1,
+                    "pitch": [
+                        "Ab4",
+                        "Eb4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 20,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 12,
+                    "duration": 3,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 20,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 15,
+                    "duration": 1,
+                    "count": 1,
+                    "pitch": [
+                        "Ab4",
+                        "Eb4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 30,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 18,
+                    "duration": 3,
+                    "count": 1,
+                    "pitch": [
+                        "Ab4",
+                        "Eb4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 40,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "value": 3,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 21,
+                    "duration": 3,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 40,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "value": 3,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 24,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 27,
+                    "duration": 3,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 50,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "value": 2,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 30,
+                    "duration": 2,
+                    "count": 1,
+                    "pitch": [
+                        "Ab4",
+                        "Eb4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 60,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "value": 2,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 33,
+                    "duration": 3,
+                    "count": 1,
+                    "pitch": [
+                        "Ab4",
+                        "Eb4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 70,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "value": 1,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 36,
+                    "duration": 3,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 70,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "value": 0,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 39,
+                    "duration": 1,
+                    "count": 1,
+                    "pitch": [
+                        "Ab4",
+                        "Eb4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 0,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "value": 0,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 42,
+                    "duration": 3,
+                    "count": 1,
+                    "pitch": [
+                        "Ab4",
+                        "Eb4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 10,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "value": 3,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 45,
+                    "duration": 3,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 10,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "value": 3,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 48,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 51,
+                    "duration": 3,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 20,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "value": 2,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 54,
+                    "duration": 2,
+                    "count": 1,
+                    "pitch": [
+                        "Ab4",
+                        "Eb4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 30,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "value": 2,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 57,
+                    "duration": 3,
+                    "count": 1,
+                    "pitch": [
+                        "Ab4",
+                        "Eb4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 40,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "value": 1,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 60,
+                    "duration": 3,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 40,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "value": 1,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 63,
+                    "duration": 1,
+                    "count": 1,
+                    "pitch": [
+                        "Ab4",
+                        "Eb4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 50,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "value": 1,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 66,
+                    "duration": 3,
+                    "count": 1,
+                    "pitch": [
+                        "Ab4",
+                        "Eb4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 60,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "value": 0,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 69,
+                    "duration": 3,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 60,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "value": 3,
+                            "interpolation": "linear"
+                        }
+                    ]
+                }
+            ],
+            "run": false,
+            "id": 1
+        },
+        {
+            "name": "Beat of 2",
+            "type": "beat",
+            "period": 2,
+            "endAt": 72,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 2,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 4,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 6,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 8,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 10,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 12,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 14,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 16,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 18,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 20,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 22,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 24,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 26,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 28,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 30,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 32,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 34,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 36,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 38,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 40,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 42,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 44,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 46,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 48,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 50,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 52,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 54,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 56,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 58,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 60,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 62,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 64,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 66,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 68,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 70,
+                    "duration": 2,
+                    "count": 1
+                }
+            ],
+            "run": false,
+            "id": 2
+        },
+        {
+            "type": "rhythm",
+            "includeInScore": true,
+            "instrumentName": "Drawbar Organ",
+            "instrumentCode": 17,
+            "beatUnit": 4,
+            "tempo": 60,
+            "sources": [
+                {
+                    "source": 0
+                },
+                {
+                    "source": 1
+                }
+            ],
+            "pitches": [
+                [
+                    "Ab4",
+                    "Eb4"
+                ],
+                [
+                    "C4"
+                ]
+            ],
+            "controlEvents": [
+                {
+                    "channel": 11,
+                    "values": [
+                        0,
+                        10,
+                        20,
+                        30,
+                        40,
+                        50,
+                        60,
+                        70
+                    ],
+                    "valuesDirection": "+",
+                    "interpolation": "none",
+                    "controlSource": 2
+                },
+                {
+                    "channel": 2,
+                    "values": [
+                        0,
+                        1,
+                        2,
+                        3
+                    ],
+                    "valuesDirection": "-",
+                    "interpolation": "linear",
+                    "controlSource": 1
+                }
+            ],
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 3,
+                    "count": 2,
+                    "pitch": [
+                        "Ab4",
+                        "Eb4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 0,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 3,
+                    "duration": 3,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 0,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 6,
+                    "duration": 2,
+                    "count": 1,
+                    "pitch": [
+                        "Ab4",
+                        "Eb4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 10,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 8,
+                    "duration": 1,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 10,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 9,
+                    "duration": 3,
+                    "count": 1,
+                    "pitch": [
+                        "Ab4",
+                        "Eb4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 20,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 12,
+                    "duration": 3,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 20,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 15,
+                    "duration": 1,
+                    "count": 1,
+                    "pitch": [
+                        "Ab4",
+                        "Eb4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 30,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 16,
+                    "duration": 2,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 30,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 18,
+                    "duration": 3,
+                    "count": 1,
+                    "pitch": [
+                        "Ab4",
+                        "Eb4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 40,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "value": 3,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 21,
+                    "duration": 3,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 40,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "value": 3,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 24,
+                    "duration": 3,
+                    "count": 2,
+                    "pitch": [
+                        "Ab4",
+                        "Eb4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 50,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "value": 3,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 27,
+                    "duration": 3,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 50,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "value": 2,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 30,
+                    "duration": 2,
+                    "count": 1,
+                    "pitch": [
+                        "Ab4",
+                        "Eb4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 60,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "value": 2,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 32,
+                    "duration": 1,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 60,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "value": 2,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 33,
+                    "duration": 3,
+                    "count": 1,
+                    "pitch": [
+                        "Ab4",
+                        "Eb4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 70,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "value": 1,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 36,
+                    "duration": 3,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 70,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "value": 0,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 39,
+                    "duration": 1,
+                    "count": 1,
+                    "pitch": [
+                        "Ab4",
+                        "Eb4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 0,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "value": 0,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 40,
+                    "duration": 2,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 0,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "value": 0,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 42,
+                    "duration": 3,
+                    "count": 1,
+                    "pitch": [
+                        "Ab4",
+                        "Eb4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 10,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "value": 3,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 45,
+                    "duration": 3,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 10,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "value": 3,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 48,
+                    "duration": 3,
+                    "count": 2,
+                    "pitch": [
+                        "Ab4",
+                        "Eb4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 20,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "value": 3,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 51,
+                    "duration": 3,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 20,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "value": 2,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 54,
+                    "duration": 2,
+                    "count": 1,
+                    "pitch": [
+                        "Ab4",
+                        "Eb4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 30,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "value": 2,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 56,
+                    "duration": 1,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 30,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "value": 2,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 57,
+                    "duration": 3,
+                    "count": 1,
+                    "pitch": [
+                        "Ab4",
+                        "Eb4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 40,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "value": 1,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 60,
+                    "duration": 3,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 40,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "value": 1,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 63,
+                    "duration": 1,
+                    "count": 1,
+                    "pitch": [
+                        "Ab4",
+                        "Eb4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 50,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "value": 1,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 64,
+                    "duration": 2,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 50,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "value": 0,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 66,
+                    "duration": 3,
+                    "count": 1,
+                    "pitch": [
+                        "Ab4",
+                        "Eb4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 60,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "value": 0,
+                            "interpolation": "linear"
+                        }
+                    ]
+                },
+                {
+                    "index": 69,
+                    "duration": 3,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ],
+                    "control": [
+                        {
+                            "channel": 11,
+                            "value": 60,
+                            "interpolation": "none"
+                        },
+                        {
+                            "channel": 2,
+                            "value": 3,
+                            "interpolation": "linear"
+                        }
+                    ]
+                }
+            ],
+            "run": false,
+            "name": "Rhythm combining 0, 1",
+            "id": 3,
+            "endAt": 69,
+            "LCM": 24
+        }
+    ],
+    "defaultPitch": "C4",
+    "tempo": 90
+}

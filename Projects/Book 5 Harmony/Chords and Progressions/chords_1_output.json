@@ -414,5 +414,6 @@
         }
     ],
     "defaultPitch": "C4",
-    "tempo": 90
+    "tempo": 90,
+    "copyright": "Copyright YYYY [Replace with Copyright Owner]"
 }

@@ -1,0 +1,59 @@
+{
+    "name": "chords",
+    "timeSignature": "4/4",
+    "averageVelocity": 50,
+	"copyright": "Copyright 2022 Jeffrey D. Mershon",
+    "tracks": [
+        {
+            "name": "Beat of 8",
+            "type": "beat",
+            "period": 8,
+            "endAt": 72
+        },
+        {
+            "name": "Beat of 3",
+            "type": "beat",
+            "period": 3,
+            "endAt": 72
+        },
+		{
+            "name": "Beat of 2",
+            "type": "beat",
+            "period": 2,
+            "endAt": 72
+        },{
+			"type": "rhythm",
+			"includeInScore": true,
+			"instrumentName": "Drawbar Organ",
+			"instrumentCode": 17,
+			"beatUnit": 4,
+			"tempo": 60,
+			"sources": [
+                {
+                    "source": 0
+                },
+                {
+                    "source": 1
+                }
+            ],
+			"pitches":[["Ab4","Eb4"],["C4"]],
+			"controlEvents": [
+				{
+					"channel": 11,
+					"values":[0,10,20,30,40,50,60,70],
+					"valuesDirection": "+",
+					"interpolation": "none",
+					"controlSource": 2
+				},
+				{
+					"channel": 2,
+					"values":[0,1,2,3],
+					"valuesDirection": "-",
+					"interpolation": "linear",
+					"controlSource": 1
+					
+				}
+			]
+		}
+    ]
+}

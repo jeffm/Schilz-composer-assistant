@@ -1,0 +1,1794 @@
+{
+    "name": "chords",
+    "timeSignature": "4/4",
+    "averageVelocity": 50,
+    "copyright": "Copyright 2022 Jeffrey D. Mershon",
+    "tracks": [
+        {
+            "name": "Beat of 8",
+            "type": "beat",
+            "period": 8,
+            "endAt": 72,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 8,
+                    "count": 1
+                },
+                {
+                    "index": 8,
+                    "duration": 8,
+                    "count": 1
+                },
+                {
+                    "index": 16,
+                    "duration": 8,
+                    "count": 1
+                },
+                {
+                    "index": 24,
+                    "duration": 8,
+                    "count": 1
+                },
+                {
+                    "index": 32,
+                    "duration": 8,
+                    "count": 1
+                },
+                {
+                    "index": 40,
+                    "duration": 8,
+                    "count": 1
+                },
+                {
+                    "index": 48,
+                    "duration": 8,
+                    "count": 1
+                },
+                {
+                    "index": 56,
+                    "duration": 8,
+                    "count": 1
+                },
+                {
+                    "index": 64,
+                    "duration": 8,
+                    "count": 1
+                }
+            ],
+            "run": false,
+            "id": 0
+        },
+        {
+            "name": "Beat of 3",
+            "type": "beat",
+            "period": 3,
+            "endAt": 72,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 3,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 6,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 9,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 12,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 15,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 18,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 21,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 24,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 27,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 30,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 33,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 36,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 39,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 42,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 45,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 48,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 51,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 54,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 57,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 60,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 63,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 66,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 69,
+                    "duration": 3,
+                    "count": 1
+                }
+            ],
+            "run": false,
+            "id": 1
+        },
+        {
+            "name": "Beat of 2",
+            "type": "beat",
+            "period": 2,
+            "endAt": 72,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 2,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 4,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 6,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 8,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 10,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 12,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 14,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 16,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 18,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 20,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 22,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 24,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 26,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 28,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 30,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 32,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 34,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 36,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 38,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 40,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 42,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 44,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 46,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 48,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 50,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 52,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 54,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 56,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 58,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 60,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 62,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 64,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 66,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 68,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 70,
+                    "duration": 2,
+                    "count": 1
+                }
+            ],
+            "run": false,
+            "id": 2
+        },
+        {
+            "name": "Progression 1",
+            "type": "progression",
+            "keyOf": "C Natural Minor",
+            "progressionCycles": [
+                "3",
+                "7",
+                "5"
+            ],
+            "inversionCycles": [
+                "0",
+                "1",
+                "2"
+            ],
+            "voicingCycles": [
+                "0",
+                "0",
+                "0"
+            ],
+            "octaveCycles": [
+                "3",
+                "4",
+                "5"
+            ],
+            "progressionSource": 0,
+            "progressionDirection": "-",
+            "inversionSource": 1,
+            "inversionDirection": "-",
+            "voicingSource": 0,
+            "voicingDirection": "-",
+            "octaveSource": 2,
+            "octaveDirection": "-",
+            "includeInScore": true,
+            "instrumentName": "Drawbar Organ",
+            "instrumentCode": 17,
+            "beatUnit": 4,
+            "tempo": 60,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "in0w0r3"
+                    ],
+                    "pitch": [
+                        [
+                            "C3"
+                        ],
+                        [
+                            "Eb3"
+                        ],
+                        [
+                            "G3"
+                        ]
+                    ]
+                },
+                {
+                    "index": 0,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "VIn0w0r3"
+                    ],
+                    "pitch": [
+                        [
+                            "Ab3"
+                        ],
+                        [
+                            "C4"
+                        ],
+                        [
+                            "Eb4"
+                        ]
+                    ]
+                },
+                {
+                    "index": 0,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "ivn0w0r4"
+                    ],
+                    "pitch": [
+                        [
+                            "F4"
+                        ],
+                        [
+                            "Ab4"
+                        ],
+                        [
+                            "C5"
+                        ]
+                    ]
+                },
+                {
+                    "index": 0,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "ii°n1w0r4"
+                    ],
+                    "pitch": [
+                        [
+                            "F3"
+                        ],
+                        [
+                            "D4"
+                        ],
+                        [
+                            "Ab4"
+                        ]
+                    ]
+                },
+                {
+                    "index": 0,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "VIIn1w0r5"
+                    ],
+                    "pitch": [
+                        [
+                            "D5"
+                        ],
+                        [
+                            "Bb5"
+                        ],
+                        [
+                            "F6"
+                        ]
+                    ]
+                },
+                {
+                    "index": 0,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "Vn1w0r5"
+                    ],
+                    "pitch": [
+                        [
+                            "Cb4"
+                        ],
+                        [
+                            "G5"
+                        ],
+                        [
+                            "D6"
+                        ]
+                    ]
+                },
+                {
+                    "index": 0,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "IIIn2w0r3"
+                    ],
+                    "pitch": [
+                        [
+                            "Bb2"
+                        ],
+                        [
+                            "Eb3"
+                        ],
+                        [
+                            "G3"
+                        ]
+                    ]
+                },
+                {
+                    "index": 0,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "in2w0r3"
+                    ],
+                    "pitch": [
+                        [
+                            "G2"
+                        ],
+                        [
+                            "C3"
+                        ],
+                        [
+                            "Eb3"
+                        ]
+                    ]
+                },
+                {
+                    "index": 1,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "VIIn2w0r4"
+                    ],
+                    "pitch": [
+                        [
+                            "F4"
+                        ],
+                        [
+                            "Bb4"
+                        ],
+                        [
+                            "D5"
+                        ]
+                    ]
+                },
+                {
+                    "index": 1,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "VIn0w0r4"
+                    ],
+                    "pitch": [
+                        [
+                            "Ab4"
+                        ],
+                        [
+                            "C5"
+                        ],
+                        [
+                            "Eb5"
+                        ]
+                    ]
+                },
+                {
+                    "index": 1,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "Vn0w0r5"
+                    ],
+                    "pitch": [
+                        [
+                            "G5"
+                        ],
+                        [
+                            "Cb5"
+                        ],
+                        [
+                            "D6"
+                        ]
+                    ]
+                },
+                {
+                    "index": 1,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "ivn0w0r5"
+                    ],
+                    "pitch": [
+                        [
+                            "F5"
+                        ],
+                        [
+                            "Ab5"
+                        ],
+                        [
+                            "C6"
+                        ]
+                    ]
+                },
+                {
+                    "index": 1,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "IIIn1w0r3"
+                    ],
+                    "pitch": [
+                        [
+                            "G2"
+                        ],
+                        [
+                            "Eb3"
+                        ],
+                        [
+                            "Bb3"
+                        ]
+                    ]
+                },
+                {
+                    "index": 1,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "ii°n1w0r3"
+                    ],
+                    "pitch": [
+                        [
+                            "F2"
+                        ],
+                        [
+                            "D3"
+                        ],
+                        [
+                            "Ab3"
+                        ]
+                    ]
+                },
+                {
+                    "index": 1,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "in1w0r4"
+                    ],
+                    "pitch": [
+                        [
+                            "Eb3"
+                        ],
+                        [
+                            "C4"
+                        ],
+                        [
+                            "G4"
+                        ]
+                    ]
+                },
+                {
+                    "index": 1,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "VIIn2w0r4"
+                    ],
+                    "pitch": [
+                        [
+                            "F4"
+                        ],
+                        [
+                            "Bb4"
+                        ],
+                        [
+                            "D5"
+                        ]
+                    ]
+                },
+                {
+                    "index": 2,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "ivn2w0r5"
+                    ],
+                    "pitch": [
+                        [
+                            "C5"
+                        ],
+                        [
+                            "F5"
+                        ],
+                        [
+                            "Ab5"
+                        ]
+                    ]
+                },
+                {
+                    "index": 2,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "in2w0r5"
+                    ],
+                    "pitch": [
+                        [
+                            "G4"
+                        ],
+                        [
+                            "C5"
+                        ],
+                        [
+                            "Eb5"
+                        ]
+                    ]
+                },
+                {
+                    "index": 2,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "Vn0w0r3"
+                    ],
+                    "pitch": [
+                        [
+                            "G3"
+                        ],
+                        [
+                            "Cb3"
+                        ],
+                        [
+                            "D4"
+                        ]
+                    ]
+                },
+                {
+                    "index": 2,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "ii°n0w0r3"
+                    ],
+                    "pitch": [
+                        [
+                            "D3"
+                        ],
+                        [
+                            "F3"
+                        ],
+                        [
+                            "Ab3"
+                        ]
+                    ]
+                },
+                {
+                    "index": 2,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "VIn0w0r4"
+                    ],
+                    "pitch": [
+                        [
+                            "Ab4"
+                        ],
+                        [
+                            "C5"
+                        ],
+                        [
+                            "Eb5"
+                        ]
+                    ]
+                },
+                {
+                    "index": 2,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "IIIn1w0r4"
+                    ],
+                    "pitch": [
+                        [
+                            "G3"
+                        ],
+                        [
+                            "Eb4"
+                        ],
+                        [
+                            "Bb4"
+                        ]
+                    ]
+                },
+                {
+                    "index": 2,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "VIIn1w0r5"
+                    ],
+                    "pitch": [
+                        [
+                            "D5"
+                        ],
+                        [
+                            "Bb5"
+                        ],
+                        [
+                            "F6"
+                        ]
+                    ]
+                },
+                {
+                    "index": 2,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "ivn1w0r5"
+                    ],
+                    "pitch": [
+                        [
+                            "Ab4"
+                        ],
+                        [
+                            "F5"
+                        ],
+                        [
+                            "C6"
+                        ]
+                    ]
+                },
+                {
+                    "index": 3,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "VIn2w0r3"
+                    ],
+                    "pitch": [
+                        [
+                            "Eb3"
+                        ],
+                        [
+                            "Ab3"
+                        ],
+                        [
+                            "C4"
+                        ]
+                    ]
+                },
+                {
+                    "index": 3,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "in2w0r3"
+                    ],
+                    "pitch": [
+                        [
+                            "G2"
+                        ],
+                        [
+                            "C3"
+                        ],
+                        [
+                            "Eb3"
+                        ]
+                    ]
+                },
+                {
+                    "index": 3,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "IIIn2w0r4"
+                    ],
+                    "pitch": [
+                        [
+                            "Bb3"
+                        ],
+                        [
+                            "Eb4"
+                        ],
+                        [
+                            "G4"
+                        ]
+                    ]
+                },
+                {
+                    "index": 3,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "Vn0w0r4"
+                    ],
+                    "pitch": [
+                        [
+                            "G4"
+                        ],
+                        [
+                            "Cb4"
+                        ],
+                        [
+                            "D5"
+                        ]
+                    ]
+                },
+                {
+                    "index": 3,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "VIIn0w0r5"
+                    ],
+                    "pitch": [
+                        [
+                            "Bb5"
+                        ],
+                        [
+                            "D6"
+                        ],
+                        [
+                            "F6"
+                        ]
+                    ]
+                },
+                {
+                    "index": 3,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "ii°n0w0r5"
+                    ],
+                    "pitch": [
+                        [
+                            "D5"
+                        ],
+                        [
+                            "F5"
+                        ],
+                        [
+                            "Ab5"
+                        ]
+                    ]
+                },
+                {
+                    "index": 3,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "ivn1w0r3"
+                    ],
+                    "pitch": [
+                        [
+                            "Ab2"
+                        ],
+                        [
+                            "F3"
+                        ],
+                        [
+                            "C4"
+                        ]
+                    ]
+                },
+                {
+                    "index": 3,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "VIn1w0r3"
+                    ],
+                    "pitch": [
+                        [
+                            "C3"
+                        ],
+                        [
+                            "Ab3"
+                        ],
+                        [
+                            "Eb4"
+                        ]
+                    ]
+                },
+                {
+                    "index": 4,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "Vn1w0r4"
+                    ],
+                    "pitch": [
+                        [
+                            "Cb3"
+                        ],
+                        [
+                            "G4"
+                        ],
+                        [
+                            "D5"
+                        ]
+                    ]
+                },
+                {
+                    "index": 4,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "ivn2w0r4"
+                    ],
+                    "pitch": [
+                        [
+                            "C4"
+                        ],
+                        [
+                            "F4"
+                        ],
+                        [
+                            "Ab4"
+                        ]
+                    ]
+                },
+                {
+                    "index": 4,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "IIIn2w0r5"
+                    ],
+                    "pitch": [
+                        [
+                            "Bb4"
+                        ],
+                        [
+                            "Eb5"
+                        ],
+                        [
+                            "G5"
+                        ]
+                    ]
+                },
+                {
+                    "index": 4,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "ii°n2w0r5"
+                    ],
+                    "pitch": [
+                        [
+                            "Ab4"
+                        ],
+                        [
+                            "D5"
+                        ],
+                        [
+                            "F5"
+                        ]
+                    ]
+                },
+                {
+                    "index": 4,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "in0w0r3"
+                    ],
+                    "pitch": [
+                        [
+                            "C3"
+                        ],
+                        [
+                            "Eb3"
+                        ],
+                        [
+                            "G3"
+                        ]
+                    ]
+                },
+                {
+                    "index": 4,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "VIIn0w0r3"
+                    ],
+                    "pitch": [
+                        [
+                            "Bb3"
+                        ],
+                        [
+                            "D4"
+                        ],
+                        [
+                            "F4"
+                        ]
+                    ]
+                },
+                {
+                    "index": 4,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "VIn0w0r4"
+                    ],
+                    "pitch": [
+                        [
+                            "Ab4"
+                        ],
+                        [
+                            "C5"
+                        ],
+                        [
+                            "Eb5"
+                        ]
+                    ]
+                },
+                {
+                    "index": 4,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "Vn1w0r4"
+                    ],
+                    "pitch": [
+                        [
+                            "Cb3"
+                        ],
+                        [
+                            "G4"
+                        ],
+                        [
+                            "D5"
+                        ]
+                    ]
+                },
+                {
+                    "index": 5,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "ii°n1w0r5"
+                    ],
+                    "pitch": [
+                        [
+                            "F4"
+                        ],
+                        [
+                            "D5"
+                        ],
+                        [
+                            "Ab5"
+                        ]
+                    ]
+                },
+                {
+                    "index": 5,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "VIn1w0r5"
+                    ],
+                    "pitch": [
+                        [
+                            "C5"
+                        ],
+                        [
+                            "Ab5"
+                        ],
+                        [
+                            "Eb6"
+                        ]
+                    ]
+                },
+                {
+                    "index": 5,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "IIIn2w0r3"
+                    ],
+                    "pitch": [
+                        [
+                            "Bb2"
+                        ],
+                        [
+                            "Eb3"
+                        ],
+                        [
+                            "G3"
+                        ]
+                    ]
+                },
+                {
+                    "index": 5,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "VIIn2w0r3"
+                    ],
+                    "pitch": [
+                        [
+                            "F3"
+                        ],
+                        [
+                            "Bb3"
+                        ],
+                        [
+                            "D4"
+                        ]
+                    ]
+                },
+                {
+                    "index": 5,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "ivn2w0r4"
+                    ],
+                    "pitch": [
+                        [
+                            "C4"
+                        ],
+                        [
+                            "F4"
+                        ],
+                        [
+                            "Ab4"
+                        ]
+                    ]
+                },
+                {
+                    "index": 5,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "in0w0r4"
+                    ],
+                    "pitch": [
+                        [
+                            "C4"
+                        ],
+                        [
+                            "Eb4"
+                        ],
+                        [
+                            "G4"
+                        ]
+                    ]
+                },
+                {
+                    "index": 5,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "Vn0w0r5"
+                    ],
+                    "pitch": [
+                        [
+                            "G5"
+                        ],
+                        [
+                            "Cb5"
+                        ],
+                        [
+                            "D6"
+                        ]
+                    ]
+                },
+                {
+                    "index": 5,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "ii°n0w0r5"
+                    ],
+                    "pitch": [
+                        [
+                            "D5"
+                        ],
+                        [
+                            "F5"
+                        ],
+                        [
+                            "Ab5"
+                        ]
+                    ]
+                },
+                {
+                    "index": 6,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "ivn1w0r3"
+                    ],
+                    "pitch": [
+                        [
+                            "Ab2"
+                        ],
+                        [
+                            "F3"
+                        ],
+                        [
+                            "C4"
+                        ]
+                    ]
+                },
+                {
+                    "index": 6,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "VIn1w0r3"
+                    ],
+                    "pitch": [
+                        [
+                            "C3"
+                        ],
+                        [
+                            "Ab3"
+                        ],
+                        [
+                            "Eb4"
+                        ]
+                    ]
+                },
+                {
+                    "index": 6,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "in1w0r4"
+                    ],
+                    "pitch": [
+                        [
+                            "Eb3"
+                        ],
+                        [
+                            "C4"
+                        ],
+                        [
+                            "G4"
+                        ]
+                    ]
+                },
+                {
+                    "index": 6,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "IIIn2w0r4"
+                    ],
+                    "pitch": [
+                        [
+                            "Bb3"
+                        ],
+                        [
+                            "Eb4"
+                        ],
+                        [
+                            "G4"
+                        ]
+                    ]
+                },
+                {
+                    "index": 6,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "Vn2w0r5"
+                    ],
+                    "pitch": [
+                        [
+                            "D5"
+                        ],
+                        [
+                            "G5"
+                        ],
+                        [
+                            "Cb5"
+                        ]
+                    ]
+                },
+                {
+                    "index": 6,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "VIIn2w0r5"
+                    ],
+                    "pitch": [
+                        [
+                            "F5"
+                        ],
+                        [
+                            "Bb5"
+                        ],
+                        [
+                            "D6"
+                        ]
+                    ]
+                },
+                {
+                    "index": 6,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "ii°n0w0r3"
+                    ],
+                    "pitch": [
+                        [
+                            "D3"
+                        ],
+                        [
+                            "F3"
+                        ],
+                        [
+                            "Ab3"
+                        ]
+                    ]
+                },
+                {
+                    "index": 6,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "ivn0w0r3"
+                    ],
+                    "pitch": [
+                        [
+                            "F3"
+                        ],
+                        [
+                            "Ab3"
+                        ],
+                        [
+                            "C4"
+                        ]
+                    ]
+                },
+                {
+                    "index": 7,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "IIIn0w0r4"
+                    ],
+                    "pitch": [
+                        [
+                            "Eb4"
+                        ],
+                        [
+                            "G4"
+                        ],
+                        [
+                            "Bb4"
+                        ]
+                    ]
+                },
+                {
+                    "index": 7,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "ii°n1w0r4"
+                    ],
+                    "pitch": [
+                        [
+                            "F3"
+                        ],
+                        [
+                            "D4"
+                        ],
+                        [
+                            "Ab4"
+                        ]
+                    ]
+                },
+                {
+                    "index": 7,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "in1w0r5"
+                    ],
+                    "pitch": [
+                        [
+                            "Eb4"
+                        ],
+                        [
+                            "C5"
+                        ],
+                        [
+                            "G5"
+                        ]
+                    ]
+                },
+                {
+                    "index": 7,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "VIIn1w0r5"
+                    ],
+                    "pitch": [
+                        [
+                            "D5"
+                        ],
+                        [
+                            "Bb5"
+                        ],
+                        [
+                            "F6"
+                        ]
+                    ]
+                },
+                {
+                    "index": 7,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "VIn2w0r3"
+                    ],
+                    "pitch": [
+                        [
+                            "Eb3"
+                        ],
+                        [
+                            "Ab3"
+                        ],
+                        [
+                            "C4"
+                        ]
+                    ]
+                },
+                {
+                    "index": 7,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "Vn2w0r3"
+                    ],
+                    "pitch": [
+                        [
+                            "D3"
+                        ],
+                        [
+                            "G3"
+                        ],
+                        [
+                            "Cb3"
+                        ]
+                    ]
+                },
+                {
+                    "index": 7,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "ivn2w0r4"
+                    ],
+                    "pitch": [
+                        [
+                            "C4"
+                        ],
+                        [
+                            "F4"
+                        ],
+                        [
+                            "Ab4"
+                        ]
+                    ]
+                },
+                {
+                    "index": 7,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "IIIn0w0r4"
+                    ],
+                    "pitch": [
+                        [
+                            "Eb4"
+                        ],
+                        [
+                            "G4"
+                        ],
+                        [
+                            "Bb4"
+                        ]
+                    ]
+                },
+                {
+                    "index": 8,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "VIIn0w0r5"
+                    ],
+                    "pitch": [
+                        [
+                            "Bb5"
+                        ],
+                        [
+                            "D6"
+                        ],
+                        [
+                            "F6"
+                        ]
+                    ]
+                },
+                {
+                    "index": 8,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "ivn0w0r5"
+                    ],
+                    "pitch": [
+                        [
+                            "F5"
+                        ],
+                        [
+                            "Ab5"
+                        ],
+                        [
+                            "C6"
+                        ]
+                    ]
+                },
+                {
+                    "index": 8,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "in1w0r3"
+                    ],
+                    "pitch": [
+                        [
+                            "Eb2"
+                        ],
+                        [
+                            "C3"
+                        ],
+                        [
+                            "G3"
+                        ]
+                    ]
+                },
+                {
+                    "index": 8,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "Vn1w0r3"
+                    ],
+                    "pitch": [
+                        [
+                            "Cb2"
+                        ],
+                        [
+                            "G3"
+                        ],
+                        [
+                            "D4"
+                        ]
+                    ]
+                },
+                {
+                    "index": 8,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "ii°n1w0r4"
+                    ],
+                    "pitch": [
+                        [
+                            "F3"
+                        ],
+                        [
+                            "D4"
+                        ],
+                        [
+                            "Ab4"
+                        ]
+                    ]
+                },
+                {
+                    "index": 8,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "VIn2w0r4"
+                    ],
+                    "pitch": [
+                        [
+                            "Eb4"
+                        ],
+                        [
+                            "Ab4"
+                        ],
+                        [
+                            "C5"
+                        ]
+                    ]
+                },
+                {
+                    "index": 8,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "IIIn2w0r5"
+                    ],
+                    "pitch": [
+                        [
+                            "Bb4"
+                        ],
+                        [
+                            "Eb5"
+                        ],
+                        [
+                            "G5"
+                        ]
+                    ]
+                },
+                {
+                    "index": 8,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "VIIn2w0r5"
+                    ],
+                    "pitch": [
+                        [
+                            "F5"
+                        ],
+                        [
+                            "Bb5"
+                        ],
+                        [
+                            "D6"
+                        ]
+                    ]
+                }
+            ],
+            "run": true
+        }
+    ],
+    "defaultPitch": "C4",
+    "tempo": 90
+}

@@ -1,3 +1,5 @@
+MidiWriterJs doesn't seem to properly support controllerchange events--there is currently no way to place them where you want them in the track...ugh
+
 BOOK TWO
 //TODO?? Chapter 2 - support for root tone+interval C3 2,2,1 for representing pitch, in addition to the current pitch method -- C4, Db5, etc.
 //TODO?? - Pitch scale expansion.

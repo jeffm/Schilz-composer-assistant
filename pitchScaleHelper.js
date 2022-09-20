@@ -1,6 +1,6 @@
 var fs = require('fs');
 var pitchChords = openInputFile(__dirname + '\\pitchChords.json');
-//generateAllScales();
+generateAllScales();
 //chords
 writeJSON(__dirname + '\\chordExpansions.json', generateChordExpansions("C"));
 //generateKeyExpansions();
@@ -501,17 +501,19 @@ function getPitchInRange(minPitch,maxPitch,currentPitch) {
 }
 
 function generateAllScales() {
-	var keys = [["A3"],["A#3"],["B3"],["C4"],["C#4"],["D4"],["D#4"],["E4"],["F4"],["F#4"],["G4"],["G#4"]];
+	var keys = [["A3"],["A#3"],["Bb3"],["B3"],["Cb"],["C4"],["C#4"],["Db4"],["D4"],["D#4"],["Eb4"],["E4"],["F4"],["F#4"],["Gb4"],["G4"],["G#4"],["Ab4"]];
+	var keySharpFlat = [["A","#","#","#","#","#","#","#","#","#","#","#","#"],["A#3","#","#","#","#","#","#","#","#","#","#","#","#"],["Bb3","b","b","b","b","b","b","b","b","b","b","b","b"],["B","#","#","#","#","#","#","#","#","#","#","#","#"],["Cb","b","b","b","b","b","b","b","b","b","b","b","b"],["C","#","b","b","b","b","b","b","b","b","b","b","b"],["C#","#","#","#","#","#","#","#","#","#","#","#","#"],["Db4","b","b","b","b","b","b","b","b","b","b","b","b"],["D","#","b","b","b","b","b","b","b","b","b","b","b"],["D#4","#","#","#","#","#","#","#","#","#","#","#","#"],["Eb4","b","b","b","b","b","b","b","b","b","b","b","b"],["E","#","#","#","#","#","#","#","#","#","#","#","#"],["F4","b","b","b","b","b","b","b","b","b","b","b","b"],["F#","#","#","#","#","#","#","#","#","#","#","#","#"],["Gb4","b","b","b","b","b","b","b","b","b","b","b","b"],["G","#","b","b","b","b","b","b","b","b","b","b","b"],["G#4","#","#","#","#","#","#","#","#","#","#","#","#"],["Ab4","b","b","b","b","b","b","b","b","b","b","b","b"]];
 	//var keys = [["E#4"]];
 	var scalesExpanded = [];
 	for (var i=0;i<keys.length;i++) {
-		scalesExpanded.push(generateScalesForKey(keys[i],'#'));
+		scalesExpanded.push(generateScalesForKey(keys[i],keySharpFlat[i]));
 	}
 	//console.log(JSON.stringify(scalesExpanded));
 	writeJSON(__dirname + '\\scalesOut.json', scalesExpanded);
 }
 
-function generateScalesForKey(keyOf,sharpFlatFlag) {
+function generateScalesForKey(keyOf,sharpFlatArray) {
+	console.log('generateScalesForKey:' + keyOf);
 	var expandedScales = {};
 	expandedScales.keys = keyOf.toString().match(/([A-G][\#|b]?)(\d)?/)[1];
 	var rootCode = pitchCodeFinder(keyOf[0],true);
@@ -519,9 +521,10 @@ function generateScalesForKey(keyOf,sharpFlatFlag) {
 	expandedScales.scales = [];
 	//get a scale from array
 	for (var i=0;i<pitchChords.scales.length;i++) {
-		//console.log('-i:' + i);
+		console.log('-i:' + i);
 		var scale = {};
 		scale.names = pitchChords.scales[i].scaleNames;
+		scale.sharpFlat = sharpFlatArray[i+1];
 		scale.pitches = [];
 		//get a distance
 		//console.log('-i:' + i + ' d:' + pitchChords.scales[i].distances.length);
@@ -534,8 +537,8 @@ function generateScalesForKey(keyOf,sharpFlatFlag) {
 				//console.log('   Distances:' + pitchChords.scales[i].distances[j]);
 				//console.log('       i:' + i + ' j:' + j + ' k:' + k + ' ' + (rootCode + pitchChords.scales[i].distances[j][k]));
 				var newPitchCode = rootCode + pitchChords.scales[i].distances[j][k]
-				var newPitch = sharpFlat(pitchCodeFinder(newPitchCode,false),sharpFlatFlag)[0].toString();
-				//console.log('newPitch: '+ newPitch);
+				var newPitch = sharpFlat(pitchCodeFinder(newPitchCode,false),sharpFlatArray[i+1])[0].toString();
+				console.log('newPitch: '+ newPitch);
 				
 				newPitch = newPitch.match(/([A-G][\#|b]?)(\d)?/)[1];
 				singleScale.push(newPitch);

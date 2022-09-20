@@ -33,7 +33,7 @@
             "beatUnit": 4,
             "pitches": [[["A#3"],["B3"]],["B3"],["C#4"],["D4"],["E4"],["F#4"],["G4"]],
 			"pitchMultiplier": 1,
-			"keyOf": "F Pentatonic",
+			"keyOf": "F Major",
 			"refitToMinPitch": "A3",
 			"refitToMaxPitch": "G6",
 			"pitchRoot": "A3",
