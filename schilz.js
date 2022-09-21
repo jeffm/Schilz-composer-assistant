@@ -247,7 +247,7 @@ function generateTracks(arguments) {
 			addPitches(j);
 			geometricTrackChromatic(j);
 			addChordSymbols(j);
-			convertChordsToPitches(j);
+			//convertChordsToPitches(j);
 		} else if (rhythms.tracks[j].type == 'none') {
 			generateProgression(j);
 			addPitches(j);
@@ -1152,8 +1152,6 @@ function generateProgression(TrackToBuild) {
 	if (typeof rhythms.tracks[TrackToBuild].keyOf != 'undefined') {
 		key = parsekeyOf(rhythms.tracks[TrackToBuild].keyOf);
 	}
-	
-//console.log(JSON.stringify(scale));
 	var motion = {};
 	motion.progressionCycles = rhythms.tracks[TrackToBuild].progressionCycles;
 	motion.currentProgressionCycle = 0;
@@ -1171,6 +1169,12 @@ function generateProgression(TrackToBuild) {
 	motion.octaveCycles = rhythms.tracks[TrackToBuild].octaveCycles;
 	motion.octaveSource = rhythms.tracks[TrackToBuild].octaveSource;
 	motion.octaveDirection = rhythms.tracks[TrackToBuild].octaveDirection;
+	if (typeof rhythms.tracks[TrackToBuild].chordTypeCycles != 'undefined') {
+		motion.currentChordTypeCycle = 0;
+		motion.chordTypeCycles = rhythms.tracks[TrackToBuild].chordTypeCycles;
+		motion.chordTypeSource = rhythms.tracks[TrackToBuild].chordTypeSource;
+		motion.chordTypeDirection = rhythms.tracks[TrackToBuild].chordTypeDirection;
+	}
 	var chord = {}
 	for (progressionIndex=0;progressionIndex<rhythms.tracks[motion.progressionSource].events.length;progressionIndex++) {
 		//cycleIndex = how many times we use a specific cycle.
@@ -1181,11 +1185,13 @@ function generateProgression(TrackToBuild) {
 			newEvent.count = rhythms.tracks[motion.progressionSource].events[progressionIndex].count;
 			newEvent.chord = [];
 			newEvent.chord.push(getNextScaleChord(key,chord,motion));
+			//console.log('!!!' + JSON.stringify(newEvent));
 			//console.log('CycleIndex:' + cycleIndex + '   Chord:' + JSON.stringify(chord) + '    motion:' + JSON.stringify(motion) + '    newEvent:' + JSON.stringify(newEvent));
 			rhythms.tracks[TrackToBuild].events.push(newEvent);
 			//console.log('pushed:' + JSON.stringify(rhythms.tracks[TrackToBuild].events[rhythms.tracks[TrackToBuild].events.length-1]));
 		}
-		if (motion.progressionDirection = "+") {
+		
+		if (motion.progressionDirection == "+") {
 			motion.currentProgressionCycle++;
 			if (motion.currentProgressionCycle > motion.progressionCycles.length-1) motion.currentProgressionCycle = 0;
 		} else {
@@ -1193,72 +1199,140 @@ function generateProgression(TrackToBuild) {
 			if (motion.currentProgressionCycle < 0) motion.currentProgressionCycle = motion.progressionCycles.length-1;
 		}
 	}
-	//inversion
-	eventIndex = 0;
-	chord = {};
-	chord.inversion = 0;
-	endInversion:
-	for (inversionIndex=0;inversionIndex<rhythms.tracks[motion.inversionSource].events.length;inversionIndex++) {
-		for (cycleIndex=0;cycleIndex<rhythms.tracks[motion.inversionSource].events[inversionIndex].duration;cycleIndex++) {
-			//get the chord name for the current event, augment it with the inversion, and then replace it.
-			chord.name = rhythms.tracks[TrackToBuild].events[eventIndex].chord;
-			chord = getChordInversion(motion,chord);
-			rhythms.tracks[TrackToBuild].events[eventIndex].chord[0] = chord.name;
-			eventIndex++;
-			if (eventIndex > rhythms.tracks[TrackToBuild].events.length-1) break endInversion;
-		}
-		if (motion.inversionDirection = "+") {
-			motion.currentInversionCycle++;
-			if (motion.currentInversionCycle > motion.inversionCycles.length-1) motion.currentInversionCycle = 0;
-		} else {
-			motion.currentInversionCycle--;
-			if (motion.currentInversionCycle < 0) motion.currentInversionCycle = motion.inversionCycles.length-1;
-		}
-	}
-	//voicing
-	eventIndex = 0;
-	chord = {};
-	chord.voicing = 0;
-	endVoicing:
-	for (voicingIndex=0;voicingIndex<rhythms.tracks[motion.voicingSource].events.length;voicingIndex++) {
-		for (cycleIndex=0;cycleIndex<rhythms.tracks[motion.voicingSource].events[voicingIndex].duration;cycleIndex++) {
-			//get the chord name for the current event, augment it with the voicing, and then replace it.
-			chord.name = rhythms.tracks[TrackToBuild].events[eventIndex].chord;
-			chord = getChordVoicing(motion,chord);
-			rhythms.tracks[TrackToBuild].events[eventIndex].chord[0] = chord.name;
-			eventIndex++;
-			if (eventIndex > rhythms.tracks[TrackToBuild].events.length-1) break endVoicing;
-		}
-		if (motion.voicingDirection = "+") {
-			motion.currentVoicingCycle++;
-			if (motion.currentVoicingCycle > motion.voicingCycles.length-1) motion.currentVoicingCycle = 0;
-		} else {
-			motion.currentVoicingCycle--;
-			if (motion.currentVoicingCycle < 0) motion.currentVoicingCycle = motion.voicingCycles.length-1;
+	if (typeof rhythms.tracks[TrackToBuild].chordTypeCycles != 'undefined') {
+		//cycle Type
+		eventIndex = 0;
+		chord.cycleType = 0;
+		endCycleType:
+		for (cycleTypeIndex=0;cycleTypeIndex<rhythms.tracks[motion.chordTypeSource].events.length;cycleTypeIndex++) {
+			for (cycleIndex=0;cycleIndex<rhythms.tracks[motion.chordTypeSource].events[cycleTypeIndex].duration;cycleIndex++) {
+				var name;
+				//get the chord name for the current event, augment it with the inversion, and then replace it.
+				name = rhythms.tracks[TrackToBuild].events[eventIndex].chord[0];
+				name = forceChordType(name,motion);
+				rhythms.tracks[TrackToBuild].events[eventIndex].chord[0] = name;
+				eventIndex++;
+				if (eventIndex > rhythms.tracks[TrackToBuild].events.length-1) break endCycleType;
+			}
+			if (typeof motion.chordTypeDirection != 'undefined') {
+				if (motion.chordTypeDirection == "+") {
+					motion.currentChordTypeCycle++;
+					if (motion.currentChordTypeCycle > motion.chordTypeCycles.length-1) motion.currentChordTypeCycle = 0;
+				} else {
+					motion.currentChordTypeCycle--;
+					if (motion.currentChordTypeCycle < 0) motion.currentChordTypeCycle = motion.chordTypeCycles.length-1;
+				}
+			}
 		}
 	}
-	//octave
-	eventIndex = 0;
-	chord = {};
-	chord.octave = 0;
-	endOctave:
-	for (octaveIndex=0;octaveIndex<rhythms.tracks[motion.octaveSource].events.length;octaveIndex++) {
-		for (cycleIndex=0;cycleIndex<rhythms.tracks[motion.octaveSource].events[octaveIndex].duration;cycleIndex++) {
-			//get the chord name for the current event, augment it with the octave, and then replace it.
-			chord.name = rhythms.tracks[TrackToBuild].events[eventIndex].chord;
-			chord = getChordOctave(motion,chord);
-			rhythms.tracks[TrackToBuild].events[eventIndex].chord[0] = chord.name;
-			eventIndex++;
-			if (eventIndex > rhythms.tracks[TrackToBuild].events.length-1) break endOctave;
-		}
-		if (motion.octaveDirection = "+") {
-			motion.currentOctaveCycle++;
-			if (motion.currentOctaveCycle > motion.octaveCycles.length-1) motion.currentOctaveCycle = 0;
-		} else {
-			motion.currentOctaveCycle--;
-			if (motion.currentOctaveCycle < 0) motion.currentOctaveCycle = motion.octaveCycles.length-1;
+	if (typeof rhythms.tracks[TrackToBuild].inversionCycles != 'undefined') {
+		//inversion
+		eventIndex = 0;
+		
+		chord.inversion = 0;
+		endInversion:
+		for (inversionIndex=0;inversionIndex<rhythms.tracks[motion.inversionSource].events.length;inversionIndex++) {
+			for (cycleIndex=0;cycleIndex<rhythms.tracks[motion.inversionSource].events[inversionIndex].duration;cycleIndex++) {
+				chord = {};
+				//get the chord name for the current event, augment it with the inversion, and then replace it.
+				chord.name = rhythms.tracks[TrackToBuild].events[eventIndex].chord;
+				chord = getChordInversion(motion,chord);
+				rhythms.tracks[TrackToBuild].events[eventIndex].chord[0] = chord.name;
+				eventIndex++;
+				if (eventIndex > rhythms.tracks[TrackToBuild].events.length-1) break endInversion;
+			}
+			if (motion.inversionDirection = "+") {
+				motion.currentInversionCycle++;
+				if (motion.currentInversionCycle > motion.inversionCycles.length-1) motion.currentInversionCycle = 0;
+			} else {
+				motion.currentInversionCycle--;
+				if (motion.currentInversionCycle < 0) motion.currentInversionCycle = motion.inversionCycles.length-1;
+			}
 		}
 	}
+	if (typeof rhythms.tracks[TrackToBuild].voicingCycles != 'undefined') {
+		//voicing
+		eventIndex = 0;
+		chord.voicing = 0;
+		endVoicing:
+		for (voicingIndex=0;voicingIndex<rhythms.tracks[motion.voicingSource].events.length;voicingIndex++) {
+			for (cycleIndex=0;cycleIndex<rhythms.tracks[motion.voicingSource].events[voicingIndex].duration;cycleIndex++) {
+				chord = {};
+				chord.name = rhythms.tracks[TrackToBuild].events[eventIndex].chord;
+				chord = getChordVoicing(motion,chord);
+				rhythms.tracks[TrackToBuild].events[eventIndex].chord[0] = chord.name;
+				eventIndex++;
+				if (eventIndex > rhythms.tracks[TrackToBuild].events.length-1) break endVoicing;
+			}
+			if (motion.voicingDirection = "+") {
+				motion.currentVoicingCycle++;
+				if (motion.currentVoicingCycle > motion.voicingCycles.length-1) motion.currentVoicingCycle = 0;
+			} else {
+				motion.currentVoicingCycle--;
+				if (motion.currentVoicingCycle < 0) motion.currentVoicingCycle = motion.voicingCycles.length-1;
+			}
+		}
+	}
+	if (typeof rhythms.tracks[TrackToBuild].octaveCycles != 'undefined') {
+		//octave
+		eventIndex = 0;
+		chord.octave = 0;
+		endOctave:
+		for (octaveIndex=0;octaveIndex<rhythms.tracks[motion.octaveSource].events.length;octaveIndex++) {
+			for (cycleIndex=0;cycleIndex<rhythms.tracks[motion.octaveSource].events[octaveIndex].duration;cycleIndex++) {
+				chord = {};
+				//get the chord name for the current event, augment it with the octave, and then replace it.
+				chord.name = rhythms.tracks[TrackToBuild].events[eventIndex].chord;
+				chord = getChordOctave(motion,chord);
+				rhythms.tracks[TrackToBuild].events[eventIndex].chord[0] = chord.name;
+				eventIndex++;
+				if (eventIndex > rhythms.tracks[TrackToBuild].events.length-1) break endOctave;
+			}
+			if (motion.octaveDirection = "+") {
+				motion.currentOctaveCycle++;
+				if (motion.currentOctaveCycle > motion.octaveCycles.length-1) motion.currentOctaveCycle = 0;
+			} else {
+				motion.currentOctaveCycle--;
+				if (motion.currentOctaveCycle < 0) motion.currentOctaveCycle = motion.octaveCycles.length-1;
+			}
+		}
+	}
+}
+
+function forceChordType(name,motion) {
+	console.log('Typeof:' + typeof name);
+	var newName = name.toString();
+	console.log(JSON.stringify(name));
+	var tempRoot = name.toString();
+	if (typeof motion.chordTypeDirection != 'undefined') {
+		//get the next element in the scaleType list
+		if (motion.chordTypeCycles[motion.currentChordTypeCycle] == "M") {
+			newName = newName.toUpperCase();
+			newName = newName.replace("+","");
+			newName = newName.replace("°","");
+			console.log("M: " + newName + " Old:" + tempRoot);
+		} else if (motion.chordTypeCycles[motion.currentChordTypeCycle] == "m") {
+			newName = newName.replace("+","");
+			newName = newName.replace("°","");
+			newName = newName.toLowerCase();
+			console.log("m: " + JSON.stringify(newName) + " Old:" + JSON.stringify(tempRoot));
+		} else if (motion.chordTypeCycles[motion.currentChordTypeCycle] == "°" || motion.chordTypeCycles[motion.currentChordTypeCycle] == "o") {
+			newName = newName.toLowerCase();
+			if (newName.newName("°") == -1) {
+				newName += "°";
+			}
+			console.log("o: " + JSON.stringify(newName) + " Old:" + JSON.stringify(tempRoot));
+		} else if (motion.chordTypeCycles[motion.currentChordTypeCycle] == "+") {
+			newName = newName.toUpperCase();
+			if (newName.indexOf("+") == -1) {
+				newName += "+";
+			}
+			console.log("+: " + JSON.stringify(newName) + " Old:" + JSON.stringify(tempRoot));
+		}
+		return newName;
+	}
+	console.log("***: " + JSON.stringify(newName) + " Old:" + JSON.stringify(tempRoot));
+	return name;
 }
 
 function getNextScaleChord(key,chord,motion) {
@@ -1286,7 +1360,7 @@ function getNextScaleChord(key,chord,motion) {
 		}
 		chord.currentRoot = triads[newIndex];
 	} else {
-		console.log('triads:' + JSON.stringify(triads));
+		//console.log('triads:' + JSON.stringify(triads));
 		chord.currentRoot = triads[0];
 	}
 	return chord.currentRoot;
@@ -1389,176 +1463,211 @@ function getExplicitScale(key) {
 	return scale;
 }
 
-function parseChordSymbol(key) {
-	scale = {};
-	key.chord.root = '';
+function parseChordSymbol(key,chord) {
+	//console.log('   parseChordSymbol' + JSON.stringify(chord));
+	chord.root = '';
 	var temp
-	temp = key.chord.symbol.match(/^[A|B|C|D|E|F|G][#|b]?/);
+	temp = chord.symbol.match(/^[A|B|C|D|E|F|G][#|b]?/);
 	if (temp != null && temp.length > 0) {
-		key.chord.root = temp[0].toString();
-		key.chord.symbol = key.chord.symbol.replace(key.chord.root,'');
-		key.chord.assumedType = "Maj";
-		key.chord.scaleType = "explicit";
+		chord.root = temp[0].toString();
+		chord.symbol = chord.symbol.replace(chord.root,'');
+		chord.assumedType = "Maj";
+		chord.scaleType = "explicit";
 	}
-	if (key.chord.root == '') {
-		var temp = key.chord.symbol.match(/^[a|b|c|d|e|f|g][#|b]?/);
+	if (chord.root == '') {
+		var temp = chord.symbol.match(/^[a|b|c|d|e|f|g][°][#|b]?/);
 		if (temp != null && temp.length > 0) {
-			key.chord.root = temp[0].toString();
-			key.chord.symbol = key.chord.symbol.replace(key.chord.root,'');
-			key.chord.root = key.chord.root.toUpperCase();
-			key.chord.assumedType = "min";
-			key.chord.scaleType = "explicit";
+			chord.root = temp[0].toString();
+			chord.symbol = chord.symbol.replace(chord.root,'');
+			chord.root = chord.root.toUpperCase();
+			chord.assumedType = "°";
+			chord.scaleType = "explicit";
 		}
 	}
-	if (key.chord.root == '') {
-		var temp = key.chord.symbol.match(/^(VII|vii|IV|iv|VI|vi|III|iii|II|ii|I|i|V|v)(#|b)?/);
+	if (chord.root == '') {
+		var temp = chord.symbol.match(/^[a|b|c|d|e|f|g][+][#|b]?/);
+		if (temp != null && temp.length > 0) {
+			chord.root = temp[0].toString();
+			chord.symbol = chord.symbol.replace(chord.root,'');
+			chord.root = chord.root.toUpperCase();
+			chord.assumedType = "+";
+			chord.scaleType = "explicit";
+		}
+	}
+	if (chord.root == '') {
+		var temp = chord.symbol.match(/^[a|b|c|d|e|f|g][#|b]?/);
+		if (temp != null && temp.length > 0) {
+			chord.root = temp[0].toString();
+			chord.symbol = chord.symbol.replace(chord.root,'');
+			chord.root = chord.root.toUpperCase();
+			chord.assumedType = "min";
+			chord.scaleType = "explicit";
+		}
+	}
+	if (chord.root == '') {
+		var temp = chord.symbol.match(/^(VII|vii|IV|iv|VI|vi|III|iii|II|ii|I|i|V|v)(#|b)?/);
 		if (temp != null && temp.length > 0) {
 			temp = temp[0].toString();
 			//console.log('found temp:' + temp + '   symbol:' + chord.symbol);
 			var offset;
 			if (temp == "I") {
-				key.chord.offset = 0;
-				key.chord.assumedType = "Maj";
-				key.chord.scaleType = "relative";
+				chord.offset = 0;
+				chord.assumedType = "Maj";
+				chord.scaleType = "relative";
 			} else if (temp == "i") {
-				key.chord.offset = 0;
-				key.chord.assumedType = "min";
-				key.chord.scaleType = "relative";
+				chord.offset = 0;
+				chord.assumedType = "min";
+				chord.scaleType = "relative";
 			} else if (temp == "II") {
-				key.chord.offset = 1;
-				key.chord.assumedType = "Maj";
-				key.chord.scaleType = "relative";
+				chord.offset = 1;
+				chord.assumedType = "Maj";
+				chord.scaleType = "relative";
 			} else if (temp == "ii") {
-				key.chord.offset = 1;
-				key.chord.assumedType = "min";
-				key.chord.scaleType = "relative";
+				chord.offset = 1;
+				chord.assumedType = "min";
+				chord.scaleType = "relative";
 			} else if (temp == "III") {
-				key.chord.offset = 2;
-				key.chord.assumedType = "Maj";
-				key.chord.scaleType = "relative";
+				chord.offset = 2;
+				chord.assumedType = "Maj";
+				chord.scaleType = "relative";
 			} else if (temp == "iii") {
-				key.chord.offset = 2;
-				key.chord.assumedType = "min";
-				key.chord.scaleType = "relative";
+				chord.offset = 2;
+				chord.assumedType = "min";
+				chord.scaleType = "relative";
 			} else if (temp == "IV") {
-				key.chord.offset = 3;
-				key.chord.assumedType = "Maj";
-				key.chord.scaleType = "relative";
+				chord.offset = 3;
+				chord.assumedType = "Maj";
+				chord.scaleType = "relative";
 			} else if (temp == "iv") {
-				key.chord.offset = 3;
-				key.chord.assumedType = "min";
-				key.chord.scaleType = "relative";
+				chord.offset = 3;
+				chord.assumedType = "min";
+				chord.scaleType = "relative";
 			} else if (temp == "V") {
-				key.chord.offset = 4;
-				key.chord.assumedType = "Maj";
-				key.chord.scaleType = "relative";
+				chord.offset = 4;
+				chord.assumedType = "Maj";
+				chord.scaleType = "relative";
 			} else if (temp == "v") {
-				key.chord.offset = 4;
-				key.chord.assumedType = "min";
-				key.chord.scaleType = "relative";
+				chord.offset = 4;
+				chord.assumedType = "min";
+				chord.scaleType = "relative";
 			} else if (temp == "VI") {
-				key.chord.offset = 5;
-				key.chord.assumedType = "Maj";
-				key.chord.scaleType = "relative";
+				chord.offset = 5;
+				chord.assumedType = "Maj";
+				chord.scaleType = "relative";
 			} else if (temp == "vi") {
-				key.chord.offset = 5;
-				key.chord.assumedType = "min";
-				key.chord.scaleType = "relative";
+				chord.offset = 5;
+				chord.assumedType = "min";
+				chord.scaleType = "relative";
 			} else if (temp == "VII") {
-				key.chord.offset = 6;
-				key.chord.assumedType = "Maj";
-				key.chord.scaleType = "relative";
+				chord.offset = 6;
+				chord.assumedType = "Maj";
+				chord.scaleType = "relative";
 			} else if (temp == "vii") {
-				key.chord.offset = 6;
-				key.chord.assumedType = "min";
-				key.chord.scaleType = "relative";
+				chord.offset = 6;
+				chord.assumedType = "min";
+				chord.scaleType = "relative";
 			}
-			key.chord.root = key.relativeScale.scale[key.chord.offset];
-			key.chord.root = key.explicitScale.scale[0][key.chord.offset];
-			key.chord.symbol = key.chord.symbol.replace(temp,'');	
+			chord.symbol = chord.symbol.replace(temp,'');
+			temp = chord.symbol.match(/\+/);
+			if (temp != null && temp.length > 0) {
+				chord.assumedType = "+";
+				chord.symbol = chord.symbol.replace(temp,'');
+			}
+			temp = chord.symbol.match(/°/);
+			if (temp != null && temp.length > 0) {
+				chord.assumedType = "°";
+				chord.symbol = chord.symbol.replace(temp,'');
+			}
+			chord.root = key.relativeScale.scale[chord.offset];
+			chord.root = key.explicitScale.scale[0][chord.offset];
+			//chord.symbol = chord.symbol.replace(temp,'');	
 			//console.log('chord1:' + JSON.stringify(chord));
 		}
 	}
-	return key;
+	return chord;
 }
 
-function parseChordOctaveInversionVoicing(key) {
-	var temp = key.chord.symbol.match(/r[0-9]/);
+function parseChordOctaveInversionVoicing(chord) {
+	//console.log('   parseChordOctaveInversionVoicing');
+	var temp = chord.symbol.match(/r[0-9]/);
 	if (temp != null && temp.length > 0) {
-		key.chord.octave = temp.toString();
-		key.chord.symbol = key.chord.symbol.replace(key.chord.octave,'');
-		key.chord.octave = key.chord.octave.replace('r','');
+		chord.octave = temp.toString();
+		chord.symbol = chord.symbol.replace(chord.octave,'');
+		chord.octave = chord.octave.replace('r','');
 	} else {
-		key.chord.octave = 3;
+		chord.octave = 3;
 	}
 	//voicing
-	var temp = key.chord.symbol.match(/w[0-9]{1,2}/);
+	var temp = chord.symbol.match(/w[0-9]{1,2}/);
 	if (temp != null && temp.length > 0) {
-		key.chord.voicing = temp.toString();
-		key.chord.symbol = key.chord.symbol.replace(key.chord.voicing,'');
-		key.chord.voicing = key.chord.voicing.replace('w','');
+		chord.voicing = temp.toString();
+		chord.symbol = chord.symbol.replace(chord.voicing,'');
+		chord.voicing = chord.voicing.replace('w','');
 	} else {
-		key.chord.voicing = 0;
+		chord.voicing = 0;
 	}
 	//inversion
-	var temp = key.chord.symbol.match(/n[0-9]{1,2}/);
+	var temp = chord.symbol.match(/n[0-9]{1,2}/);
 	if (temp != null && temp.length > 0) {
-		key.chord.inversion = temp.toString();
+		chord.inversion = temp.toString();
 		//console.log(' FOUND - chord.inversion:' + (typeof chord.inversion) + ' ' + chord.inversion);
-		key.chord.symbol = key.chord.symbol.replace(key.chord.inversion,'');
-		key.chord.inversion = key.chord.inversion.replace('n','');
+		chord.symbol = chord.symbol.replace(chord.inversion,'');
+		chord.inversion = chord.inversion.replace('n','');
 	} else {
-		key.chord.inversion = '0';
+		chord.inversion = '0';
 	}
-	if (key.chord.symbol != '') {
-		key.chord.type = key.chord.symbol; //symbol is now assumed to hold the remainder of the chord symbol as entered.
-	} else if (key.chord.assumedType != '') {
-		key.chord.type = key.chord.assumedType;
+	
+	if (chord.symbol != '') {
+		chord.type = chord.symbol; //symbol is now assumed to hold the remainder of the chord symbol as entered.
+	} else if (chord.assumedType != '') {
+		chord.type = chord.assumedType;
 	}
-	return key.chord;
+	
+	return chord;
 }
 
-function getOctaveInversionVoicingIndex(key) {
-	key.chord.typeIndex = -1;
-	key.chord.inversionIndex = 0;
-	key.chord.voicingIndex = 0;
+function getOctaveInversionVoicingIndex(chord) {
+	//console.log('   getOctaveInversionVoicingIndex ' + JSON.stringify(chord));
+	chord.typeIndex = -1;
+	chord.inversionIndex = 0;
+	chord.voicingIndex = 0;
 	//find the type
 	for (i=0;i<pitchChords.chords.length;i++) {
 		//console.log('     pcsL:' + pitchChords.chords[i].symbols.length);
 		for (j=0;j<pitchChords.chords[i].symbols.length;j++) {
-			if (pitchChords.chords[i].symbols[j] == key.chord.type) {
-				key.chord.typeIndex = i;
+			if (pitchChords.chords[i].symbols[j] == chord.type) {
+				chord.typeIndex = i;
 			}
 		}
 	}
 	//console.log('   type:' + chord.typeIndex + 'inversion:' + inversion + 'voicing:' + voicing );
-	if (key.chord.typeIndex == -1) {
+	if (chord.typeIndex == -1) {
 		//if we didn't succeed, then fail? or default?
-		log('chord not found  ' + 'chordRoot:' + key.chord.root + ' chordType:' + key.chord.type + ' chordInversion:' + key.chord.inversion + ' chordOctave:' + key.chord.octave + ' chordVoicing:' + key.chord.voicing,'error');
-		return;
+		log('chord not found  ' + 'chord:' + JSON.stringify(chord),'error');
+		return chord;
 	}
 	//find the inversion
-	for (i=0;i<pitchChords.chords[key.chord.typeIndex].toneOffsets.length;i++) {
-		if (pitchChords.chords[key.chord.typeIndex].toneOffsets[i].inversion == key.chord.inversion) {
-			key.chord.inversionIndex = i;
+	for (i=0;i<pitchChords.chords[chord.typeIndex].toneOffsets.length;i++) {
+		if (pitchChords.chords[chord.typeIndex].toneOffsets[i].inversion == chord.inversion) {
+			chord.inversionIndex = i;
 		}
 	}
 	//find the voicing
-	for (i=0;i<pitchChords.chords[key.chord.typeIndex].toneOffsets[key.chord.inversionIndex].voicings.length;i++) {
-		if (pitchChords.chords[key.chord.typeIndex].toneOffsets[key.chord.inversionIndex].voicings[i] == key.chord.voicing) {
-			key.chord.voicingIndex = i;
+	for (i=0;i<pitchChords.chords[chord.typeIndex].toneOffsets[chord.inversionIndex].voicings.length;i++) {
+		if (pitchChords.chords[chord.typeIndex].toneOffsets[chord.inversionIndex].voicings[i] == chord.voicing) {
+			chord.voicingIndex = i;
 		}
 	}
-	return key.chord;
+	return chord;
 }
 
-function getChordPitches(key) {
-	key.chord.rootCode = getPitchCode(key.chord.root+key.chord.octave,"code")
-	//console.log('---chord root:' + JSON.stringify(key.chord.rootCode));
+function getChordPitches(key,chord) {
+	chord.rootCode = getPitchCode(chord.root+chord.octave,"code")
+	//console.log('---chord root:' + JSON.stringify(chord.rootCode));
 	var newPitchArray = [];
-	for (i=0;i<pitchChords.chords[key.chord.typeIndex].toneOffsets[key.chord.inversionIndex].voicings[key.chord.voicingIndex].offsets.length;i++) {
-		newPitchArray.push(setSharpFlat(getPitchCode(key.chord.rootCode + pitchChords.chords[key.chord.typeIndex].toneOffsets[key.chord.inversionIndex].voicings[key.chord.voicingIndex].offsets[i],"pitch"),key.sharpFlatFlag));
-		//console.log('pitch:' + getPitchCode(key.chord.rootCode + pitchChords.chords[key.chord.typeIndex].toneOffsets[key.chord.inversionIndex].voicings[key.chord.voicingIndex].offsets[i],"pitch"));
+	for (i=0;i<pitchChords.chords[chord.typeIndex].toneOffsets[chord.inversionIndex].voicings[chord.voicingIndex].offsets.length;i++) {
+		newPitchArray.push(setSharpFlat(getPitchCode(chord.rootCode + pitchChords.chords[chord.typeIndex].toneOffsets[chord.inversionIndex].voicings[chord.voicingIndex].offsets[i],"pitch"),key.sharpFlatFlag));
+		//console.log('pitch:' + getPitchCode(chord.rootCode + pitchChords.chords[chord.typeIndex].toneOffsets[chord.inversionIndex].voicings[chord.voicingIndex].offsets[i],"pitch"));
 		//newPitchArray.push(singlePitchArray);
 	}
 	return newPitchArray;
@@ -1572,14 +1681,15 @@ function convertChordsToPitches(TrackToBuild) {
 	}
 	for (var result=0;result<rhythms.tracks[TrackToBuild].events.length;result++) {
 		if (typeof rhythms.tracks[TrackToBuild].events[result].chord != 'undefined') {
-			key.chord = {};
-			key.chord.symbol = rhythms.tracks[TrackToBuild].events[result].chord[0];
-			key = parseChordSymbol(key);
-			//console.log('  chord1:' + JSON.stringify(key));
-			key.chord = parseChordOctaveInversionVoicing(key);
-			key.chord = getOctaveInversionVoicingIndex(key);
+			var chord = {};
+			chord.symbol = rhythms.tracks[TrackToBuild].events[result].chord[0];
+			//console.log(' ------------ ' + rhythms.tracks[TrackToBuild].events[result].chord);
+			chord = parseChordSymbol(key,chord);
+			//console.log('  chord1:' + JSON.stringify(chord));
+			chord = parseChordOctaveInversionVoicing(chord);
+			chord = getOctaveInversionVoicingIndex(chord);
 			//console.log('  chord2:' + JSON.stringify(key));
-			rhythms.tracks[TrackToBuild].events[result].pitch = getChordPitches(key);
+			rhythms.tracks[TrackToBuild].events[result].pitch = getChordPitches(key,chord);
 		}
 	}
 }

@@ -2158,7 +2158,7 @@
 		{
 			"chordType": "Augmented",
 			"symbols": [
-				"+"
+				"+","Aug","aug"
 			],
 			"toneOffsets": [
 				{
