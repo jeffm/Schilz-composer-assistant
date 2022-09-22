@@ -28,9 +28,9 @@
             "keyOf": "C Natural Minor",
 			"progressionCycles": ["3","7","5"],
 			"inversionCycles": ["0","1","2"],
-			"chordTypeCycles": ["M","m","M"],
-			"voicingCycles": ["0","1","2"],
-			"octaveCycles": ["3","4","5"],
+			"chordTypeCycles": ["M","m","o"],
+			"voicingCycles": ["0","0","0"],
+			"octaveCycles": ["4","4","4"],
 			"progressionSource": 0,
 			"progressionDirection": "-",
 			"inversionSource": 1,
@@ -42,9 +42,9 @@
 			"chordTypeSource": 1,
 			"chordTypeDirection": "-",
 			"includeInScore": true,
-			"instrumentName": "Drawbar Organ",
-			"instrumentCode": 17,
-			"beatUnit": 4,
+			"instrumentName": "Piano",
+			"instrumentCode": 1,
+			"beatUnit": 1,
 			"tempo": 60
         }
     ]

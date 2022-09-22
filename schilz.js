@@ -247,7 +247,7 @@ function generateTracks(arguments) {
 			addPitches(j);
 			geometricTrackChromatic(j);
 			addChordSymbols(j);
-			//convertChordsToPitches(j);
+			convertChordsToPitches(j);
 		} else if (rhythms.tracks[j].type == 'none') {
 			generateProgression(j);
 			addPitches(j);
@@ -1300,9 +1300,7 @@ function generateProgression(TrackToBuild) {
 }
 
 function forceChordType(name,motion) {
-	console.log('Typeof:' + typeof name);
 	var newName = name.toString();
-	console.log(JSON.stringify(name));
 	var tempRoot = name.toString();
 	if (typeof motion.chordTypeDirection != 'undefined') {
 		//get the next element in the scaleType list
@@ -1310,28 +1308,28 @@ function forceChordType(name,motion) {
 			newName = newName.toUpperCase();
 			newName = newName.replace("+","");
 			newName = newName.replace("°","");
-			console.log("M: " + newName + " Old:" + tempRoot);
+			//console.log("M: " + newName + " Old:" + tempRoot);
 		} else if (motion.chordTypeCycles[motion.currentChordTypeCycle] == "m") {
 			newName = newName.replace("+","");
 			newName = newName.replace("°","");
 			newName = newName.toLowerCase();
-			console.log("m: " + JSON.stringify(newName) + " Old:" + JSON.stringify(tempRoot));
+			//console.log("m: " + JSON.stringify(newName) + " Old:" + JSON.stringify(tempRoot));
 		} else if (motion.chordTypeCycles[motion.currentChordTypeCycle] == "°" || motion.chordTypeCycles[motion.currentChordTypeCycle] == "o") {
 			newName = newName.toLowerCase();
-			if (newName.newName("°") == -1) {
+			if (newName.indexOf("°") == -1) {
 				newName += "°";
 			}
-			console.log("o: " + JSON.stringify(newName) + " Old:" + JSON.stringify(tempRoot));
+			//console.log("o: " + JSON.stringify(newName) + " Old:" + JSON.stringify(tempRoot));
 		} else if (motion.chordTypeCycles[motion.currentChordTypeCycle] == "+") {
 			newName = newName.toUpperCase();
 			if (newName.indexOf("+") == -1) {
 				newName += "+";
 			}
-			console.log("+: " + JSON.stringify(newName) + " Old:" + JSON.stringify(tempRoot));
+			//console.log("+: " + JSON.stringify(newName) + " Old:" + JSON.stringify(tempRoot));
 		}
 		return newName;
 	}
-	console.log("***: " + JSON.stringify(newName) + " Old:" + JSON.stringify(tempRoot));
+	//console.log("***: " + JSON.stringify(newName) + " Old:" + JSON.stringify(tempRoot));
 	return name;
 }
 
