@@ -20,13 +20,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 0,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -39,13 +36,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 10,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -58,13 +52,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 30,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -78,14 +69,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 50,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "value": 3,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -98,14 +85,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 60,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "value": 2,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -118,14 +101,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 0,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "value": 0,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -139,14 +118,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 20,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "value": 3,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -159,14 +134,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 30,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "value": 2,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -179,14 +150,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 50,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "value": 0,
-                            "interpolation": "linear"
                         }
                     ]
                 }
@@ -214,13 +181,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 0,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -234,13 +198,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 10,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -254,13 +215,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 20,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -273,13 +231,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 20,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -293,13 +248,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 30,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -313,14 +265,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 40,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "value": 3,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -333,14 +281,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 40,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "value": 3,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -358,14 +302,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 50,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "value": 2,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -379,14 +319,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 60,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "value": 2,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -400,14 +336,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 70,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "value": 1,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -420,14 +352,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 70,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "value": 0,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -441,14 +369,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 0,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "value": 0,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -462,14 +386,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 10,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "value": 3,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -482,14 +402,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 10,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "value": 3,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -507,14 +423,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 20,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "value": 2,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -528,14 +440,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 30,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "value": 2,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -549,14 +457,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 40,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "value": 1,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -569,14 +473,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 40,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "value": 1,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -590,14 +490,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 50,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "value": 1,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -611,14 +507,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 60,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "value": 0,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -631,14 +523,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 60,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "value": 3,
-                            "interpolation": "linear"
                         }
                     ]
                 }
@@ -839,6 +727,7 @@
         {
             "type": "rhythm",
             "includeInScore": true,
+            "instrumentChannel": 0,
             "instrumentName": "Drawbar Organ",
             "instrumentCode": 17,
             "beatUnit": 4,
@@ -862,7 +751,8 @@
             ],
             "controlEvents": [
                 {
-                    "channel": 11,
+                    "channel": 0,
+                    "controller": 1,
                     "values": [
                         0,
                         10,
@@ -876,18 +766,6 @@
                     "valuesDirection": "+",
                     "interpolation": "none",
                     "controlSource": 2
-                },
-                {
-                    "channel": 2,
-                    "values": [
-                        0,
-                        1,
-                        2,
-                        3
-                    ],
-                    "valuesDirection": "-",
-                    "interpolation": "linear",
-                    "controlSource": 1
                 }
             ],
             "events": [
@@ -901,13 +779,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 0,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -920,13 +795,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 0,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -940,13 +812,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 10,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -959,13 +828,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 10,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -979,13 +845,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 20,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -998,13 +861,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 20,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -1018,13 +878,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 30,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -1037,13 +894,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 30,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -1057,14 +911,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 40,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "value": 3,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -1077,14 +927,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 40,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "value": 3,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -1098,14 +944,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 50,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "value": 3,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -1118,14 +960,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 50,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "value": 2,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -1139,14 +977,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 60,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "value": 2,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -1159,14 +993,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 60,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "value": 2,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -1180,14 +1010,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 70,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "value": 1,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -1200,14 +1026,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 70,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "value": 0,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -1221,14 +1043,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 0,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "value": 0,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -1241,14 +1059,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 0,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "value": 0,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -1262,14 +1076,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 10,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "value": 3,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -1282,14 +1092,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 10,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "value": 3,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -1303,14 +1109,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 20,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "value": 3,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -1323,14 +1125,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 20,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "value": 2,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -1344,14 +1142,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 30,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "value": 2,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -1364,14 +1158,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 30,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "value": 2,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -1385,14 +1175,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 40,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "value": 1,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -1405,14 +1191,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 40,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "value": 1,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -1426,14 +1208,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 50,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "value": 1,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -1446,14 +1224,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 50,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "value": 0,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -1467,14 +1241,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 60,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "value": 0,
-                            "interpolation": "linear"
                         }
                     ]
                 },
@@ -1487,14 +1257,10 @@
                     ],
                     "control": [
                         {
-                            "channel": 11,
+                            "channel": 0,
+                            "controller": 1,
                             "value": 60,
                             "interpolation": "none"
-                        },
-                        {
-                            "channel": 2,
-                            "value": 3,
-                            "interpolation": "linear"
                         }
                     ]
                 }

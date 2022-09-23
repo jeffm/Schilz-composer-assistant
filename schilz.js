@@ -2,7 +2,8 @@ var fs = require('fs');
 //var path = require(path);
 var yargs = require('yargs');
 //var log = require('npmlog');
-var MidiWriter = require('midi-writer-js');
+var JZZ = require('jzz');
+require('jzz-midi-smf')(JZZ);
 
 var globalArguments = parseArguments(process.argv.slice(2))
 log('Parsed globalArguments:' + JSON.stringify(globalArguments), 'debug');
@@ -157,12 +158,19 @@ function writeMIDI(MIDIoutpath) {
 	log('writeMIDI ' + MIDIoutpath, 'debug');
 	
 	if (MIDIoutpath != '') {
-		var midiFile = genMIDIFile();
+		//var midiFile = genMIDIFile();
+		var midiFile = genMidiFileJZZ();
 		if (midiFile != null) {
 			try {
 				var outFile = fs.openSync(MIDIoutpath,'w');
+				console.log(midiFile.toString());
+				fs.writeFileSync(outFile,midiFile.dump(),'binary');
+				fs.closeSync(outFile);
 				
-				fs.writeSync(outFile,midiFile);
+				//console.log('reading midi file:' + MIDIoutpath);
+				//var data = fs.readFileSync(MIDIoutpath, 'binary');
+				//var smf = new JZZ.MIDI.SMF(data);
+				//console.log(smf.toString());
 			} catch (err) {
 			   log(err,'error');
 			}
@@ -1073,12 +1081,11 @@ function addControlEvents(TrackToBuild) {
 	]
 	*/
 	eventIndex = 0;
-	controlValueIndex = 0
 	//get next controlEvent
 	//log('controlEventsCount:' + rhythms.tracks[TrackToBuild].controlEvents.length, 'info');
 	for (controllerIndex=0;controllerIndex<rhythms.tracks[TrackToBuild].controlEvents.length;controllerIndex++) {
 	//get next 
-		
+		controlValueIndex = 0;
 		//log('controllerIndex:' + controllerIndex + 'sourceEventsLength:' + rhythms.tracks[rhythms.tracks[TrackToBuild].controlEvents[controllerIndex].controlSource].events.length, 'info');
 		endInversion:
 		for (durationIndex=0;durationIndex<rhythms.tracks[rhythms.tracks[TrackToBuild].controlEvents[controllerIndex].controlSource].events.length;durationIndex++) {
@@ -1087,6 +1094,7 @@ function addControlEvents(TrackToBuild) {
 				//log('      durationIndex:' + durationIndex + '   cycleIndex:' + cycleIndex,'info');
 				control = {};
 				control.channel = rhythms.tracks[TrackToBuild].controlEvents[controllerIndex].channel;
+				control.controller = rhythms.tracks[TrackToBuild].controlEvents[controllerIndex].controller;
 				if (rhythms.tracks[TrackToBuild].controlEvents[controllerIndex].valuesDirection == "count") {
 					if (rhythms.tracks[TrackToBuild].events[eventIndex].count > 0) {
 						control.value = rhythms.tracks[TrackToBuild].controlEvents[controllerIndex].values[rhythms.tracks[TrackToBuild].events[eventIndex].count-1];
@@ -1228,7 +1236,6 @@ function generateProgression(TrackToBuild) {
 	if (typeof rhythms.tracks[TrackToBuild].inversionCycles != 'undefined') {
 		//inversion
 		eventIndex = 0;
-		
 		chord.inversion = 0;
 		endInversion:
 		for (inversionIndex=0;inversionIndex<rhythms.tracks[motion.inversionSource].events.length;inversionIndex++) {
@@ -2058,4 +2065,170 @@ function buildChartjsPage() {
 	chartString += '</script>\n';
 	chartString += '</html>';
 	return chartString;
+}
+
+function genMidiFileJZZ() {
+	log('genMIDIFileJZZ()','info');
+	var highestCount = 0
+	var anyMidi = false;
+	for (trackIndex=0;trackIndex<rhythms.tracks.length;trackIndex++) {
+		for (noteIndex=0;noteIndex<rhythms.tracks[trackIndex].events.length;noteIndex++) {
+			if (rhythms.tracks[trackIndex].events[noteIndex].count > highestCount) {
+				highestCount = rhythms.tracks[trackIndex].events[noteIndex].count;
+			}
+		}
+		if (typeof rhythms.tracks[trackIndex].includeInScore == 'undefined') {
+			rhythms.tracks[trackIndex].includeInScore = false;
+		} else if (rhythms.tracks[trackIndex].includeInScore == true) {
+			anyMidi = true;
+		}
+	}
+	log('   anyMidi:' + anyMidi, 'debug');
+	if (!anyMidi) return null;
+	var smf = new JZZ.MIDI.SMF(0, 96);
+	var avgVelocity = 50;
+	if (typeof rhythms.averageVelocity != 'undefined') {
+		avgVelocity = rhythms.averageVelocity;
+	} else {
+		rhythms.averageVelocity = avgVelocity;
+	}
+	var velocityCountAdjust = (100 - avgVelocity)/highestCount;
+	log('   velocityAdjust:' + velocityCountAdjust + ' highestCount:' + highestCount + ' avgVelocity:' + avgVelocity, 'debug');
+	
+	for (trackIndex=0;trackIndex<rhythms.tracks.length;trackIndex++) {
+		if (rhythms.tracks[trackIndex].events.length == 0) break;
+		var index = 0;
+		if (rhythms.tracks[trackIndex].includeInScore) {
+			var track = new JZZ.MIDI.SMF.MTrk();
+			var channel = 0;
+			smf.push(track);
+			smf[smf.length-1].add(index,JZZ.MIDI.smfSeqName(rhythms.tracks[trackIndex].name));
+			if (typeof rhythms.copyright != 'undefined') {
+				//console.log(rhythms.copyright);
+				smf[smf.length-1].add(index,JZZ.MIDI.smfCopyright(rhythms.copyright));
+			}
+			var tempo;
+			if (typeof rhythms.tracks[trackIndex].tempo != 'undefined') {
+				tempo = rhythms.tracks[trackIndex].tempo;
+			} else if (typeof rhythms.tempo != 'undefined') {
+				tempo = rhythms.tempo;
+			} else {
+				tempo = 90;
+			}
+			smf[smf.length-1].add(index,JZZ.MIDI.smfBPM(tempo));
+			var instrumentName;
+			if (typeof rhythms.tracks[trackIndex].instrumentName != 'undefined') {
+				instrumentName = rhythms.tracks[trackIndex].instrumentName;
+			} else {
+				instrumentName = "piano";
+			}
+			var instrumentCode;
+			if (typeof rhythms.tracks[trackIndex].instrumentCode != 'undefined') {
+				instrumentCode = rhythms.tracks[trackIndex].instrumentCode;
+			} else {
+				instrumentCode = 1;
+			}
+			var instrumentChannel;
+			if (typeof rhythms.tracks[trackIndex].instrumentChannel != 'undefined') {
+				instrumentChannel = rhythms.tracks[trackIndex].instrumentChannel;
+			} else {
+				instrumentChannel = 1;
+			}
+			
+			var timeSignature = '';
+			if (typeof rhythms.tracks[trackIndex].timeSignature != 'undefined') {
+				timeSignature = rhythms.tracks[trackIndex].timeSignature;
+			} else {
+				timeSignature = rhythms.timeSignature;
+			}
+			log('   writing midi for track:' + trackIndex + ' notes:' + rhythms.tracks[trackIndex].events.length + ' timeSignature:' + timeSignature + ' tempo:' + tempo + ' instrumentName:' + instrumentName, 'debug');
+			var timeSigArray = timeSignature.split('/');
+			//NEED KEY SIGNATURE
+			smf[smf.length-1].add(index,JZZ.MIDI.smfTimeSignature(timeSigArray[0] + "/" + timeSigArray[1]));
+			smf[smf.length-1].add(index,JZZ.MIDI.smfInstrName(instrumentName));
+			console.log('MIDIcode:' + (instrumentChannel + 192) + " hex:" + (instrumentChannel + 192).toString(16) + "    instrument:" + instrumentCode + " hex:" + instrumentCode.toString(16));
+			smf[smf.length-1].add(index,JZZ.MIDI.program(instrumentChannel,instrumentCode));
+			//could optionally insert a phantom note here because midi players have trouble with notes that start at the immediate beginning. But this could complicate matters for importing into MuseScore, since things no longer align. 
+			var velocity;
+			
+			for (noteIndex=0;noteIndex<rhythms.tracks[trackIndex].events.length;noteIndex++) {
+				//controller events with interpolation = 'none' go here, as do the first value for events that use interpolation.
+				if (typeof rhythms.tracks[trackIndex].events[noteIndex].control != 'undefined') {
+					for (controllerIndex=0;controllerIndex<rhythms.tracks[trackIndex].events[noteIndex].control.length;controllerIndex++) {
+						smf[smf.length-1].add(index,JZZ.MIDI.control(rhythms.tracks[trackIndex].events[noteIndex].control[controllerIndex].channel,rhythms.tracks[trackIndex].events[noteIndex].control[controllerIndex].controller,rhythms.tracks[trackIndex].events[noteIndex].control[controllerIndex].value));
+					}
+				}
+				if (typeof rhythms.tracks[trackIndex].adjustVelocity  != 'undefined') {
+					if (rhythms.tracks[trackIndex].adjustVelocity == "byCount") {
+						if (typeof rhythms.tracks[trackIndex].events[noteIndex].count  != 'undefined') {
+							velocity = velocity + (rhythms.tracks[trackIndex].events[noteIndex].count * velocityCountAdjust)
+						} else {
+							velocity = rhythms.averageVelocity;
+						}
+					} else if (Number.isInteger(rhythms.tracks[trackIndex].adjustVelocity)) {
+						velocity = getControlValue(rhythms.tracks[trackIndex].events[noteIndex], rhythms.tracks[trackIndex].adjustVelocity);
+					}
+				} else {
+					velocity = rhythms.averageVelocity;
+				}
+				var buildNote;
+				if (typeof rhythms.tracks[trackIndex].events[noteIndex].pitch != 'undefined') {
+					buildNote = flattenArray(rhythms.tracks[trackIndex].events[noteIndex].pitch);
+				} else if (typeof rhythms.tracks[trackIndex].defaultPitch != 'undefined') {
+					buildNote = rhythms.tracks[trackIndex].defaultPitch;
+				} else if (typeof rhythms.defaultPitch != 'undefined') {
+					buildNote = rhythms.defaultPitch;
+				}
+				log('*****buildNote:' + JSON.stringify(buildNote), 'debug');
+				var beatUnit;
+				if (typeof rhythms.tracks[trackIndex].beatUnit != 'undefined') {
+					beatUnit = rhythms.tracks[trackIndex].beatUnit;
+				} else {
+					beatUnit = 4;
+					rhythms.tracks[trackIndex].beatUnit = beatUnit;
+				}
+				var duration = ((512/beatUnit) * rhythms.tracks[trackIndex].events[noteIndex].duration);
+			
+				if (typeof rhythms.tracks[trackIndex].events[noteIndex].isRest != 'undefined' && rhythms.tracks[trackIndex].events[noteIndex].isRest == "rest") {
+					velocity = 0;
+					log('    track:' + trackIndex + '    rest', 'debug');
+				}
+				
+				if (noteIndex == 0 && rhythms.tracks[trackIndex].events[noteIndex].index > 0) {
+					var durationPhantom = ((512/beatUnit) * rhythms.tracks[trackIndex].events[noteIndex].index).toString();
+					smf[smf.length-1].add(index,JZZ.MIDI.noteOn(channel, buildNote[chordCtr],0));
+					smf[smf.length-1].add(index+durationPhantom,JZZ.MIDI.noteOff(channel, buildNote[chordCtr],0));
+					//midiTracks[midiTracks.length-1].addEvent([new MidiWriter.NoteEvent({pitch: buildNote, duration: durationPhantom, velocity: 0})]);
+				}
+				log('    track:' + trackIndex + '    pitch:' + JSON.stringify(buildNote) + ' duration:' + duration + ' velocity:' + velocity, 'debug');
+				if (typeof rhythms.tracks[trackIndex].events[noteIndex].chord != 'undefined') {
+					smf[smf.length-1].add(index,JZZ.MIDI.smfText(rhythms.tracks[trackIndex].events[noteIndex].chord.toString()));
+				}
+				for (var chordCtr=0;chordCtr<buildNote.length;chordCtr++) {
+					smf[smf.length-1].add(index,JZZ.MIDI.noteOn(channel, buildNote[chordCtr],velocity));
+					smf[smf.length-1].add(index+duration,JZZ.MIDI.noteOff(channel, buildNote[chordCtr],0));
+				}
+				/*controller events with interpolation need to go here.
+				*/
+				
+				if (typeof rhythms.tracks[trackIndex].events[noteIndex].control != 'undefined') {
+					for (controllerIndex=0;controllerIndex<rhythms.tracks[trackIndex].events[noteIndex].control.length;controllerIndex++) {
+						if (rhythms.tracks[trackIndex].events[noteIndex].control[controllerIndex].interpolation == 'linear') {
+						//get the value for this controller from the next event
+						//compute delta = current controller value - next value
+						//numEventsToInsert = round(duration/delta)
+						//for loop 0 to numEventsToInsert
+						// insert new event, where newControllerValue = controllerValue + delta
+						
+						midiTracks[midiTracks.length-1].addEvent(new MidiWriter.ControllerChangeEvent({controllerNumber: rhythms.tracks[trackIndex].events[noteIndex].control[controllerIndex].channel,controllerValue:rhythms.tracks[trackIndex].events[noteIndex].control[controllerIndex].value}));
+					}
+				}
+
+
+				index += duration;
+			}
+		}
+	}
+	//console.log(smf.toString());
+	return smf;
 }
