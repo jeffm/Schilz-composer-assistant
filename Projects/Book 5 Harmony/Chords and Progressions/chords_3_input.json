@@ -27,6 +27,7 @@
 			"instrumentChannel": 0,
 			"instrumentName": "Drawbar Organ",
 			"instrumentCode": 17,
+			"chords": [["AbMaj"]],
 			"beatUnit": 4,
 			"tempo": 60,
 			"sources": [
@@ -42,9 +43,16 @@
 				{
 					"channel": 0,
 					"controller": 1,
-					"values":[0,10,20,30,40,50,60,70],
-					"valuesDirection": "+",
-					"interpolation": "none",
+					"direction": "+",
+					"values":[{"startValue": 0, "interpolationType": "none"},
+					{"startValue": 10,  "interpolationType": "none"},
+					{"startValue": 20, "interpolationType": "none"},
+					{"startValue": 0, "interpolationType": "hump", "stepSize": 10, "bend": 0.02, "endValue":70},
+					{"startValue": 40, "interpolationType": "none"},
+					{"startValue": 50, "interpolationType": "none"},
+					{"startValue": 60, "interpolationType": "none"},
+					{"startValue": 70, "interpolationType": "none"}
+					],
 					"controlSource": 2
 				}
 			]

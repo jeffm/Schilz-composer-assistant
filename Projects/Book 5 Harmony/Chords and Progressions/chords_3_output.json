@@ -12,150 +12,48 @@
             "events": [
                 {
                     "index": 0,
-                    "duration": 3,
-                    "count": 2,
-                    "pitch": [
-                        "Ab4",
-                        "Eb4"
-                    ],
-                    "control": [
-                        {
-                            "channel": 0,
-                            "controller": 1,
-                            "value": 0,
-                            "interpolation": "none"
-                        }
-                    ]
+                    "duration": 8,
+                    "count": 1
                 },
                 {
                     "index": 8,
-                    "duration": 1,
-                    "count": 1,
-                    "pitch": [
-                        "C4"
-                    ],
-                    "control": [
-                        {
-                            "channel": 0,
-                            "controller": 1,
-                            "value": 10,
-                            "interpolation": "none"
-                        }
-                    ]
+                    "duration": 8,
+                    "count": 1
                 },
                 {
                     "index": 16,
-                    "duration": 2,
-                    "count": 1,
-                    "pitch": [
-                        "C4"
-                    ],
-                    "control": [
-                        {
-                            "channel": 0,
-                            "controller": 1,
-                            "value": 30,
-                            "interpolation": "none"
-                        }
-                    ]
+                    "duration": 8,
+                    "count": 1
                 },
                 {
                     "index": 24,
-                    "duration": 3,
-                    "count": 2,
-                    "pitch": [
-                        "Ab4",
-                        "Eb4"
-                    ],
-                    "control": [
-                        {
-                            "channel": 0,
-                            "controller": 1,
-                            "value": 50,
-                            "interpolation": "none"
-                        }
-                    ]
+                    "duration": 8,
+                    "count": 1
                 },
                 {
                     "index": 32,
-                    "duration": 1,
-                    "count": 1,
-                    "pitch": [
-                        "C4"
-                    ],
-                    "control": [
-                        {
-                            "channel": 0,
-                            "controller": 1,
-                            "value": 60,
-                            "interpolation": "none"
-                        }
-                    ]
+                    "duration": 8,
+                    "count": 1
                 },
                 {
                     "index": 40,
-                    "duration": 2,
-                    "count": 1,
-                    "pitch": [
-                        "C4"
-                    ],
-                    "control": [
-                        {
-                            "channel": 0,
-                            "controller": 1,
-                            "value": 0,
-                            "interpolation": "none"
-                        }
-                    ]
+                    "duration": 8,
+                    "count": 1
                 },
                 {
                     "index": 48,
-                    "duration": 3,
-                    "count": 2,
-                    "pitch": [
-                        "Ab4",
-                        "Eb4"
-                    ],
-                    "control": [
-                        {
-                            "channel": 0,
-                            "controller": 1,
-                            "value": 20,
-                            "interpolation": "none"
-                        }
-                    ]
+                    "duration": 8,
+                    "count": 1
                 },
                 {
                     "index": 56,
-                    "duration": 1,
-                    "count": 1,
-                    "pitch": [
-                        "C4"
-                    ],
-                    "control": [
-                        {
-                            "channel": 0,
-                            "controller": 1,
-                            "value": 30,
-                            "interpolation": "none"
-                        }
-                    ]
+                    "duration": 8,
+                    "count": 1
                 },
                 {
                     "index": 64,
-                    "duration": 2,
-                    "count": 1,
-                    "pitch": [
-                        "C4"
-                    ],
-                    "control": [
-                        {
-                            "channel": 0,
-                            "controller": 1,
-                            "value": 50,
-                            "interpolation": "none"
-                        }
-                    ]
+                    "duration": 8,
+                    "count": 1
                 }
             ],
             "run": false,
@@ -175,118 +73,37 @@
                 {
                     "index": 3,
                     "duration": 3,
-                    "count": 1,
-                    "pitch": [
-                        "C4"
-                    ],
-                    "control": [
-                        {
-                            "channel": 0,
-                            "controller": 1,
-                            "value": 0,
-                            "interpolation": "none"
-                        }
-                    ]
+                    "count": 1
                 },
                 {
                     "index": 6,
-                    "duration": 2,
-                    "count": 1,
-                    "pitch": [
-                        "Ab4",
-                        "Eb4"
-                    ],
-                    "control": [
-                        {
-                            "channel": 0,
-                            "controller": 1,
-                            "value": 10,
-                            "interpolation": "none"
-                        }
-                    ]
+                    "duration": 3,
+                    "count": 1
                 },
                 {
                     "index": 9,
                     "duration": 3,
-                    "count": 1,
-                    "pitch": [
-                        "Ab4",
-                        "Eb4"
-                    ],
-                    "control": [
-                        {
-                            "channel": 0,
-                            "controller": 1,
-                            "value": 20,
-                            "interpolation": "none"
-                        }
-                    ]
+                    "count": 1
                 },
                 {
                     "index": 12,
                     "duration": 3,
-                    "count": 1,
-                    "pitch": [
-                        "C4"
-                    ],
-                    "control": [
-                        {
-                            "channel": 0,
-                            "controller": 1,
-                            "value": 20,
-                            "interpolation": "none"
-                        }
-                    ]
+                    "count": 1
                 },
                 {
                     "index": 15,
-                    "duration": 1,
-                    "count": 1,
-                    "pitch": [
-                        "Ab4",
-                        "Eb4"
-                    ],
-                    "control": [
-                        {
-                            "channel": 0,
-                            "controller": 1,
-                            "value": 30,
-                            "interpolation": "none"
-                        }
-                    ]
+                    "duration": 3,
+                    "count": 1
                 },
                 {
                     "index": 18,
                     "duration": 3,
-                    "count": 1,
-                    "pitch": [
-                        "Ab4",
-                        "Eb4"
-                    ],
-                    "control": [
-                        {
-                            "channel": 0,
-                            "controller": 1,
-                            "value": 40,
-                            "interpolation": "none"
-                        }
-                    ]
+                    "count": 1
                 },
                 {
                     "index": 21,
                     "duration": 3,
-                    "count": 1,
-                    "pitch": [
-                        "C4"
-                    ],
-                    "control": [
-                        {
-                            "channel": 0,
-                            "controller": 1,
-                            "value": 40,
-                            "interpolation": "none"
-                        }
-                    ]
+                    "count": 1
                 },
                 {
                     "index": 24,
@@ -296,118 +113,37 @@
                 {
                     "index": 27,
                     "duration": 3,
-                    "count": 1,
-                    "pitch": [
-                        "C4"
-                    ],
-                    "control": [
-                        {
-                            "channel": 0,
-                            "controller": 1,
-                            "value": 50,
-                            "interpolation": "none"
-                        }
-                    ]
+                    "count": 1
                 },
                 {
                     "index": 30,
-                    "duration": 2,
-                    "count": 1,
-                    "pitch": [
-                        "Ab4",
-                        "Eb4"
-                    ],
-                    "control": [
-                        {
-                            "channel": 0,
-                            "controller": 1,
-                            "value": 60,
-                            "interpolation": "none"
-                        }
-                    ]
+                    "duration": 3,
+                    "count": 1
                 },
                 {
                     "index": 33,
                     "duration": 3,
-                    "count": 1,
-                    "pitch": [
-                        "Ab4",
-                        "Eb4"
-                    ],
-                    "control": [
-                        {
-                            "channel": 0,
-                            "controller": 1,
-                            "value": 70,
-                            "interpolation": "none"
-                        }
-                    ]
+                    "count": 1
                 },
                 {
                     "index": 36,
                     "duration": 3,
-                    "count": 1,
-                    "pitch": [
-                        "C4"
-                    ],
-                    "control": [
-                        {
-                            "channel": 0,
-                            "controller": 1,
-                            "value": 70,
-                            "interpolation": "none"
-                        }
-                    ]
+                    "count": 1
                 },
                 {
                     "index": 39,
-                    "duration": 1,
-                    "count": 1,
-                    "pitch": [
-                        "Ab4",
-                        "Eb4"
-                    ],
-                    "control": [
-                        {
-                            "channel": 0,
-                            "controller": 1,
-                            "value": 0,
-                            "interpolation": "none"
-                        }
-                    ]
+                    "duration": 3,
+                    "count": 1
                 },
                 {
                     "index": 42,
                     "duration": 3,
-                    "count": 1,
-                    "pitch": [
-                        "Ab4",
-                        "Eb4"
-                    ],
-                    "control": [
-                        {
-                            "channel": 0,
-                            "controller": 1,
-                            "value": 10,
-                            "interpolation": "none"
-                        }
-                    ]
+                    "count": 1
                 },
                 {
                     "index": 45,
                     "duration": 3,
-                    "count": 1,
-                    "pitch": [
-                        "C4"
-                    ],
-                    "control": [
-                        {
-                            "channel": 0,
-                            "controller": 1,
-                            "value": 10,
-                            "interpolation": "none"
-                        }
-                    ]
+                    "count": 1
                 },
                 {
                     "index": 48,
@@ -417,118 +153,37 @@
                 {
                     "index": 51,
                     "duration": 3,
-                    "count": 1,
-                    "pitch": [
-                        "C4"
-                    ],
-                    "control": [
-                        {
-                            "channel": 0,
-                            "controller": 1,
-                            "value": 20,
-                            "interpolation": "none"
-                        }
-                    ]
+                    "count": 1
                 },
                 {
                     "index": 54,
-                    "duration": 2,
-                    "count": 1,
-                    "pitch": [
-                        "Ab4",
-                        "Eb4"
-                    ],
-                    "control": [
-                        {
-                            "channel": 0,
-                            "controller": 1,
-                            "value": 30,
-                            "interpolation": "none"
-                        }
-                    ]
+                    "duration": 3,
+                    "count": 1
                 },
                 {
                     "index": 57,
                     "duration": 3,
-                    "count": 1,
-                    "pitch": [
-                        "Ab4",
-                        "Eb4"
-                    ],
-                    "control": [
-                        {
-                            "channel": 0,
-                            "controller": 1,
-                            "value": 40,
-                            "interpolation": "none"
-                        }
-                    ]
+                    "count": 1
                 },
                 {
                     "index": 60,
                     "duration": 3,
-                    "count": 1,
-                    "pitch": [
-                        "C4"
-                    ],
-                    "control": [
-                        {
-                            "channel": 0,
-                            "controller": 1,
-                            "value": 40,
-                            "interpolation": "none"
-                        }
-                    ]
+                    "count": 1
                 },
                 {
                     "index": 63,
-                    "duration": 1,
-                    "count": 1,
-                    "pitch": [
-                        "Ab4",
-                        "Eb4"
-                    ],
-                    "control": [
-                        {
-                            "channel": 0,
-                            "controller": 1,
-                            "value": 50,
-                            "interpolation": "none"
-                        }
-                    ]
+                    "duration": 3,
+                    "count": 1
                 },
                 {
                     "index": 66,
                     "duration": 3,
-                    "count": 1,
-                    "pitch": [
-                        "Ab4",
-                        "Eb4"
-                    ],
-                    "control": [
-                        {
-                            "channel": 0,
-                            "controller": 1,
-                            "value": 60,
-                            "interpolation": "none"
-                        }
-                    ]
+                    "count": 1
                 },
                 {
                     "index": 69,
                     "duration": 3,
-                    "count": 1,
-                    "pitch": [
-                        "C4"
-                    ],
-                    "control": [
-                        {
-                            "channel": 0,
-                            "controller": 1,
-                            "value": 60,
-                            "interpolation": "none"
-                        }
-                    ]
+                    "count": 1
                 }
             ],
             "run": false,
@@ -730,6 +385,11 @@
             "instrumentChannel": 0,
             "instrumentName": "Drawbar Organ",
             "instrumentCode": 17,
+            "chords": [
+                [
+                    "AbMaj"
+                ]
+            ],
             "beatUnit": 4,
             "tempo": 60,
             "sources": [
@@ -753,18 +413,44 @@
                 {
                     "channel": 0,
                     "controller": 1,
+                    "direction": "+",
                     "values": [
-                        0,
-                        10,
-                        20,
-                        30,
-                        40,
-                        50,
-                        60,
-                        70
+                        {
+                            "startValue": 0,
+                            "interpolationType": "none"
+                        },
+                        {
+                            "startValue": 10,
+                            "interpolationType": "none"
+                        },
+                        {
+                            "startValue": 20,
+                            "interpolationType": "none"
+                        },
+                        {
+                            "startValue": 0,
+                            "interpolationType": "hump",
+                            "stepSize": 10,
+                            "bend": 0.02,
+                            "endValue": 70
+                        },
+                        {
+                            "startValue": 40,
+                            "interpolationType": "none"
+                        },
+                        {
+                            "startValue": 50,
+                            "interpolationType": "none"
+                        },
+                        {
+                            "startValue": 60,
+                            "interpolationType": "none"
+                        },
+                        {
+                            "startValue": 70,
+                            "interpolationType": "none"
+                        }
                     ],
-                    "valuesDirection": "+",
-                    "interpolation": "none",
                     "controlSource": 2
                 }
             ],
@@ -777,12 +463,15 @@
                         "Ab4",
                         "Eb4"
                     ],
+                    "chord": [
+                        "AbMaj"
+                    ],
                     "control": [
                         {
                             "channel": 0,
                             "controller": 1,
-                            "value": 0,
-                            "interpolation": "none"
+                            "startValue": 0,
+                            "interpolationType": "none"
                         }
                     ]
                 },
@@ -793,12 +482,15 @@
                     "pitch": [
                         "C4"
                     ],
+                    "chord": [
+                        "AbMaj"
+                    ],
                     "control": [
                         {
                             "channel": 0,
                             "controller": 1,
-                            "value": 0,
-                            "interpolation": "none"
+                            "startValue": 0,
+                            "interpolationType": "none"
                         }
                     ]
                 },
@@ -810,12 +502,15 @@
                         "Ab4",
                         "Eb4"
                     ],
+                    "chord": [
+                        "AbMaj"
+                    ],
                     "control": [
                         {
                             "channel": 0,
                             "controller": 1,
-                            "value": 10,
-                            "interpolation": "none"
+                            "startValue": 10,
+                            "interpolationType": "none"
                         }
                     ]
                 },
@@ -826,12 +521,15 @@
                     "pitch": [
                         "C4"
                     ],
+                    "chord": [
+                        "AbMaj"
+                    ],
                     "control": [
                         {
                             "channel": 0,
                             "controller": 1,
-                            "value": 10,
-                            "interpolation": "none"
+                            "startValue": 10,
+                            "interpolationType": "none"
                         }
                     ]
                 },
@@ -843,12 +541,15 @@
                         "Ab4",
                         "Eb4"
                     ],
+                    "chord": [
+                        "AbMaj"
+                    ],
                     "control": [
                         {
                             "channel": 0,
                             "controller": 1,
-                            "value": 20,
-                            "interpolation": "none"
+                            "startValue": 20,
+                            "interpolationType": "none"
                         }
                     ]
                 },
@@ -859,12 +560,15 @@
                     "pitch": [
                         "C4"
                     ],
+                    "chord": [
+                        "AbMaj"
+                    ],
                     "control": [
                         {
                             "channel": 0,
                             "controller": 1,
-                            "value": 20,
-                            "interpolation": "none"
+                            "startValue": 20,
+                            "interpolationType": "none"
                         }
                     ]
                 },
@@ -876,12 +580,18 @@
                         "Ab4",
                         "Eb4"
                     ],
+                    "chord": [
+                        "AbMaj"
+                    ],
                     "control": [
                         {
                             "channel": 0,
                             "controller": 1,
-                            "value": 30,
-                            "interpolation": "none"
+                            "startValue": 0,
+                            "interpolationType": "hump",
+                            "stepSize": 10,
+                            "endValue": 70,
+                            "bend": 0.02
                         }
                     ]
                 },
@@ -892,12 +602,18 @@
                     "pitch": [
                         "C4"
                     ],
+                    "chord": [
+                        "AbMaj"
+                    ],
                     "control": [
                         {
                             "channel": 0,
                             "controller": 1,
-                            "value": 30,
-                            "interpolation": "none"
+                            "startValue": 0,
+                            "interpolationType": "hump",
+                            "stepSize": 10,
+                            "endValue": 70,
+                            "bend": 0.02
                         }
                     ]
                 },
@@ -909,12 +625,15 @@
                         "Ab4",
                         "Eb4"
                     ],
+                    "chord": [
+                        "AbMaj"
+                    ],
                     "control": [
                         {
                             "channel": 0,
                             "controller": 1,
-                            "value": 40,
-                            "interpolation": "none"
+                            "startValue": 40,
+                            "interpolationType": "none"
                         }
                     ]
                 },
@@ -925,12 +644,15 @@
                     "pitch": [
                         "C4"
                     ],
+                    "chord": [
+                        "AbMaj"
+                    ],
                     "control": [
                         {
                             "channel": 0,
                             "controller": 1,
-                            "value": 40,
-                            "interpolation": "none"
+                            "startValue": 40,
+                            "interpolationType": "none"
                         }
                     ]
                 },
@@ -942,12 +664,15 @@
                         "Ab4",
                         "Eb4"
                     ],
+                    "chord": [
+                        "AbMaj"
+                    ],
                     "control": [
                         {
                             "channel": 0,
                             "controller": 1,
-                            "value": 50,
-                            "interpolation": "none"
+                            "startValue": 50,
+                            "interpolationType": "none"
                         }
                     ]
                 },
@@ -958,12 +683,15 @@
                     "pitch": [
                         "C4"
                     ],
+                    "chord": [
+                        "AbMaj"
+                    ],
                     "control": [
                         {
                             "channel": 0,
                             "controller": 1,
-                            "value": 50,
-                            "interpolation": "none"
+                            "startValue": 50,
+                            "interpolationType": "none"
                         }
                     ]
                 },
@@ -975,12 +703,15 @@
                         "Ab4",
                         "Eb4"
                     ],
+                    "chord": [
+                        "AbMaj"
+                    ],
                     "control": [
                         {
                             "channel": 0,
                             "controller": 1,
-                            "value": 60,
-                            "interpolation": "none"
+                            "startValue": 60,
+                            "interpolationType": "none"
                         }
                     ]
                 },
@@ -991,12 +722,15 @@
                     "pitch": [
                         "C4"
                     ],
+                    "chord": [
+                        "AbMaj"
+                    ],
                     "control": [
                         {
                             "channel": 0,
                             "controller": 1,
-                            "value": 60,
-                            "interpolation": "none"
+                            "startValue": 60,
+                            "interpolationType": "none"
                         }
                     ]
                 },
@@ -1008,12 +742,15 @@
                         "Ab4",
                         "Eb4"
                     ],
+                    "chord": [
+                        "AbMaj"
+                    ],
                     "control": [
                         {
                             "channel": 0,
                             "controller": 1,
-                            "value": 70,
-                            "interpolation": "none"
+                            "startValue": 70,
+                            "interpolationType": "none"
                         }
                     ]
                 },
@@ -1024,12 +761,15 @@
                     "pitch": [
                         "C4"
                     ],
+                    "chord": [
+                        "AbMaj"
+                    ],
                     "control": [
                         {
                             "channel": 0,
                             "controller": 1,
-                            "value": 70,
-                            "interpolation": "none"
+                            "startValue": 70,
+                            "interpolationType": "none"
                         }
                     ]
                 },
@@ -1041,12 +781,15 @@
                         "Ab4",
                         "Eb4"
                     ],
+                    "chord": [
+                        "AbMaj"
+                    ],
                     "control": [
                         {
                             "channel": 0,
                             "controller": 1,
-                            "value": 0,
-                            "interpolation": "none"
+                            "startValue": 0,
+                            "interpolationType": "none"
                         }
                     ]
                 },
@@ -1057,12 +800,15 @@
                     "pitch": [
                         "C4"
                     ],
+                    "chord": [
+                        "AbMaj"
+                    ],
                     "control": [
                         {
                             "channel": 0,
                             "controller": 1,
-                            "value": 0,
-                            "interpolation": "none"
+                            "startValue": 0,
+                            "interpolationType": "none"
                         }
                     ]
                 },
@@ -1074,12 +820,15 @@
                         "Ab4",
                         "Eb4"
                     ],
+                    "chord": [
+                        "AbMaj"
+                    ],
                     "control": [
                         {
                             "channel": 0,
                             "controller": 1,
-                            "value": 10,
-                            "interpolation": "none"
+                            "startValue": 10,
+                            "interpolationType": "none"
                         }
                     ]
                 },
@@ -1090,12 +839,15 @@
                     "pitch": [
                         "C4"
                     ],
+                    "chord": [
+                        "AbMaj"
+                    ],
                     "control": [
                         {
                             "channel": 0,
                             "controller": 1,
-                            "value": 10,
-                            "interpolation": "none"
+                            "startValue": 10,
+                            "interpolationType": "none"
                         }
                     ]
                 },
@@ -1107,12 +859,15 @@
                         "Ab4",
                         "Eb4"
                     ],
+                    "chord": [
+                        "AbMaj"
+                    ],
                     "control": [
                         {
                             "channel": 0,
                             "controller": 1,
-                            "value": 20,
-                            "interpolation": "none"
+                            "startValue": 20,
+                            "interpolationType": "none"
                         }
                     ]
                 },
@@ -1123,12 +878,15 @@
                     "pitch": [
                         "C4"
                     ],
+                    "chord": [
+                        "AbMaj"
+                    ],
                     "control": [
                         {
                             "channel": 0,
                             "controller": 1,
-                            "value": 20,
-                            "interpolation": "none"
+                            "startValue": 20,
+                            "interpolationType": "none"
                         }
                     ]
                 },
@@ -1140,12 +898,18 @@
                         "Ab4",
                         "Eb4"
                     ],
+                    "chord": [
+                        "AbMaj"
+                    ],
                     "control": [
                         {
                             "channel": 0,
                             "controller": 1,
-                            "value": 30,
-                            "interpolation": "none"
+                            "startValue": 0,
+                            "interpolationType": "hump",
+                            "stepSize": 10,
+                            "endValue": 70,
+                            "bend": 0.02
                         }
                     ]
                 },
@@ -1156,12 +920,18 @@
                     "pitch": [
                         "C4"
                     ],
+                    "chord": [
+                        "AbMaj"
+                    ],
                     "control": [
                         {
                             "channel": 0,
                             "controller": 1,
-                            "value": 30,
-                            "interpolation": "none"
+                            "startValue": 0,
+                            "interpolationType": "hump",
+                            "stepSize": 10,
+                            "endValue": 70,
+                            "bend": 0.02
                         }
                     ]
                 },
@@ -1173,12 +943,15 @@
                         "Ab4",
                         "Eb4"
                     ],
+                    "chord": [
+                        "AbMaj"
+                    ],
                     "control": [
                         {
                             "channel": 0,
                             "controller": 1,
-                            "value": 40,
-                            "interpolation": "none"
+                            "startValue": 40,
+                            "interpolationType": "none"
                         }
                     ]
                 },
@@ -1189,12 +962,15 @@
                     "pitch": [
                         "C4"
                     ],
+                    "chord": [
+                        "AbMaj"
+                    ],
                     "control": [
                         {
                             "channel": 0,
                             "controller": 1,
-                            "value": 40,
-                            "interpolation": "none"
+                            "startValue": 40,
+                            "interpolationType": "none"
                         }
                     ]
                 },
@@ -1206,12 +982,15 @@
                         "Ab4",
                         "Eb4"
                     ],
+                    "chord": [
+                        "AbMaj"
+                    ],
                     "control": [
                         {
                             "channel": 0,
                             "controller": 1,
-                            "value": 50,
-                            "interpolation": "none"
+                            "startValue": 50,
+                            "interpolationType": "none"
                         }
                     ]
                 },
@@ -1222,12 +1001,15 @@
                     "pitch": [
                         "C4"
                     ],
+                    "chord": [
+                        "AbMaj"
+                    ],
                     "control": [
                         {
                             "channel": 0,
                             "controller": 1,
-                            "value": 50,
-                            "interpolation": "none"
+                            "startValue": 50,
+                            "interpolationType": "none"
                         }
                     ]
                 },
@@ -1239,12 +1021,15 @@
                         "Ab4",
                         "Eb4"
                     ],
+                    "chord": [
+                        "AbMaj"
+                    ],
                     "control": [
                         {
                             "channel": 0,
                             "controller": 1,
-                            "value": 60,
-                            "interpolation": "none"
+                            "startValue": 60,
+                            "interpolationType": "none"
                         }
                     ]
                 },
@@ -1255,12 +1040,15 @@
                     "pitch": [
                         "C4"
                     ],
+                    "chord": [
+                        "AbMaj"
+                    ],
                     "control": [
                         {
                             "channel": 0,
                             "controller": 1,
-                            "value": 60,
-                            "interpolation": "none"
+                            "startValue": 60,
+                            "interpolationType": "none"
                         }
                     ]
                 }

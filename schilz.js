@@ -156,9 +156,7 @@ function writeJSON(JSONoutpath) {
 
 function writeMIDI(MIDIoutpath) {
 	log('writeMIDI ' + MIDIoutpath, 'debug');
-	
 	if (MIDIoutpath != '') {
-		//var midiFile = genMIDIFile();
 		var midiFile = genMidiFileJZZ();
 		if (midiFile != null) {
 			try {
@@ -377,7 +375,7 @@ function generateRhythm(TrackToBuild) {
 			for (var m=0;m<rhythms.tracks[sourceTrack].events.length;m++) {
 				log(rhythms.tracks[sourceTrack].events[m].index + ' ' + k + ' li:' + lastIndex, 'debug');
 				if (typeof rhythms.tracks[sourceTrack].events[m].index != 'undefined' && rhythms.tracks[sourceTrack].events[m].index == k && rhythms.tracks[sourceTrack].events[m].index > lastIndex) {
-					var entry = rhythms.tracks[sourceTrack].events[m];
+					var entry = {...rhythms.tracks[sourceTrack].events[m]}; ///this is the preferred way to copy a JSON object;
 					entry.index = k;
 					entry.count = 0
 					lastIndex = k;
@@ -488,13 +486,13 @@ function concatenateTracks(TrackToBuild) {
 		if (concatenateType == 'none' || concatenateType == 'left' || concatenateType == 'right' || concatenateType == 'retrograde' || concatenateType == 'custom') {
 			var loopCount = 0;
 			for (loopCount=startAt;loopCount<endAt;loopCount+=increment) {
+				var entry = {...rhythms.tracks[sourceTrack].events[loopCount]};
 				if (loopCount == startAt && offset > 0 && muteInitial) {
 					entry.isRest = "rest";
 				}
 				lastIndex = rhythms.tracks[sourceTrack].events[loopCount].index;
 				lastDuration = rhythms.tracks[sourceTrack].events[loopCount].duration;
 				lastCount = rhythms.tracks[sourceTrack].events[loopCount].count;
-				var entry = rhythms.tracks[sourceTrack].events[loopCount];
 				entry.index = lastIndex + newIndex + offset;
 				entry.duration = lastDuration;
 				entry.count = lastCount;
@@ -508,7 +506,7 @@ function concatenateTracks(TrackToBuild) {
 				var loopCount2;
 				log('left--2nd loop. ' + 'loopCount:' + loopCount + ' startAt:' + startAt + ' increment:' + increment, 'debug');
 				for (loopCount2=loopCount;loopCount2<startAt;loopCount2+=increment) {
-					var entry = rhythms.tracks[sourceTrack].events[loopCount2];
+					var entry = {...rhythms.tracks[sourceTrack].events[loopCount2]};
 					entry.index = lastIndex + newIndex + lastDuration;
 					entry.duration = rhythms.tracks[sourceTrack].events[loopCount2].duration;
 					entry.count = rhythms.tracks[sourceTrack].events[loopCount2].count;
@@ -732,7 +730,7 @@ function splitTrackByNoteCount(TrackToBuild) {
 	log('splitTrackByNoteCount(' + TrackToBuild + ')', 'info');
 	for (var eventIndex=0;eventIndex<rhythms.tracks[source].events.length;eventIndex++) {
 		var currentTargetIndex = rhythms.tracks[TrackToBuild].targets[rhythms.tracks[source].events[eventIndex].count-1];
-		var currentEvent = rhythms.tracks[source].events[eventIndex];
+		var currentEvent = {...rhythms.tracks[source].events[eventIndex]};
 		log('   split event:' + eventIndex + 'target:' + currentTargetIndex + ' events:' + JSON.stringify(rhythms.tracks[currentTargetIndex]),'debug');
 		rhythms.tracks[currentTargetIndex].events.push(currentEvent);
 	}
@@ -753,11 +751,11 @@ function splitTrackByList(TrackToBuild, countArray) {
 	var countLength = countArray.length;
 	log('source:' + source + ' currentTarget:' + currentTarget, 'debug');
 	for (var sourceIndex=0;sourceIndex<rhythms.tracks[source].events.length;sourceIndex++) {
-		var currentTarget = rhythms.tracks[TrackToBuild].targets[currentTargetIndex];
+		var currentTarget = {...rhythms.tracks[TrackToBuild].targets[currentTargetIndex]};
 		
 		log('   source:' + source + '  sourceIndex:' + sourceIndex + '  currentTargetIndex:' + currentTargetIndex + '  currentCountIndex:' +  currentCountIndex + '  currentTarget:' + currentTarget + '  currentTargetCount:' + currentTargetCount + '  countArray[currentCountIndex]:' + countArray[currentCountIndex] + '  events:' + JSON.stringify(rhythms.tracks[source].events[sourceIndex]), 'debug');
 		
-		rhythms.tracks[currentTarget].events.push(rhythms.tracks[source].events[sourceIndex]);
+		rhythms.tracks[currentTarget].events.push({...rhythms.tracks[source].events[sourceIndex]});
 		currentTargetCount++;
 		if (currentTargetCount > countArray[currentCountIndex]) {
 			currentTargetCount = 1;
@@ -819,13 +817,15 @@ function setCounts(TrackToBuild) {
 function addPitches(TrackToBuild) {
 	if (typeof rhythms.tracks[TrackToBuild].pitches == 'undefined') return;
 	
-	log('addPitches(' + TrackToBuild + ')', 'debug');
+	log('addPitches(' + TrackToBuild + ')' + ' events:' + rhythms.tracks[TrackToBuild].events.length, 'info');
+	//console.log('   start:\n' + JSON.stringify(rhythms) + '\n\n');
 	var symbolIndex = 0;
 	
 	for (var result=1;result<=rhythms.tracks[TrackToBuild].events.length;result++) {
-		//this needs to support multiple pitches. All pitches need to be arrays. Pitches is an array of arrays
 		rhythms.tracks[TrackToBuild].events[result-1].pitch = [];
 		for (var i=0;i<rhythms.tracks[TrackToBuild].pitches[symbolIndex].length;i++) {
+			//console.log('   TrackToBuild:' + TrackToBuild + '\tresult:' + result);
+			//console.log('   interim:\n' + JSON.stringify(rhythms) + '\n\n');
 			rhythms.tracks[TrackToBuild].events[result-1].pitch.push(rhythms.tracks[TrackToBuild].pitches[symbolIndex][i]);
 		}
 		symbolIndex += 1;
@@ -895,13 +895,13 @@ function getSubstitutePitch(interval, key, multiplier, intervalDirection, rootCo
 }
 
 function geometricTrackChromatic(TrackToBuild) {
-	log('geometricTrackChromatic(' + TrackToBuild + ')','info');
 	var rootPitch
 	if (typeof rhythms.tracks[TrackToBuild].pitchRoot != 'undefined') {
 		rootPitch = rhythms.tracks[TrackToBuild].pitchRoot;
 	} else {
 		return;
 	}
+	log('geometricTrackChromatic(' + TrackToBuild + ')','info');
 	var multiplier = 1;
 	if (typeof rhythms.tracks[TrackToBuild].pitchMultiplier != 'undefined') {
 		multiplier = rhythms.tracks[TrackToBuild].pitchMultiplier;
@@ -1066,20 +1066,7 @@ function getPitchInRange(minPitch,maxPitch,currentPitch) {
 function addControlEvents(TrackToBuild) {
 	if (typeof rhythms.tracks[TrackToBuild].controlEvents == 'undefined') return;
 	log('addControlEvents(' + TrackToBuild + ')', 'info');
-	//iterate over the set of control events
-	/*
-	"controlEvents": [
-		{
-			"channel": 1,
-			"values":[],
-			"valuesDirection": [+, -,count]
-			"interpolation": [none, linear]
-			"interpolationFrequency":
-			"controlSource": tracknumber
-			
-		}
-	]
-	*/
+
 	eventIndex = 0;
 	//get next controlEvent
 	//log('controlEventsCount:' + rhythms.tracks[TrackToBuild].controlEvents.length, 'info');
@@ -1095,17 +1082,25 @@ function addControlEvents(TrackToBuild) {
 				control = {};
 				control.channel = rhythms.tracks[TrackToBuild].controlEvents[controllerIndex].channel;
 				control.controller = rhythms.tracks[TrackToBuild].controlEvents[controllerIndex].controller;
-				if (rhythms.tracks[TrackToBuild].controlEvents[controllerIndex].valuesDirection == "count") {
+				if (rhythms.tracks[TrackToBuild].controlEvents[controllerIndex].direction == "count") {
 					if (rhythms.tracks[TrackToBuild].events[eventIndex].count > 0) {
-						control.value = rhythms.tracks[TrackToBuild].controlEvents[controllerIndex].values[rhythms.tracks[TrackToBuild].events[eventIndex].count-1];
+						control.startValue = rhythms.tracks[TrackToBuild].controlEvents[controllerIndex].values[rhythms.tracks[TrackToBuild].events[eventIndex].count-1];
 					} else {
-						control.value = rhythms.tracks[TrackToBuild].controlEvents[controllerIndex].values[rhythms.tracks[TrackToBuild].events[eventIndex].count];
+						control.startValue = rhythms.tracks[TrackToBuild].controlEvents[controllerIndex].values[rhythms.tracks[TrackToBuild].events[eventIndex].count];
 					}
 				} else {
-					control.value = rhythms.tracks[TrackToBuild].controlEvents[controllerIndex].values[controlValueIndex];
+					control.startValue = rhythms.tracks[TrackToBuild].controlEvents[controllerIndex].values[controlValueIndex].startValue;
 				}
-				control.interpolation = rhythms.tracks[TrackToBuild].controlEvents[controllerIndex].interpolation
-				control.interpolationFrequency = rhythms.tracks[TrackToBuild].controlEvents[controllerIndex].interpolationFrequency
+				control.interpolationType = rhythms.tracks[TrackToBuild].controlEvents[controllerIndex].values[controlValueIndex].interpolationType
+				if (typeof rhythms.tracks[TrackToBuild].controlEvents[controllerIndex].values[controlValueIndex].stepSize != 'undefined') {
+				control.stepSize = rhythms.tracks[TrackToBuild].controlEvents[controllerIndex].values[controlValueIndex].stepSize;
+				}
+				if (typeof rhythms.tracks[TrackToBuild].controlEvents[controllerIndex].values[controlValueIndex].endValue != 'undefined') {
+					control.endValue = rhythms.tracks[TrackToBuild].controlEvents[controllerIndex].values[controlValueIndex].endValue;
+				}
+				if (typeof rhythms.tracks[TrackToBuild].controlEvents[controllerIndex].values[controlValueIndex].bend != 'undefined') {
+				control.bend = rhythms.tracks[TrackToBuild].controlEvents[controllerIndex].values[controlValueIndex].bend;
+				}
 				//console.log('       eventIndex:' + eventIndex + '   ' + JSON.stringify(control));
 				if (typeof rhythms.tracks[TrackToBuild].events[eventIndex].control == 'undefined') {
 					rhythms.tracks[TrackToBuild].events[eventIndex].control = [];
@@ -1118,16 +1113,19 @@ function addControlEvents(TrackToBuild) {
 				}
 			}
 			
-			if (rhythms.tracks[TrackToBuild].controlEvents[controllerIndex].valuesDirection == "+") {
+			if (rhythms.tracks[TrackToBuild].controlEvents[controllerIndex].direction == "+") {
 				controlValueIndex++;
 				if (controlValueIndex > rhythms.tracks[TrackToBuild].controlEvents[controllerIndex].values.length-1) {
 					controlValueIndex = 0;
 				}
-			} else if (rhythms.tracks[TrackToBuild].controlEvents[controllerIndex].valuesDirection == "-") {
+			} else if (rhythms.tracks[TrackToBuild].controlEvents[controllerIndex].direction == "-") {
 				controlValueIndex--;
 				if (controlValueIndex < 0) {
 					controlValueIndex = rhythms.tracks[TrackToBuild].controlEvents[controllerIndex].values.length-1;
 				}
+			} else if (rhythms.tracks[TrackToBuild].controlEvents[controllerIndex].direction == "random") {
+				controlValueIndex = Math.floor(Math.random() * rhythms.tracks[TrackToBuild].controlEvents[controllerIndex].values.length);
+
 			}
 		}
 	}
@@ -1649,6 +1647,7 @@ function getOctaveInversionVoicingIndex(chord) {
 	if (chord.typeIndex == -1) {
 		//if we didn't succeed, then fail? or default?
 		log('chord not found  ' + 'chord:' + JSON.stringify(chord),'error');
+		chord.error = 'Chord not found!';
 		return chord;
 	}
 	//find the inversion
@@ -1679,11 +1678,13 @@ function getChordPitches(key,chord) {
 }
 
 function convertChordsToPitches(TrackToBuild) {
-	log('convertChordsToPitches(' + TrackToBuild + ')', 'info');
 	var key;
 	if (typeof rhythms.tracks[TrackToBuild].keyOf != 'undefined') {
 		key = parsekeyOf(rhythms.tracks[TrackToBuild].keyOf);
+	} else {
+		return;
 	}
+	log('convertChordsToPitches(' + TrackToBuild + ')', 'info');
 	for (var result=0;result<rhythms.tracks[TrackToBuild].events.length;result++) {
 		if (typeof rhythms.tracks[TrackToBuild].events[result].chord != 'undefined') {
 			var chord = {};
@@ -1750,147 +1751,6 @@ function safeStringify(jsonInput) {
 }
 
 //File Generation
-function genMIDIFile() {
-	log('genMIDIFile()','info');
-	var highestCount = 0
-	var anyMidi = false;
-	for (trackIndex=0;trackIndex<rhythms.tracks.length;trackIndex++) {
-		for (noteIndex=0;noteIndex<rhythms.tracks[trackIndex].events.length;noteIndex++) {
-			if (rhythms.tracks[trackIndex].events[noteIndex].count > highestCount) {
-				highestCount = rhythms.tracks[trackIndex].events[noteIndex].count;
-			}
-		}
-		if (typeof rhythms.tracks[trackIndex].includeInScore == 'undefined') {
-			rhythms.tracks[trackIndex].includeInScore = false;
-		} else if (rhythms.tracks[trackIndex].includeInScore == true) {
-			anyMidi = true;
-		}
-	}
-	log('   anyMidi:' + anyMidi, 'debug');
-	if (!anyMidi) return null;
-	var avgVelocity = 50;
-	if (typeof rhythms.averageVelocity != 'undefined') {
-		avgVelocity = rhythms.averageVelocity;
-	} else {
-		rhythms.averageVelocity = avgVelocity;
-	}
-	var velocityCountAdjust = (100 - avgVelocity)/highestCount;
-	log('   velocityAdjust:' + velocityCountAdjust + ' highestCount:' + highestCount + ' avgVelocity:' + avgVelocity, 'debug');
-	var midiTracks = [];
-	for (trackIndex=0;trackIndex<rhythms.tracks.length;trackIndex++) {
-		if (rhythms.tracks[trackIndex].events.length == 0) break;
-		if (rhythms.tracks[trackIndex].includeInScore) {
-			var track = new MidiWriter.Track();
-			midiTracks.push(track);
-			midiTracks[midiTracks.length-1].addTrackName(rhythms.tracks[trackIndex].name);
-			if (typeof rhythms.copyright != 'undefined') {
-				//console.log(rhythms.copyright);
-				midiTracks[midiTracks.length-1].addCopyright(rhythms.copyright);
-			}
-			var tempo;
-			if (typeof rhythms.tracks[trackIndex].tempo != 'undefined') {
-				tempo = rhythms.tracks[trackIndex].tempo;
-			} else if (typeof rhythms.tempo != 'undefined') {
-				tempo = rhythms.tempo;
-			} else {
-				tempo = 90;
-			}
-			midiTracks[midiTracks.length-1].setTempo(tempo);
-			var instrumentName;
-			if (typeof rhythms.tracks[trackIndex].instrumentName != 'undefined') {
-				instrumentName = rhythms.tracks[trackIndex].instrumentName;
-			} else {
-				instrumentName = "piano";
-			}
-			var instrumentCode;
-			if (typeof rhythms.tracks[trackIndex].instrumentCode != 'undefined') {
-				instrumentCode = rhythms.tracks[trackIndex].instrumentCode;
-			} else {
-				instrumentCode = 1;
-			}
-			var timeSignature = '';
-			if (typeof rhythms.tracks[trackIndex].timeSignature != 'undefined') {
-				timeSignature = rhythms.tracks[trackIndex].timeSignature;
-			} else {
-				timeSignature = rhythms.timeSignature;
-			}
-			log('   writing midi for track:' + trackIndex + ' notes:' + rhythms.tracks[trackIndex].events.length + ' timeSignature:' + timeSignature + ' tempo:' + tempo + ' instrumentName:' + instrumentName, 'debug');
-			var timeSigArray = timeSignature.split('/');
-			midiTracks[midiTracks.length-1].setTimeSignature(timeSigArray[0],timeSigArray[1]);
-			midiTracks[midiTracks.length-1].addInstrumentName(instrumentName);
-			midiTracks[midiTracks.length-1].addEvent(new MidiWriter.ProgramChangeEvent({instrument: instrumentCode}));
-			//could optionally insert a phantom note here because midi players have trouble with notes that start at the immediate beginning. But this could complicate matters for importing into MuseScore, since things no longer align. 
-			var velocity;
-			for (noteIndex=0;noteIndex<rhythms.tracks[trackIndex].events.length;noteIndex++) {
-				//controller events with interpolation = 'none' should go here, as should the first value for events that use interpolation.
-				//note that this doesn't appear to do anything to the midi.
-				if (typeof rhythms.tracks[trackIndex].events[noteIndex].control != 'undefined') {
-					for (controllerIndex=0;controllerIndex<rhythms.tracks[trackIndex].events[noteIndex].control.length;controllerIndex++) {
-						midiTracks[midiTracks.length-1].controllerChange({controllerNumber: rhythms.tracks[trackIndex].events[noteIndex].control[controllerIndex].channel,controllerValue:rhythms.tracks[trackIndex].events[noteIndex].control[controllerIndex].value, delta: 500});
-					}
-				}
-				if (typeof rhythms.tracks[trackIndex].adjustVelocity  != 'undefined') {
-					if (rhythms.tracks[trackIndex].adjustVelocity == "byCount") {
-						if (typeof rhythms.tracks[trackIndex].events[noteIndex].count  != 'undefined') {
-							velocity = velocity + (rhythms.tracks[trackIndex].events[noteIndex].count * velocityCountAdjust)
-						} else {
-							velocity = rhythms.averageVelocity;
-						}
-					} else if (Number.isInteger(rhythms.tracks[trackIndex].adjustVelocity)) {
-						velocity = getControlValue(rhythms.tracks[trackIndex].events[noteIndex], rhythms.tracks[trackIndex].adjustVelocity);
-					}
-				} else {
-					velocity = rhythms.averageVelocity;
-				}
-				var buildNote;
-				if (typeof rhythms.tracks[trackIndex].events[noteIndex].pitch != 'undefined') {
-					buildNote = flattenArray(rhythms.tracks[trackIndex].events[noteIndex].pitch);
-				} else if (typeof rhythms.tracks[trackIndex].defaultPitch != 'undefined') {
-					buildNote = rhythms.tracks[trackIndex].defaultPitch;
-				} else if (typeof rhythms.defaultPitch != 'undefined') {
-					buildNote = rhythms.defaultPitch;
-				}
-				log('*****buildNote:' + JSON.stringify(buildNote), 'debug');
-				var beatUnit;
-				if (typeof rhythms.tracks[trackIndex].beatUnit != 'undefined') {
-					beatUnit = rhythms.tracks[trackIndex].beatUnit;
-				} else {
-					beatUnit = 4;
-					rhythms.tracks[trackIndex].beatUnit = beatUnit;
-				}
-				var duration = 'T' + ((512/beatUnit) * rhythms.tracks[trackIndex].events[noteIndex].duration).toString();
-			
-				if (typeof rhythms.tracks[trackIndex].events[noteIndex].isRest != 'undefined' && rhythms.tracks[trackIndex].events[noteIndex].isRest == "rest") {
-					velocity = 0;
-					log('    track:' + trackIndex + '    rest', 'debug');
-				}
-				
-				if (noteIndex == 0 && rhythms.tracks[trackIndex].events[noteIndex].index > 0) {
-					var durationPhantom = 'T' + ((512/beatUnit) * rhythms.tracks[trackIndex].events[noteIndex].index).toString();
-					
-					midiTracks[midiTracks.length-1].addEvent([new MidiWriter.NoteEvent({pitch: buildNote, duration: durationPhantom, velocity: 0})]);
-				}
-				log('    track:' + trackIndex + '    pitch:' + JSON.stringify(buildNote) + ' duration:' + duration + ' velocity:' + velocity, 'debug');
-				if (typeof rhythms.tracks[trackIndex].events[noteIndex].chord != 'undefined') {
-					midiTracks[midiTracks.length-1].addText(rhythms.tracks[trackIndex].events[noteIndex].chord.toString())
-				}
-				midiTracks[midiTracks.length-1].addEvent([new MidiWriter.NoteEvent({pitch: buildNote, duration: duration, velocity: velocity})]);
-				
-				/*controller events with interpolation need to go here.
-				However, midi-writer-js does not properly support controller change events--there is no way to specify where in the stream the event should go.
-				
-				if (typeof rhythms.tracks[trackIndex].events[noteIndex].control != 'undefined') {
-					for (controllerIndex=0;controllerIndex<rhythms.tracks[trackIndex].events[noteIndex].control.length;controllerIndex++) {
-						midiTracks[midiTracks.length-1].addEvent(new MidiWriter.ControllerChangeEvent({controllerNumber: rhythms.tracks[trackIndex].events[noteIndex].control[controllerIndex].channel,controllerValue:rhythms.tracks[trackIndex].events[noteIndex].control[controllerIndex].value}));
-					}
-				}
-				*/
-			}
-		}
-	}
-	var write = new MidiWriter.Writer(midiTracks);
-	return write.buildFile();
-}
 
 function getControlValue (noteEvent, controlChannel) {
 	for (i=0;i<noteEvent.control.length;i++) {
@@ -2135,6 +1995,13 @@ function genMidiFileJZZ() {
 				instrumentChannel = 1;
 			}
 			
+			//keysignature must be converted to short format C#m, M
+			var keySignature = '';
+			if (typeof rhythms.tracks[trackIndex].keySignature != 'undefined') {
+				timeSignature = rhythms.tracks[trackIndex].keySignature;
+			} else {
+				timeSignature = rhythms.keySignature;
+			}
 			var timeSignature = '';
 			if (typeof rhythms.tracks[trackIndex].timeSignature != 'undefined') {
 				timeSignature = rhythms.tracks[trackIndex].timeSignature;
@@ -2143,7 +2010,7 @@ function genMidiFileJZZ() {
 			}
 			log('   writing midi for track:' + trackIndex + ' notes:' + rhythms.tracks[trackIndex].events.length + ' timeSignature:' + timeSignature + ' tempo:' + tempo + ' instrumentName:' + instrumentName, 'debug');
 			var timeSigArray = timeSignature.split('/');
-			//NEED KEY SIGNATURE
+			//smf[smf.length-1].add(index,JZZ.MIDI.smfKeySignature(keySignature));
 			smf[smf.length-1].add(index,JZZ.MIDI.smfTimeSignature(timeSigArray[0] + "/" + timeSigArray[1]));
 			smf[smf.length-1].add(index,JZZ.MIDI.smfInstrName(instrumentName));
 			console.log('MIDIcode:' + (instrumentChannel + 192) + " hex:" + (instrumentChannel + 192).toString(16) + "    instrument:" + instrumentCode + " hex:" + instrumentCode.toString(16));
@@ -2152,12 +2019,7 @@ function genMidiFileJZZ() {
 			var velocity;
 			
 			for (noteIndex=0;noteIndex<rhythms.tracks[trackIndex].events.length;noteIndex++) {
-				//controller events with interpolation = 'none' go here, as do the first value for events that use interpolation.
-				if (typeof rhythms.tracks[trackIndex].events[noteIndex].control != 'undefined') {
-					for (controllerIndex=0;controllerIndex<rhythms.tracks[trackIndex].events[noteIndex].control.length;controllerIndex++) {
-						smf[smf.length-1].add(index,JZZ.MIDI.control(rhythms.tracks[trackIndex].events[noteIndex].control[controllerIndex].channel,rhythms.tracks[trackIndex].events[noteIndex].control[controllerIndex].controller,rhythms.tracks[trackIndex].events[noteIndex].control[controllerIndex].value));
-					}
-				}
+			
 				if (typeof rhythms.tracks[trackIndex].adjustVelocity  != 'undefined') {
 					if (rhythms.tracks[trackIndex].adjustVelocity == "byCount") {
 						if (typeof rhythms.tracks[trackIndex].events[noteIndex].count  != 'undefined') {
@@ -2204,31 +2066,191 @@ function genMidiFileJZZ() {
 				if (typeof rhythms.tracks[trackIndex].events[noteIndex].chord != 'undefined') {
 					smf[smf.length-1].add(index,JZZ.MIDI.smfText(rhythms.tracks[trackIndex].events[noteIndex].chord.toString()));
 				}
+				
+				if (typeof rhythms.tracks[trackIndex].events[noteIndex].control != 'undefined') {
+					for (controllerIndex=0;controllerIndex<rhythms.tracks[trackIndex].events[noteIndex].control.length;controllerIndex++) {
+						if (rhythms.tracks[trackIndex].events[noteIndex].control[controllerIndex].interpolationType == 'none') {
+							smf[smf.length-1].add(index,JZZ.MIDI.control(rhythms.tracks[trackIndex].events[noteIndex].control[controllerIndex].channel,rhythms.tracks[trackIndex].events[noteIndex].control[controllerIndex].controller,rhythms.tracks[trackIndex].events[noteIndex].control[controllerIndex].startValue));
+						} else {
+							var shape = rhythms.tracks[trackIndex].events[noteIndex].control[controllerIndex].interpolationType;
+							var interpolationType = rhythms.tracks[trackIndex].events[noteIndex].control[controllerIndex].interpolationType;
+							var stepSize = rhythms.tracks[trackIndex].events[noteIndex].control[controllerIndex].stepSize;
+							var bend = rhythms.tracks[trackIndex].events[noteIndex].control[controllerIndex].bend;
+							var startValue = rhythms.tracks[trackIndex].events[noteIndex].control[controllerIndex].startValue;
+							var endValue;
+							if (typeof rhythms.tracks[trackIndex].events[noteIndex].control[controllerIndex].endValue != 'undefined') {
+								if (rhythms.tracks[trackIndex].events[noteIndex].control[controllerIndex].endValue == 'next') {
+									if (typeof rhythms.tracks[trackIndex].events[noteIndex+1] != 'undefined') {
+										for (nextControllerIndex=0;nextControllerIndex<rhythms.tracks[trackIndex].events[noteIndex+1].control.length;nextControllerIndex++) {
+											if (rhythms.tracks[trackIndex].events[noteIndex+1].control[nextControllerIndex].channel == rhythms.tracks[trackIndex].events[noteIndex].control[controllerIndex].channel && rhythms.tracks[trackIndex].events[noteIndex+1].control[nextControllerIndex].controller == rhythms.tracks[trackIndex].events[noteIndex].control[controllerIndex].controller) {
+												endValue = rhythms.tracks[trackIndex].events[noteIndex+1].control[nextControllerIndex].startValue;
+												break;
+											}
+										}
+									}
+								} else {
+									endValue = rhythms.tracks[trackIndex].events[noteIndex].control[controllerIndex].endValue;
+									//console.log('shape:' + shape + '\tendValue:' + endValue);
+								}
+							} else {
+								console.log('Uh OH:' + JSON.stringify(rhythms.tracks[trackIndex].events[noteIndex].control[controllerIndex]));
+							}
+							var startIndex = index;
+							var endIndex = startIndex+duration
+							if (endValue != null) {
+								var controlEvents = buildInterpolatedOutput(shape, stepSize, startValue, endValue, startIndex, endIndex, bend);
+							}
+							for (var ctrlEventCtr=0;ctrlEventCtr<controlEvents.length;ctrlEventCtr++) {
+								//console.log('   channel:' + rhythms.tracks[trackIndex].events[noteIndex].control[controllerIndex].channel + ' controller:' +rhythms.tracks[trackIndex].events[noteIndex].control[controllerIndex].controller + ' index:' +  controlEvents[ctrlEventCtr].index + ' sig:' + controlEvents[ctrlEventCtr].sig);
+								smf[smf.length-1].add(controlEvents[ctrlEventCtr].index,JZZ.MIDI.control(channel,rhythms.tracks[trackIndex].events[noteIndex].control[controllerIndex].controller,controlEvents[ctrlEventCtr].sig));
+							}
+						}
+					}
+				}
+				
 				for (var chordCtr=0;chordCtr<buildNote.length;chordCtr++) {
 					smf[smf.length-1].add(index,JZZ.MIDI.noteOn(channel, buildNote[chordCtr],velocity));
 					smf[smf.length-1].add(index+duration,JZZ.MIDI.noteOff(channel, buildNote[chordCtr],0));
 				}
-				/*controller events with interpolation need to go here.
-				*/
 				
-				if (typeof rhythms.tracks[trackIndex].events[noteIndex].control != 'undefined') {
-					for (controllerIndex=0;controllerIndex<rhythms.tracks[trackIndex].events[noteIndex].control.length;controllerIndex++) {
-						if (rhythms.tracks[trackIndex].events[noteIndex].control[controllerIndex].interpolation == 'linear') {
-						//get the value for this controller from the next event
-						//compute delta = current controller value - next value
-						//numEventsToInsert = round(duration/delta)
-						//for loop 0 to numEventsToInsert
-						// insert new event, where newControllerValue = controllerValue + delta
-						
-						midiTracks[midiTracks.length-1].addEvent(new MidiWriter.ControllerChangeEvent({controllerNumber: rhythms.tracks[trackIndex].events[noteIndex].control[controllerIndex].channel,controllerValue:rhythms.tracks[trackIndex].events[noteIndex].control[controllerIndex].value}));
-					}
-				}
-
-
 				index += duration;
 			}
 		}
 	}
-	//console.log(smf.toString());
 	return smf;
+}
+
+function buildInterpolatedOutput(shape, stepSize, startValue, endValue, startIndex, endIndex, bend) {
+	console.log('shape:' + shape + ' stepSize:' + stepSize + ' startValue:' + startValue + ' endValue:' + endValue + ' startIndex:' + startIndex +  ' endIndex:' + endIndex + ' bend:' + bend);
+	var resultJSON;
+	if (shape == "sigmoid") {
+		if (bend<0) {
+			bend = bend-1;
+		}
+		var forward;
+		if (startValue > endValue) {
+			min = endValue;
+			max = startValue;
+			forward = false; 
+		} else {
+			max = endValue;
+			min = startValue;
+			forward = true;
+		}
+
+		var ccString = "";
+		var valDiff = max-min;
+		var cut = Math.round(valDiff/2);
+		var halfMax = max-cut;
+		var idxDiff = endIndex-startIndex;
+		var halfIDX = Math.round(idxDiff/2) + startIndex;
+		var resultJSON;
+
+		resultJSON = exponential(bend,min,halfMax,startIndex,halfIDX,stepSize);
+
+		var resultJSONSize = resultJSON.length;
+		var halfWaySig = resultJSON[resultJSON.length-1].sig;
+		//console.log(halfWaySig + ' ' + halfIDX);
+		if (resultJSON[resultJSON.length-1].index < halfIDX) {
+			resultJSON.push({"sig": halfWaySig, "index":halfIDX});
+		}
+		for (var i=resultJSONSize-2;i>=0;i--) {
+			var newEvent = {}
+			newEvent.index = halfIDX + (halfIDX-resultJSON[i].index);
+			newEvent.sig = max - resultJSON[i].sig;
+			//console.log('newEventSig:' + halfWaySig + ' ' + resultJSON[i].sig);
+			resultJSON.push(newEvent);
+		}
+		if (!forward) {
+			resultJSON = reverseSig(resultJSON);
+		}
+	} else if (shape == "hump") {
+		if (bend<0) {
+			bend = bend-1;
+		}
+		var forward;
+		if (startValue > endValue) {
+			min = endValue;
+			max = startValue;
+			forward = false; 
+		} else {
+			max = endValue;
+			min = startValue;
+			forward = true;
+		}
+		//console.log('forward:' + forward);
+		var valDiff = max-min;
+		var cut = Math.round(valDiff/2);
+		var halfMax = max-cut;
+		var idxDiff = endIndex-startIndex;
+		var halfIDX = Math.round(idxDiff/2) + startIndex;
+		resultJSON = exponential(bend,min,max,startIndex,halfIDX,stepSize);
+		if (!forward) {
+			resultJSON = reverseSig(resultJSON);
+		}
+		var resultJSONSize = resultJSON.length;
+		var halfWaySig = resultJSON[resultJSON.length-1].sig;
+		//console.log(halfWaySig + ' ' + halfIDX);
+		if (resultJSON[resultJSON.length-1].index < halfIDX) {
+			resultJSON.push({"sig": halfWaySig, "index":halfIDX});
+		}
+		for (var i=resultJSONSize-2;i>=0;i--) {
+			var newEvent = {}
+			newEvent.index = halfIDX + (halfIDX-resultJSON[i].index);
+			newEvent.sig = resultJSON[i].sig;
+			//console.log('newEventSig:' + halfWaySig + ' ' + resultJSON[i].sig);
+			resultJSON.push(newEvent);
+		}
+	} else if (shape == "exp") {
+		if (bend<0) {
+			bend = bend-1;
+		}
+		var forward;
+		if (startValue > endValue) {
+			min = endValue;
+			max = startValue;
+			forward = false; 
+		} else {
+			max = endValue;
+			min = startValue;
+			forward = true;
+		}
+
+		resultJSON = exponential(bend,min,max,startIndex,endIndex,stepSize);
+		if (!forward) {
+			resultJSON = reverseSig(resultJSON);
+		}
+	}
+	return resultJSON;
+}
+
+function exponential(bend,min,max,startIndex,endIndex, stepSize) {
+	console.log('exponential:' + bend + '\tmin:' + min + '\tmax:' + max + '\tsI:' + startIndex + '\teI:' + endIndex + '\tstep:' + stepSize);
+	var cc = [];
+	var oldSig = -999;
+	var curIndex = startIndex;
+	var steps = (max-min)
+	var indexIncrement = (endIndex-startIndex)/steps;
+	var t=min;
+	for (var i=0;i<=steps;i++) {
+		var sig = Math.round(((bend*t) / (bend-t+1))*max);
+		//console.log("i:" + i + "\tt:" + t + "\tsig:" + sig + "\toldSig:" + oldSig + "\tcurIndex:" + curIndex + "\tmax:" + max);
+		if (sig-oldSig >= stepSize) {
+			cc.push({"sig":sig, "index": Math.round(curIndex)});
+			oldSig = sig;
+		}
+		t+=1/steps;
+		curIndex+=indexIncrement
+	}
+	return cc;
+}
+
+function reverseSig(anArray) {
+	var newArray = [];
+	reverseIndex = anArray.length-1;
+	for (i=0;i<anArray.length;i++) {
+		newArray.push({"index":anArray[i].index,"sig":anArray[reverseIndex].sig});
+		reverseIndex--;
+	}
+	return newArray;
 }
