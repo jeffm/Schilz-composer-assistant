@@ -47,8 +47,8 @@
 					"values":[{"startValue": 0, "interpolationType": "none"},
 					{"startValue": 10,  "interpolationType": "none"},
 					{"startValue": 20, "interpolationType": "none"},
-					{"startValue": 0, "interpolationType": "hump", "stepSize": 10, "bend": 0.02, "endValue":70},
-					{"startValue": 40, "interpolationType": "none"},
+					{"startValue": 0, "interpolationType": "exponential", "stepSize": 1, "bend": 0.02, "endValue":"next"},
+					{"startValue": 100, "interpolationType": "none"},
 					{"startValue": 50, "interpolationType": "none"},
 					{"startValue": 60, "interpolationType": "none"},
 					{"startValue": 70, "interpolationType": "none"}

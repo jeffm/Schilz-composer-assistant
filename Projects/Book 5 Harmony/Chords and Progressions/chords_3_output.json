@@ -429,13 +429,13 @@
                         },
                         {
                             "startValue": 0,
-                            "interpolationType": "hump",
-                            "stepSize": 10,
+                            "interpolationType": "exponential",
+                            "stepSize": 1,
                             "bend": 0.02,
-                            "endValue": 70
+                            "endValue": "next"
                         },
                         {
-                            "startValue": 40,
+                            "startValue": 100,
                             "interpolationType": "none"
                         },
                         {
@@ -588,9 +588,9 @@
                             "channel": 0,
                             "controller": 1,
                             "startValue": 0,
-                            "interpolationType": "hump",
-                            "stepSize": 10,
-                            "endValue": 70,
+                            "interpolationType": "exponential",
+                            "stepSize": 1,
+                            "endValue": "next",
                             "bend": 0.02
                         }
                     ]
@@ -610,9 +610,9 @@
                             "channel": 0,
                             "controller": 1,
                             "startValue": 0,
-                            "interpolationType": "hump",
-                            "stepSize": 10,
-                            "endValue": 70,
+                            "interpolationType": "exponential",
+                            "stepSize": 1,
+                            "endValue": "next",
                             "bend": 0.02
                         }
                     ]
@@ -632,7 +632,7 @@
                         {
                             "channel": 0,
                             "controller": 1,
-                            "startValue": 40,
+                            "startValue": 100,
                             "interpolationType": "none"
                         }
                     ]
@@ -651,7 +651,7 @@
                         {
                             "channel": 0,
                             "controller": 1,
-                            "startValue": 40,
+                            "startValue": 100,
                             "interpolationType": "none"
                         }
                     ]
@@ -906,9 +906,9 @@
                             "channel": 0,
                             "controller": 1,
                             "startValue": 0,
-                            "interpolationType": "hump",
-                            "stepSize": 10,
-                            "endValue": 70,
+                            "interpolationType": "exponential",
+                            "stepSize": 1,
+                            "endValue": "next",
                             "bend": 0.02
                         }
                     ]
@@ -928,9 +928,9 @@
                             "channel": 0,
                             "controller": 1,
                             "startValue": 0,
-                            "interpolationType": "hump",
-                            "stepSize": 10,
-                            "endValue": 70,
+                            "interpolationType": "exponential",
+                            "stepSize": 1,
+                            "endValue": "next",
                             "bend": 0.02
                         }
                     ]
@@ -950,7 +950,7 @@
                         {
                             "channel": 0,
                             "controller": 1,
-                            "startValue": 40,
+                            "startValue": 100,
                             "interpolationType": "none"
                         }
                     ]
@@ -969,7 +969,7 @@
                         {
                             "channel": 0,
                             "controller": 1,
-                            "startValue": 40,
+                            "startValue": 100,
                             "interpolationType": "none"
                         }
                     ]

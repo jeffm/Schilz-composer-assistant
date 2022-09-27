@@ -1,3 +1,5 @@
+//Copyright Jeffrey D. Mershon 2022
+
 var fs = require('fs');
 //var path = require(path);
 var yargs = require('yargs');
@@ -2150,7 +2152,6 @@ function buildInterpolatedOutput(shape, stepSize, startValue, endValue, startInd
 
 		var resultJSONSize = resultJSON.length;
 		var halfWaySig = resultJSON[resultJSON.length-1].sig;
-		//console.log(halfWaySig + ' ' + halfIDX);
 		if (resultJSON[resultJSON.length-1].index < halfIDX) {
 			resultJSON.push({"sig": halfWaySig, "index":halfIDX});
 		}
@@ -2201,7 +2202,7 @@ function buildInterpolatedOutput(shape, stepSize, startValue, endValue, startInd
 			//console.log('newEventSig:' + halfWaySig + ' ' + resultJSON[i].sig);
 			resultJSON.push(newEvent);
 		}
-	} else if (shape == "exp") {
+	} else if (shape == "exponential") {
 		if (bend<0) {
 			bend = bend-1;
 		}
