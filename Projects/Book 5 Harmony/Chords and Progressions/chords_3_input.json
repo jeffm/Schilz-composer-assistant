@@ -23,8 +23,7 @@
             "endAt": 72
         },{
 			"type": "rhythm",
-			"includeInScore": true,
-			"instrumentChannel": 0,
+			"midiChannel": 0,
 			"instrumentName": "Drawbar Organ",
 			"instrumentCode": 17,
 			"chords": [["AbMaj"]],
@@ -38,10 +37,9 @@
                     "source": 1
                 }
             ],
-			"pitches":[["Ab4","Eb4"],["C4"]],
+			"pitches":[["Ab4","F2"],["Eb4","G2"],["C4","E2"],["B4","F2"],["G3","C2"],["A5","F2"]],
 			"controlEvents": [
 				{
-					"channel": 0,
 					"controller": 1,
 					"direction": "+",
 					"values":[{"startValue": 0, "interpolationType": "none"},

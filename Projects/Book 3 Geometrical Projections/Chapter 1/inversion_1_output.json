@@ -11,99 +11,48 @@
             "events": [
                 {
                     "index": 0,
-                    "duration": 3,
-                    "count": 2,
-                    "pitch": [
-                        [
-                            "A#3"
-                        ],
-                        [
-                            "B3"
-                        ]
-                    ]
+                    "duration": 4,
+                    "count": 1
                 },
                 {
                     "index": 4,
-                    "duration": 2,
-                    "count": 1,
-                    "pitch": [
-                        [
-                            "C#4"
-                        ]
-                    ]
+                    "duration": 4,
+                    "count": 1
                 },
                 {
                     "index": 8,
-                    "duration": 1,
-                    "count": 1,
-                    "pitch": [
-                        [
-                            "E4"
-                        ]
-                    ]
+                    "duration": 4,
+                    "count": 1
                 },
                 {
                     "index": 12,
-                    "duration": 3,
-                    "count": 2,
-                    "pitch": [
-                        [
-                            "G4"
-                        ]
-                    ]
+                    "duration": 4,
+                    "count": 1
                 },
                 {
                     "index": 16,
-                    "duration": 2,
-                    "count": 1,
-                    "pitch": [
-                        [
-                            "B3"
-                        ]
-                    ]
+                    "duration": 4,
+                    "count": 1
                 },
                 {
                     "index": 20,
-                    "duration": 1,
-                    "count": 1,
-                    "pitch": [
-                        [
-                            "D4"
-                        ]
-                    ]
+                    "duration": 4,
+                    "count": 1
                 },
                 {
                     "index": 24,
-                    "duration": 3,
-                    "count": 2,
-                    "pitch": [
-                        [
-                            "F#4"
-                        ]
-                    ]
+                    "duration": 4,
+                    "count": 1
                 },
                 {
                     "index": 28,
-                    "duration": 2,
-                    "count": 1,
-                    "pitch": [
-                        [
-                            "A#3"
-                        ],
-                        [
-                            "B3"
-                        ]
-                    ]
+                    "duration": 4,
+                    "count": 1
                 },
                 {
                     "index": 32,
-                    "duration": 1,
-                    "count": 1,
-                    "pitch": [
-                        [
-                            "C#4"
-                        ]
-                    ]
+                    "duration": 4,
+                    "count": 1
                 }
             ],
             "run": false,
@@ -123,33 +72,18 @@
                 },
                 {
                     "index": 3,
-                    "duration": 1,
-                    "count": 1,
-                    "pitch": [
-                        [
-                            "B3"
-                        ]
-                    ]
+                    "duration": 3,
+                    "count": 1
                 },
                 {
                     "index": 6,
-                    "duration": 2,
-                    "count": 1,
-                    "pitch": [
-                        [
-                            "D4"
-                        ]
-                    ]
+                    "duration": 3,
+                    "count": 1
                 },
                 {
                     "index": 9,
                     "duration": 3,
-                    "count": 1,
-                    "pitch": [
-                        [
-                            "F#4"
-                        ]
-                    ]
+                    "count": 1
                 },
                 {
                     "index": 12,
@@ -158,36 +92,18 @@
                 },
                 {
                     "index": 15,
-                    "duration": 1,
-                    "count": 1,
-                    "pitch": [
-                        [
-                            "A#3"
-                        ],
-                        [
-                            "B3"
-                        ]
-                    ]
+                    "duration": 3,
+                    "count": 1
                 },
                 {
                     "index": 18,
-                    "duration": 2,
-                    "count": 1,
-                    "pitch": [
-                        [
-                            "C#4"
-                        ]
-                    ]
+                    "duration": 3,
+                    "count": 1
                 },
                 {
                     "index": 21,
                     "duration": 3,
-                    "count": 1,
-                    "pitch": [
-                        [
-                            "E4"
-                        ]
-                    ]
+                    "count": 1
                 },
                 {
                     "index": 24,
@@ -196,33 +112,18 @@
                 },
                 {
                     "index": 27,
-                    "duration": 1,
-                    "count": 1,
-                    "pitch": [
-                        [
-                            "G4"
-                        ]
-                    ]
+                    "duration": 3,
+                    "count": 1
                 },
                 {
                     "index": 30,
-                    "duration": 2,
-                    "count": 1,
-                    "pitch": [
-                        [
-                            "B3"
-                        ]
-                    ]
+                    "duration": 3,
+                    "count": 1
                 },
                 {
                     "index": 33,
                     "duration": 3,
-                    "count": 1,
-                    "pitch": [
-                        [
-                            "D4"
-                        ]
-                    ]
+                    "count": 1
                 }
             ],
             "run": false

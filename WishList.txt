@@ -1,5 +1,7 @@
-MidiWriterJs doesn't seem to properly support controllerchange events--there is currently no way to place them where you want them in the track...ugh
-
+//TODO Add popular progressions from hooktheory (https://www.hooktheory.com/theorytab/common-chord-progressions)
+//TODO - embed key and time signature changes in the first note (they are no different than controller events). This will allow us to append tracks with different keys and time signatures and have the notation come out correctly.
+//TODO - analyze chord progression, and note which scales would fit a chord based on its pitches.
+//key modulation - give starting key and root tone (e.g., C Major V), specify target chord and (optionally) the number of steps to make the transition?
 BOOK TWO
 //TODO?? Chapter 2 - support for root tone+interval C3 2,2,1 for representing pitch, in addition to the current pitch method -- C4, Db5, etc.
 //TODO?? - Pitch scale expansion.

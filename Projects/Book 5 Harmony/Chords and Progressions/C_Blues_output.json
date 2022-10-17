@@ -1,0 +1,58 @@
+{
+    "name": "Blues in C",
+    "timeSignature": "4/4",
+    "averageVelocity": 50,
+    "tracks": [
+        {
+            "type": "beat",
+            "period": [
+                16,
+                8,
+                8,
+                4,
+                4,
+                8
+            ],
+            "endAt": 48,
+            "tempo": 120,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 16,
+                    "count": 1
+                },
+                {
+                    "index": 16,
+                    "duration": 8,
+                    "count": 1
+                },
+                {
+                    "index": 24,
+                    "duration": 8,
+                    "count": 1
+                },
+                {
+                    "index": 32,
+                    "duration": 4,
+                    "count": 1
+                },
+                {
+                    "index": 36,
+                    "duration": 4,
+                    "count": 1
+                },
+                {
+                    "index": 40,
+                    "duration": 8,
+                    "count": 1
+                }
+            ],
+            "run": false,
+            "name": "Beat of 16,8,8,4,4,8",
+            "id": 0
+        }
+    ],
+    "defaultPitch": "C4",
+    "tempo": 90,
+    "copyright": "Copyright YYYY [Replace with Copyright Owner]"
+}

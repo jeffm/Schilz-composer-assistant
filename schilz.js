@@ -17,7 +17,7 @@ if (rhythms != null) {
 	populateGlobalDefaults(globalArguments);
 	generateTracks(globalArguments);
 	writeJSON(globalArguments.JSONoutpath);
-	writeChart(globalArguments.Chartoutpath);
+	writeRhythmChart(globalArguments.Chartoutpath);
 	writeMIDI(globalArguments.MIDIoutpath);
 }
 
@@ -163,7 +163,7 @@ function writeMIDI(MIDIoutpath) {
 		if (midiFile != null) {
 			try {
 				var outFile = fs.openSync(MIDIoutpath,'w');
-				console.log(midiFile.toString());
+				//console.log(midiFile.toString());
 				fs.writeFileSync(outFile,midiFile.dump(),'binary');
 				fs.closeSync(outFile);
 				
@@ -178,12 +178,12 @@ function writeMIDI(MIDIoutpath) {
 	}
 }
 
-function writeChart(Chartoutpath) {
+function writeRhythmChart(Chartoutpath) {
 	log('writeChart() ' + Chartoutpath, 'info');
 	if (Chartoutpath != '') {
 		try {
 			var outFile = fs.openSync(Chartoutpath,'w');
-			fs.writeSync(outFile,buildChartjsPage());
+			fs.writeSync(outFile,buildRhythmChartHTML());
 		} catch (err) {
 		   log(err,'error');
 		}
@@ -191,10 +191,10 @@ function writeChart(Chartoutpath) {
 }
 
 function shouldRun(TrackToBuild) {
-	if (typeof rhythms.tracks[TrackToBuild].run != 'undefined' && rhythms.tracks[TrackToBuild].run == false) {
+	if (typeof rhythms.tracks[TrackToBuild].run.run != 'undefined' && rhythms.tracks[TrackToBuild].run.run == false) {
 		return false;
 	} else {
-		rhythms.tracks[TrackToBuild].run = true;
+		rhythms.tracks[TrackToBuild].run.run = true;
 	}
 	return true;	
 }
@@ -231,7 +231,7 @@ function generateTracks(arguments) {
 			convertChordsToPitches(j);
 			addControlEvents(j);
 		} else if (rhythms.tracks[j].type == 'clone') {
-			clonePeriodicity(j);
+			cloneTrack(j);
 			setDuration(j);
 			addPitches(j);
 			geometricTrackChromatic(j);
@@ -256,6 +256,7 @@ function generateTracks(arguments) {
 			geometricTrackChromatic(j);
 			addChordSymbols(j);
 			convertChordsToPitches(j);
+			addControlEvents(j);
 		} else if (rhythms.tracks[j].type == 'none') {
 			generateProgression(j);
 			addPitches(j);
@@ -293,7 +294,10 @@ function createEmptyTrackEventArrays(TrackToBuild) {
 		rhythms.tracks[TrackToBuild].events = [];
 	}
 	if (typeof rhythms.tracks[TrackToBuild].run == 'undefined') {
-		rhythms.tracks[TrackToBuild].run = true
+		rhythms.tracks[TrackToBuild].run = {};
+	}
+	if (typeof rhythms.tracks[TrackToBuild].run.run == 'undefined') {
+		rhythms.tracks[TrackToBuild].run.run = true
 	}
 }
 
@@ -317,42 +321,98 @@ function generateBeat(TrackToBuild) {
 	populateID(TrackToBuild);
 	
 	var offset = 1;
-	if (typeof rhythms.tracks[TrackToBuild].offsetFrom == 'undefined' && typeof rhythms.tracks[TrackToBuild].offsetAmount !== 'undefined') {
+	var period;
+	var periodIndex = 0;
+	var limit;
+	if (typeof rhythms.tracks[TrackToBuild].offsetFrom == 'undefined' && typeof rhythms.tracks[TrackToBuild].offsetAmount == 'undefined') {
+		//console.log('no offsets');
+		if (rhythms.tracks[TrackToBuild].period instanceof Array) {
+			//console.log('---array:' + rhythms.tracks[TrackToBuild].period[periodIndex]);
+			period = rhythms.tracks[TrackToBuild].period[periodIndex];
+			periodIndex++;
+			if (periodIndex > rhythms.tracks[TrackToBuild].period.length-1) {
+				periodIndex = 0;
+			}
+		} else {
+			period = rhythms.tracks[TrackToBuild].period;
+		}
 		
 		log('offsetAmount:' + rhythms.tracks[TrackToBuild].offsetAmount, 'debug');
-		offset = ((rhythms.tracks[TrackToBuild].offsetAmount * rhythms.tracks[TrackToBuild].period));
+		offset = 0;
 		var entry = {
 			index: offset,
-			duration: rhythms.tracks[TrackToBuild].period
+			duration: period,
+			count: 1
 		};
+		limit = rhythms.tracks[TrackToBuild].endAt
+		offset = period;
+		//console.log('ENTRY:' + JSON.stringify(entry));
 		rhythms.tracks[TrackToBuild].events.push(entry);
 		log('local offset:' + offset, 'debug');
-	} else if (typeof rhythms.tracks[TrackToBuild].offsetFrom !== 'undefined' && typeof rhythms.tracks[TrackToBuild].offsetAmount !== 'undefined') {
-		log('offsetFrom:' + rhythms.tracks[TrackToBuild].offsetAmount + '=' + rhythms.tracks[rhythms.tracks[TrackToBuild].offsetFrom].period + ' offset:' + rhythms.tracks[TrackToBuild].offsetAmount, 'debug');
+	} else if (typeof rhythms.tracks[TrackToBuild].offsetFrom != 'undefined' && typeof rhythms.tracks[TrackToBuild].offsetAmount != 'undefined') {
+		//console.log('with offsets');
+		if (rhythms.tracks[rhythms.tracks[TrackToBuild].offsetFrom].period instanceof Array) {
+			period = rhythms.tracks[rhythms.tracks[TrackToBuild].offsetFrom].period[0];
+		} else {
+			period = rhythms.tracks[rhythms.tracks[TrackToBuild].offsetFrom].period;
+		}
+		log('offsetFrom:' + rhythms.tracks[TrackToBuild].offsetAmount + '=' + period + ' offset:' + rhythms.tracks[TrackToBuild].offsetAmount, 'debug');
 		
-		offset = ((rhythms.tracks[TrackToBuild].offsetAmount * rhythms.tracks[rhythms.tracks[TrackToBuild].offsetFrom].period));
+		offset = ((rhythms.tracks[TrackToBuild].offsetAmount * period));
 		log('Offset is From Another:' + offset, 'debug');
+		limit = rhythms.tracks[TrackToBuild].endAt + offset;
 	} else {
+		//console.log('neither offsets or no offsets???');
 		offset = 0;
 		log('defaultOffset:' + offset, 'debug');
+		if (rhythms.tracks[TrackToBuild].period instanceof Array) {
+			period = rhythms.tracks[TrackToBuild].period[periodIndex];
+			periodIndex++;
+			if (periodIndex > rhythms.tracks[TrackToBuild].period.length-1) {
+				periodIndex = 0;
+			}
+		} else {
+			period = rhythms.tracks[TrackToBuild].period;
+		}
+		limit = rhythms.tracks[TrackToBuild].endAt
 	}
-	var limit = rhythms.tracks[TrackToBuild].endAt + offset;
-	log('limit:' + limit, 'debug');
-	for (var k=offset;k<=limit;k++) {
-		log('k:' + (k + offset) + ' period:' + rhythms.tracks[TrackToBuild].period, 'debug');
-		if ((k - offset) % rhythms.tracks[TrackToBuild].period == 0) {
-		//add an entry to the result
-			if (k < limit) {
-				var entry = {
-					index: k,
-					duration: rhythms.tracks[TrackToBuild].period,
-					count: 1
-				};
-				rhythms.tracks[TrackToBuild].events.push(entry);
+	//console.log(' offset:' + offset + ' limit:' + limit, 'debug');
+	if (rhythms.tracks[TrackToBuild].period instanceof Array) {
+		k=offset;
+		while (k<limit) {
+			period = rhythms.tracks[TrackToBuild].period[periodIndex];
+			periodIndex++;
+			if (periodIndex > rhythms.tracks[TrackToBuild].period.length-1) {
+				periodIndex = 0;
+			}
+			var entry = {
+				index: k,
+				duration: period,
+				count: 1
+			};
+			//console.log('ENTRY:' + JSON.stringify(entry));
+			rhythms.tracks[TrackToBuild].events.push(entry);
+			k += period;
+		}
+	} else {
+		for (var k=offset;k<=limit;k++) {
+			period = rhythms.tracks[TrackToBuild].period;
+			//console.log('k:' + (k + offset) + ' period:' + period + ' limit:' + limit, 'debug');
+			if ((k - offset) % period == 0) {
+				if (k < limit) {
+					var entry = {
+						index: k,
+						duration: period,
+						count: 1
+					};
+					//console.log('ENTRY:' + JSON.stringify(entry));
+					rhythms.tracks[TrackToBuild].events.push(entry);
+				}
 			}
 		}
 	}
-	rhythms.tracks[TrackToBuild].run = false;
+	fixIndexValues(TrackToBuild);
+	rhythms.tracks[TrackToBuild].run.run = false;
 }
 
 function generateRhythm(TrackToBuild) {
@@ -388,7 +448,7 @@ function generateRhythm(TrackToBuild) {
 			}
 		}	
 	}
-	rhythms.tracks[TrackToBuild].run = false;
+	rhythms.tracks[TrackToBuild].run.run = false;
 }
 
 function concatenateTracks(TrackToBuild) {
@@ -560,7 +620,7 @@ function concatenateTracks(TrackToBuild) {
 		newIndex = lastIndex;
 	}
 	fixIndexValues(TrackToBuild);
-	rhythms.tracks[TrackToBuild].run = false;
+	rhythms.tracks[TrackToBuild].run.run = false;
 }
 
 function computePolyLCM(TrackToBuild) {
@@ -655,23 +715,28 @@ function computeLCM(n1, n2) {
 
 //Split & Merge
 function mergeTracks(TrackToBuild) {
-	log('mergeTracks(' + TrackToBuild + ')','info');
+	log('mergeTracks(' + TrackToBuild + ') rhythmSource:' + rhythms.tracks[TrackToBuild].rhythmSource + ' pitchSource:' + rhythms.tracks[TrackToBuild].pitchSource,'info');
 	populateName(TrackToBuild, "Track combining rhythm track: " + rhythms.tracks[TrackToBuild].rhythmSource + ' and ' + rhythms.tracks[TrackToBuild].pitchSource);
 	populateID(TrackToBuild);
 	var rhythmSourceTrack = rhythms.tracks[TrackToBuild].rhythmSource;
 	var pitchSourceTrack = rhythms.tracks[TrackToBuild].pitchSource;
 	var currentRhythmNote = 0;
 	var currentPitchNote = 0;
+	if (typeof rhythms.tracks[pitchSourceTrack].events == 'undefined') {
+		rhythms.tracks[pitchSourceTrack].events = [];
+	}
 	for (currentRhythmNote=0;currentRhythmNote<rhythms.tracks[rhythmSourceTrack].events.length;currentRhythmNote++) {
 		var mergedNote = [];
+		mergedNote = rhythms.tracks[pitchSourceTrack].events[currentPitchNote];
 		mergedNote.index = rhythms.tracks[rhythmSourceTrack].events[currentRhythmNote].index;
 		mergedNote.duration = rhythms.tracks[rhythmSourceTrack].events[currentRhythmNote].duration;
-		if (typeof rhythms.tracks[pitchSourceTrack].events[currentPitchNote].pitch != 'undefined') {
-			mergedNote.pitch = rhythms.tracks[pitchSourceTrack].events[currentPitchNote].pitch;
-		}
-		if (typeof rhythms.tracks[pitchSourceTrack].events[currentPitchNote].chord != 'undefined') {
-			mergedNote.chord = rhythms.tracks[pitchSourceTrack].events[currentPitchNote].chord;
-		}
+		//if (typeof rhythms.tracks[pitchSourceTrack].events[currentPitchNote].pitch != 'undefined') {
+		//	mergedNote.pitch = rhythms.tracks[pitchSourceTrack].events[currentPitchNote].pitch;
+		//}
+		//if (typeof rhythms.tracks[pitchSourceTrack].events[currentPitchNote].chord != 'undefined') {
+		//	mergedNote.chord = rhythms.tracks[pitchSourceTrack].events[currentPitchNote].chord;
+		//}
+		rhythms.tracks[TrackToBuild].events.push(mergedNote);
 		currentPitchNote++;
 		if (currentPitchNote >= rhythms.tracks[pitchSourceTrack].events.length) {
 			currentPitchNote = 0;
@@ -710,7 +775,7 @@ function splitTrack(TrackToBuild) {
 		rhythms.tracks[TrackToBuild].targetCounts = countArray;
 		splitTrackByList(TrackToBuild, countArray);
 	}
-	rhythms.tracks[TrackToBuild].run = false;
+	rhythms.tracks[TrackToBuild].run.run = false;
 }
 
 function buildArrayOfDurations(TrackToBuild) {
@@ -792,6 +857,7 @@ function fixIndexValues(TrackToBuild, reIndexTo) {
 }
 
 function setDuration(TrackToBuild) {
+	if (typeof rhythms.tracks[TrackToBuild].run.setDuration != 'undefined' && rhythms.tracks[TrackToBuild].run.setDuration == false) return;
 	log('setDuration(' + TrackToBuild + ')', 'info');
 	for (var result=1;result<rhythms.tracks[TrackToBuild].events.length;result++) {
 		var duration = rhythms.tracks[TrackToBuild].events[result].index - rhythms.tracks[TrackToBuild].events[result-1].index
@@ -802,6 +868,7 @@ function setDuration(TrackToBuild) {
 }
 
 function setCounts(TrackToBuild) {
+	if (typeof rhythms.tracks[TrackToBuild].run.setCounts != 'undefined' && rhythms.tracks[TrackToBuild].run.setCounts == false) return;
 	log('setCounts(' + TrackToBuild + ')', 'info');
 	for (var source=0;source<rhythms.tracks[TrackToBuild].sources.length;source++) { //for each already created source periodicity
 		var sourceTrack = rhythms.tracks[TrackToBuild].sources[source].source
@@ -817,6 +884,7 @@ function setCounts(TrackToBuild) {
 
 //Pitches 
 function addPitches(TrackToBuild) {
+	if (typeof rhythms.tracks[TrackToBuild].run.addPitches != 'undefined' && rhythms.tracks[TrackToBuild].run.addPitches == false) return;
 	if (typeof rhythms.tracks[TrackToBuild].pitches == 'undefined') return;
 	
 	log('addPitches(' + TrackToBuild + ')' + ' events:' + rhythms.tracks[TrackToBuild].events.length, 'info');
@@ -897,6 +965,7 @@ function getSubstitutePitch(interval, key, multiplier, intervalDirection, rootCo
 }
 
 function geometricTrackChromatic(TrackToBuild) {
+	if (typeof rhythms.tracks[TrackToBuild].run.expandInvert != 'undefined' && rhythms.tracks[TrackToBuild].run.expandInvert == false) return;
 	var rootPitch
 	if (typeof rhythms.tracks[TrackToBuild].pitchRoot != 'undefined') {
 		rootPitch = rhythms.tracks[TrackToBuild].pitchRoot;
@@ -952,7 +1021,9 @@ function geometricTrackChromatic(TrackToBuild) {
 				var interval = (invertPitchCode - rootCode);
 				var intervalDirection = interval * multiplier;
 				var key = {};
-				if (typeof rhythms.tracks[TrackToBuild].keyOf != 'undefined') {
+				if (typeof rhythms.tracks[TrackToBuild].events[noteIndex].keyOf != 'undefined') {
+					key = parsekeyOf(rhythms.tracks[TrackToBuild].events[noteIndex].keyOf);
+				} else if (typeof rhythms.tracks[TrackToBuild].keyOf != 'undefined') {
 					key = parsekeyOf(rhythms.tracks[TrackToBuild].keyOf);
 				} else {
 					key.scale = "Chromatic";
@@ -1066,6 +1137,7 @@ function getPitchInRange(minPitch,maxPitch,currentPitch) {
 
 //Timbre - MidiControlEvents
 function addControlEvents(TrackToBuild) {
+	if (typeof rhythms.tracks[TrackToBuild].run.addControlEvents != 'undefined' && rhythms.tracks[TrackToBuild].run.addControlEvents == false) return;
 	if (typeof rhythms.tracks[TrackToBuild].controlEvents == 'undefined') return;
 	log('addControlEvents(' + TrackToBuild + ')', 'info');
 
@@ -1082,7 +1154,7 @@ function addControlEvents(TrackToBuild) {
 			for (cycleIndex=0;cycleIndex<rhythms.tracks[rhythms.tracks[TrackToBuild].controlEvents[controllerIndex].controlSource].events[durationIndex].duration;cycleIndex++) {
 				//log('      durationIndex:' + durationIndex + '   cycleIndex:' + cycleIndex,'info');
 				control = {};
-				control.channel = rhythms.tracks[TrackToBuild].controlEvents[controllerIndex].channel;
+				//control.channel = rhythms.tracks[TrackToBuild].controlEvents[controllerIndex].channel;
 				control.controller = rhythms.tracks[TrackToBuild].controlEvents[controllerIndex].controller;
 				if (rhythms.tracks[TrackToBuild].controlEvents[controllerIndex].direction == "count") {
 					if (rhythms.tracks[TrackToBuild].events[eventIndex].count > 0) {
@@ -1135,6 +1207,7 @@ function addControlEvents(TrackToBuild) {
 
 //Chords
 function addChordSymbols(TrackToBuild) {
+	if (typeof rhythms.tracks[TrackToBuild].run.addChordSymbols != 'undefined' && rhythms.tracks[TrackToBuild].run.addChordSymbols == false) return;
 	if (typeof rhythms.tracks[TrackToBuild].chords == 'undefined') return;
 	log('addChordSymbols(' + TrackToBuild + ')', 'info');
 	
@@ -1177,20 +1250,38 @@ function generateProgression(TrackToBuild) {
 	motion.octaveCycles = rhythms.tracks[TrackToBuild].octaveCycles;
 	motion.octaveSource = rhythms.tracks[TrackToBuild].octaveSource;
 	motion.octaveDirection = rhythms.tracks[TrackToBuild].octaveDirection;
+
+	motion.voicingOctaveCycles = rhythms.tracks[TrackToBuild].voicingOctaveCycles;
+	motion.voicingOctaveSource = rhythms.tracks[TrackToBuild].voicingOctaveSource;
+	motion.voicingOctaveDirection = rhythms.tracks[TrackToBuild].voicingOctaveDirection;
+	motion.currentVoicingOctaveCycle = 0;
 	if (typeof rhythms.tracks[TrackToBuild].chordTypeCycles != 'undefined') {
 		motion.currentChordTypeCycle = 0;
 		motion.chordTypeCycles = rhythms.tracks[TrackToBuild].chordTypeCycles;
 		motion.chordTypeSource = rhythms.tracks[TrackToBuild].chordTypeSource;
 		motion.chordTypeDirection = rhythms.tracks[TrackToBuild].chordTypeDirection;
 	}
-	var chord = {}
+	motion.progressionCycleDirection = rhythms.tracks[TrackToBuild].progressionCycleDirection;
+	motion.progressionCycleMovement = rhythms.tracks[TrackToBuild].progressionCycleMovement;
+	motion.currentProgressionCycleMovement = 0;
+	var chord = {};
 	for (progressionIndex=0;progressionIndex<rhythms.tracks[motion.progressionSource].events.length;progressionIndex++) {
 		//cycleIndex = how many times we use a specific cycle.
+		
 		for (cycleIndex=0;cycleIndex<rhythms.tracks[motion.progressionSource].events[progressionIndex].duration;cycleIndex++) {
 			var newEvent = {};
 			newEvent.index = progressionIndex;
 			newEvent.duration = 1;
 			newEvent.count = rhythms.tracks[motion.progressionSource].events[progressionIndex].count;
+			newEvent.keyOf = rhythms.tracks[TrackToBuild].keyOf;
+			newEvent.shortKey = rhythms.tracks[TrackToBuild].shortKeySignature;
+			newEvent.instrumentName = rhythms.tracks[TrackToBuild].instrumentName;
+			newEvent.instrumentCode = rhythms.tracks[TrackToBuild].instrumentCode;
+			if (typeof rhythms.tracks[TrackToBuild].timeSignature != 'undefined') {
+				newEvent.timeSignature = rhythms.tracks[TrackToBuild].timeSignature;
+			} else {
+				newEvent.timeSignature = rhythms.timeSignature;
+			}
 			newEvent.chord = [];
 			newEvent.chord.push(getNextScaleChord(key,chord,motion));
 			//console.log('!!!' + JSON.stringify(newEvent));
@@ -1198,7 +1289,13 @@ function generateProgression(TrackToBuild) {
 			rhythms.tracks[TrackToBuild].events.push(newEvent);
 			//console.log('pushed:' + JSON.stringify(rhythms.tracks[TrackToBuild].events[rhythms.tracks[TrackToBuild].events.length-1]));
 		}
-		
+		if (motion.progressionCycleDirection == "+") {
+			motion.currentProgressionCycleMovement++;
+			if (motion.currentProgressionCycleMovement > motion.progressionCycleMovement.length-1) motion.currentProgressionCycleMovement = 0;
+		} else {
+			motion.currentProgressionCycleMovement--
+			if (motion.currentProgressionCycleMovement < 0) motion.currentProgressionCycleMovement = motion.progressionCycleMovement.length-1;
+		}
 		if (motion.progressionDirection == "+") {
 			motion.currentProgressionCycle++;
 			if (motion.currentProgressionCycle > motion.progressionCycles.length-1) motion.currentProgressionCycle = 0;
@@ -1207,7 +1304,7 @@ function generateProgression(TrackToBuild) {
 			if (motion.currentProgressionCycle < 0) motion.currentProgressionCycle = motion.progressionCycles.length-1;
 		}
 	}
-	if (typeof rhythms.tracks[TrackToBuild].chordTypeCycles != 'undefined') {
+	if (typeof rhythms.tracks[TrackToBuild].chordTypeCycles != 'undefined' && typeof rhythms.tracks[TrackToBuild].chordTypeSource != 'undefined' && typeof rhythms.tracks[TrackToBuild].chordTypeDirection != 'undefined') {
 		//cycle Type
 		eventIndex = 0;
 		chord.cycleType = 0;
@@ -1233,7 +1330,7 @@ function generateProgression(TrackToBuild) {
 			}
 		}
 	}
-	if (typeof rhythms.tracks[TrackToBuild].inversionCycles != 'undefined') {
+	if (typeof rhythms.tracks[TrackToBuild].inversionCycles != 'undefined' && typeof rhythms.tracks[TrackToBuild].inversionSource != 'undefined' && typeof rhythms.tracks[TrackToBuild].inversionDirection != 'undefined') {
 		//inversion
 		eventIndex = 0;
 		chord.inversion = 0;
@@ -1257,7 +1354,7 @@ function generateProgression(TrackToBuild) {
 			}
 		}
 	}
-	if (typeof rhythms.tracks[TrackToBuild].voicingCycles != 'undefined') {
+	if (typeof rhythms.tracks[TrackToBuild].voicingCycles != 'undefined' && typeof rhythms.tracks[TrackToBuild].voicingSource != 'undefined' && typeof rhythms.tracks[TrackToBuild].voicingDirection != 'undefined') {
 		//voicing
 		eventIndex = 0;
 		chord.voicing = 0;
@@ -1280,7 +1377,8 @@ function generateProgression(TrackToBuild) {
 			}
 		}
 	}
-	if (typeof rhythms.tracks[TrackToBuild].octaveCycles != 'undefined') {
+
+	if (typeof rhythms.tracks[TrackToBuild].octaveCycles != 'undefined' && typeof rhythms.tracks[TrackToBuild].octaveSource != 'undefined' && typeof rhythms.tracks[TrackToBuild].octaveDirection != 'undefined') {
 		//octave
 		eventIndex = 0;
 		chord.octave = 0;
@@ -1304,6 +1402,30 @@ function generateProgression(TrackToBuild) {
 			}
 		}
 	}
+	if (typeof rhythms.tracks[TrackToBuild].voicingOctaveCycles != 'undefined' && typeof rhythms.tracks[TrackToBuild].voicingOctaveSource != 'undefined' && typeof rhythms.tracks[TrackToBuild].voicingOctaveDirection != 'undefined') {
+		//voicing
+		eventIndex = 0;
+		chord.voicingOctave = 0;
+		endVoicingOctave:
+		for (voicingOctaveIndex=0;voicingOctaveIndex<rhythms.tracks[motion.voicingOctaveSource].events.length;voicingOctaveIndex++) {
+			for (cycleIndex=0;cycleIndex<rhythms.tracks[motion.voicingOctaveSource].events[voicingOctaveIndex].duration;cycleIndex++) {
+				chord = {};
+				chord.name = rhythms.tracks[TrackToBuild].events[eventIndex].chord;
+				chord = getChordVoicingOctave(motion,chord);
+				rhythms.tracks[TrackToBuild].events[eventIndex].chord[0] = chord.name;
+				eventIndex++;
+				if (eventIndex > rhythms.tracks[TrackToBuild].events.length-1) break endVoicingOctave;
+			}
+			if (motion.voicingOctaveDirection = "+") {
+				motion.currentVoicingOctaveCycle++;
+				if (motion.currentVoicingOctaveCycle > motion.voicingOctaveCycles.length-1) motion.currentVoicingOctaveCycle = 0;
+			} else {
+				motion.currentVoicingOctaveCycle--;
+				if (motion.currentVoicingOctaveCycle < 0) motion.currentVoicingOctaveCycle = motion.voicingOctaveCycles.length-1;
+			}
+		}
+	}
+	fixIndexValues(TrackToBuild);
 }
 
 function forceChordType(name,motion) {
@@ -1341,7 +1463,7 @@ function forceChordType(name,motion) {
 }
 
 function getNextScaleChord(key,chord,motion) {
-	//console.log('key:' + JSON.stringify(key));
+	//console.log('getNextScaleChord' + ' key:' + JSON.stringify(key) + ' chord:' + JSON.stringify(chord) + ' motion:' + JSON.stringify(motion));
 	var triads = key.relativeScale.scale;
 	var curIndex = 0;
 	if (typeof chord.currentRoot != 'undefined') {
@@ -1352,7 +1474,8 @@ function getNextScaleChord(key,chord,motion) {
 			}
 		}
 		offset = motion.progressionCycles[motion.currentProgressionCycle] - 1;
-		if (motion.progressionDirection == "+") {
+		//console.log('---' + motion.currentProgressionCycleMovement + '    ' + motion.progressionCycleMovement[motion.currentProgressionCycleMovement]);
+		if (motion.progressionCycleMovement[motion.currentProgressionCycleMovement] == "+") {
 			newIndex = curIndex + offset;
 			while (newIndex > (triads.length - 1)) {
 				newIndex = newIndex - triads.length;
@@ -1383,6 +1506,12 @@ function getChordVoicing(motion,chord) {
 
 function getChordOctave(motion,chord) {
 	chord.name += "r" + motion.octaveCycles[motion.currentOctaveCycle];
+	return chord;
+}
+
+function getChordVoicingOctave(motion,chord) {
+	//console.log('voicingOctave:' + chord.name + ' currentVoicingOctaveCycle:' + motion.currentVoicingOctaveCycle + ' voicingOctaveCycles[current]:' + motion.voicingOctaveCycles[motion.currentVoicingOctaveCycle]);
+	chord.name += "y" + motion.voicingOctaveCycles[motion.currentVoicingOctaveCycle];
 	return chord;
 }
 
@@ -1602,7 +1731,7 @@ function parseChordOctaveInversionVoicing(chord) {
 	} else {
 		chord.octave = 3;
 	}
-	//voicing
+	//voice doubling
 	var temp = chord.symbol.match(/w[0-9]{1,2}/);
 	if (temp != null && temp.length > 0) {
 		chord.voicing = temp.toString();
@@ -1610,6 +1739,15 @@ function parseChordOctaveInversionVoicing(chord) {
 		chord.voicing = chord.voicing.replace('w','');
 	} else {
 		chord.voicing = 0;
+	}
+	//doubled voice octave multiplier
+	var temp = chord.symbol.match(/y[0-9]{1,2}/);
+	if (temp != null && temp.length > 0) {
+		chord.voicingOctave = temp.toString();
+		chord.symbol = chord.symbol.replace(chord.voicingOctave,'');
+		chord.voicingOctave = chord.voicingOctave.replace('y','');
+	} else {
+		chord.voicingOctave = 1;
 	}
 	//inversion
 	var temp = chord.symbol.match(/n[0-9]{1,2}/);
@@ -1658,37 +1796,42 @@ function getOctaveInversionVoicingIndex(chord) {
 			chord.inversionIndex = i;
 		}
 	}
-	//find the voicing
-	for (i=0;i<pitchChords.chords[chord.typeIndex].toneOffsets[chord.inversionIndex].voicings.length;i++) {
-		if (pitchChords.chords[chord.typeIndex].toneOffsets[chord.inversionIndex].voicings[i] == chord.voicing) {
-			chord.voicingIndex = i;
-		}
-	}
 	return chord;
 }
 
 function getChordPitches(key,chord) {
+	//console.log('getChordPitches:' + JSON.stringify(chord));
 	chord.rootCode = getPitchCode(chord.root+chord.octave,"code")
 	//console.log('---chord root:' + JSON.stringify(chord.rootCode));
 	var newPitchArray = [];
-	for (i=0;i<pitchChords.chords[chord.typeIndex].toneOffsets[chord.inversionIndex].voicings[chord.voicingIndex].offsets.length;i++) {
-		newPitchArray.push(setSharpFlat(getPitchCode(chord.rootCode + pitchChords.chords[chord.typeIndex].toneOffsets[chord.inversionIndex].voicings[chord.voicingIndex].offsets[i],"pitch"),key.sharpFlatFlag));
+	for (i=0;i<pitchChords.chords[chord.typeIndex].toneOffsets[chord.inversionIndex].offsets.length;i++) {
+		newPitchArray.push(setSharpFlat(getPitchCode(chord.rootCode + pitchChords.chords[chord.typeIndex].toneOffsets[chord.inversionIndex].offsets[i],"pitch"),key.sharpFlatFlag));
+
 		//console.log('pitch:' + getPitchCode(chord.rootCode + pitchChords.chords[chord.typeIndex].toneOffsets[chord.inversionIndex].voicings[chord.voicingIndex].offsets[i],"pitch"));
 		//newPitchArray.push(singlePitchArray);
+	}
+	if (chord.voicing > 0) {
+		//console.log('.voicing:' + chord.voicing + ' voicingOctave:' + chord.voicingOctave);
+		var voiceOctaveMultiplier = 12 * chord.voicingOctave;
+		newPitchArray.push(setSharpFlat(getPitchCode(chord.rootCode + pitchChords.chords[chord.typeIndex].toneOffsets[chord.inversionIndex].offsets[chord.voicing - 1] + voiceOctaveMultiplier,"pitch"),key.sharpFlatFlag));
 	}
 	return newPitchArray;
 }
 
 function convertChordsToPitches(TrackToBuild) {
-	var key;
-	if (typeof rhythms.tracks[TrackToBuild].keyOf != 'undefined') {
-		key = parsekeyOf(rhythms.tracks[TrackToBuild].keyOf);
-	} else {
-		return;
-	}
+	if (typeof rhythms.tracks[TrackToBuild].run.convertChordsToPitches != 'undefined' && rhythms.tracks[TrackToBuild].run.convertChordsToPitches == false) return;
+	//var key;
+	//if (typeof rhythms.tracks[TrackToBuild].keyOf != 'undefined') {
+	//	key = parsekeyOf(rhythms.tracks[TrackToBuild].keyOf);
+	//} else {
+	//	return;
+	//}
 	log('convertChordsToPitches(' + TrackToBuild + ')', 'info');
 	for (var result=0;result<rhythms.tracks[TrackToBuild].events.length;result++) {
 		if (typeof rhythms.tracks[TrackToBuild].events[result].chord != 'undefined') {
+			if (typeof rhythms.tracks[TrackToBuild].events[result].keyOf != 'undefined') {
+				key = parsekeyOf(rhythms.tracks[TrackToBuild].events[result].keyOf);
+			}
 			var chord = {};
 			chord.symbol = rhythms.tracks[TrackToBuild].events[result].chord[0];
 			//console.log(' ------------ ' + rhythms.tracks[TrackToBuild].events[result].chord);
@@ -1697,9 +1840,14 @@ function convertChordsToPitches(TrackToBuild) {
 			chord = parseChordOctaveInversionVoicing(chord);
 			chord = getOctaveInversionVoicingIndex(chord);
 			//console.log('  chord2:' + JSON.stringify(key));
-			rhythms.tracks[TrackToBuild].events[result].pitch = getChordPitches(key,chord);
+			rhythms.tracks[TrackToBuild].events[result].pitch = flattenArray(getChordPitches(key,chord));
 		}
 	}
+}
+
+function getKeysForPitches(pitches) {
+	//given an array of pitches, returns an array of keys that the pitches fall within.
+	//
 }
 
 //Utilities
@@ -1762,15 +1910,150 @@ function getControlValue (noteEvent, controlChannel) {
 	}
 }
 
-function buildChartjsPage() {
-	log('buildChartjsPage()', 'info');
+function buildPitchChartHTML(trackIndex) {
+	var colorArray = ["black","blue","green","brown","gray"]
+	//find middle note
+	//set chart middle to that note
+	var highestIndex = 0;
+	var totalLength  = 0;
+	log('Compute Highest Index Of This Track:' + trackIndex, 'debug');
+	if (rhythms.tracks[trackIndex].events.length > 0) {
+		noteIndex = rhythms.tracks[trackIndex].events.length-1;
+		note = rhythms.tracks[trackIndex].events[noteIndex].index;
+		duration = rhythms.tracks[trackIndex].events[noteIndex].duration;
+		totalLength = note + duration;
+		if (totalLength > highestIndex) {
+			highestIndex = totalLength;
+		}
+	}
+
+	var xValues = [];
+	for (m=1;m<=highestIndex+1;m++) {
+		xValues.push(m);
+	}
+	xValues.push('');
+	var chartString = '';
+	var chartHeight = 500;
+
+	if (rhythms.tracks[trackIndex].events[0].index > 0) {
+		totalFiller = rhythms.tracks[trackIndex].events[0].index;
+		for (var m=0;m<totalFiller;m++) {
+			chartDataArray.push(null);
+		}
+	}
+	//log('   trackIndex:' + trackIndex + ' totalFiller:' + totalFiller + ' items:' + (rhythms.tracks[trackIndex].events.length-1) + ' last:' + rhythms.tracks[trackIndex].events[rhythms.tracks[trackIndex].events.length-1].index + ' MIDIChannel:' + rhythms.tracks[trackIndex].midiChannel, 'debug');
+	var maxPitchCount = 0;
+	maxPitch = 0;
+	minPitch = 9999;
+	for (noteIndex=0;noteIndex<rhythms.tracks[trackIndex].events.length;noteIndex++) {
+		if (typeof rhythms.tracks[trackIndex].events[noteIndex].pitch != 'undefined') {
+			maxPitchCount = rhythms.tracks[trackIndex].events[noteIndex].pitch.length;
+			for (var i=0;i<rhythms.tracks[trackIndex].events[noteIndex].pitch.length;i++) {
+				var pitchText = rhythms.tracks[trackIndex].events[noteIndex].pitch[i];
+				var pCode = Number.parseInt(getPitchCode(pitchText, "code"));
+				//console.log(pitchText + ' ' + temp + ' ' + pCode + ' ' + minPitch + ' ' + maxPitch);
+				if (pCode > maxPitch) {
+					maxPitch = pCode;
+				}
+				if (pCode < minPitch) {
+					minPitch = pCode;
+				}
+			}
+		}
+	}
+	//console.log(minPitch + ' ' + maxPitch);
+	if (maxPitchCount==0) {
+		return '';
+	}
+	var yValues = []
+	for (i=minPitch - 1;i<=maxPitch+1;i++) {
+		yValues.push(getPitchCode(i,"pitch"));
+		//yValues.push(i);
+	}
+	yValues = flattenArray(yValues);
+	chartString += '<div>\n';
+	chartString += '<canvas id="pitchChart' + trackIndex + '"></canvas>\n';
+	chartString += '</div>\n';
+	chartString += '<script>\n';
+//	chartString += 'var xValues = ' + JSON.stringify(xValues) + ';\n';
+//	chartString += 'var yValues = ' + JSON.stringify(yValues) + ';\n';
+	chartString += 'new Chart("pitchChart' + trackIndex + '", {\n';
+	chartString += '  type: "line",\n';
+	chartString += '  data: {\n';
+//	chartString += '    labels: xValues,\n';
+	chartString += '	datasets: [\n';
+console.log('maxPitchCount:' + maxPitchCount);
+	
+	for (var pitch=0;pitch<maxPitchCount;pitch++) {
+		var lineColor = 'black';
+		if (pitch<colorArray.length) {
+			lineColor = colorArray[pitch];
+		}
+		var chartDataArray = [];
+		for (noteIndex=0;noteIndex<rhythms.tracks[trackIndex].events.length;noteIndex++) {
+			if (typeof rhythms.tracks[trackIndex].events[noteIndex].pitch[pitch] != 'undefined' > 0) {
+				for (var m=0;m<rhythms.tracks[trackIndex].events[noteIndex].duration;m++) {
+					if (typeof rhythms.tracks[trackIndex].events[noteIndex].pitch[pitch] != 'undefined') {
+						chartDataArray.push(getPitchCode(rhythms.tracks[trackIndex].events[noteIndex].pitch[pitch], "code"));
+					} else {
+						chartDataArray.push(0);
+					}
+				}
+			}
+		}
+		if (pitch == 0) {
+			chartString += '	{\n';
+		} else {
+			chartString += '	,{\n';
+		}
+		chartString += '      label: "' + rhythms.tracks[trackIndex].name + '",\n';
+		chartString += '      data: ' + JSON.stringify(chartDataArray) + ',\n';
+		chartString += '	  borderColor: "' + lineColor + '",\n';
+		chartString += '	  stepped: true,\n';
+		chartString += '	  spanGaps: false,\n';
+		chartString += '	  pointRadius: 0,\n';
+		chartString += '	  fill: false\n';
+		chartString += '	}\n';
+	}
+	//console.log('chartDataArray:' + JSON.stringify(chartDataArray));
+	chartString += '	]\n';
+	chartString += '  },\n';
+	chartString += '  options: {\n';
+	chartString += '	 scales: {\n';
+	chartString += '        x: {\n';
+	chartString += '      		labels: ' + JSON.stringify(xValues) + ',\n';
+	chartString += '       },\n';
+	chartString += '        y: {\n';
+	chartString += '      		labels: ' + JSON.stringify(yValues) + ',\n';
+	chartString += '       }\n';
+	chartString += '    },\n';
+	chartString += '    layout: {padding: 5},\n';
+	chartString += '	plugins:{\n';
+	chartString += '    	legend: {display: false, reverse: true, position: "bottom"},\n';
+	chartString += '		line:{stepped:true},\n';
+	chartString += '    	title: {\n';
+	chartString += '         	display: true,\n';
+	if (typeof rhythms.tracks[trackIndex].name != 'undefined') {
+		chartString += '         	text: "' + rhythms.tracks[trackIndex].name + '"\n';
+	}
+	chartString += '     	}\n';
+	chartString += '     }\n';
+	chartString += '  }\n';
+	chartString += '});\n';
+	chartString += '</script>\n';	
+	
+	return chartString;
+}
+
+function buildRhythmChartHTML() {
+	log('buildRhythmChartHTML()', 'info');
 	var chartString = '';
 	chartString += '<!DOCTYPE html>\n';
 	chartString += '<html>\n';
 	chartString += '<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>\n';
 	chartString += '<body>\n';
 	chartString += '<div>\n';
-	chartString += '<canvas id="myChart""></canvas>\n';
+	chartString += '<canvas id="rhythmChart""></canvas>\n';
 	chartString += '</div>\n';
 	chartString += '<script>\n';
 
@@ -1802,7 +2085,7 @@ function buildChartjsPage() {
 		chartHeight = (rhythms.tracks.length) * spacing;
 	}
 	chartString += 'var xValues = ' + JSON.stringify(xValues) + ';\n';
-	chartString += 'new Chart("myChart", {\n';
+	chartString += 'new Chart("rhythmChart", {\n';
 	chartString += '  type: "line",\n';
 	chartString += '  data: {\n';
 	chartString += '    labels: xValues,\n';
@@ -1829,7 +2112,7 @@ function buildChartjsPage() {
 				chartDataArray.push(null);
 			}
 		}
-		log('   trackIndex:' + trackIndex + ' totalFiller:' + totalFiller + ' items:' + (rhythms.tracks[trackIndex].events.length-1) + ' last:' + rhythms.tracks[trackIndex].events[rhythms.tracks[trackIndex].events.length-1].index + ' inScore:' + rhythms.tracks[trackIndex].includeInScore, 'debug');
+		log('   trackIndex:' + trackIndex + ' totalFiller:' + totalFiller + ' items:' + (rhythms.tracks[trackIndex].events.length-1) + ' last:' + rhythms.tracks[trackIndex].events[rhythms.tracks[trackIndex].events.length-1].index + ' MIDIChannel:' + rhythms.tracks[trackIndex].midiChannel, 'debug');
 		flipHighLow = !flipHighLow;
 		for (noteIndex=0;noteIndex<rhythms.tracks[trackIndex].events.length;noteIndex++) {
 			for (var m=0;m<rhythms.tracks[trackIndex].events[noteIndex].duration;m++) {
@@ -1854,7 +2137,7 @@ function buildChartjsPage() {
 		}
 		chartString += 	'     label: "' + rhythms.tracks[trackIndex].name + '",\n';
 		chartString += 	'     data: ' + JSON.stringify(chartDataArray) + ',\n';
-		if (rhythms.tracks[trackIndex].includeInScore == true) {
+		if (typeof rhythms.tracks[trackIndex].midiChannel!= 'undefined') {
 			chartString += '	  borderColor: "black",\n';
 		} else {
 			chartString += '	   borderColor: "gray",\n';
@@ -1925,6 +2208,11 @@ function buildChartjsPage() {
 	chartString += '  }\n';
 	chartString += '});\n';
 	chartString += '</script>\n';
+	
+	for (trackIndex=rhythms.tracks.length-1;trackIndex>=0;trackIndex--) { 
+		chartString += buildPitchChartHTML(trackIndex);
+	}
+	
 	chartString += '</html>';
 	return chartString;
 }
@@ -1939,15 +2227,13 @@ function genMidiFileJZZ() {
 				highestCount = rhythms.tracks[trackIndex].events[noteIndex].count;
 			}
 		}
-		if (typeof rhythms.tracks[trackIndex].includeInScore == 'undefined') {
-			rhythms.tracks[trackIndex].includeInScore = false;
-		} else if (rhythms.tracks[trackIndex].includeInScore == true) {
+		if (typeof rhythms.tracks[trackIndex].midiChannel != 'undefined') {
 			anyMidi = true;
 		}
 	}
 	log('   anyMidi:' + anyMidi, 'debug');
 	if (!anyMidi) return null;
-	var smf = new JZZ.MIDI.SMF(0, 96);
+	var smf = new JZZ.MIDI.SMF(0, 128);
 	var avgVelocity = 50;
 	if (typeof rhythms.averageVelocity != 'undefined') {
 		avgVelocity = rhythms.averageVelocity;
@@ -1960,9 +2246,9 @@ function genMidiFileJZZ() {
 	for (trackIndex=0;trackIndex<rhythms.tracks.length;trackIndex++) {
 		if (rhythms.tracks[trackIndex].events.length == 0) break;
 		var index = 0;
-		if (rhythms.tracks[trackIndex].includeInScore) {
+		if (typeof rhythms.tracks[trackIndex].midiChannel != 'undefined') {
 			var track = new JZZ.MIDI.SMF.MTrk();
-			var channel = 0;
+			var channel = rhythms.tracks[trackIndex].midiChannel;
 			smf.push(track);
 			smf[smf.length-1].add(index,JZZ.MIDI.smfSeqName(rhythms.tracks[trackIndex].name));
 			if (typeof rhythms.copyright != 'undefined') {
@@ -1978,50 +2264,38 @@ function genMidiFileJZZ() {
 				tempo = 90;
 			}
 			smf[smf.length-1].add(index,JZZ.MIDI.smfBPM(tempo));
-			var instrumentName;
-			if (typeof rhythms.tracks[trackIndex].instrumentName != 'undefined') {
-				instrumentName = rhythms.tracks[trackIndex].instrumentName;
-			} else {
-				instrumentName = "piano";
-			}
-			var instrumentCode;
-			if (typeof rhythms.tracks[trackIndex].instrumentCode != 'undefined') {
-				instrumentCode = rhythms.tracks[trackIndex].instrumentCode;
-			} else {
-				instrumentCode = 1;
-			}
-			var instrumentChannel;
-			if (typeof rhythms.tracks[trackIndex].instrumentChannel != 'undefined') {
-				instrumentChannel = rhythms.tracks[trackIndex].instrumentChannel;
-			} else {
-				instrumentChannel = 1;
-			}
+
+
+			log('   writing midi for track:' + trackIndex + ' notes:' + rhythms.tracks[trackIndex].events.length + ' tempo:' + tempo, 'debug');
 			
-			//keysignature must be converted to short format C#m, M
-			var keySignature = '';
-			if (typeof rhythms.tracks[trackIndex].keySignature != 'undefined') {
-				timeSignature = rhythms.tracks[trackIndex].keySignature;
-			} else {
-				timeSignature = rhythms.keySignature;
-			}
-			var timeSignature = '';
-			if (typeof rhythms.tracks[trackIndex].timeSignature != 'undefined') {
-				timeSignature = rhythms.tracks[trackIndex].timeSignature;
-			} else {
-				timeSignature = rhythms.timeSignature;
-			}
-			log('   writing midi for track:' + trackIndex + ' notes:' + rhythms.tracks[trackIndex].events.length + ' timeSignature:' + timeSignature + ' tempo:' + tempo + ' instrumentName:' + instrumentName, 'debug');
-			var timeSigArray = timeSignature.split('/');
-			//smf[smf.length-1].add(index,JZZ.MIDI.smfKeySignature(keySignature));
-			smf[smf.length-1].add(index,JZZ.MIDI.smfTimeSignature(timeSigArray[0] + "/" + timeSigArray[1]));
-			smf[smf.length-1].add(index,JZZ.MIDI.smfInstrName(instrumentName));
-			console.log('MIDIcode:' + (instrumentChannel + 192) + " hex:" + (instrumentChannel + 192).toString(16) + "    instrument:" + instrumentCode + " hex:" + instrumentCode.toString(16));
-			smf[smf.length-1].add(index,JZZ.MIDI.program(instrumentChannel,instrumentCode));
+			//smf[smf.length-1].add(index,JZZ.MIDI.smfTimeSignature(timeSignature));
+			
+			//console.log('MIDIcode:' + (channel + 192) + " hex:" + (channel + 192).toString(16) + "    instrument:" + instrumentCode + " hex:" + instrumentCode.toString(16));
+			
 			//could optionally insert a phantom note here because midi players have trouble with notes that start at the immediate beginning. But this could complicate matters for importing into MuseScore, since things no longer align. 
 			var velocity;
-			
+			var prevTimeSignature;
+			var prevInstrumentName;
+			var prevInstrumentCode;
+			var prevKeySignature;
 			for (noteIndex=0;noteIndex<rhythms.tracks[trackIndex].events.length;noteIndex++) {
-			
+				if (rhythms.tracks[trackIndex].events[noteIndex].timeSignature != prevTimeSignature) {
+					var tsArray = rhythms.tracks[trackIndex].events[noteIndex].timeSignature.split('/');
+					smf[smf.length-1].add(index,JZZ.MIDI.smfTimeSignature(tsArray[0] + "/" + tsArray[1]));
+					prevTimeSignature = rhythms.tracks[trackIndex].events[noteIndex].timeSignature;
+				}
+				if (rhythms.tracks[trackIndex].events[noteIndex].instrumentName != prevInstrumentName) {
+					smf[smf.length-1].add(index,JZZ.MIDI.smfInstrName(rhythms.tracks[trackIndex].events[noteIndex].instrumentName));
+					prevInstrumentName = rhythms.tracks[trackIndex].events[noteIndex].instrumentName;
+				}
+				if (rhythms.tracks[trackIndex].events[noteIndex].instrumentCode != prevInstrumentCode) {
+					smf[smf.length-1].add(index,JZZ.MIDI.program(channel,rhythms.tracks[trackIndex].events[noteIndex].instrumentCode));
+					prevInstrumentCode = rhythms.tracks[trackIndex].events[noteIndex].instrumentCode;
+				}
+				if (typeof rhythms.tracks[trackIndex].events[noteIndex].shortKey != 'undefined' && rhythms.tracks[trackIndex].events[noteIndex].shortKey != prevKeySignature) {
+					smf[smf.length-1].add(index,JZZ.MIDI.smfKeySignature(rhythms.tracks[trackIndex].events[noteIndex].shortKey));
+					prevKeySignature = rhythms.tracks[trackIndex].events[noteIndex].shortKey;
+				}
 				if (typeof rhythms.tracks[trackIndex].adjustVelocity  != 'undefined') {
 					if (rhythms.tracks[trackIndex].adjustVelocity == "byCount") {
 						if (typeof rhythms.tracks[trackIndex].events[noteIndex].count  != 'undefined') {
@@ -2072,7 +2346,7 @@ function genMidiFileJZZ() {
 				if (typeof rhythms.tracks[trackIndex].events[noteIndex].control != 'undefined') {
 					for (controllerIndex=0;controllerIndex<rhythms.tracks[trackIndex].events[noteIndex].control.length;controllerIndex++) {
 						if (rhythms.tracks[trackIndex].events[noteIndex].control[controllerIndex].interpolationType == 'none') {
-							smf[smf.length-1].add(index,JZZ.MIDI.control(rhythms.tracks[trackIndex].events[noteIndex].control[controllerIndex].channel,rhythms.tracks[trackIndex].events[noteIndex].control[controllerIndex].controller,rhythms.tracks[trackIndex].events[noteIndex].control[controllerIndex].startValue));
+							smf[smf.length-1].add(index,JZZ.MIDI.control(channel,rhythms.tracks[trackIndex].events[noteIndex].control[controllerIndex].controller,rhythms.tracks[trackIndex].events[noteIndex].control[controllerIndex].startValue));
 						} else {
 							var shape = rhythms.tracks[trackIndex].events[noteIndex].control[controllerIndex].interpolationType;
 							var interpolationType = rhythms.tracks[trackIndex].events[noteIndex].control[controllerIndex].interpolationType;
@@ -2084,7 +2358,7 @@ function genMidiFileJZZ() {
 								if (rhythms.tracks[trackIndex].events[noteIndex].control[controllerIndex].endValue == 'next') {
 									if (typeof rhythms.tracks[trackIndex].events[noteIndex+1] != 'undefined') {
 										for (nextControllerIndex=0;nextControllerIndex<rhythms.tracks[trackIndex].events[noteIndex+1].control.length;nextControllerIndex++) {
-											if (rhythms.tracks[trackIndex].events[noteIndex+1].control[nextControllerIndex].channel == rhythms.tracks[trackIndex].events[noteIndex].control[controllerIndex].channel && rhythms.tracks[trackIndex].events[noteIndex+1].control[nextControllerIndex].controller == rhythms.tracks[trackIndex].events[noteIndex].control[controllerIndex].controller) {
+											if (rhythms.tracks[trackIndex].events[noteIndex+1].control[nextControllerIndex].controller == rhythms.tracks[trackIndex].events[noteIndex].control[controllerIndex].controller) {
 												endValue = rhythms.tracks[trackIndex].events[noteIndex+1].control[nextControllerIndex].startValue;
 												break;
 											}
@@ -2095,7 +2369,8 @@ function genMidiFileJZZ() {
 									//console.log('shape:' + shape + '\tendValue:' + endValue);
 								}
 							} else {
-								console.log('Uh OH:' + JSON.stringify(rhythms.tracks[trackIndex].events[noteIndex].control[controllerIndex]));
+								console.log('Error: endValue required but not found in track:' + trackIndex + '\tnote:' + noteIndex + '\tcontroller:' + controllerIndex);
+								console.log('---the entry in error is:' + JSON.stringify(rhythms.tracks[trackIndex].events[noteIndex].control[controllerIndex]));
 							}
 							var startIndex = index;
 							var endIndex = startIndex+duration
@@ -2123,7 +2398,7 @@ function genMidiFileJZZ() {
 }
 
 function buildInterpolatedOutput(shape, stepSize, startValue, endValue, startIndex, endIndex, bend) {
-	console.log('shape:' + shape + ' stepSize:' + stepSize + ' startValue:' + startValue + ' endValue:' + endValue + ' startIndex:' + startIndex +  ' endIndex:' + endIndex + ' bend:' + bend);
+	//console.log('shape:' + shape + ' stepSize:' + stepSize + ' startValue:' + startValue + ' endValue:' + endValue + ' startIndex:' + startIndex +  ' endIndex:' + endIndex + ' bend:' + bend);
 	var resultJSON;
 	if (shape == "sigmoid") {
 		if (bend<0) {
@@ -2226,7 +2501,7 @@ function buildInterpolatedOutput(shape, stepSize, startValue, endValue, startInd
 }
 
 function exponential(bend,min,max,startIndex,endIndex, stepSize) {
-	console.log('exponential:' + bend + '\tmin:' + min + '\tmax:' + max + '\tsI:' + startIndex + '\teI:' + endIndex + '\tstep:' + stepSize);
+	//console.log('exponential:' + bend + '\tmin:' + min + '\tmax:' + max + '\tsI:' + startIndex + '\teI:' + endIndex + '\tstep:' + stepSize);
 	var cc = [];
 	var oldSig = -999;
 	var curIndex = startIndex;

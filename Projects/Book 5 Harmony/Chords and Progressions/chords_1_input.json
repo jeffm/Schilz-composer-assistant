@@ -10,7 +10,7 @@
             "endAt": 72,
 			"keyOf": "C",
 			"chords": [["iii"],["C7n1"],["V7r4"],["ii-7r5n1"]],
-			"includeInScore": true,
+			"midiChannel": 0,
 			"beatUnit": 4,
 			"tempo": 120
         }

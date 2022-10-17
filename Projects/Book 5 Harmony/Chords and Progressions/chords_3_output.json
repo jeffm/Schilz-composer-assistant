@@ -381,8 +381,7 @@
         },
         {
             "type": "rhythm",
-            "includeInScore": true,
-            "instrumentChannel": 0,
+            "midiChannel": 0,
             "instrumentName": "Drawbar Organ",
             "instrumentCode": 17,
             "chords": [
@@ -403,15 +402,31 @@
             "pitches": [
                 [
                     "Ab4",
-                    "Eb4"
+                    "F2"
                 ],
                 [
-                    "C4"
+                    "Eb4",
+                    "G2"
+                ],
+                [
+                    "C4",
+                    "E2"
+                ],
+                [
+                    "B4",
+                    "F2"
+                ],
+                [
+                    "G3",
+                    "C2"
+                ],
+                [
+                    "A5",
+                    "F2"
                 ]
             ],
             "controlEvents": [
                 {
-                    "channel": 0,
                     "controller": 1,
                     "direction": "+",
                     "values": [
@@ -461,14 +476,13 @@
                     "count": 2,
                     "pitch": [
                         "Ab4",
-                        "Eb4"
+                        "F2"
                     ],
                     "chord": [
                         "AbMaj"
                     ],
                     "control": [
                         {
-                            "channel": 0,
                             "controller": 1,
                             "startValue": 0,
                             "interpolationType": "none"
@@ -480,14 +494,14 @@
                     "duration": 3,
                     "count": 1,
                     "pitch": [
-                        "C4"
+                        "Eb4",
+                        "G2"
                     ],
                     "chord": [
                         "AbMaj"
                     ],
                     "control": [
                         {
-                            "channel": 0,
                             "controller": 1,
                             "startValue": 0,
                             "interpolationType": "none"
@@ -499,15 +513,14 @@
                     "duration": 2,
                     "count": 1,
                     "pitch": [
-                        "Ab4",
-                        "Eb4"
+                        "C4",
+                        "E2"
                     ],
                     "chord": [
                         "AbMaj"
                     ],
                     "control": [
                         {
-                            "channel": 0,
                             "controller": 1,
                             "startValue": 10,
                             "interpolationType": "none"
@@ -519,14 +532,14 @@
                     "duration": 1,
                     "count": 1,
                     "pitch": [
-                        "C4"
+                        "B4",
+                        "F2"
                     ],
                     "chord": [
                         "AbMaj"
                     ],
                     "control": [
                         {
-                            "channel": 0,
                             "controller": 1,
                             "startValue": 10,
                             "interpolationType": "none"
@@ -538,15 +551,14 @@
                     "duration": 3,
                     "count": 1,
                     "pitch": [
-                        "Ab4",
-                        "Eb4"
+                        "G3",
+                        "C2"
                     ],
                     "chord": [
                         "AbMaj"
                     ],
                     "control": [
                         {
-                            "channel": 0,
                             "controller": 1,
                             "startValue": 20,
                             "interpolationType": "none"
@@ -558,14 +570,14 @@
                     "duration": 3,
                     "count": 1,
                     "pitch": [
-                        "C4"
+                        "A5",
+                        "F2"
                     ],
                     "chord": [
                         "AbMaj"
                     ],
                     "control": [
                         {
-                            "channel": 0,
                             "controller": 1,
                             "startValue": 20,
                             "interpolationType": "none"
@@ -578,14 +590,13 @@
                     "count": 1,
                     "pitch": [
                         "Ab4",
-                        "Eb4"
+                        "F2"
                     ],
                     "chord": [
                         "AbMaj"
                     ],
                     "control": [
                         {
-                            "channel": 0,
                             "controller": 1,
                             "startValue": 0,
                             "interpolationType": "exponential",
@@ -600,14 +611,14 @@
                     "duration": 2,
                     "count": 1,
                     "pitch": [
-                        "C4"
+                        "Eb4",
+                        "G2"
                     ],
                     "chord": [
                         "AbMaj"
                     ],
                     "control": [
                         {
-                            "channel": 0,
                             "controller": 1,
                             "startValue": 0,
                             "interpolationType": "exponential",
@@ -622,15 +633,14 @@
                     "duration": 3,
                     "count": 1,
                     "pitch": [
-                        "Ab4",
-                        "Eb4"
+                        "C4",
+                        "E2"
                     ],
                     "chord": [
                         "AbMaj"
                     ],
                     "control": [
                         {
-                            "channel": 0,
                             "controller": 1,
                             "startValue": 100,
                             "interpolationType": "none"
@@ -642,14 +652,14 @@
                     "duration": 3,
                     "count": 1,
                     "pitch": [
-                        "C4"
+                        "B4",
+                        "F2"
                     ],
                     "chord": [
                         "AbMaj"
                     ],
                     "control": [
                         {
-                            "channel": 0,
                             "controller": 1,
                             "startValue": 100,
                             "interpolationType": "none"
@@ -661,15 +671,14 @@
                     "duration": 3,
                     "count": 2,
                     "pitch": [
-                        "Ab4",
-                        "Eb4"
+                        "G3",
+                        "C2"
                     ],
                     "chord": [
                         "AbMaj"
                     ],
                     "control": [
                         {
-                            "channel": 0,
                             "controller": 1,
                             "startValue": 50,
                             "interpolationType": "none"
@@ -681,14 +690,14 @@
                     "duration": 3,
                     "count": 1,
                     "pitch": [
-                        "C4"
+                        "A5",
+                        "F2"
                     ],
                     "chord": [
                         "AbMaj"
                     ],
                     "control": [
                         {
-                            "channel": 0,
                             "controller": 1,
                             "startValue": 50,
                             "interpolationType": "none"
@@ -701,14 +710,13 @@
                     "count": 1,
                     "pitch": [
                         "Ab4",
-                        "Eb4"
+                        "F2"
                     ],
                     "chord": [
                         "AbMaj"
                     ],
                     "control": [
                         {
-                            "channel": 0,
                             "controller": 1,
                             "startValue": 60,
                             "interpolationType": "none"
@@ -720,14 +728,14 @@
                     "duration": 1,
                     "count": 1,
                     "pitch": [
-                        "C4"
+                        "Eb4",
+                        "G2"
                     ],
                     "chord": [
                         "AbMaj"
                     ],
                     "control": [
                         {
-                            "channel": 0,
                             "controller": 1,
                             "startValue": 60,
                             "interpolationType": "none"
@@ -739,15 +747,14 @@
                     "duration": 3,
                     "count": 1,
                     "pitch": [
-                        "Ab4",
-                        "Eb4"
+                        "C4",
+                        "E2"
                     ],
                     "chord": [
                         "AbMaj"
                     ],
                     "control": [
                         {
-                            "channel": 0,
                             "controller": 1,
                             "startValue": 70,
                             "interpolationType": "none"
@@ -759,14 +766,14 @@
                     "duration": 3,
                     "count": 1,
                     "pitch": [
-                        "C4"
+                        "B4",
+                        "F2"
                     ],
                     "chord": [
                         "AbMaj"
                     ],
                     "control": [
                         {
-                            "channel": 0,
                             "controller": 1,
                             "startValue": 70,
                             "interpolationType": "none"
@@ -778,15 +785,14 @@
                     "duration": 1,
                     "count": 1,
                     "pitch": [
-                        "Ab4",
-                        "Eb4"
+                        "G3",
+                        "C2"
                     ],
                     "chord": [
                         "AbMaj"
                     ],
                     "control": [
                         {
-                            "channel": 0,
                             "controller": 1,
                             "startValue": 0,
                             "interpolationType": "none"
@@ -798,14 +804,14 @@
                     "duration": 2,
                     "count": 1,
                     "pitch": [
-                        "C4"
+                        "A5",
+                        "F2"
                     ],
                     "chord": [
                         "AbMaj"
                     ],
                     "control": [
                         {
-                            "channel": 0,
                             "controller": 1,
                             "startValue": 0,
                             "interpolationType": "none"
@@ -818,14 +824,13 @@
                     "count": 1,
                     "pitch": [
                         "Ab4",
-                        "Eb4"
+                        "F2"
                     ],
                     "chord": [
                         "AbMaj"
                     ],
                     "control": [
                         {
-                            "channel": 0,
                             "controller": 1,
                             "startValue": 10,
                             "interpolationType": "none"
@@ -837,14 +842,14 @@
                     "duration": 3,
                     "count": 1,
                     "pitch": [
-                        "C4"
+                        "Eb4",
+                        "G2"
                     ],
                     "chord": [
                         "AbMaj"
                     ],
                     "control": [
                         {
-                            "channel": 0,
                             "controller": 1,
                             "startValue": 10,
                             "interpolationType": "none"
@@ -856,15 +861,14 @@
                     "duration": 3,
                     "count": 2,
                     "pitch": [
-                        "Ab4",
-                        "Eb4"
+                        "C4",
+                        "E2"
                     ],
                     "chord": [
                         "AbMaj"
                     ],
                     "control": [
                         {
-                            "channel": 0,
                             "controller": 1,
                             "startValue": 20,
                             "interpolationType": "none"
@@ -876,14 +880,14 @@
                     "duration": 3,
                     "count": 1,
                     "pitch": [
-                        "C4"
+                        "B4",
+                        "F2"
                     ],
                     "chord": [
                         "AbMaj"
                     ],
                     "control": [
                         {
-                            "channel": 0,
                             "controller": 1,
                             "startValue": 20,
                             "interpolationType": "none"
@@ -895,15 +899,14 @@
                     "duration": 2,
                     "count": 1,
                     "pitch": [
-                        "Ab4",
-                        "Eb4"
+                        "G3",
+                        "C2"
                     ],
                     "chord": [
                         "AbMaj"
                     ],
                     "control": [
                         {
-                            "channel": 0,
                             "controller": 1,
                             "startValue": 0,
                             "interpolationType": "exponential",
@@ -918,14 +921,14 @@
                     "duration": 1,
                     "count": 1,
                     "pitch": [
-                        "C4"
+                        "A5",
+                        "F2"
                     ],
                     "chord": [
                         "AbMaj"
                     ],
                     "control": [
                         {
-                            "channel": 0,
                             "controller": 1,
                             "startValue": 0,
                             "interpolationType": "exponential",
@@ -941,14 +944,13 @@
                     "count": 1,
                     "pitch": [
                         "Ab4",
-                        "Eb4"
+                        "F2"
                     ],
                     "chord": [
                         "AbMaj"
                     ],
                     "control": [
                         {
-                            "channel": 0,
                             "controller": 1,
                             "startValue": 100,
                             "interpolationType": "none"
@@ -960,14 +962,14 @@
                     "duration": 3,
                     "count": 1,
                     "pitch": [
-                        "C4"
+                        "Eb4",
+                        "G2"
                     ],
                     "chord": [
                         "AbMaj"
                     ],
                     "control": [
                         {
-                            "channel": 0,
                             "controller": 1,
                             "startValue": 100,
                             "interpolationType": "none"
@@ -979,15 +981,14 @@
                     "duration": 1,
                     "count": 1,
                     "pitch": [
-                        "Ab4",
-                        "Eb4"
+                        "C4",
+                        "E2"
                     ],
                     "chord": [
                         "AbMaj"
                     ],
                     "control": [
                         {
-                            "channel": 0,
                             "controller": 1,
                             "startValue": 50,
                             "interpolationType": "none"
@@ -999,14 +1000,14 @@
                     "duration": 2,
                     "count": 1,
                     "pitch": [
-                        "C4"
+                        "B4",
+                        "F2"
                     ],
                     "chord": [
                         "AbMaj"
                     ],
                     "control": [
                         {
-                            "channel": 0,
                             "controller": 1,
                             "startValue": 50,
                             "interpolationType": "none"
@@ -1018,15 +1019,14 @@
                     "duration": 3,
                     "count": 1,
                     "pitch": [
-                        "Ab4",
-                        "Eb4"
+                        "G3",
+                        "C2"
                     ],
                     "chord": [
                         "AbMaj"
                     ],
                     "control": [
                         {
-                            "channel": 0,
                             "controller": 1,
                             "startValue": 60,
                             "interpolationType": "none"
@@ -1038,14 +1038,14 @@
                     "duration": 3,
                     "count": 1,
                     "pitch": [
-                        "C4"
+                        "A5",
+                        "F2"
                     ],
                     "chord": [
                         "AbMaj"
                     ],
                     "control": [
                         {
-                            "channel": 0,
                             "controller": 1,
                             "startValue": 60,
                             "interpolationType": "none"
