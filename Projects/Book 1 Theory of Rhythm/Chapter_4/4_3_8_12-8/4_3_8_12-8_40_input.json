@@ -1,5 +1,6 @@
 {
     "name": "4_3_8_12-8",
+    "copyright": "Copyright 2022 Jeffrey D. Mershon",
     "timeSignature": "12/8",
     "averageVelocity": 50,
     "tracks": [
@@ -21,8 +22,7 @@
             "period": 3,
             "endAt": 12,
             "offsetFrom": 0,
-            "offsetAmount": 1,
-            "tempo": 40
+            "offsetAmount": 1
         },
         {
             "name": "Interference rhythm combining 4 and 3",
@@ -38,11 +38,18 @@
                     "source": 2
                 }
             ],
-            "includeInScore": true,
+            "midiChannel": 0,
             "computeLCM": true,
             "beatUnit": 8,
-            "defaultPitch": "C4",
-            "tempo": 90
+            "pitches": [
+                [
+                    "C4"
+                ],
+                [
+                    "E4"
+                ]
+            ],
+            "tempo": 40
         }
     ]
 }

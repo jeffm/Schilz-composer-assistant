@@ -1,5 +1,6 @@
 {
     "name": "3_2_8_6-8",
+    "copyright": "Copyright 2022 Jeffrey D. Mershon",
     "timeSignature": "6/8",
     "averageVelocity": 50,
     "tracks": [
@@ -25,7 +26,9 @@
                     "count": 1
                 }
             ],
-            "run": false,
+            "run": {
+                "run": false
+            },
             "id": 0
         },
         {
@@ -50,7 +53,9 @@
                     "count": 1
                 }
             ],
-            "run": false,
+            "run": {
+                "run": false
+            },
             "id": 1
         },
         {
@@ -77,7 +82,9 @@
                     "count": 1
                 }
             ],
-            "run": false,
+            "run": {
+                "run": false
+            },
             "id": 2
         },
         {
@@ -97,7 +104,9 @@
                     "count": 1
                 }
             ],
-            "run": false,
+            "run": {
+                "run": false
+            },
             "id": 3
         },
         {
@@ -122,7 +131,9 @@
                     "count": 1
                 }
             ],
-            "run": false,
+            "run": {
+                "run": false
+            },
             "id": 4
         },
         {
@@ -139,8 +150,6 @@
                     "source": 2
                 }
             ],
-            "includeInScore": false,
-            "tempo": 40,
             "events": [
                 {
                     "index": 0,
@@ -178,7 +187,9 @@
                     "count": 1
                 }
             ],
-            "run": false,
+            "run": {
+                "run": false
+            },
             "id": 5,
             "endAt": 7,
             "LCM": 6
@@ -194,10 +205,8 @@
                     "source": 4
                 }
             ],
-            "includeInScore": false,
             "computeLCM": true,
             "beatUnit": 8,
-            "defaultPitch": "C4",
             "tempo": 90,
             "events": [
                 {
@@ -221,13 +230,15 @@
                     "count": 1
                 }
             ],
-            "run": false,
+            "run": {
+                "run": false
+            },
             "id": 6,
             "endAt": 4,
             "LCM": 6
         },
         {
-            "name": "Interference rhythm appending tracks 5 and 6",
+            "name": "Interference rhythm appending tracks 6 and 5",
             "type": "concatenate",
             "sources": [
                 {
@@ -237,73 +248,114 @@
                     "source": 5
                 }
             ],
-            "includeInScore": true,
+            "midiChannel": 0,
             "computeLCM": true,
             "beatUnit": 8,
-            "defaultPitch": "C4",
-            "tempo": 90,
+            "pitches": [
+                [
+                    "C4"
+                ],
+                [
+                    "E4"
+                ]
+            ],
+            "tempo": 40,
             "events": [
                 {
                     "index": 0,
                     "duration": 2,
-                    "count": 2
+                    "count": 2,
+                    "pitch": [
+                        "C4"
+                    ]
                 },
                 {
                     "index": 2,
                     "duration": 1,
-                    "count": 1
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
                 },
                 {
                     "index": 3,
                     "duration": 1,
-                    "count": 1
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ]
                 },
                 {
                     "index": 4,
                     "duration": 2,
-                    "count": 1
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
                 },
                 {
                     "index": 6,
                     "duration": 2,
-                    "count": 2
+                    "count": 2,
+                    "pitch": [
+                        "C4"
+                    ]
                 },
                 {
                     "index": 8,
                     "duration": 1,
-                    "count": 1
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
                 },
                 {
                     "index": 9,
                     "duration": 1,
-                    "count": 2
+                    "count": 2,
+                    "pitch": [
+                        "C4"
+                    ]
                 },
                 {
                     "index": 10,
                     "duration": 1,
-                    "count": 1
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
                 },
                 {
                     "index": 11,
                     "duration": 1,
-                    "count": 1
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ]
                 },
                 {
                     "index": 12,
                     "duration": 1,
-                    "count": 1
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
                 },
                 {
                     "index": 13,
                     "duration": 2,
-                    "count": 1
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ]
                 }
             ],
-            "run": false,
+            "run": {
+                "run": false
+            },
             "id": 7,
             "LCM": 6
         }
     ],
-    "defaultPitch": "C4",
     "tempo": 90
 }

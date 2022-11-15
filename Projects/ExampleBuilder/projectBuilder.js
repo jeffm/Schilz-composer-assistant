@@ -1,27 +1,60 @@
 var fs = require('fs');
-var section = 'Chapter_5_Exp';
-var rhythms;
-try {
-	rhythms = openInputFile('c:/Schilz-composer-assistant/Projects/ExampleBuilder/' + section + ' projectList.json');
-} catch(err) {
-	console.log(err);
-	return;
-}
+var Book;
+var projectPath;
+var projectPathWindows;
+//Book = 1
+//projectPath = 'C:/Schilz-composer-assistant/Projects/Book 1 Theory of Rhythm/' + section + '/';
+//projectPathWindows = 'C:\\\\Schilz-composer-assistant\\\\Projects\\\\Book 1 Theory of Rhythm\\\\' + section + '\\\\';
+//var section = 'Chapter_3';
+//var section = 'Chapter_4';
+//var section = 'Chapter_5_Con';
+//var section = 'Chapter_5_Exp';
+//var section = 'Chapter_6';
+//var section = 'Chapter_7';
 
-	console.log('Opened:' + (rhythms.length-1) + ' projects to create');
-	//console.log(JSON.stringify(rhythms));
+
+//Book 3
+Book = 3
+var section = 'Chapter_1';
+projectPath = 'C:/Schilz-composer-assistant/Projects/Book 3 Geometrical Projections/' + section + '/';
+projectPathWindows = 'C:\\\\Schilz-composer-assistant\\\\Projects\\\\Book 3 Geometrical Projections\\\\' + section + '\\\\';
+
+//Book 5
+
+
+
+
+var rhythms;
 	
 var batText = '';
 var museOutText = '';
-for (var m=0;m<rhythms.length;m++) {
-	batText += buildControlFile(rhythms[m]);
-	museOutText += buildMuseFile(rhythms[m]);
+if (Book == 1) {
+	if (section != 'Chapter_7') {
+		try {
+			rhythms = openInputFile('c:/Schilz-composer-assistant/Projects/ExampleBuilder/' + section + ' projectList.json');
+		} catch(err) {
+			console.log(err);
+			return;
+		}
+
+			console.log('Opened:' + (rhythms.length-1) + ' projects to create');
+			//console.log(JSON.stringify(rhythms));
+	}
+	if (section == 'Chapter_7') {
+		batText = build_1_7_ControlFile(projectPath,projectPathWindows);
+	} else {
+		for (var m=0;m<rhythms.length;m++) {
+			batText += build_1_ControlFile(rhythms[m],projectPath,projectPathWindows);
+		}
+	}
+} else if (Book == 3) {
+	if (section == 'Chapter_1') {
+		batText = build_3_1_ControlFile(projectPath,projectPathWindows);
+	}
 }
 
-//pairs
-
 writeBAT('c:/Schilz-composer-assistant/Projects/ExampleBuilder/' + section + 'buildProjectList.bat', batText);
-writeMuse('c:/Schilz-composer-assistant/Projects/ExampleBuilder/' + section + 'museTasks.bat',museOutText);
+//writeMuse('c:/Schilz-composer-assistant/Projects/ExampleBuilder/' + section + 'museTasks.bat',museOutText);
 
 function ensureExists(path, mask) {
     return fs.mkdir(path, mask, function(err) {
@@ -32,6 +65,7 @@ function ensureExists(path, mask) {
     });
 }
 
+/*
 function buildMuseFile(control) {
 	var museBin = "\"c:\\Program Files\\MuseScore 3\\bin\\MuseScore3.exe\" -o ";
 	var projectPath = 'C:/Schilz-composer-assistant/Projects/Book 1 Theory of Rhythm/' + section + '/';
@@ -43,40 +77,261 @@ function buildMuseFile(control) {
 	museString += museBin +  root + project +  '_40.mxl' + '\" ' + root + project +  '_40.mscz\"\n';
 	museString += museBin +  root + project +  '_40.mp3' + '\" ' + root + project +  '_40.mscz\" -b \"64\" \n';
 	museString += museBin +  root + project +  '_40.pdf' + '\" ' + root + project +  '_40.mscz\"\n';
-/*
-	museString += museBin + root + project +  '_40_Fract.mscz' + '\" ' + root + project +  '_40_Fract.mid\"\n';
-	museString += museBin +  root + project +  '_40_Fract.mxl' + '\" ' + root + project +  '_40_Fract.mscz\"\n';
-	museString += museBin +  root + project +  '_40_Fract.mp3' + '\" ' + root + project +  '_40_Fract.mscz\" -b \"64\" \n';
-	museString += museBin +  root + project +  '_40_Fract.pdf' + '\" ' + root + project +  '_40_Fract.mscz\"\n';
-	*/
+
 	museString += museBin + root + project +  '_80.mscz' + '\" ' + root + project +  '_80.mid\"\n';
 	museString += museBin +  root + project +  '_80.mxl' + '\" ' + root + project +  '_80.mscz\"\n';
 	museString += museBin +  root + project +  '_80.mp3' + '\" ' + root + project +  '_80.mscz\" -b \"64\" \n';
 	museString += museBin +  root + project +  '_80.pdf' + '\" ' + root + project +  '_80.mscz\"\n';
-	/*
-	museString += museBin + root + project +  '_80_Fract.mscz' + '\" ' + root + project +  '_80_Fract.mid\"\n';
-	museString += museBin +  root + project +  '_80_Fract.mxl' + '\" ' + root + project +  '_80_Fract.mscz\"\n';
-	museString += museBin +  root + project +  '_80_Fract.mp3' + '\" ' + root + project +  '_80_Fract.mscz\" -b \"64\" \n';
-	museString += museBin +  root + project +  '_80_Fract.pdf' + '\" ' + root + project +  '_80_Fract.mscz\"\n';
-	*/
+
 	museString += museBin + root + project +  '_120.mscz' + '\" ' + root + project +  '_120.mid\"\n';
 	museString += museBin +  root + project +  '_120.mxl' + '\" ' + root + project +  '_120.mscz\"\n';
 	museString += museBin +  root + project +  '_120.mp3' + '\" ' + root + project +  '_120.mscz\" -b \"64\" \n';
 	museString += museBin +  root + project +  '_120.pdf' + '\" ' + root + project +  '_120.mscz\"\n';
-	/*
-	museString += museBin + root + project +  '_120_Fract.mscz' + '\" ' + root + project +  '_120_Fract.mid\"\n';
-	museString += museBin +  root + project +  '_120_Fract.mxl' + '\" ' + root + project +  '_120_Fract.mscz\"\n';
-	museString += museBin +  root + project +  '_120_Fract.mp3' + '\" ' + root + project +  '_120_Fract.mscz\" -b \"64\" \n';
-	museString += museBin +  root + project +  '_120_Fract.pdf' + '\" ' + root + project +  '_120_Fract.mscz\"\n';
-	*/
+
 	return museString;
 }
 
-function buildControlFile(control) {
+*/
+
+function build_3_1_ControlFile(projectPath,projectPathWindows) {
+	
+	console.log('\n\n\nProject:' + projectPath + '\n\n\n');
+	var jsonoutput;
+	var useMidiTrack;
+	jsonoutput = [
+	{
+		"name": "3_2_4_3-4",
+		"copyright": "Copyright 2022 Jeffrey D. Mershon",
+		"timeSignature": "3/4",
+		"averageVelocity": 50,
+		"tracks": [
+			{
+				"id": 0,
+				"name": "Beat of 4",
+				"type": "beat",
+				"period": 4,
+				"endAt": 36
+			},
+			{
+				"id": 1,
+				"name": "beat of 3",
+				"type": "beat",
+				"period": 3,
+				"endAt": 36
+			},
+			{
+				"id": 2,
+				"name": "Interference rhythm combining 4 and 3",
+				"type": "rhythm",
+				"sources": [
+					{
+						"source": 0
+					},
+					{
+						"source": 1
+					}
+				],
+				"includeInScore": true,
+				"computeLCM": true,
+				"beatUnit": 4,
+				"pitches": [[["A#3"],["B3"]],["B3"],["C#4"],["D4"],["E4"],["F#4"],["G4"]],
+				"pitchMultiplier": 1,
+				"keyOf": "F Major",
+				"refitToMinPitch": "A3",
+				"refitToMaxPitch": "G6",
+				"pitchRoot": "A3",
+				"tempo": 40
+			}
+		]
+	}
+	];
+	useMidiTrack = 2;
+	var returnString = '';
+		for (var i=0;i<jsonoutput.length;i++) {
+		//console.log(JSON.stringify(jsonoutput,null,4));
+		jsonoutput[i].tempo = 40;
+		returnString += 'node ' + '\"c:\\Schilz-composer-assistant\\schilz.js\" -g -p \"' +  projectPathWindows + '\" -i \"' + jsonoutput[i].name  + '_' + jsonoutput[i].tempo + '_input.json\" -j \"' + jsonoutput[i].name + '_' + jsonoutput[i].tempo + '_output.json\" -m \"' + jsonoutput[i].name  + '_' + jsonoutput[i].tempo + '.mid\" -c \"' + jsonoutput[i].name  + '_' + jsonoutput[i].tempo + '_chart.html\"' + '\n';
+		writeJSON(projectPath + jsonoutput[i].name  + '_' + jsonoutput[i].tempo + '_input.json', jsonoutput[i]);
+
+		jsonoutput[i].tempo = 80;
+		returnString += 'node ' + '\"c:\\Schilz-composer-assistant\\schilz.js\" -g -p \"' +  projectPathWindows + '\" -i \"' + jsonoutput[i].name  + '_' + jsonoutput[i].tempo + '_input.json\" -m \"' + jsonoutput[i].name  + '_' + jsonoutput[i].tempo + '.mid\"' + '\n';
+		writeJSON(projectPath + jsonoutput[i].name  + '_' + jsonoutput[i].tempo + '_input.json', jsonoutput[i]);
+		returnString += doubleToSingleSlash('del \"' + projectPathWindows + jsonoutput[i].name + '_' + jsonoutput[i].tempo + '_input.json\"' + '\n');
+
+		jsonoutput[i].tempo = 120;
+		returnString += 'node ' + '\"c:\\Schilz-composer-assistant\\schilz.js\" -g -p \"' +  projectPathWindows +  '\" -i \"' + jsonoutput[i].name  + '_' + jsonoutput[i].tempo + '_input.json\" -m \"' + jsonoutput[i].name  + '_' + jsonoutput[i].tempo + '.mid\"' + '\n';
+		writeJSON(projectPath + jsonoutput[i].name  + '_' + jsonoutput[i].tempo + '_input.json', jsonoutput[i]);
+		returnString += doubleToSingleSlash('del \"' + projectPathWindows + jsonoutput[i].name + '_' + jsonoutput[i].tempo + '_input.json\"' + '\n');
+	}
+	return returnString;
+}
+function build_1_7_ControlFile(projectPath,projectPathWindows) {
+
+	console.log('\n\n\nProject:' + projectPath + '\n\n\n');
+	//var dir = ensureExists(projectPath + project, 0o744);	
+	var jsonoutput = [
+		{
+			"name": "Split and Auto-Create Target Tracks Using useNoteCount",
+			"copyright": "Copyright 2022 Jeffrey D. Mershon",
+			"timeSignature": "4/4",
+			"averageVelocity":50,
+			"tracks": [
+				{
+					"type": "beat",
+					"period": 3,
+					"endAt": 12
+				},{
+					"type": "beat",
+					"period": 2,
+					"endAt": 12
+				},{
+					"type": "rhythm",
+					"sources": [
+						{
+							"source": 0
+						},
+						{
+							"source": 1
+						}
+					],
+					"pitches": [["C4"],["E4"]]
+				},{
+					"type": "split",
+					"source": 2,
+					"createTargets":2,
+					"useNoteCount":true
+				}
+			]
+		},
+		{
+			"name": "Split to Existing Target Tracks Using useNoteCount",
+			"copyright": "Copyright 2022 Jeffrey D. Mershon",
+			"timeSignature": "4/4",
+			"averageVelocity":50,
+			"tracks": [
+				{
+					"type": "beat",
+					"period": 3,
+					"endAt": 12
+				},{
+					"type": "beat",
+					"period": 2,
+					"endAt": 12
+				},{
+					"type": "rhythm",
+					"sources": [
+						{
+							"source": 0
+						},
+						{
+							"source": 1
+						}
+					],
+					"pitches": [["C4"],["E4"]]
+				},{
+					"type": "split",
+					"source": 2,
+					"targets":[4,5],
+					"useNoteCount":true
+				},
+				{
+					"type": "none"
+				},{
+					"type": "none"
+				}
+			]
+		},
+		{
+			"name": "Split and Auto-Create Target Tracks Using useNoteDurationFrom",
+			"copyright": "Copyright 2022 Jeffrey D. Mershon",
+			"timeSignature": "4/4",
+			"averageVelocity":50,
+			"tracks": [
+				{
+					"type": "beat",
+					"period": 3,
+					"endAt": 12
+				},{
+					"type": "beat",
+					"period": 2,
+					"endAt": 12
+				},{
+					"type": "rhythm",
+					"sources": [
+						{
+							"source": 0
+						},
+						{
+							"source": 1
+						}
+					],
+					"pitches": [["C4"],["E4"]]
+				},{
+					"type": "split",
+					"source": 2,
+					"createTargets":3,
+					"useNoteDurationFrom":2
+				}
+			]
+		},
+		{
+			"name": "Split and Auto-Create 3 Target Tracks Using targetCounts",
+			"copyright": "Copyright 2022 Jeffrey D. Mershon",
+			"timeSignature": "4/4",
+			"averageVelocity":50,
+			"tracks": [
+				{
+					"type": "beat",
+					"period": 3,
+					"endAt": 12
+				},{
+					"type": "beat",
+					"period": 2,
+					"endAt": 12
+				},{
+					"type": "rhythm",
+					"sources": [
+						{
+							"source": 0
+						},
+						{
+							"source": 1
+						}
+					],
+					"pitches": [["C4"],["E4"]]
+				},{
+					"type": "split",
+					"source": 2,
+					"createTargets":3,
+					"targetCounts":[2,3,1]
+				}
+			]
+		}
+	]
+
+	var returnString = '';
+		for (var i=0;i<jsonoutput.length;i++) {
+		//console.log(JSON.stringify(jsonoutput,null,4));
+		jsonoutput[i].tempo = 40;
+		returnString += 'node ' + '\"c:\\Schilz-composer-assistant\\schilz.js\" -g -p \"' +  projectPathWindows + '\" -i \"' + jsonoutput[i].name  + '_' + jsonoutput[i].tempo + '_input.json\" -j \"' + jsonoutput[i].name + '_' + jsonoutput[i].tempo + '_output.json\" -m \"' + jsonoutput[i].name  + '_' + jsonoutput[i].tempo + '.mid\" -c \"' + jsonoutput[i].name  + '_' + jsonoutput[i].tempo + '_chart.html\"' + '\n';
+		writeJSON(projectPath + jsonoutput[i].name  + '_' + jsonoutput[i].tempo + '_input.json', jsonoutput[i]);
+
+		jsonoutput[i].tempo = 80;
+		returnString += 'node ' + '\"c:\\Schilz-composer-assistant\\schilz.js\" -g -p \"' +  projectPathWindows + '\" -i \"' + jsonoutput[i].name  + '_' + jsonoutput[i].tempo + '_input.json\" -m \"' + jsonoutput[i].name  + '_' + jsonoutput[i].tempo + '.mid\"' + '\n';
+		writeJSON(projectPath + jsonoutput[i].name  + '_' + jsonoutput[i].tempo + '_input.json', jsonoutput[i]);
+		returnString += doubleToSingleSlash('del \"' + projectPathWindows + jsonoutput[i].name + '_' + jsonoutput[i].tempo + '_input.json\"' + '\n');
+
+		jsonoutput[i].tempo = 120;
+		returnString += 'node ' + '\"c:\\Schilz-composer-assistant\\schilz.js\" -g -p \"' +  projectPathWindows +  '\" -i \"' + jsonoutput[i].name  + '_' + jsonoutput[i].tempo + '_input.json\" -m \"' + jsonoutput[i].name  + '_' + jsonoutput[i].tempo + '.mid\"' + '\n';
+		writeJSON(projectPath + jsonoutput[i].name  + '_' + jsonoutput[i].tempo + '_input.json', jsonoutput[i]);
+		returnString += doubleToSingleSlash('del \"' + projectPathWindows + jsonoutput[i].name + '_' + jsonoutput[i].tempo + '_input.json\"' + '\n');
+	}
+	return returnString;
+}
+
+
+function build_1_ControlFile(control,projectPath,projectPathWindows) {
 	var project = control.period1.toString() + '_' + control.period2.toString() + '_' + control.beatUnit + '_' + control.timeSignature.replace('/','-');
-	var project = control.period1.toString() + '_' + control.period2.toString() + '_' + control.beatUnit + '_' + control.timeSignature.replace('/','-');
-	var projectPath = 'C:/Schilz-composer-assistant/Projects/Book 1 Theory of Rhythm/' + section + '/';
-	projectPathWindows = 'C:\\\\Schilz-composer-assistant\\\\Projects\\\\Book 1 Theory of Rhythm\\\\' + section + '\\\\';
 	console.log('\n\n\nProject:' + projectPath + project + '\n\n\n');
 	var dir = ensureExists(projectPath + project, 0o744);
 	var periods = [];
@@ -84,9 +339,54 @@ function buildControlFile(control) {
 	periods.push(control.period2);
 	periods.push(control.period3);
 	var LCM = computePolyLCM(periods);
-	/*
-	var fractjsonout = {
+	var jsonoutput;
+	var useMidiTrack;
+	if ( section == 'Chapter_3') {
+	//Use for chapter 3
+		jsonoutput = {
+		"name": project,
+		"copyright": "Copyright 2022 Jeffrey D. Mershon",
+		"timeSignature": control.timeSignature,
+		"averageVelocity":50,
+		"tracks": [
+			{
+				"name": "Beat of " + control.period1.toString(),
+				"type": "beat",
+				"period": control.period1,
+				"endAt": control.period1 * control.period2
+			},{
+				"id":1,
+				"name": "beat of " + control.period2.toString(),
+				"type": "beat",
+				"period": control.period2,
+				"endAt": control.period1 * control.period2
+			},{
+				"id":2,
+				"name": "Interference rhythm combining " + control.period1.toString() + ' and ' + control.period2.toString(),
+				"type": "rhythm",
+				"sources": [
+					{
+						"source": 0
+					},
+					{
+						"source": 1
+					}
+				],
+				"midiChannel": 0,
+				"computeLCM": true,
+				"beatUnit":control.beatUnit,
+				"pitches": [["C4"],["E4"]],
+				"tempo":90
+			}
+		]
+	};
+	useMidiTrack = 2;
+	} else if ( section == 'Chapter_4') {
+	
+	//Use for chapter 4
+	var jsonoutput = {
 	"name": project,
+	"copyright": "Copyright 2022 Jeffrey D. Mershon",
 	"timeSignature": control.timeSignature,
 	"averageVelocity":50,
 	"tracks": [
@@ -121,99 +421,21 @@ function buildControlFile(control) {
                     "source": 2
                 }
             ],
-			"includeInScore": true,
+			"midiChannel": 0,
 			"computeLCM": true,
 			"beatUnit":control.beatUnit,
-			"defaultPitch": "C4",
+			"pitches": [["C4"],["E4"]],
 			"tempo":90
 		}
 		]
 	};
+	useMidiTrack = 3;
+	} else if ( section == 'Chapter_5_Con') { 
 
+//Use for 5_Con
 	var jsonoutput = {
 	"name": project,
-	"timeSignature": control.timeSignature,
-	"averageVelocity":50,
-	"tracks": [
-		{
-			"name": "Beat of " + control.period1.toString(),
-			"type": "beat",
-			"period": control.period1,
-			"endAt": control.period1 * control.period2
-		},{
-			"id":1,
-			"name": "beat of " + control.period2.toString(),
-			"type": "beat",
-			"period": control.period2,
-			"endAt": control.period1 * control.period2
-		},{
-			"id":2,
-			"name": "Interference rhythm combining " + control.period1.toString() + ' and ' + control.period2.toString(),
-			"type": "rhythm",
-			"sources": [
-                {
-                    "source": 0
-                },
-                {
-                    "source": 1
-                }
-            ],
-			"includeInScore": true,
-			"computeLCM": true,
-			"beatUnit":control.beatUnit,
-			"defaultPitch": "C4",
-			"tempo":90
-		}
-		]
-	};
-	var jsonoutput = {
-	"name": project,
-	"timeSignature": control.timeSignature,
-	"averageVelocity":50,
-	"tracks": [
-		{
-			"name": "Beat of " + control.period1.toString(),
-			"type": "beat",
-			"period": control.period1,
-			"endAt": LCM
-		},{
-			"id":1,
-			"name": "beat of " + control.period2.toString(),
-			"type": "beat",
-			"period": control.period2,
-			"endAt": LCM
-		},{
-			"id":2,
-			"name": "beat of " + control.period3.toString(),
-			"type": "beat",
-			"period": control.period3,
-			"endAt": LCM
-		},{
-			"id":3,
-			"name": "Interference rhythm combining " + control.period1.toString() + ', ' + control.period2.toString() + ' and ' + control.period3.toString(),
-			"type": "rhythm",
-			"sources": [
-                {
-                    "source": 0
-                },
-                {
-                    "source": 1
-                },
-                {
-                    "source": 2
-                }
-            ],
-			"includeInScore": true,
-			"computeLCM": true,
-			"beatUnit":control.beatUnit,
-			"defaultPitch": "C4",
-			"tempo":90
-		}
-		]
-	};
-	*/
-	var jsonoutput = {
-	"name": project,
+	"copyright": "Copyright 2022 Jeffrey D. Mershon",
 	"timeSignature": control.timeSignature,
 	"averageVelocity":50,
 	"tracks": [
@@ -257,8 +479,7 @@ function buildControlFile(control) {
                 {
                     "source": 2
                 }
-            ],
-			"includeInScore": false
+            ]
 		},{
 			"name": "Interference rhythm combining " + control.period1 + " and " + control.period2,
 			"type": "rhythm",
@@ -270,13 +491,95 @@ function buildControlFile(control) {
                     "source": 4
                 }
             ],
-			"includeInScore": false,
 			"computeLCM": true,
 			"beatUnit":control.beatUnit,
-			"defaultPitch": "C4",
 			"tempo":90
 		},{
 			"name": "Interference rhythm appending tracks 5 and 6",
+			"type": "concatenate",
+			"sources": [
+                {
+                    "source": 5
+                },
+                {
+                    "source": 6
+                }
+            ],
+			"midiChannel": 0,
+			"computeLCM": true,
+			"beatUnit":control.beatUnit,
+			"pitches": [["C4"],["E4"]],
+			"tempo":90
+		}
+		]
+	};
+	useMidiTrack = 7;
+	} else if ( section == 'Chapter_5_Exp') { 
+
+	//Use for 5_Exp
+	var jsonoutput = {
+	"name": project,
+	"copyright": "Copyright 2022 Jeffrey D. Mershon",
+	"timeSignature": control.timeSignature,
+	"averageVelocity":50,
+	"tracks": [
+		{
+			"name": "beat of " + control.period1.toString(),
+			"type": "beat",
+			"period": control.period1,
+			"endAt": (control.period1 * control.period2) + control.period1
+		},{
+			"name": "Fractional beat of " + control.period2.toString(),
+			"type": "beat",
+			"period": control.period2,
+			"endAt": control.period1 * control.period2
+		},{
+			"name": "Fractional beat of " + control.period2.toString(),
+			"type": "beat",
+			"period": control.period2,
+			"endAt": control.period1 * control.period2,
+			"offsetFrom":0,
+			"offsetAmount": 1
+		},{
+			"name": "beat of " + control.period1.toString(),
+			"type": "beat",
+			"period": control.period1,
+			"endAt": (control.period1 * control.period2)
+		},{
+			"name": "beat of " + control.period2.toString(),
+			"type": "beat",
+			"period": control.period2,
+			"endAt": (control.period1 * control.period2)
+		},{
+			"name": "Fractional interference rhythm combining " + control.period1.toString() + ' and ' + control.period2.toString(),
+			"type": "rhythm",
+			"sources": [
+                {
+                    "source": 0
+                },
+                {
+                    "source": 1
+                },
+                {
+                    "source": 2
+                }
+            ]
+		},{
+			"name": "Interference rhythm combining " + control.period1 + " and " + control.period2,
+			"type": "rhythm",
+			"sources": [
+                {
+                    "source": 3
+                },
+                {
+                    "source": 4
+                }
+            ],
+			"computeLCM": true,
+			"beatUnit":control.beatUnit,
+			"tempo":90
+		},{
+			"name": "Interference rhythm appending tracks 6 and 5",
 			"type": "concatenate",
 			"sources": [
                 {
@@ -286,47 +589,87 @@ function buildControlFile(control) {
                     "source": 5
                 }
             ],
-			"includeInScore": true,
+			"midiChannel": 0,
 			"computeLCM": true,
 			"beatUnit":control.beatUnit,
-			"defaultPitch": "C4",
+			"pitches": [["C4"],["E4"]],
 			"tempo":90
 		}
 		]
 	};
+	useMidiTrack = 7;
+	} else if ( section == 'Chapter_6') { 	
+	//Use for chapter 6
+	var jsonoutput = {
+	"name": project,
+	"copyright": "Copyright 2022 Jeffrey D. Mershon",
+	"timeSignature": control.timeSignature,
+	"averageVelocity":50,
+	"tracks": [
+		{
+			"name": "Beat of " + control.period1.toString(),
+			"type": "beat",
+			"period": control.period1,
+			"endAt": LCM
+		},{
+			"id":1,
+			"name": "beat of " + control.period2.toString(),
+			"type": "beat",
+			"period": control.period2,
+			"endAt": LCM
+		},{
+			"id":2,
+			"name": "beat of " + control.period3.toString(),
+			"type": "beat",
+			"period": control.period3,
+			"endAt": LCM
+		},{
+			"id":3,
+			"name": "Interference rhythm combining " + control.period1.toString() + ', ' + control.period2.toString() + ' and ' + control.period3.toString(),
+			"type": "rhythm",
+			"sources": [
+                {
+                    "source": 0
+                },
+                {
+                    "source": 1
+                },
+                {
+                    "source": 2
+                }
+            ],
+			"midiChannel": 0,
+			"computeLCM": true,
+			"beatUnit":control.beatUnit,
+			"pitches": [["C4"],["E4"]],
+			"tempo":90
+		}
+		]
+	};
+	useMidiTrack = 3
+}
 	var returnString = '';
 	//console.log(JSON.stringify(jsonoutput,null,4));
-	jsonoutput.tracks[5].tempo = 40;
-	returnString += 'node ' + '\"c:\\Schilz-composer-assistant\\schilz.js\" -g -p \"' +  projectPathWindows + project + '\\\\\" -i \'' + project  + '_' + jsonoutput.tracks[5].tempo + '_input.json\' -j \'' + project + '_' + jsonoutput.tracks[5].tempo + '_output.json\' -m \'' + project  + '_' + jsonoutput.tracks[5].tempo + '.mid\' -c \'' + project  + '_' + jsonoutput.tracks[5].tempo + '_chart.html\'' + '\n';
-	writeJSON(projectPath + project + '/' + project  + '_' + jsonoutput.tracks[5].tempo + '_input.json', jsonoutput);
-	//fract version
-	/*
-	fractjsonout.tracks[2].tempo = 40;
-	returnString += 'node ' + '\"c:\\Schilz-composer-assistant\\schilz.js\" -g -p \"' +  projectPathWindows + project + '\\\\\" -i \'' + project  + '_' + fractjsonout.tracks[2].tempo + '_Fract_input.json\' -j \'' + project + '_' + fractjsonout.tracks[2].tempo + '_Fract_output.json\' -m \'' + project  + '_' + fractjsonout.tracks[2].tempo + '_Fract.mid\' -c \'' + project  + '_' + fractjsonout.tracks[2].tempo + '_Fract_chart.html\'' + '\n';
-	writeJSON(projectPath + project + '/' + project  + '_' + fractjsonout.tracks[2].tempo + '_Fract_input.json', fractjsonout);
-	//console.log(jsonoutput.tracks[2].tempo + ' ' + jsonoutput.tracks[2].beatUnit);
-	*/
-	jsonoutput.tracks[5].tempo = 80;
-	returnString += 'node ' + '\"c:\\Schilz-composer-assistant\\schilz.js\" -g -p \"' +  projectPathWindows + project + '\\\\\" -i \'' + project  + '_' + jsonoutput.tracks[5].tempo + '_input.json\' -j \'' + project + '_' + jsonoutput.tracks[5].tempo + '_output.json\' -m \'' + project  + '_' + jsonoutput.tracks[5].tempo + '.mid\' -c \'' + project  + '_' + jsonoutput.tracks[5].tempo + '_chart.html\'' + '\n';
-	writeJSON(projectPath + project + '/' + project  + '_' + jsonoutput.tracks[5].tempo + '_input.json', jsonoutput);
-	/*
-	//fract version
-	fractjsonout.tracks[2].tempo = 80;
-	returnString += 'node ' + '\"c:\\Schilz-composer-assistant\\schilz.js\" -g -p \"' +  projectPathWindows + project + '\\\\\" -i \'' + project  + '_' + fractjsonout.tracks[2].tempo + '_Fract_input.json\' -j \'' + project + '_' + fractjsonout.tracks[2].tempo + '_Fract_output.json\' -m \'' + project  + '_' + fractjsonout.tracks[2].tempo + '_Fract.mid\' -c \'' + project  + '_' + fractjsonout.tracks[2].tempo + '_Fract_chart.html\'' + '\n';
-	writeJSON(projectPath + project + '/' + project  + '_' + fractjsonout.tracks[2].tempo + '_Fract_input.json', fractjsonout);
-	*/
-	jsonoutput.tracks[5].tempo = 120;
-	returnString += 'node ' + '\"c:\\Schilz-composer-assistant\\schilz.js\" -g -p \"' +  projectPathWindows + project + '\\\\\" -i \'' + project  + '_' + jsonoutput.tracks[5].tempo + '_input.json\' -j \'' + project + '_' + jsonoutput.tracks[5].tempo + '_output.json\' -m \'' + project  + '_' + jsonoutput.tracks[5].tempo + '.mid\' -c \'' + project  + '_' + jsonoutput.tracks[5].tempo + '_chart.html\'' + '\n';
-	writeJSON(projectPath + project + '/' + project  + '_' + jsonoutput.tracks[5].tempo + '_input.json', jsonoutput);
-	/*
-	//fract version
-	fractjsonout.tracks[2].tempo = 120;
-	returnString += 'node ' + '\"c:\\Schilz-composer-assistant\\schilz.js\" -g -p \"' +  projectPathWindows + project + '\\\\\" -i \'' + project  + '_' + fractjsonout.tracks[2].tempo + '_Fract_input.json\' -j \'' + project + '_' + fractjsonout.tracks[2].tempo + '_Fract_output.json\' -m \'' + project  + '_' + fractjsonout.tracks[2].tempo + '_Fract.mid\' -c \'' + project  + '_' + fractjsonout.tracks[2].tempo + '_Fract_chart.html\'' + '\n';
-	writeJSON(projectPath + project + '/' + project  + '_' + fractjsonout.tracks[2].tempo + '_Fract_input.json', fractjsonout);
-	*/
+	jsonoutput.tracks[useMidiTrack].tempo = 40;
+	returnString += 'node ' + '\"c:\\Schilz-composer-assistant\\schilz.js\" -g -p \"' +  projectPathWindows + project + '\\\\\" -i \'' + project  + '_' + jsonoutput.tracks[useMidiTrack].tempo + '_input.json\' -j \'' + project + '_' + jsonoutput.tracks[useMidiTrack].tempo + '_output.json\' -m \'' + project  + '_' + jsonoutput.tracks[useMidiTrack].tempo + '.mid\' -c \'' + project  + '_' + jsonoutput.tracks[useMidiTrack].tempo + '_chart.html\'' + '\n';
+	writeJSON(projectPath + project + '/' + project  + '_' + jsonoutput.tracks[useMidiTrack].tempo + '_input.json', jsonoutput);
+
+	jsonoutput.tracks[useMidiTrack].tempo = 80;
+	returnString += 'node ' + '\"c:\\Schilz-composer-assistant\\schilz.js\" -g -p \"' +  projectPathWindows + project + '\\\\\" -i \'' + project  + '_' + jsonoutput.tracks[useMidiTrack].tempo + '_input.json\' -m \'' + project  + '_' + jsonoutput.tracks[useMidiTrack].tempo + '.mid\'' + '\n';
+	writeJSON(projectPath + project + '/' + project  + '_' + jsonoutput.tracks[useMidiTrack].tempo + '_input.json', jsonoutput);
+	returnString += doubleToSingleSlash('del \"' + projectPathWindows + project  + '\\\\' + project + '_' + jsonoutput.tracks[useMidiTrack].tempo + '_input.json\"' + '\n');
+
+	jsonoutput.tracks[useMidiTrack].tempo = 120;
+	returnString += 'node ' + '\"c:\\Schilz-composer-assistant\\schilz.js\" -g -p \"' +  projectPathWindows + project + '\\\\\" -i \'' + project  + '_' + jsonoutput.tracks[useMidiTrack].tempo + '_input.json\' -m \'' + project  + '_' + jsonoutput.tracks[useMidiTrack].tempo + '.mid\'' + '\n';
+	writeJSON(projectPath + project + '/' + project  + '_' + jsonoutput.tracks[useMidiTrack].tempo + '_input.json', jsonoutput);
+	returnString += doubleToSingleSlash('del \"' + projectPathWindows + project  + '\\\\' + project + '_' + jsonoutput.tracks[useMidiTrack].tempo + '_input.json\"' + '\n');
+
 	return returnString;
 }
 
+function doubleToSingleSlash(aString) {
+	return aString.replaceAll('\\\\','\\');
+}
 
 function openInputFile (inpath) {
 	if (inpath != '') {

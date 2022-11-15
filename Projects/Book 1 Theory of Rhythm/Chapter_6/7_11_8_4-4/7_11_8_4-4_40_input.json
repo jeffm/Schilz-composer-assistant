@@ -1,0 +1,56 @@
+{
+    "name": "7_11_8_4-4",
+    "copyright": "Copyright 2022 Jeffrey D. Mershon",
+    "timeSignature": "4/4",
+    "averageVelocity": 50,
+    "tracks": [
+        {
+            "name": "Beat of 7",
+            "type": "beat",
+            "period": 7,
+            "endAt": 1386
+        },
+        {
+            "id": 1,
+            "name": "beat of 11",
+            "type": "beat",
+            "period": 11,
+            "endAt": 1386
+        },
+        {
+            "id": 2,
+            "name": "beat of 18",
+            "type": "beat",
+            "period": 18,
+            "endAt": 1386
+        },
+        {
+            "id": 3,
+            "name": "Interference rhythm combining 7, 11 and 18",
+            "type": "rhythm",
+            "sources": [
+                {
+                    "source": 0
+                },
+                {
+                    "source": 1
+                },
+                {
+                    "source": 2
+                }
+            ],
+            "midiChannel": 0,
+            "computeLCM": true,
+            "beatUnit": 8,
+            "pitches": [
+                [
+                    "C4"
+                ],
+                [
+                    "E4"
+                ]
+            ],
+            "tempo": 40
+        }
+    ]
+}

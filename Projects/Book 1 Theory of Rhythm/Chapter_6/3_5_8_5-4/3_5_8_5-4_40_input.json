@@ -1,0 +1,56 @@
+{
+    "name": "3_5_8_5-4",
+    "copyright": "Copyright 2022 Jeffrey D. Mershon",
+    "timeSignature": "5/4",
+    "averageVelocity": 50,
+    "tracks": [
+        {
+            "name": "Beat of 3",
+            "type": "beat",
+            "period": 3,
+            "endAt": 120
+        },
+        {
+            "id": 1,
+            "name": "beat of 5",
+            "type": "beat",
+            "period": 5,
+            "endAt": 120
+        },
+        {
+            "id": 2,
+            "name": "beat of 8",
+            "type": "beat",
+            "period": 8,
+            "endAt": 120
+        },
+        {
+            "id": 3,
+            "name": "Interference rhythm combining 3, 5 and 8",
+            "type": "rhythm",
+            "sources": [
+                {
+                    "source": 0
+                },
+                {
+                    "source": 1
+                },
+                {
+                    "source": 2
+                }
+            ],
+            "midiChannel": 0,
+            "computeLCM": true,
+            "beatUnit": 8,
+            "pitches": [
+                [
+                    "C4"
+                ],
+                [
+                    "E4"
+                ]
+            ],
+            "tempo": 40
+        }
+    ]
+}

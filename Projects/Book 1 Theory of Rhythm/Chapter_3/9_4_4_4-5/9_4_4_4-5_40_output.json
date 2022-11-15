@@ -1,5 +1,6 @@
 {
     "name": "9_4_4_4-5",
+    "copyright": "Copyright 2022 Jeffrey D. Mershon",
     "timeSignature": "4/5",
     "averageVelocity": 50,
     "tracks": [
@@ -30,7 +31,9 @@
                     "count": 1
                 }
             ],
-            "run": false,
+            "run": {
+                "run": false
+            },
             "id": 0
         },
         {
@@ -86,7 +89,9 @@
                     "count": 1
                 }
             ],
-            "run": false
+            "run": {
+                "run": false
+            }
         },
         {
             "id": 2,
@@ -100,78 +105,122 @@
                     "source": 1
                 }
             ],
-            "includeInScore": true,
+            "midiChannel": 0,
             "computeLCM": true,
             "beatUnit": 4,
-            "defaultPitch": "C4",
+            "pitches": [
+                [
+                    "C4"
+                ],
+                [
+                    "E4"
+                ]
+            ],
             "tempo": 40,
             "events": [
                 {
                     "index": 0,
                     "duration": 4,
-                    "count": 2
+                    "count": 2,
+                    "pitch": [
+                        "C4"
+                    ]
                 },
                 {
                     "index": 4,
                     "duration": 4,
-                    "count": 1
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
                 },
                 {
                     "index": 8,
                     "duration": 1,
-                    "count": 1
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ]
                 },
                 {
                     "index": 9,
                     "duration": 3,
-                    "count": 1
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
                 },
                 {
                     "index": 12,
                     "duration": 4,
-                    "count": 1
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ]
                 },
                 {
                     "index": 16,
                     "duration": 2,
-                    "count": 1
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
                 },
                 {
                     "index": 18,
                     "duration": 2,
-                    "count": 1
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ]
                 },
                 {
                     "index": 20,
                     "duration": 4,
-                    "count": 1
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
                 },
                 {
                     "index": 24,
                     "duration": 3,
-                    "count": 1
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ]
                 },
                 {
                     "index": 27,
                     "duration": 1,
-                    "count": 1
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
                 },
                 {
                     "index": 28,
                     "duration": 4,
-                    "count": 1
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ]
                 },
                 {
                     "index": 32,
                     "duration": 4,
-                    "count": 1
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
                 }
             ],
-            "run": false,
+            "run": {
+                "run": false
+            },
             "endAt": 32,
             "LCM": 36
         }
     ],
-    "defaultPitch": "C4",
     "tempo": 90
 }

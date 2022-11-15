@@ -1,5 +1,6 @@
 {
     "name": "7_6_4_3-4",
+    "copyright": "Copyright 2022 Jeffrey D. Mershon",
     "timeSignature": "3/4",
     "averageVelocity": 50,
     "tracks": [
@@ -48,9 +49,7 @@
                 {
                     "source": 2
                 }
-            ],
-            "includeInScore": false,
-            "tempo": 40
+            ]
         },
         {
             "name": "Interference rhythm combining 7 and 6",
@@ -63,10 +62,8 @@
                     "source": 4
                 }
             ],
-            "includeInScore": false,
             "computeLCM": true,
             "beatUnit": 4,
-            "defaultPitch": "C4",
             "tempo": 90
         },
         {
@@ -80,11 +77,18 @@
                     "source": 6
                 }
             ],
-            "includeInScore": true,
+            "midiChannel": 0,
             "computeLCM": true,
             "beatUnit": 4,
-            "defaultPitch": "C4",
-            "tempo": 90
+            "pitches": [
+                [
+                    "C4"
+                ],
+                [
+                    "E4"
+                ]
+            ],
+            "tempo": 40
         }
     ]
 }

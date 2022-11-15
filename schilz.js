@@ -60,7 +60,7 @@ function parseArguments(args) {
 	argStructure.JSONoutpath = '';
 	argStructure.MIDIoutpath = '';
 	argStructure.Chartoutpath = '';
-	argStructure.globalDefaultPitch = 'C4';
+	//argStructure.globalDefaultPitch = ["C4"];
 	if (typeof argv.midi != 'undefined') {
 		argStructure.MIDIoutpath = argStructure.projectPath + argv.midi.replace(/'/g,'');
 	}
@@ -70,11 +70,11 @@ function parseArguments(args) {
 	if (typeof argv.chart != 'undefined') {
 		argStructure.Chartoutpath = argStructure.projectPath + argv.chart.replace(/'/g,'');
 	}
-	if (typeof argv.pitch != 'undefined') {
-		argStructure.globalDefaultPitch = argv.pitch.replace(/'/g,'');
-	} else {
-		argStructure.globalDefaultPitch = "C4";
-	}
+	//if (typeof argv.pitch != 'undefined') {
+	//	argStructure.globalDefaultPitch = [ argv.pitch.replace(/'/g,'') ];
+	//} else {
+	//	argStructure.globalDefaultPitch = ["C4"];
+	//}
 	if (typeof argv.verbose != 'undefined') {
 		var level = argv.verbose.toLowerCase().substring(0,1);
 		//None n, Info i, Warn w, Debug d
@@ -272,10 +272,10 @@ function generateTracks(arguments) {
 
 function populateGlobalDefaults(arguments) {
 	log('Set Default Pitch:' + arguments.globalDefaultPitch + ' rhythms.defaultPitch:' + rhythms.defaultPitch, 'debug');
-	if (typeof rhythms.defaultPitch == 'undefined') {
-		rhythms.defaultPitch = arguments.globalDefaultPitch;
-		log('Set Default Pitch:' + arguments.globalDefaultPitch + ' rhythms.defaultPitch:' + rhythms.defaultPitch, 'debug');
-	}
+	//if (typeof rhythms.defaultPitch == 'undefined') {
+	//	rhythms.defaultPitch = arguments.globalDefaultPitch;
+	//	log('Set Default Pitch:' + arguments.globalDefaultPitch + ' rhythms.defaultPitch:' + rhythms.defaultPitch, 'debug');
+	//}
 	if (typeof rhythms.averageVelocity == 'undefined') {
 		rhythms.averageVelocity = 50;
 	}
@@ -805,7 +805,7 @@ function splitTrackByNoteCount(TrackToBuild) {
 
 function splitTrackByList(TrackToBuild, countArray) {
 	for (var i=0;i<rhythms.tracks[TrackToBuild].targets.length;i++) {
-		populateName(rhythms.tracks[TrackToBuild].targets[i], 'Split of track ' + TrackToBuild);
+		populateName(rhythms.tracks[TrackToBuild].targets[i], 'Track:' + rhythms.tracks[TrackToBuild].targets[i] + ' Split of track ' + rhythms.tracks[TrackToBuild].source);
 		populateID(rhythms.tracks[TrackToBuild].targets[i]);
 	}
 	log('splitTrackByList(' + TrackToBuild + ')', 'info');
@@ -818,11 +818,18 @@ function splitTrackByList(TrackToBuild, countArray) {
 	var countLength = countArray.length;
 	log('source:' + source + ' currentTarget:' + currentTarget, 'debug');
 	for (var sourceIndex=0;sourceIndex<rhythms.tracks[source].events.length;sourceIndex++) {
-		var currentTarget = {...rhythms.tracks[TrackToBuild].targets[currentTargetIndex]};
+		var currentTarget = rhythms.tracks[TrackToBuild].targets[currentTargetIndex];
 		
 		log('   source:' + source + '  sourceIndex:' + sourceIndex + '  currentTargetIndex:' + currentTargetIndex + '  currentCountIndex:' +  currentCountIndex + '  currentTarget:' + currentTarget + '  currentTargetCount:' + currentTargetCount + '  countArray[currentCountIndex]:' + countArray[currentCountIndex] + '  events:' + JSON.stringify(rhythms.tracks[source].events[sourceIndex]), 'debug');
-		
-		rhythms.tracks[currentTarget].events.push({...rhythms.tracks[source].events[sourceIndex]});
+		if (typeof rhythms.tracks[source].events[sourceIndex] != 'undefined') {
+			if (typeof rhythms.tracks[currentTarget] == 'undefined') {
+				rhythms.tracks[currentTarget] = [];
+			}
+			if (typeof rhythms.tracks[currentTarget].events == 'undefined') {
+				rhythms.tracks[currentTarget].events = [];
+			}
+			rhythms.tracks[currentTarget].events.push({...rhythms.tracks[source].events[sourceIndex]});
+		}
 		currentTargetCount++;
 		if (currentTargetCount > countArray[currentCountIndex]) {
 			currentTargetCount = 1;
@@ -1232,6 +1239,8 @@ function generateProgression(TrackToBuild) {
 	var key;
 	if (typeof rhythms.tracks[TrackToBuild].keyOf != 'undefined') {
 		key = parsekeyOf(rhythms.tracks[TrackToBuild].keyOf);
+	} else {
+		return;
 	}
 	var motion = {};
 	motion.progressionCycles = rhythms.tracks[TrackToBuild].progressionCycles;
@@ -1933,8 +1942,8 @@ function buildPitchChartHTML(trackIndex) {
 	}
 	xValues.push('');
 	var chartString = '';
-	var chartHeight = 500;
-
+	var chartHeight = 200;
+	var chartDataArray = [];
 	if (rhythms.tracks[trackIndex].events[0].index > 0) {
 		totalFiller = rhythms.tracks[trackIndex].events[0].index;
 		for (var m=0;m<totalFiller;m++) {
@@ -1982,14 +1991,14 @@ function buildPitchChartHTML(trackIndex) {
 	chartString += '  data: {\n';
 //	chartString += '    labels: xValues,\n';
 	chartString += '	datasets: [\n';
-console.log('maxPitchCount:' + maxPitchCount);
+	//console.log('maxPitchCount:' + maxPitchCount);
 	
 	for (var pitch=0;pitch<maxPitchCount;pitch++) {
 		var lineColor = 'black';
 		if (pitch<colorArray.length) {
 			lineColor = colorArray[pitch];
 		}
-		var chartDataArray = [];
+		
 		for (noteIndex=0;noteIndex<rhythms.tracks[trackIndex].events.length;noteIndex++) {
 			if (typeof rhythms.tracks[trackIndex].events[noteIndex].pitch[pitch] != 'undefined' > 0) {
 				for (var m=0;m<rhythms.tracks[trackIndex].events[noteIndex].duration;m++) {
@@ -2209,8 +2218,10 @@ function buildRhythmChartHTML() {
 	chartString += '});\n';
 	chartString += '</script>\n';
 	
-	for (trackIndex=rhythms.tracks.length-1;trackIndex>=0;trackIndex--) { 
-		chartString += buildPitchChartHTML(trackIndex);
+	for (trackIndex=rhythms.tracks.length-1;trackIndex>=0;trackIndex--) {
+		if (rhythms.tracks[trackIndex].events.length > 0) {
+			chartString += buildPitchChartHTML(trackIndex);
+		}
 	}
 	
 	chartString += '</html>';
@@ -2312,10 +2323,10 @@ function genMidiFileJZZ() {
 				var buildNote;
 				if (typeof rhythms.tracks[trackIndex].events[noteIndex].pitch != 'undefined') {
 					buildNote = flattenArray(rhythms.tracks[trackIndex].events[noteIndex].pitch);
-				} else if (typeof rhythms.tracks[trackIndex].defaultPitch != 'undefined') {
-					buildNote = rhythms.tracks[trackIndex].defaultPitch;
-				} else if (typeof rhythms.defaultPitch != 'undefined') {
-					buildNote = rhythms.defaultPitch;
+				//} else if (typeof rhythms.tracks[trackIndex].defaultPitch != 'undefined') {
+				//	buildNote = rhythms.tracks[trackIndex].defaultPitch;
+				//} else if (typeof rhythms.defaultPitch != 'undefined') {
+				//	buildNote = rhythms.defaultPitch;
 				}
 				log('*****buildNote:' + JSON.stringify(buildNote), 'debug');
 				var beatUnit;

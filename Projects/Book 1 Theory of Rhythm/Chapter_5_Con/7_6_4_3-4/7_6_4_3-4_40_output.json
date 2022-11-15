@@ -1,5 +1,6 @@
 {
     "name": "7_6_4_3-4",
+    "copyright": "Copyright 2022 Jeffrey D. Mershon",
     "timeSignature": "3/4",
     "averageVelocity": 50,
     "tracks": [
@@ -45,7 +46,9 @@
                     "count": 1
                 }
             ],
-            "run": false,
+            "run": {
+                "run": false
+            },
             "id": 0
         },
         {
@@ -90,7 +93,9 @@
                     "count": 1
                 }
             ],
-            "run": false,
+            "run": {
+                "run": false
+            },
             "id": 1
         },
         {
@@ -137,7 +142,9 @@
                     "count": 1
                 }
             ],
-            "run": false,
+            "run": {
+                "run": false
+            },
             "id": 2
         },
         {
@@ -177,7 +184,9 @@
                     "count": 1
                 }
             ],
-            "run": false,
+            "run": {
+                "run": false
+            },
             "id": 3
         },
         {
@@ -222,7 +231,9 @@
                     "count": 1
                 }
             ],
-            "run": false,
+            "run": {
+                "run": false
+            },
             "id": 4
         },
         {
@@ -239,8 +250,6 @@
                     "source": 2
                 }
             ],
-            "includeInScore": false,
-            "tempo": 40,
             "events": [
                 {
                     "index": 0,
@@ -338,7 +347,9 @@
                     "count": 1
                 }
             ],
-            "run": false,
+            "run": {
+                "run": false
+            },
             "id": 5,
             "endAt": 43,
             "LCM": 42
@@ -354,10 +365,8 @@
                     "source": 4
                 }
             ],
-            "includeInScore": false,
             "computeLCM": true,
             "beatUnit": 4,
-            "defaultPitch": "C4",
             "tempo": 90,
             "events": [
                 {
@@ -421,7 +430,9 @@
                     "count": 1
                 }
             ],
-            "run": false,
+            "run": {
+                "run": false
+            },
             "id": 6,
             "endAt": 36,
             "LCM": 42
@@ -437,173 +448,274 @@
                     "source": 6
                 }
             ],
-            "includeInScore": true,
+            "midiChannel": 0,
             "computeLCM": true,
             "beatUnit": 4,
-            "defaultPitch": "C4",
-            "tempo": 90,
+            "pitches": [
+                [
+                    "C4"
+                ],
+                [
+                    "E4"
+                ]
+            ],
+            "tempo": 40,
             "events": [
                 {
                     "index": 0,
                     "duration": 6,
-                    "count": 2
+                    "count": 2,
+                    "pitch": [
+                        "C4"
+                    ]
                 },
                 {
                     "index": 6,
                     "duration": 1,
-                    "count": 1
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
                 },
                 {
                     "index": 7,
                     "duration": 5,
-                    "count": 2
+                    "count": 2,
+                    "pitch": [
+                        "C4"
+                    ]
                 },
                 {
                     "index": 12,
                     "duration": 1,
-                    "count": 1
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
                 },
                 {
                     "index": 13,
                     "duration": 1,
-                    "count": 1
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ]
                 },
                 {
                     "index": 14,
                     "duration": 4,
-                    "count": 1
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
                 },
                 {
                     "index": 18,
                     "duration": 1,
-                    "count": 1
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ]
                 },
                 {
                     "index": 19,
                     "duration": 2,
-                    "count": 1
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
                 },
                 {
                     "index": 21,
                     "duration": 3,
-                    "count": 1
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ]
                 },
                 {
                     "index": 24,
                     "duration": 1,
-                    "count": 1
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
                 },
                 {
                     "index": 25,
                     "duration": 3,
-                    "count": 1
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ]
                 },
                 {
                     "index": 28,
                     "duration": 2,
-                    "count": 1
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
                 },
                 {
                     "index": 30,
                     "duration": 1,
-                    "count": 1
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ]
                 },
                 {
                     "index": 31,
                     "duration": 4,
-                    "count": 1
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
                 },
                 {
                     "index": 35,
                     "duration": 1,
-                    "count": 1
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ]
                 },
                 {
                     "index": 36,
                     "duration": 1,
-                    "count": 1
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
                 },
                 {
                     "index": 37,
                     "duration": 5,
-                    "count": 1
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ]
                 },
                 {
                     "index": 42,
                     "duration": 1,
-                    "count": 1
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
                 },
                 {
                     "index": 43,
                     "duration": 6,
-                    "count": 1
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ]
                 },
                 {
                     "index": 49,
                     "duration": 6,
-                    "count": 2
+                    "count": 2,
+                    "pitch": [
+                        "E4"
+                    ]
                 },
                 {
                     "index": 55,
                     "duration": 1,
-                    "count": 1
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ]
                 },
                 {
                     "index": 56,
                     "duration": 5,
-                    "count": 1
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
                 },
                 {
                     "index": 61,
                     "duration": 2,
-                    "count": 1
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ]
                 },
                 {
                     "index": 63,
                     "duration": 4,
-                    "count": 1
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
                 },
                 {
                     "index": 67,
                     "duration": 3,
-                    "count": 1
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ]
                 },
                 {
                     "index": 70,
                     "duration": 3,
-                    "count": 1
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
                 },
                 {
                     "index": 73,
                     "duration": 4,
-                    "count": 1
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ]
                 },
                 {
                     "index": 77,
                     "duration": 2,
-                    "count": 1
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
                 },
                 {
                     "index": 79,
                     "duration": 5,
-                    "count": 1
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ]
                 },
                 {
                     "index": 84,
                     "duration": 1,
-                    "count": 1
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
                 },
                 {
                     "index": 85,
                     "duration": 6,
-                    "count": 1
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ]
                 }
             ],
-            "run": false,
+            "run": {
+                "run": false
+            },
             "id": 7,
             "LCM": 42
         }
     ],
-    "defaultPitch": "C4",
     "tempo": 90
 }

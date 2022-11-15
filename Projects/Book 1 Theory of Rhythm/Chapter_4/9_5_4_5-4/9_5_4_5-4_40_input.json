@@ -1,5 +1,6 @@
 {
     "name": "9_5_4_5-4",
+    "copyright": "Copyright 2022 Jeffrey D. Mershon",
     "timeSignature": "5/4",
     "averageVelocity": 50,
     "tracks": [
@@ -21,8 +22,7 @@
             "period": 5,
             "endAt": 45,
             "offsetFrom": 0,
-            "offsetAmount": 1,
-            "tempo": 40
+            "offsetAmount": 1
         },
         {
             "name": "Interference rhythm combining 9 and 5",
@@ -38,11 +38,18 @@
                     "source": 2
                 }
             ],
-            "includeInScore": true,
+            "midiChannel": 0,
             "computeLCM": true,
             "beatUnit": 4,
-            "defaultPitch": "C4",
-            "tempo": 90
+            "pitches": [
+                [
+                    "C4"
+                ],
+                [
+                    "E4"
+                ]
+            ],
+            "tempo": 40
         }
     ]
 }

@@ -1,0 +1,56 @@
+{
+    "name": "14_23_8_4-4",
+    "copyright": "Copyright 2022 Jeffrey D. Mershon",
+    "timeSignature": "4/4",
+    "averageVelocity": 50,
+    "tracks": [
+        {
+            "name": "Beat of 14",
+            "type": "beat",
+            "period": 14,
+            "endAt": 11914
+        },
+        {
+            "id": 1,
+            "name": "beat of 23",
+            "type": "beat",
+            "period": 23,
+            "endAt": 11914
+        },
+        {
+            "id": 2,
+            "name": "beat of 37",
+            "type": "beat",
+            "period": 37,
+            "endAt": 11914
+        },
+        {
+            "id": 3,
+            "name": "Interference rhythm combining 14, 23 and 37",
+            "type": "rhythm",
+            "sources": [
+                {
+                    "source": 0
+                },
+                {
+                    "source": 1
+                },
+                {
+                    "source": 2
+                }
+            ],
+            "midiChannel": 0,
+            "computeLCM": true,
+            "beatUnit": 8,
+            "pitches": [
+                [
+                    "C4"
+                ],
+                [
+                    "E4"
+                ]
+            ],
+            "tempo": 40
+        }
+    ]
+}

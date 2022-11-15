@@ -1,0 +1,48 @@
+{
+    "name": "Split and Auto-Create 3 Target Tracks Using targetCounts",
+    "copyright": "Copyright 2022 Jeffrey D. Mershon",
+    "timeSignature": "4/4",
+    "averageVelocity": 50,
+    "tracks": [
+        {
+            "type": "beat",
+            "period": 3,
+            "endAt": 12
+        },
+        {
+            "type": "beat",
+            "period": 2,
+            "endAt": 12
+        },
+        {
+            "type": "rhythm",
+            "sources": [
+                {
+                    "source": 0
+                },
+                {
+                    "source": 1
+                }
+            ],
+            "pitches": [
+                [
+                    "C4"
+                ],
+                [
+                    "E4"
+                ]
+            ]
+        },
+        {
+            "type": "split",
+            "source": 2,
+            "createTargets": 3,
+            "targetCounts": [
+                2,
+                3,
+                1
+            ]
+        }
+    ],
+    "tempo": 40
+}

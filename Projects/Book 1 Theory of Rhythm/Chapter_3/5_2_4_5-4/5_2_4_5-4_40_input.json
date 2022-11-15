@@ -1,5 +1,6 @@
 {
     "name": "5_2_4_5-4",
+    "copyright": "Copyright 2022 Jeffrey D. Mershon",
     "timeSignature": "5/4",
     "averageVelocity": 50,
     "tracks": [
@@ -28,10 +29,17 @@
                     "source": 1
                 }
             ],
-            "includeInScore": true,
+            "midiChannel": 0,
             "computeLCM": true,
             "beatUnit": 4,
-            "defaultPitch": "C4",
+            "pitches": [
+                [
+                    "C4"
+                ],
+                [
+                    "E4"
+                ]
+            ],
             "tempo": 40
         }
     ]

@@ -3,11 +3,11 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <body>
 <div>
-<canvas id="myChart""></canvas>
+<canvas id="rhythmChart""></canvas>
 </div>
 <script>
 var xValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,""];
-new Chart("myChart", {
+new Chart("rhythmChart", {
   type: "line",
   data: {
     labels: xValues,
@@ -114,6 +114,46 @@ new Chart("myChart", {
     	title: {
          	display: true,
          	text: "7_5_8_7-8"
+     	}
+     }
+  }
+});
+</script>
+<div>
+<canvas id="pitchChart7"></canvas>
+</div>
+<script>
+new Chart("pitchChart7", {
+  type: "line",
+  data: {
+	datasets: [
+	{
+      label: "Interference rhythm appending tracks 5 and 6",
+      data: [216,216,216,216,216,220,220,216,216,216,220,220,216,216,220,216,216,220,220,220,216,220,216,216,216,220,220,216,220,220,216,216,220,220,220,216,216,220,220,220,220,220,216,216,216,216,216,220,220,216,216,216,220,220,220,220,216,220,220,220,220,220,216,220,220,220,220,216,216,216,220,220,216,216,216,216,216],
+	  borderColor: "black",
+	  stepped: true,
+	  spanGaps: false,
+	  pointRadius: 0,
+	  fill: false
+	}
+	]
+  },
+  options: {
+	 scales: {
+        x: {
+      		labels: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,""],
+       },
+        y: {
+      		labels: ["B3","Cb3","C4","C#4","Db4","D4","D#4","Eb4","E4","F4"],
+       }
+    },
+    layout: {padding: 5},
+	plugins:{
+    	legend: {display: false, reverse: true, position: "bottom"},
+		line:{stepped:true},
+    	title: {
+         	display: true,
+         	text: "Interference rhythm appending tracks 5 and 6"
      	}
      }
   }

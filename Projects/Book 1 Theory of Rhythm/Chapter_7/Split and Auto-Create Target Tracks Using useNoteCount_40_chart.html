@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<body>
+<div>
+<canvas id="rhythmChart""></canvas>
+</div>
+<script>
+var xValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,""];
+new Chart("rhythmChart", {
+  type: "line",
+  data: {
+    labels: xValues,
+	datasets: [
+	{
+     label: "Split of track 3",
+     data: [5,5,4,4,4],
+	   borderColor: "gray",
+	  stepped: true,
+	  spanGaps: false,
+	  pointRadius: 0,
+	  fill: false
+	}
+	,{
+     label: "Split of track 3",
+     data: [null,null,8,7,8,8,7,8,7,7,7],
+	   borderColor: "gray",
+	  stepped: true,
+	  spanGaps: false,
+	  pointRadius: 0,
+	  fill: false
+	}
+	,{
+     label: "4/4 time",
+     data: [2,2,2,2,1,1,1,1,2,2,2,2,2],
+	  borderColor: "blue",
+	  stepped: true,
+	  spanGaps: false,
+	  pointRadius: 0,
+	  fill: false
+	}
+	]
+  },
+  options: {
+	    scales: {
+      y: {
+                ticks: {
+                    callback: function(value, index, ticks) {
+                        return "";
+                     },
+                },
+                min: 0,
+                max: 21
+            }
+    },
+    layout: {padding: 5},
+	plugins:{
+    	legend: {display: true, reverse: true, position: "bottom"},
+		line:{stepped:true},
+    	title: {
+         	display: true,
+         	text: "Split and Auto-Create Target Tracks Using useNoteCount"
+     	}
+     }
+  }
+});
+</script>
+<div>
+<canvas id="pitchChart5"></canvas>
+</div>
+<script>
+new Chart("pitchChart5", {
+  type: "line",
+  data: {
+	datasets: [
+	{
+      label: "Split of track 3",
+      data: [216,216,216,216],
+	  borderColor: "black",
+	  stepped: true,
+	  spanGaps: false,
+	  pointRadius: 0,
+	  fill: false
+	}
+	]
+  },
+  options: {
+	 scales: {
+        x: {
+      		labels: [1,2,3,4,5,6,7,8,9,""],
+       },
+        y: {
+      		labels: ["B3","Cb3","C4","C#4","Db4"],
+       }
+    },
+    layout: {padding: 5},
+	plugins:{
+    	legend: {display: false, reverse: true, position: "bottom"},
+		line:{stepped:true},
+    	title: {
+         	display: true,
+         	text: "Split of track 3"
+     	}
+     }
+  }
+});
+</script>
+<div>
+<canvas id="pitchChart4"></canvas>
+</div>
+<script>
+new Chart("pitchChart4", {
+  type: "line",
+  data: {
+	datasets: [
+	{
+      label: "Split of track 3",
+      data: [null,null,220,216,220,220,220,216,220,220],
+	  borderColor: "black",
+	  stepped: true,
+	  spanGaps: false,
+	  pointRadius: 0,
+	  fill: false
+	}
+	]
+  },
+  options: {
+	 scales: {
+        x: {
+      		labels: [1,2,3,4,5,6,7,8,9,10,11,12,13,""],
+       },
+        y: {
+      		labels: ["B3","Cb3","C4","C#4","Db4","D4","D#4","Eb4","E4","F4"],
+       }
+    },
+    layout: {padding: 5},
+	plugins:{
+    	legend: {display: false, reverse: true, position: "bottom"},
+		line:{stepped:true},
+    	title: {
+         	display: true,
+         	text: "Split of track 3"
+     	}
+     }
+  }
+});
+</script>
+<div>
+<canvas id="pitchChart2"></canvas>
+</div>
+<script>
+new Chart("pitchChart2", {
+  type: "line",
+  data: {
+	datasets: [
+	{
+      label: "Rhythm combining 0, 1",
+      data: [216,216,220,216,220,220,216,216,220,216,220,220],
+	  borderColor: "black",
+	  stepped: true,
+	  spanGaps: false,
+	  pointRadius: 0,
+	  fill: false
+	}
+	]
+  },
+  options: {
+	 scales: {
+        x: {
+      		labels: [1,2,3,4,5,6,7,8,9,10,11,12,13,""],
+       },
+        y: {
+      		labels: ["B3","Cb3","C4","C#4","Db4","D4","D#4","Eb4","E4","F4"],
+       }
+    },
+    layout: {padding: 5},
+	plugins:{
+    	legend: {display: false, reverse: true, position: "bottom"},
+		line:{stepped:true},
+    	title: {
+         	display: true,
+         	text: "Rhythm combining 0, 1"
+     	}
+     }
+  }
+});
+</script>
+</html>
