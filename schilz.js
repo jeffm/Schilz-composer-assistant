@@ -9,7 +9,6 @@ require('jzz-midi-smf')(JZZ);
 
 var globalArguments = parseArguments(process.argv.slice(2))
 log('Parsed globalArguments:' + JSON.stringify(globalArguments), 'debug');
-//this is not correct. Need to find the directory where the script is running, but ./ will use whatever directory you're running the script from!
 globalArguments.pitchChordFilePath = (__dirname + '\\pitchChords.json');
 var rhythms = openInputFile(globalArguments.ControlFilePath);
 var pitchChords = openInputFile(globalArguments.pitchChordFilePath);
@@ -56,6 +55,7 @@ function parseArguments(args) {
 		console.log('\n\n\n\nFAILED TO FIND PROJECT DIRECTORY!\n\n\n\n');
 	}
 	argStructure.ControlFilePath = argStructure.projectPath + argv.infile.replace(/'/g,'');
+	//console.log(argStructure.projectPath + '       ' + argStructure.ControlFilePath)
 	argStructure.logLevel = 0;
 	argStructure.JSONoutpath = '';
 	argStructure.MIDIoutpath = '';
@@ -217,26 +217,25 @@ function generateTracks(arguments) {
 			setCounts(j);
 			computePolyLCM(j);
 			addPitches(j);
-			geometricTrackChromatic(j);
 			addChordSymbols(j);
 			convertChordsToPitches(j);
+			geometricTrackChromatic(j);
 			addControlEvents(j);
 		} else if (rhythms.tracks[j].type == 'concatenate') {
 			concatenateTracks(j);
 			setDuration(j);
-			computePolyLCM(j);
 			addPitches(j);
-			geometricTrackChromatic(j);
 			addChordSymbols(j);
 			convertChordsToPitches(j);
+			geometricTrackChromatic(j);
 			addControlEvents(j);
 		} else if (rhythms.tracks[j].type == 'clone') {
 			cloneTrack(j);
 			setDuration(j);
 			addPitches(j);
-			geometricTrackChromatic(j);
 			addChordSymbols(j);
 			convertChordsToPitches(j);
+			geometricTrackChromatic(j);
 			addControlEvents(j);
 		} else if (rhythms.tracks[j].type == 'merge') {
 			mergeTracks(j);
@@ -245,24 +244,24 @@ function generateTracks(arguments) {
 			splitSetUp(j);
 			splitTrack(j);
 			addPitches(j);
-			geometricTrackChromatic(j);
 			addChordSymbols(j);
 			convertChordsToPitches(j);
+			geometricTrackChromatic(j);
 			addControlEvents(j);
 		} else if (rhythms.tracks[j].type == 'progression') {
 			generateProgression(j);
 			setDuration(j);
 			addPitches(j);
-			geometricTrackChromatic(j);
 			addChordSymbols(j);
 			convertChordsToPitches(j);
+			geometricTrackChromatic(j);
 			addControlEvents(j);
 		} else if (rhythms.tracks[j].type == 'none') {
 			generateProgression(j);
 			addPitches(j);
-			geometricTrackChromatic(j);
 			addChordSymbols(j);
 			convertChordsToPitches(j);
+			geometricTrackChromatic(j);
 			addControlEvents(j);
 		} else {
 			log('ERROR! Unknown track type:' + rhythms.tracks[j].type, 'error');
@@ -430,24 +429,45 @@ function generateRhythm(TrackToBuild) {
 	rhythms.tracks[TrackToBuild].endAt = HighIndex;
 	var lastIndex = -1;
 	log('sources:' + JSON.stringify(rhythms.tracks[TrackToBuild].sources), 'debug');
+	//console.log('sources:' + JSON.stringify(rhythms.tracks[TrackToBuild].sources));
 	for (var k=0;k<=rhythms.tracks[TrackToBuild].endAt;k++) {
 		for (var source=0;source<rhythms.tracks[TrackToBuild].sources.length;source++) {
-			sourceTrack = rhythms.tracks[TrackToBuild].sources[source].source
-			sourceLoop:
-			for (var m=0;m<rhythms.tracks[sourceTrack].events.length;m++) {
-				log(rhythms.tracks[sourceTrack].events[m].index + ' ' + k + ' li:' + lastIndex, 'debug');
-				if (typeof rhythms.tracks[sourceTrack].events[m].index != 'undefined' && rhythms.tracks[sourceTrack].events[m].index == k && rhythms.tracks[sourceTrack].events[m].index > lastIndex) {
-					var entry = {...rhythms.tracks[sourceTrack].events[m]}; ///this is the preferred way to copy a JSON object;
-					entry.index = k;
-					entry.count = 0
-					lastIndex = k;
-					rhythms.tracks[TrackToBuild].events.push(entry);
-					log(JSON.stringify(rhythms.tracks[TrackToBuild].events), 'debug');
-					break sourceLoop;
-				}	
-			}
+				sourceTrack = rhythms.tracks[TrackToBuild].sources[source].source
+				sourceLoop:
+				for (var m=0;m<rhythms.tracks[sourceTrack].events.length;m++) {
+					log(rhythms.tracks[sourceTrack].events[m].index + ' ' + k + ' li:' + lastIndex, 'debug');
+					if (typeof rhythms.tracks[sourceTrack].events[m].index != 'undefined' && rhythms.tracks[sourceTrack].events[m].index == k && rhythms.tracks[sourceTrack].events[m].index > lastIndex) {
+						var entry = {...rhythms.tracks[sourceTrack].events[m]}; ///this is the preferred way to copy a JSON object;
+						entry.index = k;
+						entry.count = 0
+						lastIndex = k;
+						rhythms.tracks[TrackToBuild].events.push(entry);
+						log(JSON.stringify(rhythms.tracks[TrackToBuild].events), 'debug');
+						break sourceLoop;
+					}	
+				}
 		}	
 	}
+	
+	for (var source=0;source<rhythms.tracks[TrackToBuild].sources.length;source++) {
+		if (typeof rhythms.tracks[TrackToBuild].sources[source].invert != 'undefined' && rhythms.tracks[TrackToBuild].sources[source].invert == true) {
+			sourceTrack = rhythms.tracks[TrackToBuild].sources[source].source
+			//console.log(' 2:' + rhythms.tracks[TrackToBuild].events.length + '  ' + rhythms.tracks[sourceTrack].events.length)
+			for (var k=0;k<rhythms.tracks[TrackToBuild].events.length;k++) {
+				for (var l=0;l<rhythms.tracks[sourceTrack].events.length;l++) {
+					//console.log(' 3:' + k + '   ' + rhythms.tracks[TrackToBuild].events[k].index + '   ' + l + '   ' + rhythms.tracks[sourceTrack].events[l].index)
+					if (rhythms.tracks[sourceTrack].events[l].index == rhythms.tracks[TrackToBuild].events[k].index) {
+						//console.log(' 4: Before:' + rhythms.tracks[TrackToBuild].events.length + ' ' + rhythms.tracks[TrackToBuild].events[k].index);
+						rhythms.tracks[TrackToBuild].events.splice(k,1)
+						k=k-1
+						//console.log(' 5: After:' + rhythms.tracks[TrackToBuild].events.length +  '   ' + rhythms.tracks[TrackToBuild].events.length + '  ' + rhythms.tracks[sourceTrack].events.length);
+						break
+					}
+				}
+			}
+		}
+	}
+					
 	rhythms.tracks[TrackToBuild].run.run = false;
 }
 
@@ -754,7 +774,7 @@ function splitSetUp(TrackToBuild) {
 				"type":"none",
 				"events": []
 			};
-			console.log('creating new track for split:' + rhythms.tracks.length);
+			//console.log('creating new track for split:' + rhythms.tracks.length);
 			rhythms.tracks.push(newTrack);
 		}
 		rhythms.tracks[TrackToBuild].targets = targets;
@@ -935,7 +955,7 @@ function getSubstitutePitch(interval, key, multiplier, intervalDirection, rootCo
 	//console.log('curPitchCode:' + curPitchCode + ' curPitchName:' + JSON.stringify(curPitchName));
 	var intCurPitchCode = Math.round(curPitchCode);
 	var tempPitch = curPitchName.match(/([A|B|C|D|E|F|G][#|b]?)(-?\d\d?)/);
-	console.log('tempPitch:' + tempPitch);
+	//console.log('tempPitch:' + tempPitch);
 	var octave = tempPitch[2];
 	var scale = {};
 	scale = getExplicitScale(key, scale);
@@ -1010,10 +1030,11 @@ function geometricTrackChromatic(TrackToBuild) {
 	var invertPitchCode = 0;
 	var rootCode = getPitchCode(rootPitch,"code");
 	
-	//log('   rootPitch:' + rootPitch + ' rootCode:' + rootCode + ' multiplier:' + multiplier + ' sharpFlatFlag:' + sharpFlatFlag + ' minPitch:' + minPitch + ' minPitchCode:' + minPitchCode + ' maxPitch:' + maxPitch + ' maxPitchCode:' + maxPitchCode,'info');
+	//console.log('   rootPitch:' + rootPitch + ' rootCode:' + rootCode + ' multiplier:' + multiplier + ' sharpFlatFlag:' + sharpFlatFlag + ' minPitch:' + minPitch + ' minPitchCode:' + minPitchCode + ' maxPitch:' + maxPitch + ' maxPitchCode:' + maxPitchCode + ' length:' + rhythms.tracks[TrackToBuild].events.length,'info');
 	
 	for (noteIndex=0;noteIndex<rhythms.tracks[TrackToBuild].events.length;noteIndex++) {
 		var newPitches = [];
+		//console.log('    --pitch count:' + rhythms.tracks[TrackToBuild].events[noteIndex].pitch.length);
 		for (var i=0;i<rhythms.tracks[TrackToBuild].events[noteIndex].pitch.length;i++) {
 			var tempPitch = rhythms.tracks[TrackToBuild].events[noteIndex].pitch[i];
 			var curPitch;
@@ -1023,6 +1044,7 @@ function geometricTrackChromatic(TrackToBuild) {
 				curPitch = [];
 				curPitch.push(tempPitch);
 			}
+			//console.log('    --voice count:' + curPitch.length);
 			for (var pitchCodeIndex=0;pitchCodeIndex<curPitch.length;pitchCodeIndex++) {
 				invertPitchCode = getPitchCode(curPitch[pitchCodeIndex],"code");
 				var interval = (invertPitchCode - rootCode);
@@ -1046,7 +1068,6 @@ function geometricTrackChromatic(TrackToBuild) {
 
 function setSharpFlat(pitchCode, sharpOrFlat) {
 	if (typeof pitchCode == 'undefined') return;
-	var fS = sharpOrFlat;
 	var tempPitch;
 	var returnPitch = [];
 	for (var i=0;i<pitchCode.length;i++) {
@@ -1064,6 +1085,11 @@ function setSharpFlat(pitchCode, sharpOrFlat) {
 			tempPitch = pitchCode[i].match(/[A|B|C|D|E|F|G]b\d/);
 			if (tempPitch != null) {
 				returnPitch.push(tempPitch);
+			} else {
+				tempPitch = pitchCode[i].match(/[A|B|C|D|E|F|G]\d/);
+				if (tempPitch != null) {
+					returnPitch.push(tempPitch);
+				}
 			}
 		}
 	}
@@ -1435,6 +1461,7 @@ function generateProgression(TrackToBuild) {
 		}
 	}
 	fixIndexValues(TrackToBuild);
+	rhythms.tracks[TrackToBuild].run.run = false;
 }
 
 function forceChordType(name,motion) {
@@ -1548,12 +1575,14 @@ function parsekeyOf(keyOf) {
 	}
 	//console.log('----temp:' + temp);
 	key.sharpFlatFlag = '#';
+	/*
 	for (var i=0;i<pitchChords.keys.length;i++) {
 		if (pitchChords.keys[i].key == key.signature) {
 			key.sharpFlatFlag = pitchChords.keys[i].sharpFlat;
 			break;
 		}
 	}
+	*/
 	key.relativeScale = getRelativeScale(key);
 	key.explicitScale = getExplicitScale(key);
 	key.sharpFlatFlag = key.explicitScale.sharpFlat;
@@ -1809,14 +1838,14 @@ function getOctaveInversionVoicingIndex(chord) {
 }
 
 function getChordPitches(key,chord) {
-	//console.log('getChordPitches:' + JSON.stringify(chord));
+	console.log('getChordPitches:' + JSON.stringify(chord) + ' key:' + JSON.stringify(key));
 	chord.rootCode = getPitchCode(chord.root+chord.octave,"code")
 	//console.log('---chord root:' + JSON.stringify(chord.rootCode));
 	var newPitchArray = [];
 	for (i=0;i<pitchChords.chords[chord.typeIndex].toneOffsets[chord.inversionIndex].offsets.length;i++) {
 		newPitchArray.push(setSharpFlat(getPitchCode(chord.rootCode + pitchChords.chords[chord.typeIndex].toneOffsets[chord.inversionIndex].offsets[i],"pitch"),key.sharpFlatFlag));
 
-		//console.log('pitch:' + getPitchCode(chord.rootCode + pitchChords.chords[chord.typeIndex].toneOffsets[chord.inversionIndex].voicings[chord.voicingIndex].offsets[i],"pitch"));
+		console.log('pitch:' + (chord.rootCode + pitchChords.chords[chord.typeIndex].toneOffsets[chord.inversionIndex].offsets[i]) + '  ' + setSharpFlat(getPitchCode(chord.rootCode + pitchChords.chords[chord.typeIndex].toneOffsets[chord.inversionIndex].offsets[i],"pitch")));
 		//newPitchArray.push(singlePitchArray);
 	}
 	if (chord.voicing > 0) {
@@ -2347,7 +2376,6 @@ function genMidiFileJZZ() {
 					var durationPhantom = ((512/beatUnit) * rhythms.tracks[trackIndex].events[noteIndex].index).toString();
 					smf[smf.length-1].add(index,JZZ.MIDI.noteOn(channel, buildNote[chordCtr],0));
 					smf[smf.length-1].add(index+durationPhantom,JZZ.MIDI.noteOff(channel, buildNote[chordCtr],0));
-					//midiTracks[midiTracks.length-1].addEvent([new MidiWriter.NoteEvent({pitch: buildNote, duration: durationPhantom, velocity: 0})]);
 				}
 				log('    track:' + trackIndex + '    pitch:' + JSON.stringify(buildNote) + ' duration:' + duration + ' velocity:' + velocity, 'debug');
 				if (typeof rhythms.tracks[trackIndex].events[noteIndex].chord != 'undefined') {
@@ -2398,9 +2426,9 @@ function genMidiFileJZZ() {
 				
 				for (var chordCtr=0;chordCtr<buildNote.length;chordCtr++) {
 					smf[smf.length-1].add(index,JZZ.MIDI.noteOn(channel, buildNote[chordCtr],velocity));
+					//console.log(index + '   ' + duration + '   ' + channel + '   ' + buildNote[chordCtr]);
 					smf[smf.length-1].add(index+duration,JZZ.MIDI.noteOff(channel, buildNote[chordCtr],0));
 				}
-				
 				index += duration;
 			}
 		}
