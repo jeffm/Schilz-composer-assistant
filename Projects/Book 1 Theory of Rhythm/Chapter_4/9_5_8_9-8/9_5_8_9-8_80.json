@@ -1,0 +1,378 @@
+{
+    "name": "9_5_8_9-8",
+    "copyright": "Copyright 2022 Jeffrey D. Mershon",
+    "timeSignature": "9/8",
+    "averageVelocity": 50,
+    "tracks": [
+        {
+            "name": "beat of 9",
+            "type": "beat",
+            "period": 9,
+            "endAt": 54,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 9,
+                    "count": 1
+                },
+                {
+                    "index": 9,
+                    "duration": 9,
+                    "count": 1
+                },
+                {
+                    "index": 18,
+                    "duration": 9,
+                    "count": 1
+                },
+                {
+                    "index": 27,
+                    "duration": 9,
+                    "count": 1
+                },
+                {
+                    "index": 36,
+                    "duration": 9,
+                    "count": 1
+                },
+                {
+                    "index": 45,
+                    "duration": 9,
+                    "count": 1
+                }
+            ],
+            "run": {
+                "run": false
+            },
+            "id": 0
+        },
+        {
+            "name": "Fractional beat of 5",
+            "type": "beat",
+            "period": 5,
+            "endAt": 45,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 5,
+                    "count": 1
+                },
+                {
+                    "index": 5,
+                    "duration": 5,
+                    "count": 1
+                },
+                {
+                    "index": 10,
+                    "duration": 5,
+                    "count": 1
+                },
+                {
+                    "index": 15,
+                    "duration": 5,
+                    "count": 1
+                },
+                {
+                    "index": 20,
+                    "duration": 5,
+                    "count": 1
+                },
+                {
+                    "index": 25,
+                    "duration": 5,
+                    "count": 1
+                },
+                {
+                    "index": 30,
+                    "duration": 5,
+                    "count": 1
+                },
+                {
+                    "index": 35,
+                    "duration": 5,
+                    "count": 1
+                },
+                {
+                    "index": 40,
+                    "duration": 5,
+                    "count": 1
+                }
+            ],
+            "run": {
+                "run": false
+            },
+            "id": 1
+        },
+        {
+            "name": "Fractional beat of 5",
+            "type": "beat",
+            "period": 5,
+            "endAt": 45,
+            "offsetFrom": 0,
+            "offsetAmount": 1,
+            "events": [
+                {
+                    "index": 9,
+                    "duration": 5,
+                    "count": 1
+                },
+                {
+                    "index": 14,
+                    "duration": 5,
+                    "count": 1
+                },
+                {
+                    "index": 19,
+                    "duration": 5,
+                    "count": 1
+                },
+                {
+                    "index": 24,
+                    "duration": 5,
+                    "count": 1
+                },
+                {
+                    "index": 29,
+                    "duration": 5,
+                    "count": 1
+                },
+                {
+                    "index": 34,
+                    "duration": 5,
+                    "count": 1
+                },
+                {
+                    "index": 39,
+                    "duration": 5,
+                    "count": 1
+                },
+                {
+                    "index": 44,
+                    "duration": 5,
+                    "count": 1
+                },
+                {
+                    "index": 49,
+                    "duration": 5,
+                    "count": 1
+                }
+            ],
+            "run": {
+                "run": false
+            },
+            "id": 2
+        },
+        {
+            "name": "Interference rhythm combining 9 and 5",
+            "type": "rhythm",
+            "sources": [
+                {
+                    "source": 0
+                },
+                {
+                    "source": 1
+                },
+                {
+                    "source": 2
+                }
+            ],
+            "midiChannel": 0,
+            "computeLCM": true,
+            "beatUnit": 8,
+            "pitches": [
+                [
+                    "C4"
+                ],
+                [
+                    "E4"
+                ]
+            ],
+            "tempo": 80,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 5,
+                    "count": 2,
+                    "pitch": [
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 5,
+                    "duration": 4,
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
+                },
+                {
+                    "index": 9,
+                    "duration": 1,
+                    "count": 2,
+                    "pitch": [
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 10,
+                    "duration": 4,
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
+                },
+                {
+                    "index": 14,
+                    "duration": 1,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 15,
+                    "duration": 3,
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
+                },
+                {
+                    "index": 18,
+                    "duration": 1,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 19,
+                    "duration": 1,
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
+                },
+                {
+                    "index": 20,
+                    "duration": 4,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 24,
+                    "duration": 1,
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
+                },
+                {
+                    "index": 25,
+                    "duration": 2,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 27,
+                    "duration": 2,
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
+                },
+                {
+                    "index": 29,
+                    "duration": 1,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 30,
+                    "duration": 4,
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
+                },
+                {
+                    "index": 34,
+                    "duration": 1,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 35,
+                    "duration": 1,
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
+                },
+                {
+                    "index": 36,
+                    "duration": 3,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 39,
+                    "duration": 1,
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
+                },
+                {
+                    "index": 40,
+                    "duration": 4,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 44,
+                    "duration": 1,
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
+                },
+                {
+                    "index": 45,
+                    "duration": 4,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 49,
+                    "duration": 5,
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
+                }
+            ],
+            "run": {
+                "run": false
+            },
+            "id": 3,
+            "endAt": 49,
+            "LCM": 45
+        }
+    ],
+    "tempo": 90
+}

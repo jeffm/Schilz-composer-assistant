@@ -2,18 +2,20 @@ var fs = require('fs');
 var Book;
 var projectPath;
 var projectPathWindows;
-//Book = 1
-//projectPath = 'C:/Schilz-composer-assistant/Projects/Book 1 Theory of Rhythm/' + section + '/';
-//projectPathWindows = 'C:\\\\Schilz-composer-assistant\\\\Projects\\\\Book 1 Theory of Rhythm\\\\' + section + '\\\\';
+Book = 1
+
 //var section = 'Chapter_3';
 //var section = 'Chapter_4';
 //var section = 'Chapter_5_Con';
 //var section = 'Chapter_5_Exp';
-//var section = 'Chapter_6';
+//var section = 'Chapter_7';
 //var section = 'Chapter_7';
 
+//projectPath = 'C:/Schilz-composer-assistant/Projects/Book 1 Theory of Rhythm/' + section + '/';
+//projectPathWindows = 'C:\\\\Schilz-composer-assistant\\\\Projects\\\\Book 1 Theory of Rhythm\\\\' + section + '\\\\';
 
 //Book 3
+
 Book = 3
 var section = 'Chapter_1';
 projectPath = 'C:/Schilz-composer-assistant/Projects/Book 3 Geometrical Projections/' + section + '/';
@@ -36,7 +38,6 @@ if (Book == 1) {
 			console.log(err);
 			return;
 		}
-
 			console.log('Opened:' + (rhythms.length-1) + ' projects to create');
 			//console.log(JSON.stringify(rhythms));
 	}
@@ -54,7 +55,6 @@ if (Book == 1) {
 }
 
 writeBAT('c:/Schilz-composer-assistant/Projects/ExampleBuilder/' + section + 'buildProjectList.bat', batText);
-//writeMuse('c:/Schilz-composer-assistant/Projects/ExampleBuilder/' + section + 'museTasks.bat',museOutText);
 
 function ensureExists(path, mask) {
     return fs.mkdir(path, mask, function(err) {
@@ -65,104 +65,249 @@ function ensureExists(path, mask) {
     });
 }
 
-/*
-function buildMuseFile(control) {
-	var museBin = "\"c:\\Program Files\\MuseScore 3\\bin\\MuseScore3.exe\" -o ";
-	var projectPath = 'C:/Schilz-composer-assistant/Projects/Book 1 Theory of Rhythm/' + section + '/';
-	projectPathWindows = 'C:\\\\Schilz-composer-assistant\\\\Projects\\\\Book 1 Theory of Rhythm\\\\' + section + '\\\\';
-	//var project = control.period1.toString() + '_' + control.period2.toString() + '_' + control.beatUnit + '_' + control.timeSignature.replace('/','-');
-	var project = control.period1.toString() + '_' + control.period2.toString() + '_' + control.beatUnit + '_' + control.timeSignature.replace('/','-');
-	var root = '\"' + projectPath + project + '/';
-	museString = museBin + root + project +  '_40.mscz' + '\" ' + root + project +  '_40.mid\"\n';
-	museString += museBin +  root + project +  '_40.mxl' + '\" ' + root + project +  '_40.mscz\"\n';
-	museString += museBin +  root + project +  '_40.mp3' + '\" ' + root + project +  '_40.mscz\" -b \"64\" \n';
-	museString += museBin +  root + project +  '_40.pdf' + '\" ' + root + project +  '_40.mscz\"\n';
-
-	museString += museBin + root + project +  '_80.mscz' + '\" ' + root + project +  '_80.mid\"\n';
-	museString += museBin +  root + project +  '_80.mxl' + '\" ' + root + project +  '_80.mscz\"\n';
-	museString += museBin +  root + project +  '_80.mp3' + '\" ' + root + project +  '_80.mscz\" -b \"64\" \n';
-	museString += museBin +  root + project +  '_80.pdf' + '\" ' + root + project +  '_80.mscz\"\n';
-
-	museString += museBin + root + project +  '_120.mscz' + '\" ' + root + project +  '_120.mid\"\n';
-	museString += museBin +  root + project +  '_120.mxl' + '\" ' + root + project +  '_120.mscz\"\n';
-	museString += museBin +  root + project +  '_120.mp3' + '\" ' + root + project +  '_120.mscz\" -b \"64\" \n';
-	museString += museBin +  root + project +  '_120.pdf' + '\" ' + root + project +  '_120.mscz\"\n';
-
-	return museString;
-}
-
-*/
-
 function build_3_1_ControlFile(projectPath,projectPathWindows) {
 	
 	console.log('\n\n\nProject:' + projectPath + '\n\n\n');
+	project = 'Projection';
+		
 	var jsonoutput;
 	var useMidiTrack;
-	jsonoutput = [
+	jsonoutput = 
 	{
-		"name": "3_2_4_3-4",
+		"name": 'to be replaced',
 		"copyright": "Copyright 2022 Jeffrey D. Mershon",
-		"timeSignature": "3/4",
+		"timeSignature": "4/4",
 		"averageVelocity": 50,
 		"tracks": [
 			{
-				"id": 0,
-				"name": "Beat of 4",
+				"name": "Projection 1",
 				"type": "beat",
-				"period": 4,
-				"endAt": 36
+				"period": 1,
+				"endAt": 7,
+				"pitches": [["C3"],["D3"],["E3"],["F3"],["G3"],["A3"],["B3"]],
+				"pitchMultiplier": 1,
+				"keyOf": "C Major",
+				"pitchRoot": "C3",
 			},
 			{
-				"id": 1,
-				"name": "beat of 3",
+				"name": "Projection -1",
 				"type": "beat",
-				"period": 3,
-				"endAt": 36
+				"period": 1,
+				"endAt": 7,
+				"pitches": [["C4"],["D4"],["E4"],["F4"],["G4"],["A4"],["B4"]],
+				"pitchMultiplier": -1,
+				"keyOf": "C Major",
+				"pitchRoot": "C4",
 			},
 			{
-				"id": 2,
-				"name": "Interference rhythm combining 4 and 3",
-				"type": "rhythm",
+				"name": "Projection 2",
+				"type": "beat",
+				"period": 1,
+				"endAt": 7,
+				"pitches": [["C3"],["D3"],["E3"],["F3"],["G3"],["A3"],["B3"]],
+				"pitchMultiplier": 2,
+				"keyOf": "C Major",
+				"pitchRoot": "C3",
+			},
+			{
+				"name": "Projection -2",
+				"type": "beat",
+				"period": 1,
+				"endAt": 7,
+				"pitches": [["C5"],["D5"],["E5"],["F5"],["G5"],["A5"],["B5"]],
+				"pitchMultiplier": -2,
+				"keyOf": "C Major",
+				"pitchRoot": "C5",
+			},
+			{
+				"name": "Projection 3",
+				"type": "beat",
+				"period": 1,
+				"endAt": 7,
+				"pitches": [["C3"],["D3"],["E3"],["F3"],["G3"],["A3"],["B3"]],
+				"pitchMultiplier": 3,
+				"keyOf": "C Major",
+				"pitchRoot": "C3",
+			},
+			{
+				"name": "Projection -3",
+				"type": "beat",
+				"period": 1,
+				"endAt": 7,
+				"pitches": [["C6"],["D6"],["E6"],["F6"],["G6"],["A6"],["B6"]],
+				"pitchMultiplier": -3,
+				"keyOf": "C Major",
+				"pitchRoot": "C6",
+			},
+			{
+				"name": "Projection 4",
+				"type": "beat",
+				"period": 1,
+				"endAt": 7,
+				"pitches": [["C3"],["D3"],["E3"],["F3"],["G3"],["A3"],["B3"]],
+				"pitchMultiplier": 4,
+				"keyOf": "C Major",
+				"pitchRoot": "C3",
+			},
+			{
+				"name": "Projection -4",
+				"type": "beat",
+				"period": 1,
+				"endAt": 7,
+				"pitches": [["C7"],["D7"],["E7"],["F7"],["G7"],["A7"],["B7"]],
+				"pitchMultiplier": -4,
+				"keyOf": "C Major",
+				"pitchRoot": "C7",
+			},
+			{
+				"name": "Projection 5",
+				"type": "beat",
+				"period": 1,
+				"endAt": 7,
+				"pitches": [["C3"],["D3"],["E3"],["F3"],["G3"],["A3"],["B3"]],
+				"pitchMultiplier": 5,
+				"keyOf": "C Major",
+				"pitchRoot": "C3",
+			},
+			{
+				"name": "Projection -5",
+				"type": "beat",
+				"period": 1,
+				"endAt": 7,
+				"pitches": [["C8"],["D8"],["E8"],["F8"],["G8"],["A8"],["B8"]],
+				"pitchMultiplier": -5,
+				"keyOf": "C Major",
+				"pitchRoot": "C8",
+			},
+			{
+				"name": "Projections 1 - 5 Positive and Negative",
+				"type": "concatenate",
 				"sources": [
 					{
-						"source": 0
+						"source": 0,
+						"addText": "Projection 1"
 					},
 					{
-						"source": 1
+						"source": 1,
+						"addText": "Projection -1"
+					},
+					{
+						"source": 2,
+						"addText": "Projection 2"
+					},
+					{
+						"source": 3,
+						"addText": "Projection -2"
+					},
+					{
+						"source": 4,
+						"addText": "Projection 3"
+					},
+					{
+						"source": 5,
+						"addText": "Projection -3"
+					},
+					{
+						"source": 6,
+						"addText": "Projection 4"
+					},
+					{
+						"source": 7,
+						"addText": "Projection -4"
+					},
+					{
+						"source": 8,
+						"addText": "Projection 5"
+					},
+					{
+						"source": 9,
+						"addText": "Projection -5"
+					}
+				]
+			},
+			{
+				"name": "Projections 1 - 5 Positive and Negative Min-Max",
+				"type": "concatenate",
+				"sources": [
+					{
+						"source": 0,
+						"addText": "Projection 1 - refit"
+					},
+					{
+						"source": 1,
+						"addText": "Projection -1 - refit"
+					},
+					{
+						"source": 2,
+						"addText": "Projection 2 - refit"
+					},
+					{
+						"source": 3,
+						"addText": "Projection -2 - refit"
+					},
+					{
+						"source": 4,
+						"addText": "Projection 3 - refit"
+					},
+					{
+						"source": 5,
+						"addText": "Projection -3 - refit"
+					},
+					{
+						"source": 6,
+						"addText": "Projection 4 - refit"
+					},
+					{
+						"source": 7,
+						"addText": "Projection -4 - refit"
+					},
+					{
+						"source": 8,
+						"addText": "Projection 5 - refit"
+					},
+					{
+						"source": 9,
+						"addText": "Projection -5 - refit"
 					}
 				],
-				"includeInScore": true,
-				"computeLCM": true,
-				"beatUnit": 4,
-				"pitches": [[["A#3"],["B3"]],["B3"],["C#4"],["D4"],["E4"],["F#4"],["G4"]],
 				"pitchMultiplier": 1,
-				"keyOf": "F Major",
-				"refitToMinPitch": "A3",
-				"refitToMaxPitch": "G6",
-				"pitchRoot": "A3",
-				"tempo": 40
+				"refitToMinPitch": "C4",
+				"refitToMaxPitch": "C5",
+				"pitchRoot" : "C2"
+			},
+			{
+				"name": "Projections 1 - 5 Positive and Negative Min-Max",
+				"type": "concatenate",
+				"sources": [
+					{
+						"source": 10
+					},
+					{
+						"source": 11
+					}
+				],
+				"midiChannel": 0,
+				"beatUnit": 4,
+				"tempo":90
 			}
 		]
 	}
-	];
+	//refitToMinPitch
+	//refitToMaxPitch
 	useMidiTrack = 2;
 	var returnString = '';
-		for (var i=0;i<jsonoutput.length;i++) {
+	//var projections = [1,-1,2,-2,3,-3,4,-4,5,-5,7,-7,7,-7,8,-8,9,-9,10,-10,11,-11,12,-12]
+	//for (var i=0;i<projections.length;i++) {
 		//console.log(JSON.stringify(jsonoutput,null,4));
-		jsonoutput[i].tempo = 40;
-		returnString += 'node ' + '\"c:\\Schilz-composer-assistant\\schilz.js\" -g -p \"' +  projectPathWindows + '\" -i \"' + jsonoutput[i].name  + '_' + jsonoutput[i].tempo + '_input.json\" -j \"' + jsonoutput[i].name + '_' + jsonoutput[i].tempo + '_output.json\" -m \"' + jsonoutput[i].name  + '_' + jsonoutput[i].tempo + '.mid\" -c \"' + jsonoutput[i].name  + '_' + jsonoutput[i].tempo + '_chart.html\"' + '\n';
-		writeJSON(projectPath + jsonoutput[i].name  + '_' + jsonoutput[i].tempo + '_input.json', jsonoutput[i]);
+		jsonoutput.tempo = 80;
+		jsonoutput.name = project;
+		//jsonoutput.tracks[0].pitchMultiplier = projections[i];
+		var dir = ensureExists(projectPath + jsonoutput.name, 0o744);
+		returnString += 'node ' + '\"c:\\Schilz-composer-assistant\\schilz.js\" -g -p \"' +  projectPathWindows + jsonoutput.name + '\\\\\" -i \"' + jsonoutput.name + '_input.json\" -m \"' + jsonoutput.name + '.mid\"' + ' -j \"' + jsonoutput.name + '.json\"' + ' -c \"' + jsonoutput.name + '.html\"' + ' -v info\n';
+		writeJSON(projectPath + jsonoutput.name + '/' + jsonoutput.name + '_input.json', jsonoutput);
 
-		jsonoutput[i].tempo = 80;
-		returnString += 'node ' + '\"c:\\Schilz-composer-assistant\\schilz.js\" -g -p \"' +  projectPathWindows + '\" -i \"' + jsonoutput[i].name  + '_' + jsonoutput[i].tempo + '_input.json\" -m \"' + jsonoutput[i].name  + '_' + jsonoutput[i].tempo + '.mid\"' + '\n';
-		writeJSON(projectPath + jsonoutput[i].name  + '_' + jsonoutput[i].tempo + '_input.json', jsonoutput[i]);
-		returnString += doubleToSingleSlash('del \"' + projectPathWindows + jsonoutput[i].name + '_' + jsonoutput[i].tempo + '_input.json\"' + '\n');
-
-		jsonoutput[i].tempo = 120;
-		returnString += 'node ' + '\"c:\\Schilz-composer-assistant\\schilz.js\" -g -p \"' +  projectPathWindows +  '\" -i \"' + jsonoutput[i].name  + '_' + jsonoutput[i].tempo + '_input.json\" -m \"' + jsonoutput[i].name  + '_' + jsonoutput[i].tempo + '.mid\"' + '\n';
-		writeJSON(projectPath + jsonoutput[i].name  + '_' + jsonoutput[i].tempo + '_input.json', jsonoutput[i]);
-		returnString += doubleToSingleSlash('del \"' + projectPathWindows + jsonoutput[i].name + '_' + jsonoutput[i].tempo + '_input.json\"' + '\n');
-	}
+		returnString += doubleToSingleSlash('del \"' + projectPathWindows + jsonoutput.name + '\\\\' + jsonoutput.name + '_input.json\"' + '\n');
+	//}
 	return returnString;
 }
 function build_1_7_ControlFile(projectPath,projectPathWindows) {
@@ -310,19 +455,11 @@ function build_1_7_ControlFile(projectPath,projectPathWindows) {
 	]
 
 	var returnString = '';
-		for (var i=0;i<jsonoutput.length;i++) {
+	for (var i=0;i<jsonoutput.length;i++) {
 		//console.log(JSON.stringify(jsonoutput,null,4));
-		jsonoutput[i].tempo = 40;
-		returnString += 'node ' + '\"c:\\Schilz-composer-assistant\\schilz.js\" -g -p \"' +  projectPathWindows + '\" -i \"' + jsonoutput[i].name  + '_' + jsonoutput[i].tempo + '_input.json\" -j \"' + jsonoutput[i].name + '_' + jsonoutput[i].tempo + '_output.json\" -m \"' + jsonoutput[i].name  + '_' + jsonoutput[i].tempo + '.mid\" -c \"' + jsonoutput[i].name  + '_' + jsonoutput[i].tempo + '_chart.html\"' + '\n';
-		writeJSON(projectPath + jsonoutput[i].name  + '_' + jsonoutput[i].tempo + '_input.json', jsonoutput[i]);
 
 		jsonoutput[i].tempo = 80;
-		returnString += 'node ' + '\"c:\\Schilz-composer-assistant\\schilz.js\" -g -p \"' +  projectPathWindows + '\" -i \"' + jsonoutput[i].name  + '_' + jsonoutput[i].tempo + '_input.json\" -m \"' + jsonoutput[i].name  + '_' + jsonoutput[i].tempo + '.mid\"' + '\n';
-		writeJSON(projectPath + jsonoutput[i].name  + '_' + jsonoutput[i].tempo + '_input.json', jsonoutput[i]);
-		returnString += doubleToSingleSlash('del \"' + projectPathWindows + jsonoutput[i].name + '_' + jsonoutput[i].tempo + '_input.json\"' + '\n');
-
-		jsonoutput[i].tempo = 120;
-		returnString += 'node ' + '\"c:\\Schilz-composer-assistant\\schilz.js\" -g -p \"' +  projectPathWindows +  '\" -i \"' + jsonoutput[i].name  + '_' + jsonoutput[i].tempo + '_input.json\" -m \"' + jsonoutput[i].name  + '_' + jsonoutput[i].tempo + '.mid\"' + '\n';
+		returnString += 'node ' + '\"c:\\Schilz-composer-assistant\\schilz.js\" -g -p \"' +  projectPathWindows + '\" -i \"' + jsonoutput[i].name  + '_' + jsonoutput[i].tempo + '_input.json\" -m \"' + jsonoutput[i].name  + '_' + jsonoutput[i].tempo + '.mid\"' + ' -j \"' + jsonoutput[i].name  + '_' + jsonoutput[i].tempo + '.json\"' + ' -c \"' + jsonoutput[i].name  + '_' + jsonoutput[i].tempo + '.html\"' + '\n';
 		writeJSON(projectPath + jsonoutput[i].name  + '_' + jsonoutput[i].tempo + '_input.json', jsonoutput[i]);
 		returnString += doubleToSingleSlash('del \"' + projectPathWindows + jsonoutput[i].name + '_' + jsonoutput[i].tempo + '_input.json\"' + '\n');
 	}
@@ -495,14 +632,14 @@ function build_1_ControlFile(control,projectPath,projectPathWindows) {
 			"beatUnit":control.beatUnit,
 			"tempo":90
 		},{
-			"name": "Interference rhythm appending tracks 5 and 6",
+			"name": "Interference rhythm appending tracks 5 and 7",
 			"type": "concatenate",
 			"sources": [
                 {
                     "source": 5
                 },
                 {
-                    "source": 6
+                    "source": 7
                 }
             ],
 			"midiChannel": 0,
@@ -579,11 +716,11 @@ function build_1_ControlFile(control,projectPath,projectPathWindows) {
 			"beatUnit":control.beatUnit,
 			"tempo":90
 		},{
-			"name": "Interference rhythm appending tracks 6 and 5",
+			"name": "Interference rhythm appending tracks 7 and 5",
 			"type": "concatenate",
 			"sources": [
                 {
-                    "source": 6
+                    "source": 7
                 },
                 {
                     "source": 5
@@ -598,8 +735,8 @@ function build_1_ControlFile(control,projectPath,projectPathWindows) {
 		]
 	};
 	useMidiTrack = 7;
-	} else if ( section == 'Chapter_6') { 	
-	//Use for chapter 6
+	} else if ( section == 'Chapter_7') { 	
+	//Use for chapter 7
 	var jsonoutput = {
 	"name": project,
 	"copyright": "Copyright 2022 Jeffrey D. Mershon",
@@ -650,17 +787,9 @@ function build_1_ControlFile(control,projectPath,projectPathWindows) {
 }
 	var returnString = '';
 	//console.log(JSON.stringify(jsonoutput,null,4));
-	jsonoutput.tracks[useMidiTrack].tempo = 40;
-	returnString += 'node ' + '\"c:\\Schilz-composer-assistant\\schilz.js\" -g -p \"' +  projectPathWindows + project + '\\\\\" -i \'' + project  + '_' + jsonoutput.tracks[useMidiTrack].tempo + '_input.json\' -j \'' + project + '_' + jsonoutput.tracks[useMidiTrack].tempo + '_output.json\' -m \'' + project  + '_' + jsonoutput.tracks[useMidiTrack].tempo + '.mid\' -c \'' + project  + '_' + jsonoutput.tracks[useMidiTrack].tempo + '_chart.html\'' + '\n';
-	writeJSON(projectPath + project + '/' + project  + '_' + jsonoutput.tracks[useMidiTrack].tempo + '_input.json', jsonoutput);
 
 	jsonoutput.tracks[useMidiTrack].tempo = 80;
-	returnString += 'node ' + '\"c:\\Schilz-composer-assistant\\schilz.js\" -g -p \"' +  projectPathWindows + project + '\\\\\" -i \'' + project  + '_' + jsonoutput.tracks[useMidiTrack].tempo + '_input.json\' -m \'' + project  + '_' + jsonoutput.tracks[useMidiTrack].tempo + '.mid\'' + '\n';
-	writeJSON(projectPath + project + '/' + project  + '_' + jsonoutput.tracks[useMidiTrack].tempo + '_input.json', jsonoutput);
-	returnString += doubleToSingleSlash('del \"' + projectPathWindows + project  + '\\\\' + project + '_' + jsonoutput.tracks[useMidiTrack].tempo + '_input.json\"' + '\n');
-
-	jsonoutput.tracks[useMidiTrack].tempo = 120;
-	returnString += 'node ' + '\"c:\\Schilz-composer-assistant\\schilz.js\" -g -p \"' +  projectPathWindows + project + '\\\\\" -i \'' + project  + '_' + jsonoutput.tracks[useMidiTrack].tempo + '_input.json\' -m \'' + project  + '_' + jsonoutput.tracks[useMidiTrack].tempo + '.mid\'' + '\n';
+	returnString += 'node ' + '\"c:\\Schilz-composer-assistant\\schilz.js\" -g -p \"' +  projectPathWindows + project + '\\\\\" -i \"' + project  + '_' + jsonoutput.tracks[useMidiTrack].tempo + '_input.json\" -m \"' + project  + '_' + jsonoutput.tracks[useMidiTrack].tempo + '.mid\"' + ' -j \"' + project  + '_' + jsonoutput.tracks[useMidiTrack].tempo + '.json\"' + ' -c \"' + project  + '_' +  jsonoutput.tracks[useMidiTrack].tempo + '.html\"' + '\n';
 	writeJSON(projectPath + project + '/' + project  + '_' + jsonoutput.tracks[useMidiTrack].tempo + '_input.json', jsonoutput);
 	returnString += doubleToSingleSlash('del \"' + projectPathWindows + project  + '\\\\' + project + '_' + jsonoutput.tracks[useMidiTrack].tempo + '_input.json\"' + '\n');
 
@@ -707,17 +836,6 @@ function writeBAT(BAToutpath, BAToutput) {
 	}
 }
 
-function writeMuse(museOutPath, museText) {
-	console.log('museOutPath:' + museOutPath);
-	if (typeof museOutPath != 'undefined' && museOutPath != '') {
-		try {
-			var outFile = fs.openSync(museOutPath,'w');
-			fs.writeSync(outFile,museText);
-		} catch (err) {
-		   console.error(err);
-		}
-	}
-}
 
 function computePolyLCM(periods) {
 	console.log('computePolyLCM(trackToBuild)');

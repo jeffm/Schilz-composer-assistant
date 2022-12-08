@@ -1,0 +1,360 @@
+{
+    "name": "3_2_4_3-4",
+    "copyright": "Copyright 2022 Jeffrey D. Mershon",
+    "timeSignature": "3/4",
+    "averageVelocity": 50,
+    "tracks": [
+        {
+            "name": "beat of 3",
+            "type": "beat",
+            "period": 3,
+            "endAt": 9,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 3,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 6,
+                    "duration": 3,
+                    "count": 1
+                }
+            ],
+            "run": {
+                "run": false
+            },
+            "id": 0
+        },
+        {
+            "name": "Fractional beat of 2",
+            "type": "beat",
+            "period": 2,
+            "endAt": 6,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 2,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 4,
+                    "duration": 2,
+                    "count": 1
+                }
+            ],
+            "run": {
+                "run": false
+            },
+            "id": 1
+        },
+        {
+            "name": "Fractional beat of 2",
+            "type": "beat",
+            "period": 2,
+            "endAt": 6,
+            "offsetFrom": 0,
+            "offsetAmount": 1,
+            "events": [
+                {
+                    "index": 3,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 5,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 7,
+                    "duration": 2,
+                    "count": 1
+                }
+            ],
+            "run": {
+                "run": false
+            },
+            "id": 2
+        },
+        {
+            "name": "beat of 3",
+            "type": "beat",
+            "period": 3,
+            "endAt": 6,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 3,
+                    "duration": 3,
+                    "count": 1
+                }
+            ],
+            "run": {
+                "run": false
+            },
+            "id": 3
+        },
+        {
+            "name": "beat of 2",
+            "type": "beat",
+            "period": 2,
+            "endAt": 6,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 2,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 4,
+                    "duration": 2,
+                    "count": 1
+                }
+            ],
+            "run": {
+                "run": false
+            },
+            "id": 4
+        },
+        {
+            "name": "Fractional interference rhythm combining 3 and 2",
+            "type": "rhythm",
+            "sources": [
+                {
+                    "source": 0
+                },
+                {
+                    "source": 1
+                },
+                {
+                    "source": 2
+                }
+            ],
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 2,
+                    "count": 2
+                },
+                {
+                    "index": 2,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 3,
+                    "duration": 1,
+                    "count": 2
+                },
+                {
+                    "index": 4,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 5,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 6,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 7,
+                    "duration": 2,
+                    "count": 1
+                }
+            ],
+            "run": {
+                "run": false
+            },
+            "id": 5,
+            "endAt": 7,
+            "LCM": 6
+        },
+        {
+            "name": "Interference rhythm combining 3 and 2",
+            "type": "rhythm",
+            "sources": [
+                {
+                    "source": 3
+                },
+                {
+                    "source": 4
+                }
+            ],
+            "computeLCM": true,
+            "beatUnit": 4,
+            "tempo": 90,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 2,
+                    "count": 2
+                },
+                {
+                    "index": 2,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 3,
+                    "duration": 1,
+                    "count": 1
+                },
+                {
+                    "index": 4,
+                    "duration": 2,
+                    "count": 1
+                }
+            ],
+            "run": {
+                "run": false
+            },
+            "id": 6,
+            "endAt": 4,
+            "LCM": 6
+        },
+        {
+            "name": "Interference rhythm appending tracks 6 and 5",
+            "type": "concatenate",
+            "sources": [
+                {
+                    "source": 6
+                },
+                {
+                    "source": 5
+                }
+            ],
+            "midiChannel": 0,
+            "computeLCM": true,
+            "beatUnit": 4,
+            "pitches": [
+                [
+                    "C4"
+                ],
+                [
+                    "E4"
+                ]
+            ],
+            "tempo": 80,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 2,
+                    "count": 2,
+                    "pitch": [
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 2,
+                    "duration": 1,
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
+                },
+                {
+                    "index": 3,
+                    "duration": 1,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 4,
+                    "duration": 2,
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
+                },
+                {
+                    "index": 6,
+                    "duration": 2,
+                    "count": 2,
+                    "pitch": [
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 8,
+                    "duration": 1,
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
+                },
+                {
+                    "index": 9,
+                    "duration": 1,
+                    "count": 2,
+                    "pitch": [
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 10,
+                    "duration": 1,
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
+                },
+                {
+                    "index": 11,
+                    "duration": 1,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 12,
+                    "duration": 1,
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
+                },
+                {
+                    "index": 13,
+                    "duration": 2,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ]
+                }
+            ],
+            "run": {
+                "run": false
+            },
+            "id": 7
+        }
+    ],
+    "tempo": 90
+}

@@ -1,5 +1,2 @@
-node "c:\Schilz-composer-assistant\schilz.js" -g -p "C:\\Schilz-composer-assistant\\Projects\\Book 3 Geometrical Projections\\Chapter_1\\" -i "3_2_4_3-4_40_input.json" -j "3_2_4_3-4_40_output.json" -m "3_2_4_3-4_40.mid" -c "3_2_4_3-4_40_chart.html"
-node "c:\Schilz-composer-assistant\schilz.js" -g -p "C:\\Schilz-composer-assistant\\Projects\\Book 3 Geometrical Projections\\Chapter_1\\" -i "3_2_4_3-4_80_input.json" -m "3_2_4_3-4_80.mid"
-del "C:\Schilz-composer-assistant\Projects\Book 3 Geometrical Projections\Chapter_1\3_2_4_3-4_80_input.json"
-node "c:\Schilz-composer-assistant\schilz.js" -g -p "C:\\Schilz-composer-assistant\\Projects\\Book 3 Geometrical Projections\\Chapter_1\\" -i "3_2_4_3-4_120_input.json" -m "3_2_4_3-4_120.mid"
-del "C:\Schilz-composer-assistant\Projects\Book 3 Geometrical Projections\Chapter_1\3_2_4_3-4_120_input.json"
+node "c:\Schilz-composer-assistant\schilz.js" -g -p "C:\\Schilz-composer-assistant\\Projects\\Book 3 Geometrical Projections\\Chapter_1\\Projection\\" -i "Projection_input.json" -m "Projection.mid" -j "Projection.json" -c "Projection.html" -v info
+del "C:\Schilz-composer-assistant\Projects\Book 3 Geometrical Projections\Chapter_1\Projection\Projection_input.json"

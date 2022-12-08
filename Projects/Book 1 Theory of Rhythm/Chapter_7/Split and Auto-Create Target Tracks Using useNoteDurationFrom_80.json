@@ -1,0 +1,294 @@
+{
+    "name": "Split and Auto-Create Target Tracks Using useNoteDurationFrom",
+    "copyright": "Copyright 2022 Jeffrey D. Mershon",
+    "timeSignature": "4/4",
+    "averageVelocity": 50,
+    "tracks": [
+        {
+            "type": "beat",
+            "period": 3,
+            "endAt": 12,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 3,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 6,
+                    "duration": 3,
+                    "count": 1
+                },
+                {
+                    "index": 9,
+                    "duration": 3,
+                    "count": 1
+                }
+            ],
+            "run": {
+                "run": false
+            },
+            "name": "Beat of 3",
+            "id": 0
+        },
+        {
+            "type": "beat",
+            "period": 2,
+            "endAt": 12,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 2,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 4,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 6,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 8,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 10,
+                    "duration": 2,
+                    "count": 1
+                }
+            ],
+            "run": {
+                "run": false
+            },
+            "name": "Beat of 2",
+            "id": 1
+        },
+        {
+            "type": "rhythm",
+            "sources": [
+                {
+                    "source": 0
+                },
+                {
+                    "source": 1
+                }
+            ],
+            "pitches": [
+                [
+                    "C4"
+                ],
+                [
+                    "E4"
+                ]
+            ],
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 2,
+                    "count": 2,
+                    "pitch": [
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 2,
+                    "duration": 1,
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
+                },
+                {
+                    "index": 3,
+                    "duration": 1,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 4,
+                    "duration": 2,
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
+                },
+                {
+                    "index": 6,
+                    "duration": 2,
+                    "count": 2,
+                    "pitch": [
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 8,
+                    "duration": 1,
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
+                },
+                {
+                    "index": 9,
+                    "duration": 1,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 10,
+                    "duration": 2,
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
+                }
+            ],
+            "run": {
+                "run": false
+            },
+            "name": "Rhythm combining 0, 1",
+            "id": 2,
+            "endAt": 10,
+            "LCM": 6
+        },
+        {
+            "type": "split",
+            "source": 2,
+            "createTargets": 3,
+            "useNoteDurationFrom": 2,
+            "events": [],
+            "run": {
+                "run": false
+            },
+            "targets": [
+                4,
+                5,
+                6
+            ],
+            "targetCounts": [
+                2,
+                1,
+                1,
+                2,
+                2,
+                1,
+                1,
+                2
+            ]
+        },
+        {
+            "id": 4,
+            "type": "none",
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 2,
+                    "count": 2,
+                    "pitch": [
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 2,
+                    "duration": 1,
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
+                },
+                {
+                    "index": 6,
+                    "duration": 2,
+                    "count": 2,
+                    "pitch": [
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 8,
+                    "duration": 1,
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
+                }
+            ],
+            "name": "Track:4 Split of track 2",
+            "run": {
+                "run": true
+            }
+        },
+        {
+            "id": 5,
+            "type": "none",
+            "events": [
+                {
+                    "index": 3,
+                    "duration": 1,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 9,
+                    "duration": 1,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 10,
+                    "duration": 2,
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
+                }
+            ],
+            "name": "Track:5 Split of track 2",
+            "run": {
+                "run": true
+            }
+        },
+        {
+            "id": 6,
+            "type": "none",
+            "events": [
+                {
+                    "index": 4,
+                    "duration": 2,
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
+                }
+            ],
+            "name": "Track:6 Split of track 2",
+            "run": {
+                "run": true
+            }
+        }
+    ],
+    "tempo": 80
+}
