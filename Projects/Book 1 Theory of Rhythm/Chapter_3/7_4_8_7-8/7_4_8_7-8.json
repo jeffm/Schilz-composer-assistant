@@ -1,0 +1,200 @@
+{
+    "name": "7_4_8_7-8",
+    "copyright": "Copyright 2022 Jeffrey D. Mershon",
+    "timeSignature": "7/8",
+    "averageVelocity": 50,
+    "tracks": [
+        {
+            "name": "Beat of 7",
+            "type": "beat",
+            "period": 7,
+            "endAt": 28,
+            "id": 0,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 7,
+                    "count": 1
+                },
+                {
+                    "index": 7,
+                    "duration": 7,
+                    "count": 1
+                },
+                {
+                    "index": 14,
+                    "duration": 7,
+                    "count": 1
+                },
+                {
+                    "index": 21,
+                    "duration": 7,
+                    "count": 1
+                }
+            ],
+            "run": {
+                "run": false
+            }
+        },
+        {
+            "id": 1,
+            "name": "beat of 4",
+            "type": "beat",
+            "period": 4,
+            "endAt": 28,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 4,
+                    "count": 1
+                },
+                {
+                    "index": 4,
+                    "duration": 4,
+                    "count": 1
+                },
+                {
+                    "index": 8,
+                    "duration": 4,
+                    "count": 1
+                },
+                {
+                    "index": 12,
+                    "duration": 4,
+                    "count": 1
+                },
+                {
+                    "index": 16,
+                    "duration": 4,
+                    "count": 1
+                },
+                {
+                    "index": 20,
+                    "duration": 4,
+                    "count": 1
+                },
+                {
+                    "index": 24,
+                    "duration": 4,
+                    "count": 1
+                }
+            ],
+            "run": {
+                "run": false
+            }
+        },
+        {
+            "id": 2,
+            "name": "Interference rhythm combining 7 and 4",
+            "type": "rhythm",
+            "sources": [
+                {
+                    "source": 0
+                },
+                {
+                    "source": 1
+                }
+            ],
+            "midiChannel": 0,
+            "computeLCM": true,
+            "beatUnit": 8,
+            "pitches": [
+                [
+                    "C4"
+                ],
+                [
+                    "E4"
+                ]
+            ],
+            "tempo": 80,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 4,
+                    "count": 2,
+                    "pitch": [
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 4,
+                    "duration": 3,
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
+                },
+                {
+                    "index": 7,
+                    "duration": 1,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 8,
+                    "duration": 4,
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
+                },
+                {
+                    "index": 12,
+                    "duration": 2,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 14,
+                    "duration": 2,
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
+                },
+                {
+                    "index": 16,
+                    "duration": 4,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 20,
+                    "duration": 1,
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
+                },
+                {
+                    "index": 21,
+                    "duration": 3,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 24,
+                    "duration": 4,
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
+                }
+            ],
+            "run": {
+                "run": false
+            },
+            "endAt": 24,
+            "LCM": 28
+        }
+    ],
+    "tempo": 90
+}

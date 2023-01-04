@@ -1,0 +1,147 @@
+{
+    "name": "I-vii-III7-vi-IV-V",
+    "timeSignature": "4/4",
+    "averageVelocity": 50,
+    "tracks": [
+        {
+            "name": "Beat of 4",
+            "type": "beat",
+            "period": [
+                16,
+                8,
+                8,
+                16,
+                8,
+                8
+            ],
+            "endAt": 72,
+            "keyOf": "C Major",
+            "shortKeySignature": "C",
+            "chords": [
+                [
+                    "I"
+                ],
+                [
+                    "vii"
+                ],
+                [
+                    "III7"
+                ],
+                [
+                    "vi"
+                ],
+                [
+                    "IV"
+                ],
+                [
+                    "V"
+                ]
+            ],
+            "midiChannel": 0,
+            "beatUnit": 4,
+            "tempo": 90,
+            "id": 0,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 16,
+                    "count": 1,
+                    "keyOf": "C Major",
+                    "shortKeySignature": "C",
+                    "chord": [
+                        "I"
+                    ],
+                    "pitch": [
+                        "C3",
+                        "E3",
+                        "G3"
+                    ]
+                },
+                {
+                    "index": 16,
+                    "duration": 8,
+                    "count": 1,
+                    "chord": [
+                        "vii"
+                    ],
+                    "pitch": [
+                        "B3",
+                        "D4",
+                        "F#4"
+                    ]
+                },
+                {
+                    "index": 24,
+                    "duration": 8,
+                    "count": 1,
+                    "chord": [
+                        "III7"
+                    ],
+                    "pitch": [
+                        "E3",
+                        "G#3",
+                        "B3",
+                        "D4"
+                    ]
+                },
+                {
+                    "index": 32,
+                    "duration": 16,
+                    "count": 1,
+                    "chord": [
+                        "vi"
+                    ],
+                    "pitch": [
+                        "A3",
+                        "C4",
+                        "E4"
+                    ]
+                },
+                {
+                    "index": 48,
+                    "duration": 8,
+                    "count": 1,
+                    "chord": [
+                        "IV"
+                    ],
+                    "pitch": [
+                        "F3",
+                        "A3",
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 56,
+                    "duration": 8,
+                    "count": 1,
+                    "chord": [
+                        "V"
+                    ],
+                    "pitch": [
+                        "G3",
+                        "B3",
+                        "D4"
+                    ]
+                },
+                {
+                    "index": 64,
+                    "duration": 16,
+                    "count": 1,
+                    "chord": [
+                        "I"
+                    ],
+                    "pitch": [
+                        "C3",
+                        "E3",
+                        "G3"
+                    ]
+                }
+            ],
+            "run": {
+                "run": false
+            }
+        }
+    ],
+    "tempo": 80,
+    "copyright": "Copyright YYYY [Replace with Copyright Owner]"
+}

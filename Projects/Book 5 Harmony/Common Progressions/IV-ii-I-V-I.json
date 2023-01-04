@@ -1,0 +1,110 @@
+{
+    "name": "IV-ii-I-V-I",
+    "timeSignature": "4/4",
+    "averageVelocity": 50,
+    "tracks": [
+        {
+            "name": "Beat of 4",
+            "type": "beat",
+            "period": 4,
+            "endAt": 20,
+            "keyOf": "C Major",
+            "shortKeySignature": "C",
+            "chords": [
+                [
+                    "IV"
+                ],
+                [
+                    "ii"
+                ],
+                [
+                    "In2"
+                ],
+                [
+                    "V"
+                ],
+                [
+                    "I"
+                ]
+            ],
+            "midiChannel": 0,
+            "beatUnit": 4,
+            "tempo": 90,
+            "id": 0,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 4,
+                    "count": 1,
+                    "keyOf": "C Major",
+                    "shortKeySignature": "C",
+                    "chord": [
+                        "IV"
+                    ],
+                    "pitch": [
+                        "F3",
+                        "A3",
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 4,
+                    "duration": 4,
+                    "count": 1,
+                    "chord": [
+                        "ii"
+                    ],
+                    "pitch": [
+                        "D3",
+                        "F3",
+                        "A3"
+                    ]
+                },
+                {
+                    "index": 8,
+                    "duration": 4,
+                    "count": 1,
+                    "chord": [
+                        "In2"
+                    ],
+                    "pitch": [
+                        "G2",
+                        "C3",
+                        "E3"
+                    ]
+                },
+                {
+                    "index": 12,
+                    "duration": 4,
+                    "count": 1,
+                    "chord": [
+                        "V"
+                    ],
+                    "pitch": [
+                        "G3",
+                        "B3",
+                        "D4"
+                    ]
+                },
+                {
+                    "index": 16,
+                    "duration": 4,
+                    "count": 1,
+                    "chord": [
+                        "I"
+                    ],
+                    "pitch": [
+                        "C3",
+                        "E3",
+                        "G3"
+                    ]
+                }
+            ],
+            "run": {
+                "run": false
+            }
+        }
+    ],
+    "tempo": 80,
+    "copyright": "Copyright YYYY [Replace with Copyright Owner]"
+}

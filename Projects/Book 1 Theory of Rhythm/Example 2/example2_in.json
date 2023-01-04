@@ -20,7 +20,7 @@
                     "source": 1
                 }
             ],
-			"includeInScore": true
+			"midiChannel": 1
 		}
 	]
 }

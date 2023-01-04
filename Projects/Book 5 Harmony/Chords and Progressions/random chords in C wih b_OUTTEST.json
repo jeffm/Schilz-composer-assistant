@@ -1,0 +1,94 @@
+{
+    "name": "random chords in C",
+    "timeSignature": "4/4",
+    "averageVelocity": 50,
+    "tracks": [
+        {
+            "name": "Beat of 4",
+            "type": "beat",
+            "period": 4,
+            "endAt": 16,
+            "keyOf": "C Major",
+            "shortKeySignature": "C",
+            "chords": [
+                [
+                    "bI"
+                ],
+                [
+                    "V7n1"
+                ],
+                [
+                    "V7r4"
+                ],
+                [
+                    "ii-7r5n1"
+                ]
+            ],
+            "midiChannel": 0,
+            "beatUnit": 4,
+            "tempo": 90,
+            "id": 0,
+            "run": {
+                "run": false
+            },
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 4,
+                    "count": 1,
+                    "keyOf": "C Major",
+                    "shortKeySignature": "C",
+                    "chord": [
+                        "bI"
+                    ],
+                    "pitch": [
+                        "B3",
+                        "D#4",
+                        "F#4"
+                    ]
+                },
+                {
+                    "index": 4,
+                    "duration": 4,
+                    "count": 1,
+                    "chord": [
+                        "V7n1"
+                    ],
+                    "pitch": [
+                        "G3",
+                        "B3",
+                        "D4"
+                    ]
+                },
+                {
+                    "index": 8,
+                    "duration": 4,
+                    "count": 1,
+                    "chord": [
+                        "V7r4"
+                    ],
+                    "pitch": [
+                        "G3",
+                        "B3",
+                        "D4"
+                    ]
+                },
+                {
+                    "index": 12,
+                    "duration": 4,
+                    "count": 1,
+                    "chord": [
+                        "ii-7r5n1"
+                    ],
+                    "pitch": [
+                        "D3",
+                        "F3",
+                        "A3"
+                    ]
+                }
+            ]
+        }
+    ],
+    "tempo": 80,
+    "copyright": "Copyright YYYY [Replace with Copyright Owner]"
+}

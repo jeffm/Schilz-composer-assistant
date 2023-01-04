@@ -1,0 +1,287 @@
+{
+    "name": "7_2_8_14-8",
+    "copyright": "Copyright 2022 Jeffrey D. Mershon",
+    "timeSignature": "14/8",
+    "averageVelocity": 50,
+    "tracks": [
+        {
+            "name": "beat of 7",
+            "type": "beat",
+            "period": 7,
+            "endAt": 21,
+            "id": 0,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 7,
+                    "count": 1
+                },
+                {
+                    "index": 7,
+                    "duration": 7,
+                    "count": 1
+                },
+                {
+                    "index": 14,
+                    "duration": 7,
+                    "count": 1
+                }
+            ],
+            "run": {
+                "run": false
+            }
+        },
+        {
+            "name": "Fractional beat of 2",
+            "type": "beat",
+            "period": 2,
+            "endAt": 14,
+            "id": 1,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 2,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 4,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 6,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 8,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 10,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 12,
+                    "duration": 2,
+                    "count": 1
+                }
+            ],
+            "run": {
+                "run": false
+            }
+        },
+        {
+            "name": "Fractional beat of 2",
+            "type": "beat",
+            "period": 2,
+            "endAt": 14,
+            "offsetFrom": 0,
+            "offsetAmount": 1,
+            "id": 2,
+            "events": [
+                {
+                    "index": 7,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 9,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 11,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 13,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 15,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 17,
+                    "duration": 2,
+                    "count": 1
+                },
+                {
+                    "index": 19,
+                    "duration": 2,
+                    "count": 1
+                }
+            ],
+            "run": {
+                "run": false
+            }
+        },
+        {
+            "name": "Interference rhythm combining 7 and 2",
+            "type": "rhythm",
+            "sources": [
+                {
+                    "source": 0
+                },
+                {
+                    "source": 1
+                },
+                {
+                    "source": 2
+                }
+            ],
+            "midiChannel": 0,
+            "computeLCM": true,
+            "beatUnit": 8,
+            "pitches": [
+                [
+                    "C4"
+                ],
+                [
+                    "E4"
+                ]
+            ],
+            "tempo": 80,
+            "id": 3,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 2,
+                    "count": 2,
+                    "pitch": [
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 2,
+                    "duration": 2,
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
+                },
+                {
+                    "index": 4,
+                    "duration": 2,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 6,
+                    "duration": 1,
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
+                },
+                {
+                    "index": 7,
+                    "duration": 1,
+                    "count": 2,
+                    "pitch": [
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 8,
+                    "duration": 1,
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
+                },
+                {
+                    "index": 9,
+                    "duration": 1,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 10,
+                    "duration": 1,
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
+                },
+                {
+                    "index": 11,
+                    "duration": 1,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 12,
+                    "duration": 1,
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
+                },
+                {
+                    "index": 13,
+                    "duration": 1,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 14,
+                    "duration": 1,
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
+                },
+                {
+                    "index": 15,
+                    "duration": 2,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 17,
+                    "duration": 2,
+                    "count": 1,
+                    "pitch": [
+                        "E4"
+                    ]
+                },
+                {
+                    "index": 19,
+                    "duration": 2,
+                    "count": 1,
+                    "pitch": [
+                        "C4"
+                    ]
+                }
+            ],
+            "run": {
+                "run": false
+            },
+            "endAt": 19,
+            "LCM": 14
+        }
+    ],
+    "tempo": 90
+}

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<body>
+<div>
+<canvas id="rhythmChart""></canvas>
+</div>
+<script>
+var xValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,""];
+new Chart("rhythmChart", {
+  type: "line",
+  data: {
+    labels: xValues,
+	datasets: [
+	{
+     label: "Divided rhythm",
+     data: [5,5,4,4,5,5,4,5,4,4,5,4,5,4,5,4,5,4,5,4,5,4,5,5,4,4,5,5,4,5,4,5,4,5,4,5,4,5,4,5,4,5,4,5,4,5,4,5,4,5,4,5,5,4,4,5,5,4,4,4],
+	  borderColor: "black",
+	  stepped: true,
+	  spanGaps: false,
+	  pointRadius: 0,
+	  fill: false
+	}
+	,{
+     label: "Synchronmized rhythm combining 4, 3 2, and 1",
+     data: [8,8,8,8,7,7,7,8,7,7,8,7,8,8,8,8,7,8,8,7,8,7,8,8,7,8,8,8,7,7,7,7,7],
+	  borderColor: "black",
+	  stepped: true,
+	  spanGaps: false,
+	  pointRadius: 0,
+	  fill: false
+	}
+	,{
+     label: "Beat of 4",
+     data: [11,11,11,11,11],
+	   borderColor: "gray",
+	  stepped: true,
+	  spanGaps: false,
+	  pointRadius: 0,
+	  fill: false
+	}
+	,{
+     label: "Beat of 3",
+     data: [14,14,14,14],
+	   borderColor: "gray",
+	  stepped: true,
+	  spanGaps: false,
+	  pointRadius: 0,
+	  fill: false
+	}
+	,{
+     label: "beat of 2",
+     data: [17,17,17],
+	   borderColor: "gray",
+	  stepped: true,
+	  spanGaps: false,
+	  pointRadius: 0,
+	  fill: false
+	}
+	,{
+     label: "beat of 1",
+     data: [20,20],
+	   borderColor: "gray",
+	  stepped: true,
+	  spanGaps: false,
+	  pointRadius: 0,
+	  fill: false
+	}
+	,{
+     label: "Beat of 5",
+     data: [23,23,23,23,23,23],
+	   borderColor: "gray",
+	  stepped: true,
+	  spanGaps: false,
+	  pointRadius: 0,
+	  fill: false
+	}
+	,{
+     label: "4/4 time",
+     data: [2,2,2,2,1,1,1,1,2,2,2,2,1,1,1,1,2,2,2,2,1,1,1,1,2,2,2,2,1,1,1,1,1],
+	  borderColor: "blue",
+	  stepped: true,
+	  spanGaps: false,
+	  pointRadius: 0,
+	  fill: false
+	}
+	]
+  },
+  options: {
+	    scales: {
+      y: {
+                ticks: {
+                    callback: function(value, index, ticks) {
+                        return "";
+                     },
+                },
+                min: 0,
+                max: 24
+            }
+    },
+    layout: {padding: 5},
+	plugins:{
+    	legend: {display: true, reverse: true, position: "bottom"},
+		line:{stepped:true},
+    	title: {
+         	display: true,
+         	text: "Divided Rhythm"
+     	}
+     }
+  }
+});
+</script>
+<div>
+<canvas id="pitchChart6"></canvas>
+</div>
+<script>
+new Chart("pitchChart6", {
+  type: "line",
+  data: {
+	datasets: [
+	{
+      label: "Divided rhythm",
+      data: [216,216,216,216,216,216,0,0,0,0,220,220,220,221,221,221,223,223,223,0,0,0,216,216,216,216,216,216,0,0,0,220,220,220,221,221,221,223,223,223,0,0,0,216,216,216,0,0,0,220,220,220,220,221,221,221,221,221,221],
+	  borderColor: "black",
+	  stepped: true,
+	  spanGaps: false,
+	  pointRadius: 0,
+	  fill: false
+	}
+	]
+  },
+  options: {
+	 scales: {
+        x: {
+      		labels: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,""],
+       },
+        y: {
+      		labels: ["B3","Cb3","C4","C#4","Db4","D4","D#4","Eb4","E4","F4","F#4","Gb4","G4","G#4","Ab4"],
+       }
+    },
+    layout: {padding: 5},
+	plugins:{
+    	legend: {display: false, reverse: true, position: "bottom"},
+		line:{stepped:true},
+    	title: {
+         	display: true,
+         	text: "Divided rhythm"
+     	}
+     }
+  }
+});
+</script>
+<div>
+<canvas id="pitchChart5"></canvas>
+</div>
+<script>
+new Chart("pitchChart5", {
+  type: "line",
+  data: {
+	datasets: [
+	{
+      label: "Synchronmized rhythm combining 4, 3 2, and 1",
+      data: [216,216,216,216,0,0,0,220,221,221,223,0,216,216,216,216,0,220,220,221,223,0,216,216,0,220,220,220,221,221,221,221],
+	  borderColor: "black",
+	  stepped: true,
+	  spanGaps: false,
+	  pointRadius: 0,
+	  fill: false
+	}
+	]
+  },
+  options: {
+	 scales: {
+        x: {
+      		labels: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,""],
+       },
+        y: {
+      		labels: ["B3","Cb3","C4","C#4","Db4","D4","D#4","Eb4","E4","F4","F#4","Gb4","G4","G#4","Ab4"],
+       }
+    },
+    layout: {padding: 5},
+	plugins:{
+    	legend: {display: false, reverse: true, position: "bottom"},
+		line:{stepped:true},
+    	title: {
+         	display: true,
+         	text: "Synchronmized rhythm combining 4, 3 2, and 1"
+     	}
+     }
+  }
+});
+</script>
+</html>

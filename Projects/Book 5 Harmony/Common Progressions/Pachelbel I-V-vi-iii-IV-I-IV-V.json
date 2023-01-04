@@ -1,0 +1,158 @@
+{
+    "name": "Pachelbel I-V-vi-iii-IV-I-IV-V",
+    "timeSignature": "4/4",
+    "averageVelocity": 50,
+    "tracks": [
+        {
+            "name": "Chords",
+            "type": "beat",
+            "period": 1,
+            "endAt": 8,
+            "keyOf": "C Major",
+            "shortKeySignature": "C",
+            "chords": [
+                [
+                    "I"
+                ],
+                [
+                    "V"
+                ],
+                [
+                    "vi"
+                ],
+                [
+                    "iii"
+                ],
+                [
+                    "IV"
+                ],
+                [
+                    "I"
+                ],
+                [
+                    "IV"
+                ],
+                [
+                    "V"
+                ]
+            ],
+            "midiChannel": 0,
+            "beatUnit": 4,
+            "tempo": 90,
+            "id": 0,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 1,
+                    "count": 1,
+                    "keyOf": "C Major",
+                    "shortKeySignature": "C",
+                    "chord": [
+                        "I"
+                    ],
+                    "pitch": [
+                        "C3",
+                        "E3",
+                        "G3"
+                    ]
+                },
+                {
+                    "index": 1,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "V"
+                    ],
+                    "pitch": [
+                        "G3",
+                        "B3",
+                        "D4"
+                    ]
+                },
+                {
+                    "index": 2,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "vi"
+                    ],
+                    "pitch": [
+                        "A3",
+                        "C4",
+                        "E4"
+                    ]
+                },
+                {
+                    "index": 3,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "iii"
+                    ],
+                    "pitch": [
+                        "E3",
+                        "G3",
+                        "B3"
+                    ]
+                },
+                {
+                    "index": 4,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "IV"
+                    ],
+                    "pitch": [
+                        "F3",
+                        "A3",
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 5,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "I"
+                    ],
+                    "pitch": [
+                        "C3",
+                        "E3",
+                        "G3"
+                    ]
+                },
+                {
+                    "index": 6,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "IV"
+                    ],
+                    "pitch": [
+                        "F3",
+                        "A3",
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 7,
+                    "duration": 1,
+                    "count": 1,
+                    "chord": [
+                        "V"
+                    ],
+                    "pitch": [
+                        "G3",
+                        "B3",
+                        "D4"
+                    ]
+                }
+            ],
+            "run": {
+                "run": false
+            }
+        }
+    ],
+    "tempo": 80,
+    "copyright": "Copyright YYYY [Replace with Copyright Owner]"
+}

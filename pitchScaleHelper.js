@@ -1,6 +1,6 @@
 var fs = require('fs');
 var pitchChords = openInputFile(__dirname + '\\pitchChords.json');
-generateAllScales();
+//generateAllScales();
 //chords
 writeJSON(__dirname + '\\chordExpansions.json', generateChordExpansions("C"));
 //generateKeyExpansions();

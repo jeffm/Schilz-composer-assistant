@@ -1,0 +1,683 @@
+{
+    "name": "Divided Rhythm",
+    "copyright": "Copyright 2022 Jeffrey D. Mershon",
+    "timeSignature": "4/4",
+    "averageVelocity": 50,
+    "tracks": [
+        {
+            "name": "Beat of 5",
+            "type": "beat",
+            "period": 5,
+            "endAt": 5,
+            "id": 0,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 5,
+                    "count": 1
+                }
+            ],
+            "run": {
+                "run": false
+            }
+        },
+        {
+            "id": 1,
+            "name": "beat of 1",
+            "type": "beat",
+            "period": 1,
+            "endAt": 1,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 1,
+                    "count": 1
+                }
+            ],
+            "run": {
+                "run": false
+            }
+        },
+        {
+            "id": 2,
+            "name": "beat of 2",
+            "type": "beat",
+            "period": 2,
+            "endAt": 2,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 2,
+                    "count": 1
+                }
+            ],
+            "run": {
+                "run": false
+            }
+        },
+        {
+            "name": "Beat of 3",
+            "type": "beat",
+            "period": 3,
+            "endAt": 3,
+            "id": 3,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 3,
+                    "count": 1
+                }
+            ],
+            "run": {
+                "run": false
+            }
+        },
+        {
+            "name": "Beat of 4",
+            "type": "beat",
+            "period": 4,
+            "endAt": 4,
+            "id": 4,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 4,
+                    "count": 1
+                }
+            ],
+            "run": {
+                "run": false
+            }
+        },
+        {
+            "name": "Synchronmized rhythm combining 4, 3 2, and 1",
+            "type": "sRhythm",
+            "sources": [
+                {
+                    "source": 4
+                },
+                {
+                    "source": 3
+                },
+                {
+                    "source": 1
+                },
+                {
+                    "source": 2
+                },
+                {
+                    "source": 1
+                },
+                {
+                    "source": 1
+                },
+                {
+                    "source": 4
+                },
+                {
+                    "source": 1
+                },
+                {
+                    "source": 2
+                },
+                {
+                    "source": 1
+                },
+                {
+                    "source": 1
+                },
+                {
+                    "source": 1
+                },
+                {
+                    "source": 2
+                },
+                {
+                    "source": 1
+                },
+                {
+                    "source": 3
+                },
+                {
+                    "source": 4
+                }
+            ],
+            "midiChannel": 0,
+            "beatUnit": 4,
+            "pitches": [
+                [
+                    "C4"
+                ],
+                [
+                    ""
+                ],
+                [
+                    "E4"
+                ],
+                [
+                    "F4"
+                ],
+                [
+                    "G4"
+                ],
+                [
+                    ""
+                ]
+            ],
+            "tempo": 90,
+            "endAt": 0,
+            "id": 5,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 4,
+                    "count": 16,
+                    "pitch": [
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 4,
+                    "duration": 3,
+                    "count": 0,
+                    "pitch": [],
+                    "isRest": true
+                },
+                {
+                    "index": 7,
+                    "duration": 1,
+                    "count": 0,
+                    "pitch": [
+                        "E4"
+                    ]
+                },
+                {
+                    "index": 8,
+                    "duration": 2,
+                    "count": 0,
+                    "pitch": [
+                        "F4"
+                    ]
+                },
+                {
+                    "index": 10,
+                    "duration": 1,
+                    "count": 0,
+                    "pitch": [
+                        "G4"
+                    ]
+                },
+                {
+                    "index": 11,
+                    "duration": 1,
+                    "count": 0,
+                    "pitch": [],
+                    "isRest": true
+                },
+                {
+                    "index": 12,
+                    "duration": 4,
+                    "count": 0,
+                    "pitch": [
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 16,
+                    "duration": 1,
+                    "count": 0,
+                    "pitch": [],
+                    "isRest": true
+                },
+                {
+                    "index": 17,
+                    "duration": 2,
+                    "count": 0,
+                    "pitch": [
+                        "E4"
+                    ]
+                },
+                {
+                    "index": 19,
+                    "duration": 1,
+                    "count": 0,
+                    "pitch": [
+                        "F4"
+                    ]
+                },
+                {
+                    "index": 20,
+                    "duration": 1,
+                    "count": 0,
+                    "pitch": [
+                        "G4"
+                    ]
+                },
+                {
+                    "index": 21,
+                    "duration": 1,
+                    "count": 0,
+                    "pitch": [],
+                    "isRest": true
+                },
+                {
+                    "index": 22,
+                    "duration": 2,
+                    "count": 0,
+                    "pitch": [
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 24,
+                    "duration": 1,
+                    "count": 0,
+                    "pitch": [],
+                    "isRest": true
+                },
+                {
+                    "index": 25,
+                    "duration": 3,
+                    "count": 0,
+                    "pitch": [
+                        "E4"
+                    ]
+                },
+                {
+                    "index": 28,
+                    "duration": 4,
+                    "count": 0,
+                    "pitch": [
+                        "F4"
+                    ]
+                }
+            ],
+            "run": {
+                "run": false
+            }
+        },
+        {
+            "name": "Divided rhythm",
+            "type": "dRhythm",
+            "midiChannel": 0,
+            "rhythmSource": 5,
+            "dividerSource": 3,
+            "id": 6,
+            "events": [
+                {
+                    "index": 0,
+                    "duration": 1.3332,
+                    "count": 16,
+                    "pitch": [
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 1.333,
+                    "duration": 1.3332,
+                    "count": 16,
+                    "pitch": [
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 2.666,
+                    "duration": 1.3336,
+                    "count": 16,
+                    "pitch": [
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 4,
+                    "duration": 0.9999,
+                    "count": 0,
+                    "pitch": [],
+                    "isRest": true
+                },
+                {
+                    "index": 5,
+                    "duration": 0.9999,
+                    "count": 0,
+                    "pitch": [],
+                    "isRest": true
+                },
+                {
+                    "index": 6,
+                    "duration": 1.0002,
+                    "count": 0,
+                    "pitch": [],
+                    "isRest": true
+                },
+                {
+                    "index": 7,
+                    "duration": 0.3333,
+                    "count": 0,
+                    "pitch": [
+                        "E4"
+                    ]
+                },
+                {
+                    "index": 7.333,
+                    "duration": 0.3333,
+                    "count": 0,
+                    "pitch": [
+                        "E4"
+                    ]
+                },
+                {
+                    "index": 7.666,
+                    "duration": 0.3334,
+                    "count": 0,
+                    "pitch": [
+                        "E4"
+                    ]
+                },
+                {
+                    "index": 8,
+                    "duration": 0.6666,
+                    "count": 0,
+                    "pitch": [
+                        "F4"
+                    ]
+                },
+                {
+                    "index": 8.667,
+                    "duration": 0.6666,
+                    "count": 0,
+                    "pitch": [
+                        "F4"
+                    ]
+                },
+                {
+                    "index": 9.334,
+                    "duration": 0.6668,
+                    "count": 0,
+                    "pitch": [
+                        "F4"
+                    ]
+                },
+                {
+                    "index": 10,
+                    "duration": 0.3333,
+                    "count": 0,
+                    "pitch": [
+                        "G4"
+                    ]
+                },
+                {
+                    "index": 10.333,
+                    "duration": 0.3333,
+                    "count": 0,
+                    "pitch": [
+                        "G4"
+                    ]
+                },
+                {
+                    "index": 10.666,
+                    "duration": 0.3334,
+                    "count": 0,
+                    "pitch": [
+                        "G4"
+                    ]
+                },
+                {
+                    "index": 11,
+                    "duration": 0.3333,
+                    "count": 0,
+                    "pitch": [],
+                    "isRest": true
+                },
+                {
+                    "index": 11.333,
+                    "duration": 0.3333,
+                    "count": 0,
+                    "pitch": [],
+                    "isRest": true
+                },
+                {
+                    "index": 11.666,
+                    "duration": 0.3334,
+                    "count": 0,
+                    "pitch": [],
+                    "isRest": true
+                },
+                {
+                    "index": 12,
+                    "duration": 1.3332,
+                    "count": 0,
+                    "pitch": [
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 13.333,
+                    "duration": 1.3332,
+                    "count": 0,
+                    "pitch": [
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 14.666,
+                    "duration": 1.3336,
+                    "count": 0,
+                    "pitch": [
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 16,
+                    "duration": 0.3333,
+                    "count": 0,
+                    "pitch": [],
+                    "isRest": true
+                },
+                {
+                    "index": 16.333,
+                    "duration": 0.3333,
+                    "count": 0,
+                    "pitch": [],
+                    "isRest": true
+                },
+                {
+                    "index": 16.666,
+                    "duration": 0.3334,
+                    "count": 0,
+                    "pitch": [],
+                    "isRest": true
+                },
+                {
+                    "index": 17,
+                    "duration": 0.6666,
+                    "count": 0,
+                    "pitch": [
+                        "E4"
+                    ]
+                },
+                {
+                    "index": 17.667,
+                    "duration": 0.6666,
+                    "count": 0,
+                    "pitch": [
+                        "E4"
+                    ]
+                },
+                {
+                    "index": 18.334,
+                    "duration": 0.6668,
+                    "count": 0,
+                    "pitch": [
+                        "E4"
+                    ]
+                },
+                {
+                    "index": 19,
+                    "duration": 0.3333,
+                    "count": 0,
+                    "pitch": [
+                        "F4"
+                    ]
+                },
+                {
+                    "index": 19.333,
+                    "duration": 0.3333,
+                    "count": 0,
+                    "pitch": [
+                        "F4"
+                    ]
+                },
+                {
+                    "index": 19.666,
+                    "duration": 0.3334,
+                    "count": 0,
+                    "pitch": [
+                        "F4"
+                    ]
+                },
+                {
+                    "index": 20,
+                    "duration": 0.3333,
+                    "count": 0,
+                    "pitch": [
+                        "G4"
+                    ]
+                },
+                {
+                    "index": 20.333,
+                    "duration": 0.3333,
+                    "count": 0,
+                    "pitch": [
+                        "G4"
+                    ]
+                },
+                {
+                    "index": 20.666,
+                    "duration": 0.3334,
+                    "count": 0,
+                    "pitch": [
+                        "G4"
+                    ]
+                },
+                {
+                    "index": 21,
+                    "duration": 0.3333,
+                    "count": 0,
+                    "pitch": [],
+                    "isRest": true
+                },
+                {
+                    "index": 21.333,
+                    "duration": 0.3333,
+                    "count": 0,
+                    "pitch": [],
+                    "isRest": true
+                },
+                {
+                    "index": 21.666,
+                    "duration": 0.3334,
+                    "count": 0,
+                    "pitch": [],
+                    "isRest": true
+                },
+                {
+                    "index": 22,
+                    "duration": 0.6666,
+                    "count": 0,
+                    "pitch": [
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 22.667,
+                    "duration": 0.6666,
+                    "count": 0,
+                    "pitch": [
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 23.334,
+                    "duration": 0.6668,
+                    "count": 0,
+                    "pitch": [
+                        "C4"
+                    ]
+                },
+                {
+                    "index": 24,
+                    "duration": 0.3333,
+                    "count": 0,
+                    "pitch": [],
+                    "isRest": true
+                },
+                {
+                    "index": 24.333,
+                    "duration": 0.3333,
+                    "count": 0,
+                    "pitch": [],
+                    "isRest": true
+                },
+                {
+                    "index": 24.666,
+                    "duration": 0.3334,
+                    "count": 0,
+                    "pitch": [],
+                    "isRest": true
+                },
+                {
+                    "index": 25,
+                    "duration": 0.9999,
+                    "count": 0,
+                    "pitch": [
+                        "E4"
+                    ]
+                },
+                {
+                    "index": 26,
+                    "duration": 0.9999,
+                    "count": 0,
+                    "pitch": [
+                        "E4"
+                    ]
+                },
+                {
+                    "index": 27,
+                    "duration": 1.0002,
+                    "count": 0,
+                    "pitch": [
+                        "E4"
+                    ]
+                },
+                {
+                    "index": 28,
+                    "duration": 1.3332,
+                    "count": 0,
+                    "pitch": [
+                        "F4"
+                    ]
+                },
+                {
+                    "index": 29.333,
+                    "duration": 1.3332,
+                    "count": 0,
+                    "pitch": [
+                        "F4"
+                    ]
+                },
+                {
+                    "index": 30.666,
+                    "duration": 1.3336,
+                    "count": 0,
+                    "pitch": [
+                        "F4"
+                    ]
+                }
+            ],
+            "run": {
+                "run": true
+            }
+        }
+    ],
+    "tempo": 90
+}
