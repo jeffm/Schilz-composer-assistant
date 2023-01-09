@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "jzz": "^1.5.2",
+    "jzz": "^1.5.8",
     "jzz-midi-smf": "^1.7.1",
     "yargs": "^17.6.2"
   }
